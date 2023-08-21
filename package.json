@@ -74,6 +74,7 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
+    "@types/pubsub-js": "^1.8.3",
     "@babel/core": "7.21.8",
     "@babel/plugin-proposal-decorators": "^7.21.0",
     "@babel/plugin-transform-unicode-regex": "^7.18.6",

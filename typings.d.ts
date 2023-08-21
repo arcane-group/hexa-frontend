@@ -5,6 +5,7 @@ declare interface Window {
   okxwallet: any
   gtag: any
   bitkeep: any
+  pageScrollCurKey
 }
 
 declare module '@pqina/flip'

@@ -61,6 +61,12 @@ export const preLogin = async (address: `0x${string}`, chainId: number) => {
 
 // 检查登录状态
 export const checkLogin = async () => {
+  return Promise.resolve({
+    data: {
+      code: 1,
+    },
+  })
+
   return await request.post('/web/check_token')
 }
 
@@ -72,10 +78,10 @@ export const getUserInfo = async () => {
       data: {
         user_id: 123,
         address: `0x123213213123123123123213123`,
-        email: 'string@gmail.com',
+        // email: 'string@gmail.com',
         hasSBT: true,
         pic: '',
-        name: 'kringt',
+        // name: 'kringt',
       },
     },
   })

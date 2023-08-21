@@ -5,7 +5,6 @@ import {
   PopoverContent,
   Portal,
   Stack,
-  Avatar,
   Text,
 } from '@chakra-ui/react'
 import { t } from '@lingui/macro'
@@ -14,11 +13,9 @@ import { useRouter } from 'next/router'
 import { observer } from 'mobx-react-lite'
 import { Link } from '@chakra-ui/next-js'
 
+import { UserImg } from '@/components/UserImg'
 import { useStore } from '@/stores'
 import { useLogout } from '@/hooks/useLogin'
-
-// TODO: 待UI给一个图片
-// const defaultIcon = ''
 
 const WalletLogin = observer(() => {
   useLingui()
@@ -55,16 +52,7 @@ const WalletLogin = observer(() => {
               alignItems={'center'}
               className='hover'
             >
-              <Avatar
-                src={walletStore?.userExtInfo?.pic}
-                // icon={defaultIcon}
-                w='45px'
-                h='45px'
-                objectFit={'cover'}
-                borderColor={'#155973'}
-                borderWidth={'1px'}
-                borderStyle={'solid'}
-              ></Avatar>
+              <UserImg src={walletStore?.userExtInfo?.pic} />
               <Text color='#000000' textStyle={'cp'}>
                 {nameStr}
               </Text>

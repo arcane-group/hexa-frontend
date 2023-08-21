@@ -38,7 +38,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const [isPC] = useMediaQuery(`(min-width: ${1080}px)`)
 
   const stores = useMemo(() => {
-    return initializeStore({})
+    return initializeStore({
+      walletStore: true,
+    })
   }, [])
 
   useEffect(() => {

@@ -56,13 +56,15 @@ export const useLogout = () => {
 export const useAutoLogin = () => {
   useLingui()
 
+  const { pathname } = useRouter()
+
   const { walletStore } = useStore()
   const logoutFn = useLogout()
   const redirectFn = useRedirect()
 
   return useCallback(
     async (hasToast: boolean = false) => {
-      console.log('run 静默缓存登录')
+      console.log('run 静默缓存登录:', walletStore?.userInfo?.token)
       if (walletStore.loginState !== 1) {
         return false
       }
@@ -76,7 +78,11 @@ export const useAutoLogin = () => {
             if (res2?.data?.code >= 0) {
               walletStore.setUserExtInfo(res2?.data?.data)
               walletStore.setLoginState(3)
-              await redirectFn()
+
+              if (['/sigin-in', '/sign-up'].includes(pathname)) {
+                await redirectFn()
+              }
+
               return true
             }
           }
@@ -88,7 +94,7 @@ export const useAutoLogin = () => {
       }
       return false
     },
-    [logoutFn, walletStore, redirectFn]
+    [logoutFn, walletStore, redirectFn, pathname]
   )
 }
 

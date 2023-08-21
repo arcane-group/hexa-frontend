@@ -6,13 +6,14 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { Link } from '@chakra-ui/next-js'
 import { useRouter } from 'next/router'
+import { observer } from 'mobx-react-lite'
 
 import { TextInput } from '@/components/Form/Input'
 import { SubmitButton } from '@/components/Form/SubmitButton'
 import { FormControl } from '@/components/Form/FormControl'
 import { useAccountLogin } from '@/hooks/useLogin'
 
-export const SignInForm = () => {
+export const SignInForm = observer(() => {
   const { i18n } = useLingui()
 
   const { query } = useRouter()
@@ -85,4 +86,4 @@ export const SignInForm = () => {
       </Box>
     </Box>
   )
-}
+})

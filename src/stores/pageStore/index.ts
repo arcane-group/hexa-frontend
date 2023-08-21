@@ -1,20 +1,19 @@
 import { makeObservable, action, observable } from 'mobx'
 
-import { TEST } from './test'
+import { Profile } from './Profile'
 
 // 全局页面路由设置
 export enum PAGEPATH {
-  TEST = '/test',
+  Profile = '/profile',
 }
 
 const PageClass = {
-  [PAGEPATH.TEST]: TEST,
+  [PAGEPATH.Profile]: Profile,
 }
 
-export type PageType = undefined | TEST
+export type PageType = undefined | Profile
 
 // 全局页面数据
-// TODO: 还差清空缓存策略，不然内存吃不消，但是目前没想好清楚策略
 export default class PageStore {
   constructor() {
     makeObservable(this)
