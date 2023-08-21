@@ -1,1 +1,3 @@
-# hexa-frontend
+# Hexa Hub
+
+...
