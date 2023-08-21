@@ -181,16 +181,20 @@ export const useAccountLogin = () => {
     async (email: string, password: string, hasToast: boolean = true) => {
       console.log('run 账密方式登录')
       if (walletStore.loginState !== 1) {
-        return false
+        return {
+          code: -1,
+          msg: t`Login status has expired`,
+        }
       }
 
       try {
         if (!email || !password) {
-          return false
+          throw new Error(t`Please enter email and password`)
         }
 
         walletStore.setLoginState(2)
 
+        // TODO: 需要加一个判断，当已注册 未验证邮箱的时候 跳转验证邮箱页面
         const res3 = await login(email, password)
         if (res3.data?.code < 0) {
           throw new Error(res3?.data?.msg)
@@ -211,12 +215,18 @@ export const useAccountLogin = () => {
         walletStore.setUserExtInfo(res4?.data?.data)
         walletStore.setLoginState(3)
         await redirectFn()
-        return true
+        return {
+          code: 1,
+          msg: '',
+        }
       } catch (e: any) {
         hasToast && e?.message && toast.error(e?.message)
         await logoutFn()
+        return {
+          code: -1,
+          msg: e?.message || t`Login failed`,
+        }
       }
-      return false
     },
     [logoutFn, walletStore, redirectFn]
   )

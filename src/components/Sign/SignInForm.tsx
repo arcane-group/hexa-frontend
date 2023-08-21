@@ -4,19 +4,20 @@ import { Box, Stack } from '@chakra-ui/react'
 import { useMemo } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { toast } from 'react-toastify'
 import { Link } from '@chakra-ui/next-js'
 import { useRouter } from 'next/router'
 
 import { TextInput } from '@/components/Form/Input'
 import { SubmitButton } from '@/components/Form/SubmitButton'
 import { FormControl } from '@/components/Form/FormControl'
-import { login } from '@/services/user'
+import { useAccountLogin } from '@/hooks/useLogin'
 
 export const SignInForm = () => {
   const { i18n } = useLingui()
 
   const { query } = useRouter()
+
+  const loginFn = useAccountLogin()
 
   const validationSchema = useMemo(() => {
     return Yup.object({
@@ -39,16 +40,13 @@ export const SignInForm = () => {
         onSubmit={async (values, { setSubmitting, resetForm, setFieldError }) => {
           setSubmitting(true)
 
-          const res = await login(values.username, values.password).catch(() => {
-            return null
-          })
-          if (res?.data?.code >= 0) {
+          const res = await loginFn(values.username, values.password)
+          if (res?.code >= 0) {
             resetForm({
               values: initialValues,
             })
-            toast.success(t`Login success`)
           } else {
-            setFieldError('password', res?.data?.msg || t`Wrong username, email or password`)
+            setFieldError('password', res?.msg || t`Wrong username, email or password`)
           }
 
           setSubmitting(false)

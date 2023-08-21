@@ -1,5 +1,13 @@
-import { Stack, Box, Image, Text, Center } from '@chakra-ui/react'
-import { useState, useContext, createContext, useMemo } from 'react'
+import { Stack, Box, Image, Text, Center, ButtonProps } from '@chakra-ui/react'
+import {
+  useState,
+  useContext,
+  createContext,
+  useMemo,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+} from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 
@@ -91,7 +99,7 @@ const REGISTERED = () => {
       </Text>
       <Box w='100%' mt='30px'>
         {/* TODO： 待添加一个倒计时限制 */}
-        <LineButton>{t`Resend Email`}</LineButton>
+        <CountdownButton minW='180px'>{t`Resend Email`}</CountdownButton>
       </Box>
     </Center>
   )
@@ -102,3 +110,66 @@ const REGISTERED = () => {
 
 //   return <>VERIFIED</>
 // }
+
+// eslint-disable-next-line react/display-name
+export const CountdownButton = forwardRef(function (
+  {
+    num = 60,
+    children,
+    onClick,
+    ...props
+  }: ButtonProps & {
+    num?: number
+  },
+  ref
+) {
+  const [countdown, setCountdown] = useState(0)
+
+  useEffect(() => {
+    let interval: NodeJS.Timer | null = null
+
+    if (countdown > 0) {
+      interval = setInterval(() => {
+        setCountdown(countdown - 1)
+      }, 1000)
+    } else if (countdown === 0) {
+      interval && clearInterval(interval)
+    }
+
+    return () => {
+      interval && clearInterval(interval)
+    }
+  }, [countdown])
+
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        setCountdown: () => {
+          setCountdown(num)
+        },
+      }
+    },
+    [num]
+  )
+
+  return (
+    <LineButton
+      minW='180px'
+      isDisabled={countdown > 0}
+      onClick={async e => {
+        if (countdown > 0) {
+          return
+        }
+
+        const res: any = await onClick?.(e)
+        if (res !== false) {
+          setCountdown(num)
+        }
+      }}
+      {...props}
+    >
+      {countdown > 0 ? `${countdown}s` : children}
+    </LineButton>
+  )
+})

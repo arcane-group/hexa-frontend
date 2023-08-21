@@ -137,3 +137,46 @@ export const register = async (username: string, email: string, password: string
     password,
   })
 }
+
+// 验证邮箱中的链接（绑定到账户）
+export const verifyEmail = async (code: string) => {
+  return Promise.resolve({
+    data: {
+      code: code === '123' ? 1 : -1,
+      data: null,
+    },
+  })
+
+  return await request.post('/web/verify_email', {
+    code,
+  })
+}
+
+// 忘记密码 通过邮箱发送邮件
+export const forgotPasswordByEmail = async (email: string) => {
+  return Promise.resolve({
+    data: {
+      code: 1,
+      data: null,
+    },
+  })
+
+  return await request.post('/web/forgot_password', {
+    email,
+  })
+}
+
+// reset password
+export const resetPassword = async (code: string, password: string) => {
+  return Promise.resolve({
+    data: {
+      code: 1,
+      data: null,
+    },
+  })
+
+  return await request.post('/web/reset_password', {
+    code,
+    password,
+  })
+}

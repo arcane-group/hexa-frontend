@@ -107,7 +107,14 @@ const WalletLogin = observer(() => {
         router.push({
           pathname: '/sign-in',
           query: {
-            redirectTo: router.pathname === '/sign-up' ? router.query.redirectTo : router.asPath,
+            redirectTo: [
+              '/sign-up',
+              '/reset-password',
+              '/verify-email',
+              '/forgot-password',
+            ].includes(router.pathname)
+              ? router.query.redirectTo || '/'
+              : router.asPath,
           },
         })
       }}

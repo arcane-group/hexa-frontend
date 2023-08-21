@@ -22,6 +22,7 @@ export const TextInput: FC<
   return (
     <Input
       type={type}
+      autoComplete={'off'}
       placeholder={''}
       borderRadius={'0'}
       boxShadow='none !important'

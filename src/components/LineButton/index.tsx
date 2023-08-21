@@ -17,6 +17,11 @@ export const LineButton = (props: ButtonProps) => {
       _active={{
         bgColor: 'rgba(108, 234, 240, 1)',
       }}
+      _disabled={{
+        cursor: 'not-allowed',
+        bgGradient: 'none',
+        bgColor: '#C8E1D9',
+      }}
       px='12px'
       fontSize={'18px'}
       {...props}
