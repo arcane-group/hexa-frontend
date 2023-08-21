@@ -1,4 +1,3 @@
-//@ts-check
 import * as utils from '../common/utils.js';
 import { silentScroll } from '../common/silentScroll.js';
 import { getState, setState } from '../common/state.js';

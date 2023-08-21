@@ -1,4 +1,3 @@
-//@ts-check
 import * as utils from './utils.js';
 import { setScrolling } from './utilsFP.js';
 import { state, setState } from "./state.js";

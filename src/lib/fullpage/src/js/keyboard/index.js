@@ -1,4 +1,3 @@
-//@ts-check
 import * as utils from '../common/utils.js';
 import { getOptions } from '../common/options';
 import { focusableElementsString, doc } from '../common/constants.js';

@@ -1,4 +1,3 @@
-//@ts-check
 import { getOptions } from '../common/options';
 import { FP } from '../common/constants.js';
 import { setIsScrollAllowed } from '../common/isScrollAllowed.js';
