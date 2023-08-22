@@ -82,14 +82,12 @@ function ModalView<TData> ({
         maxW={{ base: px2vw(750), lg: '400px' }}
         maxH='100vh'
         bgSize='100% 100%'
-        borderRadius={{ base: `${px2vw(40)} ${px2vw(40)} 0 0`, lg: '20px' }}
         p={0}
         {...contentProps}
       >
         {title && (
           <ModalHeader
-            fontSize={{ base: px2vw(40), lg: '20px' }}
-            lineHeight={{ base: px2vw(48), lg: '30px' }}
+            textStyle={'h2'}
             fontWeight='bold'
             color='#000000'
             px={{ base: px2vw(64), lg: '27px' }}
@@ -110,18 +108,6 @@ function ModalView<TData> ({
             right={{ base: px2vw(48), lg: '20px' }}
             w={{ base: px2vw(48), lg: '32px' }}
             h={{ base: px2vw(48), lg: '32px' }}
-            color={'#fff'}
-            fontSize={12}
-            borderRadius={'100px'}
-            background={'rgba(0,0,0,0.15)'}
-            _hover={{
-              lg: {
-                background: 'rgba(0,0,0,0.3)',
-              },
-            }}
-            _active={{
-              background: 'rgba(0,0,0,0.3)',
-            }}
           />
         )}
         {/* scrollBehavior="inside" 时候 overflow="auto"， 会导致隐藏内容区 */}

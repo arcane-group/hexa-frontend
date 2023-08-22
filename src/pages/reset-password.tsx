@@ -92,7 +92,7 @@ const ResetForm = ({ code }: { code?: string }) => {
           <FormControl name='password' label={t`New password`}>
             <TextInput name='password' type='password' />
           </FormControl>
-          <FormControl name='password2' label={t`Confirm new password`}>
+          <FormControl name='password2' label={t`Confirm New Password`}>
             <TextInput name='password2' type='password' />
           </FormControl>
           <SubmitButton w='full'>{t`Reset Password`}</SubmitButton>

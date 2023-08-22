@@ -25,7 +25,8 @@ export const login = async (username: string, password: string) => {
 export const loginWithWallet = async (
   signature: string,
   address: `0x${string}`,
-  chainId: number
+  chainId: number,
+  isLinkWallet?: boolean // 是否是关联钱包到现有账户
 ) => {
   return Promise.resolve({
     data: {
@@ -36,6 +37,14 @@ export const loginWithWallet = async (
       },
     },
   })
+
+  if (isLinkWallet === true) {
+    return await request.post('/web/link_wallet', {
+      address,
+      chainId,
+      signature,
+    })
+  }
 
   return await request.post('/web/login_wallet', {
     address,
@@ -77,11 +86,11 @@ export const getUserInfo = async () => {
       code: 1,
       data: {
         user_id: 123,
-        address: `0x123213213123123123123213123`,
-        // email: 'string@gmail.com',
-        hasSBT: true,
+        // address: `0x123213213123123123123213123`,
+        email: 'string@gmail.com',
+        // hasSBT: true,
         pic: '',
-        // name: 'kringt',
+        name: 'kringt',
       },
     },
   })
@@ -183,6 +192,36 @@ export const resetPassword = async (code: string, password: string) => {
 
   return await request.post('/web/reset_password', {
     code,
+    password,
+  })
+}
+
+// send verify email
+export const sendVerifyEmail = async (email: string) => {
+  return Promise.resolve({
+    data: {
+      code: 1,
+      data: null,
+    },
+  })
+
+  return await request.post('/web/send_verify_email', {
+    email,
+  })
+}
+
+// link email
+export const linkEmail = async (username: string, email: string, password: string) => {
+  return Promise.resolve({
+    data: {
+      code: password === '123' ? 1 : -1,
+      data: true,
+    },
+  })
+
+  return await request.post('/web/link-email', {
+    username,
+    email,
     password,
   })
 }

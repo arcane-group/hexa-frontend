@@ -4,9 +4,6 @@ import { useField, type FieldHookConfig } from 'formik'
 
 type TInputProps = {
   name: string
-  maxNum?: number
-  precision?: number
-  tips?: string
 } & InputProps
 
 export const TextInput: FC<
@@ -33,6 +30,7 @@ export const TextInput: FC<
         },
       }}
       minH='40px'
+      {...props}
       {...field}
     />
   )

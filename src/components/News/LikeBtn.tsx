@@ -24,7 +24,7 @@ export const Liked = ({
 }) => {
   return (
     <Center w='34px' h='30px' {...boxProps}>
-      <LikedIcon color='#1ecadc' w='100%' h='100%' {...props} />
+      <LikedIcon stopColor='#1ecadc' stopOpacity='1' w='100%' h='100%' {...props} />
     </Center>
   )
 }
@@ -37,7 +37,7 @@ export const UnLike = ({
 }) => {
   return (
     <Center w='34px' h='30px' {...boxProps}>
-      <LikedIcon color='transparent' w='100%' h='100%' {...props} />
+      <LikedIcon w='100%' h='100%' {...props} />
     </Center>
   )
 }
@@ -78,15 +78,16 @@ export const LikeBtn = ({
 
   return (
     <Button
+      className='hover'
       variant={'unstyled'}
       title={isLiked ? t`Unlike` : t`Like`}
       aria-label={isLiked ? t`Unlike` : t`Like`}
       color={'#000000'}
       fontSize={'24px'}
-      {...btnProps}
-      alignItems={'center'}
       w='max-content'
       minW='max-content'
+      {...btnProps}
+      alignItems={'center'}
       display={'flex'}
       onClick={async e => {
         if (btnProps?.onClick) {

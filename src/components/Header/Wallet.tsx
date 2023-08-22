@@ -13,6 +13,7 @@ import { useRouter } from 'next/router'
 import { observer } from 'mobx-react-lite'
 import { Link } from '@chakra-ui/next-js'
 
+import { Button as MyButton } from '@/components/Button'
 import { UserImg } from '@/components/UserImg'
 import { useStore } from '@/stores'
 import { useLogout } from '@/hooks/useLogin'
@@ -82,11 +83,8 @@ const WalletLogin = observer(() => {
 
   // 未登录
   return (
-    <Button
+    <MyButton
       isLoading={walletStore?.loginState === 2}
-      variant='outline'
-      borderRadius={0}
-      borderColor={'#155973'}
       onClick={() => {
         if (router.pathname === '/sign-in') {
           return
@@ -108,7 +106,7 @@ const WalletLogin = observer(() => {
       }}
     >
       {t`Sign In`}
-    </Button>
+    </MyButton>
   )
 })
 

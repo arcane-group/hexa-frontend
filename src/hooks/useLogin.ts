@@ -34,22 +34,25 @@ const useRedirect = () => {
 }
 
 // 登出
-export const useLogout = () => {
+export const useLogout = (isLinkWallet?: boolean) => {
   const { walletStore, commonStore, pageStore } = useStore()
   const { disconnectAsync } = useDisconnect()
 
   return useCallback(async () => {
-    console.log('run 登出')
+    console.log('run 登出. isLinkWallet=', isLinkWallet)
 
-    walletStore.reset()
-    commonStore.reset()
-    pageStore.reset()
+    if (isLinkWallet !== true) {
+      walletStore.reset()
+      commonStore.reset()
+      pageStore.reset()
+    }
+
     try {
       await disconnectAsync().catch((e) => console.error(e))
     } catch (e) {
       console.error(e)
     }
-  }, [commonStore, walletStore, pageStore, disconnectAsync])
+  }, [commonStore, walletStore, pageStore, disconnectAsync, isLinkWallet])
 }
 
 // 静默缓存登录 - 直接使用本地缓存进行登录
@@ -99,7 +102,7 @@ export const useAutoLogin = () => {
 }
 
 // 钱包方式登录 - 在钱包已经链接的状态下, 先用钱包签名, 然后再登录
-export const useWalletLogin = () => {
+export const useWalletLogin = (isLinkWallet?: boolean) => {
   useLingui()
 
   const { walletStore } = useStore()
@@ -107,13 +110,13 @@ export const useWalletLogin = () => {
   const { address } = useAccount()
   const { signMessageAsync } = useSignMessage()
 
-  const logoutFn = useLogout()
+  const logoutFn = useLogout(isLinkWallet)
   const redirectFn = useRedirect()
 
   return useCallback(
     async (hasToast: boolean = true) => {
-      console.log('run 钱包方式登录')
-      if (walletStore.loginState !== 1) {
+      console.log('run 钱包方式登录:', address, chain?.id, isLinkWallet, walletStore.loginState)
+      if (walletStore.loginState !== 1 && isLinkWallet !== true) {
         return false
       }
 
@@ -126,7 +129,7 @@ export const useWalletLogin = () => {
           return false
         }
 
-        walletStore.setLoginState(2)
+        !isLinkWallet && walletStore.setLoginState(2)
 
         // 先获取待签名的消息
         const res = await preLogin(address, chain?.id)
@@ -142,7 +145,7 @@ export const useWalletLogin = () => {
           throw new Error(t`Sign message error`)
         }
 
-        const res3 = await loginWithWallet(sign, address, chain?.id)
+        const res3 = await loginWithWallet(sign, address, chain?.id, isLinkWallet)
         if (res3.data?.code < 0) {
           throw new Error(res3?.data?.msg)
         }
@@ -160,7 +163,7 @@ export const useWalletLogin = () => {
         }
         // 设置详细用户信息
         walletStore.setUserExtInfo(res4?.data?.data)
-        walletStore.setLoginState(3)
+        !isLinkWallet && walletStore.setLoginState(3)
         await redirectFn()
         return true
       } catch (e: any) {
@@ -169,7 +172,7 @@ export const useWalletLogin = () => {
       }
       return false
     },
-    [address, chain?.id, logoutFn, signMessageAsync, walletStore, redirectFn]
+    [address, chain?.id, logoutFn, signMessageAsync, walletStore, redirectFn, isLinkWallet]
   )
 }
 

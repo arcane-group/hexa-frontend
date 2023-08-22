@@ -33,7 +33,7 @@ export const OrLine = () => {
   )
 }
 
-export const ConnectWallet = observer(() => {
+export const ConnectWallet = observer(({ isLinkWallet }: { isLinkWallet?: boolean }) => {
   useLingui()
 
   const { walletStore } = useStore()
@@ -45,7 +45,7 @@ export const ConnectWallet = observer(() => {
     value: '',
   })
 
-  const loginFn = useWalletLogin()
+  const loginFn = useWalletLogin(isLinkWallet)
 
   useEffect(() => {
     if (address) {
@@ -66,6 +66,11 @@ export const ConnectWallet = observer(() => {
           w='full'
           bgColor={'#8AF7FC'}
           isLoading={walletStore?.loginState === 2}
+          onClick={() => {
+            if (address) {
+              loginFn()
+            }
+          }}
         >{t`Signature`}</LineButton>
       </Stack>
     )

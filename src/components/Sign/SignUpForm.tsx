@@ -9,13 +9,13 @@ import { Link } from '@chakra-ui/next-js'
 import { TextInput } from '@/components/Form/Input'
 import { SubmitButton } from '@/components/Form/SubmitButton'
 import { FormControl } from '@/components/Form/FormControl'
-import { register, checkUsername, checkEmail } from '@/services/user'
-import { useRegisterStore, RSTATE } from './Container'
+import { register, checkUsername, checkEmail, linkEmail } from '@/services/user'
+import { useRouter } from 'next/router'
 
-export const SignUpForm = () => {
+export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
   const { i18n } = useLingui()
 
-  const { setRegisterState } = useRegisterStore()
+  const { push } = useRouter()
 
   const validationSchema = useMemo(() => {
     return Yup.object({
@@ -30,11 +30,11 @@ export const SignUpForm = () => {
         .default('')
         .required(t`Please enter`),
       readTC: Yup.boolean()
-        .default(false)
+        .default(!!isLinkEmail)
         .oneOf([true], t`Please read and agree to the terms and conditions`),
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [i18n.locale])
+  }, [i18n.locale, isLinkEmail])
   const initialValues = validationSchema.getDefault()
 
   return (
@@ -45,14 +45,20 @@ export const SignUpForm = () => {
         onSubmit={async (values, { setSubmitting, resetForm, setFieldError }) => {
           setSubmitting(true)
 
-          const res = await register(values.username, values.email, values.password).catch(() => {
+          let fn = isLinkEmail ? linkEmail : register
+          const res = await fn(values.username, values.email, values.password).catch(() => {
             return null
           })
           if (res?.data?.code >= 0) {
             resetForm({
               values: initialValues,
             })
-            setRegisterState(RSTATE.REGISTERED)
+            push({
+              pathname: '/resend-email',
+              query: {
+                email: values.email,
+              },
+            })
           } else {
             setFieldError('readTC', res?.data?.msg || t`Account registration failed`)
           }
@@ -100,39 +106,43 @@ export const SignUpForm = () => {
             <TextInput name='password' type='password' />
           </FormControl>
           <FormControl name='readTC'>
-            <Field name='readTC'>
-              {({ field }: any) => {
-                return (
-                  <Checkbox
-                    size='lg'
-                    colorScheme='yellow'
-                    sx={{
-                      '.chakra-checkbox__control': {
-                        color: '#000',
-                        borderColor: '#155973 !important',
-                        borderWidth: '1px',
-                        w: '30px',
-                        h: '30px',
-                      },
-                    }}
-                    {...field}
-                  >
-                    <Link
-                      target='_blank'
-                      href='/team-conditions'
-                      onClick={e => {
-                        e.preventDefault()
-                        e.stopPropagation()
-
-                        window.open('/team-conditions', '_blank')
+            {isLinkEmail ? null : (
+              <Field name='readTC'>
+                {({ field }: any) => {
+                  return (
+                    <Checkbox
+                      size='lg'
+                      colorScheme='yellow'
+                      sx={{
+                        '.chakra-checkbox__control': {
+                          color: '#000',
+                          borderColor: '#155973 !important',
+                          borderWidth: '1px',
+                          w: '30px',
+                          h: '30px',
+                        },
                       }}
-                    >{t`T&C`}</Link>
-                  </Checkbox>
-                )
-              }}
-            </Field>
+                      {...field}
+                    >
+                      <Link
+                        target='_blank'
+                        href='/team-conditions'
+                        onClick={e => {
+                          e.preventDefault()
+                          e.stopPropagation()
+
+                          window.open('/team-conditions', '_blank')
+                        }}
+                      >{t`T&C`}</Link>
+                    </Checkbox>
+                  )
+                }}
+              </Field>
+            )}
           </FormControl>
-          <SubmitButton w='100%' mt='5px'>{t`Sign Up`}</SubmitButton>
+          <SubmitButton w='100%' mt='5px'>
+            {isLinkEmail ? t`Confirm` : t`Sign Up`}
+          </SubmitButton>
         </Stack>
       </Formik>
     </Box>
