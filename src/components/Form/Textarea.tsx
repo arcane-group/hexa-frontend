@@ -1,24 +1,23 @@
-import { Input, type InputProps } from '@chakra-ui/react'
+import { Textarea, type TextareaProps } from '@chakra-ui/react'
 import { FC } from 'react'
 import { useField, type FieldHookConfig } from 'formik'
 
 type TInputProps = {
   name: string
-} & InputProps
+} & TextareaProps
 
-export const TextInput: FC<
+export const TextTextarea: FC<
   TInputProps & {
     fieldCfg?: Partial<FieldHookConfig<any>>
   }
-> = ({ fieldCfg, type, ...props }) => {
+> = ({ fieldCfg, ...props }) => {
   const [field] = useField({
     ...fieldCfg,
     name: props.name,
   })
 
   return (
-    <Input
-      type={type}
+    <Textarea
       autoComplete={'off'}
       placeholder={''}
       borderRadius={'0'}
@@ -29,7 +28,7 @@ export const TextInput: FC<
           color: 'blackAlpha.500',
         },
       }}
-      minH='40px'
+      minH='128px'
       {...props}
       {...field}
     />

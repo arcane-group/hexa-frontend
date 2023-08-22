@@ -65,7 +65,6 @@ const Header = ({
       },
       {
         label: t`MEMBERS`,
-        href: '/members',
         children: [
           {
             label: 'MEMBERS-1',
@@ -79,7 +78,6 @@ const Header = ({
       },
       {
         label: t`LIBRARY`,
-        href: '/library',
         children: [
           {
             label: 'LIBRARY-1',
@@ -101,7 +99,24 @@ const Header = ({
       },
       {
         label: t`CONTACT US`,
-        href: '/contact-us',
+        children: [
+          {
+            label: 'Membership Application',
+            href: '/contact-us/membership-application',
+          },
+          {
+            label: 'Consultation Services',
+            href: '/contact-us/consultation-services',
+          },
+          {
+            label: 'FAQs',
+            href: '/contact-us/faq',
+          },
+          {
+            label: 'Enquiries',
+            href: '/contact-us/enquiries',
+          },
+        ],
       },
     ]
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -254,82 +269,73 @@ const DesktopNav = memo(({ navs }: { navs?: NavItem[] }) => {
         navs.map((navItem: NavItem, index) => {
           let isCur = false
           if (Array.isArray(navItem?.children) && navItem?.children.length > 0) {
-            navItem?.children.forEach(item => {
-              // console.log(item, router.pathname.includes);
-
+            for (let i = 0; i < navItem.children.length; i++) {
+              const item = navItem?.children[i]
               if (isCur === false && item?.href && router.pathname.includes(item.href)) {
                 isCur = true
-              } else {
-                isCur = false
+                break
               }
-            })
+              isCur = false
+            }
           } else if (navItem?.href === '/') {
             isCur = router.pathname === navItem?.href
           } else {
-            // console.log(navItem?.href);
-            isCur = navItem?.href ? router.pathname.includes(navItem.href) : false
+            isCur = navItem?.href ? router.pathname === navItem.href : false
           }
 
           return (
             <Box key={navItem.label || index}>
-              {typeof navItem?.render === 'function' ? (
-                navItem?.render({
-                  navItem,
-                  isCur,
-                })
-              ) : (
-                <Popover trigger='hover' placement='bottom-start' id={`${navItem.label}-${index}`}>
-                  <PopoverTrigger>
-                    <Box pos='relative'>
-                      {isCur && (
-                        <CurNavIcon
-                          w='16px'
-                          h='16px'
-                          pos='absolute'
-                          left={`${-(8 + 16)}px`}
-                          top='50%'
-                          transform='translateY(-50%)'
-                        />
-                      )}
-                      <Link
-                        whiteSpace={'nowrap'}
-                        href={navItem.href ?? '#'}
-                        display={{ lg: 'inline-block' }}
-                        cursor={navItem.href === '#' ? 'default' : 'pointer'}
-                        position='relative'
-                        py='6px'
-                        textStyle='cp'
-                        fontWeight={isCur ? 700 : 400}
-                        color={isCur ? '#1D1D1D' : '#C29B60'}
-                        _hover={{
-                          textDecoration: 'none',
-                          color: '#1D1D1D',
-                        }}
-                      >
-                        {navItem.label}
-                      </Link>
-                    </Box>
-                  </PopoverTrigger>
-                  {Array.isArray(navItem?.children) && navItem?.children.length > 0 && (
-                    <PopoverContent
-                      border={0}
-                      borderRadius={0}
-                      boxShadow='xl'
-                      py={2}
-                      px={0}
-                      minW='max-content'
-                      w='max-content'
-                      bgGradient='linear(to-b, #FCD090, #F1B967)'
+              <Popover trigger='hover' placement='bottom-start' id={`${navItem.label}-${index}`}>
+                <PopoverTrigger>
+                  <Box pos='relative'>
+                    {isCur && (
+                      <CurNavIcon
+                        w='16px'
+                        h='16px'
+                        pos='absolute'
+                        left={`${-(8 + 16)}px`}
+                        top='50%'
+                        transform='translateY(-50%)'
+                      />
+                    )}
+                    <Link
+                      whiteSpace={'nowrap'}
+                      href={navItem.href ?? '#'}
+                      display={{ lg: 'inline-block' }}
+                      cursor={navItem.href === '#' ? 'default' : 'pointer'}
+                      position='relative'
+                      py='6px'
+                      textStyle='cp'
+                      fontWeight={isCur ? 700 : 400}
+                      color={isCur ? '#1D1D1D' : '#C29B60'}
+                      _hover={{
+                        textDecoration: 'none',
+                        color: '#1D1D1D',
+                      }}
                     >
-                      <Stack spacing={0}>
-                        {navItem.children.map((child: NavItem) => (
-                          <DesktopSubNav key={child.label} {...child} />
-                        ))}
-                      </Stack>
-                    </PopoverContent>
-                  )}
-                </Popover>
-              )}
+                      {navItem.label}
+                    </Link>
+                  </Box>
+                </PopoverTrigger>
+                {Array.isArray(navItem?.children) && navItem?.children.length > 0 && (
+                  <PopoverContent
+                    border={0}
+                    borderRadius={0}
+                    boxShadow='xl'
+                    py={2}
+                    px={0}
+                    minW='max-content'
+                    w='max-content'
+                    bgGradient='linear(to-b, #FCD090, #F1B967)'
+                  >
+                    <Stack spacing={0}>
+                      {navItem.children.map((child: NavItem) => (
+                        <DesktopSubNav key={child.label} {...child} />
+                      ))}
+                    </Stack>
+                  </PopoverContent>
+                )}
+              </Popover>
             </Box>
           )
         })}
@@ -337,6 +343,8 @@ const DesktopNav = memo(({ navs }: { navs?: NavItem[] }) => {
   )
 })
 const DesktopSubNav = ({ label, href }: NavItem) => {
+  const router = useRouter()
+  const isCur = href && router.pathname.includes(href)
   return (
     <Link
       href={`${href}`}
@@ -353,7 +361,7 @@ const DesktopSubNav = ({ label, href }: NavItem) => {
           <Text
             textStyle='csmp'
             transition='all .3s ease'
-            color='#C29B60'
+            color={isCur ? '#616161' : '#C29B60'}
             _groupHover={{ color: '#616161' }}
           >
             {label}
@@ -372,7 +380,7 @@ const DesktopSubNav = ({ label, href }: NavItem) => {
         </Flex>
       </Stack>
       <Divider
-        borderColor={'#C29B60'}
+        borderColor={isCur ? '#616161' : '#C29B60'}
         _groupHover={{
           borderColor: '#616161',
         }}

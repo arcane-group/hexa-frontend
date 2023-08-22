@@ -40,7 +40,7 @@ import { LineButton } from '@/components/LineButton'
 //   return context
 // }
 
-export const Container = ({ children }: { children: React.ReactNode }) => {
+export const Container = ({ spacing, children }: { spacing?: any; children: React.ReactNode }) => {
   // const [email, setEmail] = useState('--')
   // const [registerState, setRegisterState] = useState<RSTATE>(RSTATE.UNREGISTERED)
 
@@ -65,7 +65,7 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
     //   }}
     // >
     <ContainerBox as='main' minH={'100vh'} pt={'45px'} pb='114px'>
-      <Stack direction={'row'} spacing={'143px'}>
+      <Stack direction={'row'} spacing={spacing || '143px'}>
         <Box
           w='320px'
           h='743px'

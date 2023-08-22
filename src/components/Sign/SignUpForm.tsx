@@ -1,11 +1,11 @@
 import * as Yup from 'yup'
-import { Field, Formik } from 'formik'
-import { Box, Checkbox, Stack } from '@chakra-ui/react'
+import { Formik } from 'formik'
+import { Box, Stack } from '@chakra-ui/react'
 import { useMemo } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { Link } from '@chakra-ui/next-js'
 
+import { TC } from '@/components/Form/TC'
 import { TextInput } from '@/components/Form/Input'
 import { SubmitButton } from '@/components/Form/SubmitButton'
 import { FormControl } from '@/components/Form/FormControl'
@@ -105,41 +105,7 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
           <FormControl name='password' label={t`Password`}>
             <TextInput name='password' type='password' />
           </FormControl>
-          <FormControl name='readTC'>
-            {isLinkEmail ? null : (
-              <Field name='readTC'>
-                {({ field }: any) => {
-                  return (
-                    <Checkbox
-                      size='lg'
-                      colorScheme='yellow'
-                      sx={{
-                        '.chakra-checkbox__control': {
-                          color: '#000',
-                          borderColor: '#155973 !important',
-                          borderWidth: '1px',
-                          w: '30px',
-                          h: '30px',
-                        },
-                      }}
-                      {...field}
-                    >
-                      <Link
-                        target='_blank'
-                        href='/team-conditions'
-                        onClick={e => {
-                          e.preventDefault()
-                          e.stopPropagation()
-
-                          window.open('/team-conditions', '_blank')
-                        }}
-                      >{t`T&C`}</Link>
-                    </Checkbox>
-                  )
-                }}
-              </Field>
-            )}
-          </FormControl>
+          <FormControl name='readTC'>{isLinkEmail ? null : <TC name='readTC' />}</FormControl>
           <SubmitButton w='100%' mt='5px'>
             {isLinkEmail ? t`Confirm` : t`Sign Up`}
           </SubmitButton>
