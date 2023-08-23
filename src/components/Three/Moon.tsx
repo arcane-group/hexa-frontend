@@ -7,7 +7,7 @@ import {
 import { Box } from '@chakra-ui/react'
 
 // import { MotionBox } from '@/components/Motion'
-import textureImg from '@/assets/images/home/lroc_color_poles_1k-2.jpg'
+import textureImg from '@/assets/images/home/lroc_color_poles_1k-3.jpg'
 import displacementMapImg from '@/assets/images/home/ldem_3_8bit.jpg'
 
 const Moon = () => {

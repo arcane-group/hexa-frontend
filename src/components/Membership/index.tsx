@@ -24,8 +24,8 @@ export const Membership = () => {
     mouseX.set(event.clientX)
     mouseY.set(event.clientY)
   }
-  const xRotation = useTransform(mouseX, [0, 1440], [10, -10])
-  const yRotation = useTransform(mouseY, [0, 1080], [10, -10])
+  const xRotation = useTransform(mouseX, [0, 1440], [5, -5])
+  // const yRotation = useTransform(mouseY, [0, 1080], [10, -10])
   const xTranslation = useTransform(mouseX, [0, 1440], [-5, 5])
   const yTranslation = useTransform(mouseY, [0, 1080], [-5, 5])
 
@@ -73,6 +73,14 @@ export const Membership = () => {
                 opacity: 0.8,
               },
             }}
+            animate={{
+              y: [0, 5, 0],
+              transition: {
+                duration: 2,
+                repeat: Infinity,
+                repeatType: 'reverse',
+              },
+            }}
             viewport={{ once: true, amount: 0.3 }}
             src={logoNoiseImg.src}
             alt='noise logo'
@@ -87,7 +95,7 @@ export const Membership = () => {
             }}
             style={{
               rotateX: xRotation,
-              rotateY: yRotation,
+              // rotateY: yRotation,
               translateX: xTranslation,
               translateY: yTranslation,
             }}

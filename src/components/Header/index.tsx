@@ -65,6 +65,7 @@ const Header = ({
       },
       {
         label: t`MEMBERS`,
+        href: '/contact-us/faq',
         children: [
           {
             label: 'MEMBERS-1',
@@ -78,6 +79,7 @@ const Header = ({
       },
       {
         label: t`LIBRARY`,
+        href: '/contact-us/faq',
         children: [
           {
             label: 'LIBRARY-1',
@@ -96,9 +98,24 @@ const Header = ({
       {
         label: t`NEWS FEED`,
         href: '/news-feed',
+        children: [
+          {
+            label: 'LIBRARY-1',
+            href: '/library/1',
+          },
+          {
+            label: 'LIBRARY-2',
+            href: '/library/2',
+          },
+          {
+            label: 'LIBRARY-3',
+            href: '/library/3',
+          },
+        ],
       },
       {
         label: t`CONTACT US`,
+        href: '/contact-us/faq',
         children: [
           {
             label: 'Membership Application',
