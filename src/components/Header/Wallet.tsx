@@ -13,6 +13,7 @@ import { useRouter } from 'next/router'
 import { observer } from 'mobx-react-lite'
 import { Link } from '@chakra-ui/next-js'
 
+import { px2vw } from '@/utils/px2vw'
 import { Button as MyButton } from '@/components/Button'
 import { UserImg } from '@/components/UserImg'
 import { useStore } from '@/stores'
@@ -53,7 +54,17 @@ const WalletLogin = observer(() => {
               alignItems={'center'}
               className='hover'
             >
-              <UserImg src={walletStore?.userExtInfo?.pic} />
+              <UserImg
+                src={walletStore?.userExtInfo?.pic}
+                w={{
+                  base: px2vw(40),
+                  lg: '45px',
+                }}
+                h={{
+                  base: px2vw(40),
+                  lg: '45px',
+                }}
+              />
               <Text color='#000000' textStyle={'cp'}>
                 {nameStr}
               </Text>
@@ -84,6 +95,10 @@ const WalletLogin = observer(() => {
   // 未登录
   return (
     <MyButton
+      size={{
+        base: 'sm',
+        lg: 'md',
+      }}
       isLoading={walletStore?.loginState === 2}
       onClick={() => {
         if (router.pathname === '/sign-in') {

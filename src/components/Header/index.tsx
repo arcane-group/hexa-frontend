@@ -3,7 +3,6 @@ import {
   Flex,
   Image,
   Collapse,
-  IconButton,
   Stack,
   Popover,
   PopoverTrigger,
@@ -20,13 +19,15 @@ import { observer } from 'mobx-react-lite'
 import { RemoveScroll } from 'react-remove-scroll'
 import { memo, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/router'
-import { ChevronRightIcon, ChevronDownIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
+import { ChevronRightIcon, ChevronDownIcon } from '@chakra-ui/icons'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { Link } from '@chakra-ui/next-js'
 import dynamic from 'next/dynamic'
 import type * as CSS from 'csstype'
 
+import { MotionBox } from '@/components/Motion'
+import { Button as MyButton } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { LangSwitcher } from '@/components/LangSwitcher'
 import { px2vw } from '@/utils/px2vw'
@@ -39,6 +40,9 @@ interface NavItem {
   label: string
   children?: NavItem[]
   href?: string
+  query?: {
+    [key: string]: string
+  }
   render?: (...p: any[]) => any
 }
 
@@ -65,51 +69,126 @@ const Header = ({
       },
       {
         label: t`MEMBERS`,
-        href: '/contact-us/faq',
+        href: '/members',
+        query: {
+          category: 'all',
+        },
         children: [
           {
-            label: 'MEMBERS-1',
-            href: '/members/1',
+            label: t`All members`,
+            href: '/members',
+            query: {
+              category: 'all',
+            },
           },
           {
-            label: 'MEMBERS-2',
-            href: '/members/2',
+            label: t`Project Founders`,
+            href: '/members',
+            query: {
+              category: '1',
+            },
+          },
+          {
+            label: t`Investors`,
+            href: '/members',
+            query: {
+              category: '2',
+            },
+          },
+          {
+            label: t`Service Providers`,
+            href: '/members',
+            query: {
+              category: '3',
+            },
+          },
+          {
+            label: t`Researchers`,
+            href: '/members',
+            query: {
+              category: '4',
+            },
           },
         ],
       },
       {
         label: t`LIBRARY`,
-        href: '/contact-us/faq',
+        href: '/library',
+        query: {
+          category: '1',
+        },
         children: [
           {
-            label: 'LIBRARY-1',
-            href: '/library/1',
+            label: t`Founder's Exclusive`,
+            href: '/library',
+            query: {
+              category: '1',
+            },
           },
           {
-            label: 'LIBRARY-2',
-            href: '/library/2',
+            label: t`LABS`,
+            href: '/library',
+            query: {
+              category: '2',
+            },
           },
           {
-            label: 'LIBRARY-3',
-            href: '/library/3',
+            label: t`MARKET COMMENTARY`,
+            href: '/library',
+            query: {
+              category: '3',
+            },
+          },
+          {
+            label: t`PODCAST`,
+            href: '/library',
+            query: {
+              category: '4',
+            },
           },
         ],
       },
       {
         label: t`NEWS FEED`,
         href: '/news-feed',
+        query: {
+          category: '1',
+        },
         children: [
           {
-            label: 'LIBRARY-1',
-            href: '/library/1',
+            label: t`NEWS ARTICLES`,
+            href: '/news-feed',
+            query: {
+              category: '1',
+            },
           },
           {
-            label: 'LIBRARY-2',
-            href: '/library/2',
+            label: t`BLOGS`,
+            href: '/news-feed',
+            query: {
+              category: '2',
+            },
           },
           {
-            label: 'LIBRARY-3',
-            href: '/library/3',
+            label: t`TRENDING TWEETS`,
+            href: '/news-feed',
+            query: {
+              category: '3',
+            },
+          },
+          {
+            label: t`DEV GUIDES`,
+            href: '/news-feed',
+            query: {
+              category: '4',
+            },
+          },
+          {
+            label: t`PODCAST`,
+            href: '/news-feed',
+            query: {
+              category: '5',
+            },
           },
         ],
       },
@@ -118,19 +197,19 @@ const Header = ({
         href: '/contact-us/faq',
         children: [
           {
-            label: 'Membership Application',
+            label: t`Membership Application`,
             href: '/contact-us/membership-application',
           },
           {
-            label: 'Consultation Services',
+            label: t`Consultation Services`,
             href: '/contact-us/consultation-services',
           },
           {
-            label: 'FAQs',
+            label: t`FAQs`,
             href: '/contact-us/faq',
           },
           {
-            label: 'Enquiries',
+            label: t`Enquiries`,
             href: '/contact-us/enquiries',
           },
         ],
@@ -160,19 +239,12 @@ const Header = ({
       flexDir={'column'}
       w={'full'}
       h={{
-        base: px2vw(120),
+        base: px2vw(35 + 26 * 2),
         lg: '120px',
       }}
-      bg={{
-        base: 'blackAlpha.800',
-        lg: '#FED18F',
-      }}
-      boxShadow={{
-        base: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-        lg: 'none',
-      }}
+      bg={'#FED18F'}
     >
-      <Container px={{ lg: '40px', xxl: '80px' }}>
+      <Container px={{ base: px2vw(20), lg: '40px', xxl: '80px' }}>
         <Flex
           display={'flex'}
           alignItems='center'
@@ -181,7 +253,13 @@ const Header = ({
           w='full'
           h='48px'
         >
-          <Center textStyle={'cp'}>
+          <Center
+            textStyle={'cp'}
+            display={{
+              base: 'none',
+              lg: 'flex',
+            }}
+          >
             <Image
               w={{ base: px2vw(90), lg: '48px' }}
               src={Logo.src}
@@ -193,6 +271,18 @@ const Header = ({
             />
             HEXA HUB
           </Center>
+
+          <MyButton
+            aria-label='Toggle Navigation'
+            size='sm'
+            display={{
+              base: 'block',
+              lg: 'none',
+            }}
+            onClick={onToggle}
+            pos={'relative'}
+            zIndex={5}
+          >{t`Menu`}</MyButton>
 
           <WalletLogin />
         </Flex>
@@ -213,55 +303,35 @@ const Header = ({
         </Flex>
 
         <RemoveScroll enabled={isOpen} forwardProps>
-          <Box
-            pos='fixed'
-            zIndex='2'
-            top='0'
-            left='0'
-            right='0'
-            bottom='0'
-            bg='black'
-            display={!isOpen ? 'none' : 'block'}
-          />
+          <MotionBox
+            pos='absolute'
+            left={0}
+            top={0}
+            right={0}
+            height={'100vh'}
+            pt={px2vw(35 + 26 * 2)}
+            zIndex={4}
+            bg='#FED18F'
+            animate={isOpen ? 'open' : 'closed'}
+            variants={{
+              open: {
+                opacity: 1,
+                height: '100vh',
+              },
+              closed: {
+                opacity: 0,
+                height: 0,
+              },
+            }}
+          >
+            <Box pos='absolute' right={px2vw(20)} top={px2vw(32)}>
+              <LangSwitcher />
+            </Box>
+            <Collapse in={isOpen} animateOpacity endingHeight='100%'>
+              <MobileNav navs={NAV_ITEMS} />
+            </Collapse>
+          </MotionBox>
         </RemoveScroll>
-        <Flex
-          align='center'
-          justify='center'
-          pos='relative'
-          zIndex='3'
-          ml={px2vw(30)}
-          display={{
-            base: 'flex',
-            lg: 'none',
-          }}
-        >
-          <IconButton
-            display={router.pathname.includes('share') ? 'none' : 'flex'}
-            w={px2vw(40)}
-            minW={px2vw(40)}
-            h={px2vw(40)}
-            onClick={onToggle}
-            icon={isOpen ? <CloseIcon fontSize={18} /> : <HamburgerIcon fontSize={24} />}
-            _active={{ bgColor: 'transparent' }}
-            _hover={{ bgColor: 'transparent' }}
-            variant='ghost'
-            aria-label='Toggle Navigation'
-            color={'white'}
-          />
-        </Flex>
-        <Box
-          pos='absolute'
-          left={0}
-          top={px2vw(120)}
-          right={0}
-          borderTop={isOpen ? '1px solid rgba(255,255,255,0.2)' : 'none'}
-          px={px2vw(64)}
-          zIndex='4'
-        >
-          <Collapse in={isOpen} animateOpacity>
-            <MobileNav navs={NAV_ITEMS} />
-          </Collapse>
-        </Box>
       </Container>
     </Center>
   )
@@ -271,8 +341,10 @@ const Header = ({
 // eslint-disable-next-line react/display-name
 const DesktopNav = memo(({ navs }: { navs?: NavItem[] }) => {
   const router = useRouter()
+
   return (
     <Stack
+      userSelect={'none'}
       direction='row'
       spacing={{
         lg: '35px',
@@ -288,7 +360,7 @@ const DesktopNav = memo(({ navs }: { navs?: NavItem[] }) => {
           if (Array.isArray(navItem?.children) && navItem?.children.length > 0) {
             for (let i = 0; i < navItem.children.length; i++) {
               const item = navItem?.children[i]
-              if (isCur === false && item?.href && router.pathname.includes(item.href)) {
+              if (isCur === false && item?.href && router.pathname === item.href) {
                 isCur = true
                 break
               }
@@ -317,7 +389,10 @@ const DesktopNav = memo(({ navs }: { navs?: NavItem[] }) => {
                     )}
                     <Link
                       whiteSpace={'nowrap'}
-                      href={navItem.href ?? '#'}
+                      href={{
+                        pathname: navItem.href ?? '#',
+                        query: navItem.query,
+                      }}
                       display={{ lg: 'inline-block' }}
                       cursor={navItem.href === '#' ? 'default' : 'pointer'}
                       position='relative'
@@ -359,12 +434,32 @@ const DesktopNav = memo(({ navs }: { navs?: NavItem[] }) => {
     </Stack>
   )
 })
-const DesktopSubNav = ({ label, href }: NavItem) => {
+const DesktopSubNav = ({ label, href, query }: NavItem) => {
   const router = useRouter()
-  const isCur = href && router.pathname.includes(href)
+
+  const isCur = useMemo(() => {
+    const isCur = href && router.pathname.includes(href)
+    if (query) {
+      const queryKeys = Object.keys(query)
+      if (queryKeys.length > 0) {
+        for (let i = 0; i < queryKeys.length; i++) {
+          const key = queryKeys[i]
+          if (router.query[key] === query[key]) {
+            return isCur
+          }
+        }
+        return false
+      }
+    }
+    return isCur
+  }, [query, href, router.pathname, router.query])
+
   return (
     <Link
-      href={`${href}`}
+      href={{
+        pathname: href,
+        query,
+      }}
       role='group'
       display='block'
       px={4}
@@ -411,8 +506,11 @@ const DesktopSubNav = ({ label, href }: NavItem) => {
 const MobileNav = memo(({ navs }: { navs?: NavItem[] }) => {
   return (
     <Stack
-      fontSize={px2vw(36)}
-      lineHeight={px2vw(44)}
+      userSelect={'none'}
+      className='body-scroll'
+      height={'100%'}
+      overflow={'auto'}
+      px={px2vw(20)}
       spacing={0}
       divider={<StackDivider borderColor='rgba(255, 255, 255, 0.2)' borderStyle={'dashed'} />}
     >
@@ -426,98 +524,111 @@ const MobileNavItem = ({ label, href, children, ...navItem }: NavItem) => {
   const { isOpen, onToggle } = useDisclosure()
   const hasChild: boolean = Array.isArray(children) && children.length > 0
 
-  const isCur = href
-    ? href === '/'
-      ? router.pathname === href
-      : router.pathname.includes(`${href}`)
-    : false
-
-  if (typeof navItem?.render === 'function') {
-    return navItem?.render({
-      navItem: {
-        ...navItem,
-        label,
-        href,
-        children,
-      },
-      isCur,
-      colorTheme: 'dark',
-    })
+  let isCur = false
+  if (Array.isArray(children) && children.length > 0) {
+    for (let i = 0; i < children.length; i++) {
+      const item = children[i]
+      if (isCur === false && item?.href && router.pathname === item.href) {
+        isCur = true
+        break
+      }
+      isCur = false
+    }
+  } else if (href === '/') {
+    isCur = router.pathname === href
+  } else {
+    isCur = href ? router.pathname === href : false
   }
 
   return (
-    <Stack
-      textTransform={'uppercase'}
-      // spacing={px2vw(2)}
-      onClick={children && onToggle}
-      // divider={<StackDivider borderColor="rgba(255, 255, 255, 0.2)" borderStyle={'dashed'} />}
-    >
-      {!href ? (
+    <Stack textTransform={'uppercase'} spacing={px2vw(2)} onClick={children && onToggle}>
+      {hasChild ? (
         <Box
           display='flex'
-          py={px2vw(36)}
+          py={px2vw(18)}
           justifyContent='space-between'
           alignItems='center'
           _hover={{
             textDecoration: 'none',
           }}
         >
-          <Text color={isCur ? 'green.400' : 'white'}>{label}</Text>
+          <Text color={isCur ? '#1D1D1D' : '#C29B60'} textStyle={'cp'}>
+            {label}
+          </Text>
           {hasChild && (
             <Icon
               as={ChevronDownIcon}
               transition='all .25s ease-in-out'
               transform={isOpen ? 'rotate(180deg)' : ''}
-              w={px2vw(48)}
-              h={px2vw(48)}
-              color='gray.200'
+              w={px2vw(24)}
+              h={px2vw(24)}
+              color='#C29B60'
             />
           )}
         </Box>
       ) : (
         <Link
           display='flex'
-          py={px2vw(36)}
-          href={href}
+          py={px2vw(18)}
+          href={{
+            pathname: href ?? '#',
+            query: navItem.query,
+          }}
           justifyContent='space-between'
           alignItems='center'
           _hover={{
             textDecoration: 'none',
           }}
         >
-          <Text color={isCur ? 'green.400' : 'white'}>{label}</Text>
-          {hasChild && (
-            <Icon
-              as={ChevronDownIcon}
-              transition='all .25s ease-in-out'
-              transform={isOpen ? 'rotate(180deg)' : ''}
-              w={px2vw(48)}
-              h={px2vw(48)}
-              color='gray.200'
-            />
-          )}
+          <Text color={isCur ? '#1D1D1D' : '#C29B60'} textStyle={'cp'}>
+            {label}
+          </Text>
         </Link>
       )}
 
       <Collapse in={isOpen} animateOpacity style={{ marginTop: '0 !important' }}>
-        <Stack pl={4} align='start' mb={px2vw(48)}>
+        <Stack pl={4} align='start' mb={px2vw(12)}>
           {children?.map((child: NavItem) => {
-            const isCur1 = child.href ? router.pathname.includes(`${child.href}`) : false
-            return (
-              <Link
-                key={child.label}
-                href={`${child.href}`}
-                py={px2vw(32)}
-                textStyle='16'
-                color={isCur1 ? 'green.400' : 'gray.200'}
-              >
-                {child.label}
-              </Link>
-            )
+            return <MobileNavItem2 key={child.label} {...child} />
           })}
         </Stack>
       </Collapse>
     </Stack>
   )
 }
+const MobileNavItem2 = ({ label, href, query }: NavItem) => {
+  const router = useRouter()
+
+  const isCur = useMemo(() => {
+    const isCur = href && router.pathname.includes(href)
+    if (query) {
+      const queryKeys = Object.keys(query)
+      if (queryKeys.length > 0) {
+        for (let i = 0; i < queryKeys.length; i++) {
+          const key = queryKeys[i]
+          if (router.query[key] === query[key]) {
+            return isCur
+          }
+        }
+        return false
+      }
+    }
+    return isCur
+  }, [query, href, router.pathname, router.query])
+
+  return (
+    <Link
+      href={{
+        pathname: href,
+        query,
+      }}
+      py={px2vw(8)}
+      textStyle={'smp'}
+      color={isCur ? '#616161' : '#C29B60'}
+    >
+      {label}
+    </Link>
+  )
+}
+
 export default observer(Header)

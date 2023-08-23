@@ -34,7 +34,7 @@ const colors = {
 const textStyles = {
   ch1: {
     fontSize: {
-      base: px2vw(36),
+      base: px2vw(24),
       lg: '36px',
     },
     fontWeight: 700,
@@ -42,7 +42,7 @@ const textStyles = {
   },
   h1: {
     fontSize: {
-      base: px2vw(22),
+      base: px2vw(24),
       lg: '22px',
     },
     fontWeight: 700,
@@ -50,7 +50,7 @@ const textStyles = {
   },
   ch2: {
     fontSize: {
-      base: px2vw(30),
+      base: px2vw(24),
       lg: '30px',
     },
     fontWeight: 400,
@@ -58,7 +58,7 @@ const textStyles = {
   },
   h2: {
     fontSize: {
-      base: px2vw(22),
+      base: px2vw(24),
       lg: '22px',
     },
     fontWeight: 400,
@@ -66,7 +66,7 @@ const textStyles = {
   },
   cp: {
     fontSize: {
-      base: px2vw(24),
+      base: px2vw(18),
       lg: '24px',
     },
     fontWeight: 400,
@@ -74,7 +74,7 @@ const textStyles = {
   },
   p: {
     fontSize: {
-      base: px2vw(16),
+      base: px2vw(18),
       lg: '16px',
     },
     fontWeight: 400,
@@ -82,7 +82,7 @@ const textStyles = {
   },
   csmp: {
     fontSize: {
-      base: px2vw(18),
+      base: px2vw(14),
       lg: '18px',
     },
     fontWeight: 400,
@@ -98,7 +98,7 @@ const textStyles = {
   },
   cssmp: {
     fontSize: {
-      base: px2vw(14),
+      base: px2vw(12),
       lg: '14px',
     },
     fontWeight: 400,

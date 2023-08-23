@@ -41,7 +41,7 @@ const Page = () => {
 
   return (
     <>
-      <Box as='main' minH='100vh'>
+      <Box as='main' minH={'100vh'}>
         <ReactFullpage
           scrollBar
           easing='easeInOutCubic'

@@ -11,7 +11,7 @@ const Profile = dynamic(() => import('@/components/Profile'), {
 const Page = () => {
   return (
     <>
-      <Box as='main' minH='100vh' pt='120px'>
+      <Box as='main' minH={'100vh'}>
         <Profile />
       </Box>
     </>
@@ -23,6 +23,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       title: 'My Account',
+      needPaddingHeader: true,
     },
   }
 }

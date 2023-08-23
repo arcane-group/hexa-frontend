@@ -1,12 +1,12 @@
 import { Box } from '@chakra-ui/react'
 
-import { Membership } from '@/components/Membership'
+import { News } from '@/components/News'
 
 const Page = () => {
   return (
     <>
-      <Box as='main' minH={'100vh'}>
-        <Membership />
+      <Box as='main' minH='100vh'>
+        <News />
       </Box>
     </>
   )
@@ -16,7 +16,8 @@ export default Page
 export const getStaticProps = async () => {
   return {
     props: {
-      title: 'Merbership',
+      title: 'News Feed',
+      needPaddingHeader: true,
     },
   }
 }

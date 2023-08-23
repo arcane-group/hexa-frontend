@@ -18,11 +18,13 @@ const Layout = ({
   headerPosition,
   ignoreFooter,
   children,
+  needPaddingHeader,
 }: {
   children: any
   ignoreHeader?: boolean
   headerPosition?: ResponsiveValue<CSS.Property.Position>
   ignoreFooter?: boolean
+  needPaddingHeader?: boolean
 }) => {
   const { pageStore } = useStore()
 
@@ -70,7 +72,18 @@ const Layout = ({
   return (
     <>
       <NoiseBg />
-      <Box pos='relative' zIndex={1}>
+      <Box
+        pos='relative'
+        zIndex={1}
+        pt={
+          needPaddingHeader
+            ? {
+                base: '120px',
+                lg: '120px',
+              }
+            : undefined
+        }
+      >
         {!ignoreHeader ? <Header headerPosition={headerPosition} /> : null}
         {children}
         {!ignoreFooter ? <Footer /> : null}
