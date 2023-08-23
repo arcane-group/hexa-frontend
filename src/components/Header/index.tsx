@@ -14,12 +14,13 @@ import {
   Icon,
   Center,
   type ResponsiveValue,
+  IconButton,
 } from '@chakra-ui/react'
 import { observer } from 'mobx-react-lite'
 import { RemoveScroll } from 'react-remove-scroll'
 import { memo, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/router'
-import { ChevronRightIcon, ChevronDownIcon } from '@chakra-ui/icons'
+import { ChevronRightIcon, ChevronDownIcon, CloseIcon } from '@chakra-ui/icons'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { Link } from '@chakra-ui/next-js'
@@ -249,7 +250,6 @@ const Header = ({
           display={'flex'}
           alignItems='center'
           justifyContent={'space-between'}
-          zIndex='3'
           w='full'
           h='48px'
         >
@@ -280,8 +280,6 @@ const Header = ({
               lg: 'none',
             }}
             onClick={onToggle}
-            pos={'relative'}
-            zIndex={5}
           >{t`Menu`}</MyButton>
 
           <WalletLogin />
@@ -304,11 +302,15 @@ const Header = ({
 
         <RemoveScroll enabled={isOpen} forwardProps>
           <MotionBox
+            display={{
+              base: 'block',
+              lg: 'none',
+            }}
             pos='absolute'
             left={0}
             top={0}
             right={0}
-            height={'100vh'}
+            height={0}
             pt={px2vw(35 + 26 * 2)}
             zIndex={4}
             bg='#FED18F'
@@ -317,16 +319,31 @@ const Header = ({
               open: {
                 opacity: 1,
                 height: '100vh',
+                zIndex: 4,
               },
               closed: {
                 opacity: 0,
                 height: 0,
+                zIndex: 0,
+                display: 'none',
               },
             }}
           >
             <Box pos='absolute' right={px2vw(20)} top={px2vw(32)}>
               <LangSwitcher />
             </Box>
+            <IconButton
+              isRound={true}
+              variant='solid'
+              bgColor={'#FED18F'}
+              size='sm'
+              aria-label='Toggle Navigation'
+              pos='absolute'
+              left={px2vw(20)}
+              top={px2vw(26)}
+              onClick={onClose}
+              icon={<CloseIcon />}
+            />
             <Collapse in={isOpen} animateOpacity endingHeight='100%'>
               <MobileNav navs={NAV_ITEMS} />
             </Collapse>
