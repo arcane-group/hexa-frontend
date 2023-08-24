@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { useMemo } from 'react'
+import { useRouter } from 'next/router'
 
 import { LineButton } from '@/components/LineButton'
 import { MotionCenter, MotionStack, MotionBox } from '@/components/Motion'
@@ -8,12 +9,15 @@ import { Container } from '@/components/Container'
 
 export const Screen2 = () => {
   const { i18n } = useLingui()
+
+  const { push } = useRouter()
+
   const arr = useMemo(() => {
     return [
       t`Become a panelist at major industry events...`,
       t`Publish your insights to an audience of industry leaders...`,
       t`Join our podcasts to share your unique experiences...`,
-      t`And many more…`,
+      t`And many more...`,
     ]
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i18n.locale])
@@ -90,7 +94,14 @@ export const Screen2 = () => {
         }}
         mt='43px'
       >
-        <LineButton minW='210px'>{t`APPLY NOW`}</LineButton>
+        <LineButton
+          minW='210px'
+          onClick={() => {
+            push({
+              pathname: '/contact-us/membership-application',
+            })
+          }}
+        >{t`APPLY NOW`}</LineButton>
       </MotionCenter>
     </>
   )

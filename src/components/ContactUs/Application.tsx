@@ -14,6 +14,9 @@ import { FormControl } from '@/components/Form/FormControl'
 import { AsyncSelect } from '@/components/Form/AsyncSelect'
 import { TextTextarea } from '@/components/Form/Textarea'
 
+// TODO: pop text
+// Oops! Looks like you are already a member. 
+// Thank you for your application! We will contact you shortly for the next steps.
 const ensRegExp = /^[a-z0-9-]+\.eth$/i
 export const ApplicationForm = () => {
   const { i18n } = useLingui()
@@ -130,10 +133,10 @@ export const ApplicationForm = () => {
           <FormControl name='email' label={t`Email`}>
             <TextInput name='email' type='email' />
           </FormControl>
-          <FormControl name='telegram' label={t`Telegram ID`}>
+          <FormControl name='telegram' label={t`Telegram`}>
             <TextInput name='telegram' />
           </FormControl>
-          <FormControl name='wechat' label={t` Wechat ID`}>
+          <FormControl name='wechat' label={t`Wechat ID`}>
             <TextInput name='wechat' />
           </FormControl>
           <FormControl name='twitter' label={t`Twitter`}>
@@ -156,7 +159,7 @@ export const ApplicationForm = () => {
           </FormControl>
           <FormControl
             name='address'
-            label={t`Wallet Address for Airdrop`}
+            label={t`Wallet address for Airdrop`}
             helperText={
               <Link
                 color='#C29B60'
@@ -165,7 +168,7 @@ export const ApplicationForm = () => {
               >{t`I do not have a wallet, create one with my email`}</Link>
             }
           >
-            <TextInput name='address' placeholder={t`ENS/Hexadecimal address(0x)`} />
+            <TextInput name='address' placeholder={t`ENS/Hexadecimal address (0x)`} />
           </FormControl>
           <FormControl name='introduction' label={t`Brief Introduction`}>
             <TextTextarea

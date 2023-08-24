@@ -84,12 +84,17 @@ export const Screen4 = ({ fullpageApi }: any) => {
               lg: '710px',
             }}
             textStyle={'cp'}
-            color='#616161'
+            color='#595959'
           >
             {t`Hexa Hub’s Discord channel is the nexus of the future. This is the one-stop-shop for our global community members to openly connect, discuss, and fuel their vision.`}
             <ArrowLine />
           </Box>
-          <LineButton>{t`ENTER OUR DISCORD`}</LineButton>
+          <LineButton
+            onClick={() => {
+              // TODO: 待添加 Discord 链接
+              window.open('https://discord.com/', '_blank')
+            }}
+          >{t`ENTER OUR DISCORD`}</LineButton>
         </Box>
       </Container>
       <Footer />

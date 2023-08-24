@@ -35,7 +35,7 @@ export const EditPsd = () => {
       <Text
         mb='12px'
         textStyle={'ch1'}
-        color={'#616161'}
+        color={'#595959'}
         fontWeight={400}
       >{t`Change Password`}</Text>
       <Formik

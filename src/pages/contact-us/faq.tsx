@@ -1,10 +1,10 @@
-import { Box, Grid, GridItem, Text } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
 import { Link } from '@chakra-ui/next-js'
+import { useMemo } from 'react'
 
 import { Container } from '@/components/Sign/Container'
-import { useMemo } from 'react'
 
 const Page = () => {
   const { i18n } = useLingui()
@@ -22,51 +22,19 @@ const Page = () => {
         ),
       },
       {
-        title: t`HOW DO I RECEIVE A HEXA ARCANA?`,
-        desc: (
-          <>{t`Once the application has gone through, we will airdrop your Hexa Arcana to your wallet. Thus, please ensure the wallet address is correct in the application form!`}</>
-        ),
-      },
-      {
-        title: t`WHAT ARE THE PERKS FOR MEMBERS?`,
-        desc: (
-          <>
-            {t`Hexa Hub members are a group of industry builders and researchers who are motivated to explore and experiment innovations. By joining us, you will be able to access and take part in all the research and insights formulated within our ecosystem.`}
-            <br />
-            {t`Hexa Arcana also acts as a pass to all our ecosystem partners through rewards, discounts, whitelists or partnerships.`}
-            <br />
-            {t`Did we mention the occasional airdrop of goodies? Yes, we did.`}
-          </>
-        ),
-      },
-      {
         title: t`WHY A MEMBERS-ONLY COMMUNITY?`,
         desc: (
           <>
-            {t`A gated access into our community allows us to identify like-minded individuals who are core contributors and leaders within the emerging tech space. By curating our members list, we hope to assemble individuals that are aligned with the vision of bringing forward the paridgm shift into the next digital society.`}
+            {t`A gated access into our community allows us to identify like-minded individuals who are core contributors and leaders within the emerging tech space. By curating our members list, we hope to assemble individuals that are aligned with the vision of bringing forward the paradigm shift into the next digital society.`}
             <br />
             {t`Most importantly, it helps us create an environment of openness and trust that enables deeper connections and richer conversations.`}
           </>
         ),
       },
       {
-        title: t`IS THE MEMBERSHIP TRANSFERRABLE?`,
+        title: t`WHAT KIND OF MEMBERS ARE WE LOOKING FOR?`,
         desc: (
-          <>{t`No. Our membership is tied with our soul bound tokens, hence non-transferrable. We want to ensure that every member within the community is vetted to ensure an open and intimate space for communication.`}</>
-        ),
-      },
-      {
-        title: t`IS IT ONLY AVAILABLE ON ETHEREUM?`,
-        desc: <>{t`For now, Hexa Arcana will only be available on the Ethereum blockchain.`}</>,
-      },
-      {
-        title: t`Why do I need to connect wallet/email?`,
-        desc: (
-          <>
-            {t`If you signed up with email, by connecting your wallet, we will be able to verify your Hexa Arcana token. Once verified, you will be able to log in using email and enjoy all functions available on the Hexa Hub website.`}
-            <br />
-            {t`If you signed up by connecting wallet, by linking your email, you will be able to access your Hexa membership through email.`}
-          </>
+          <>{t`At Hexa Hub, we are looking for leaders within the emerging tech landscape. Whether you are a project, an investor, ecosystem partner, builder, researcher or simply a digital enthusiast, Hexa Hub is the place for you to explore and develop your passion. We believe in the power of collaboration and the strength that comes from a diverse community.`}</>
         ),
       },
       {
@@ -74,7 +42,7 @@ const Page = () => {
         desc: (
           <>
             {i18n.locale === 'zh' ? (
-              <>TODO 中文</>
+              <>TODO: 中文翻译</>
             ) : (
               <>
                 {`Fill out the `}
@@ -92,10 +60,42 @@ const Page = () => {
         ),
       },
       {
-        title: t`WHAT KIND OF MEMBERS ARE WE LOOKING FOR?`,
+        title: t`WHAT ARE THE PERKS FOR MEMBERS?`,
         desc: (
-          <>{t`At Hexa Hub, we are looking for leaders within the emerging tech landscape. Whether you are a project, an investor, ecosystem partner, builder, researcher or simply a digital enthusiast, Hexa Hub is the place for you to explore and develop your passion. We believe in the power of collaboration and the strength that comes from a diverse community.`}</>
+          <>
+            {t`Hexa Hub members are a group of industry builders and researchers who are motivated to explore and experiment innovations. By joining us, you will be able to access and take part in all the research and insights formulated within our ecosystem.`}
+            <br />
+            {t`Hexa Arcana also acts as a pass to all our ecosystem partners through rewards, discounts, whitelists or partnerships.`}
+            <br />
+            {t`Did we mention the occasional airdrop of goodies? Yes, we did.`}
+          </>
         ),
+      },
+      {
+        title: t`IS THE MEMBERSHIP TRANSFERRABLE?`,
+        desc: (
+          <>{t`No. Our membership is tied with our soul bound tokens, hence non-transferrable. We want to ensure that every member within the community is vetted to ensure an open and intimate space for communication.`}</>
+        ),
+      },
+      {
+        title: t`HOW DO I RECEIVE A HEXA ARCANA?`,
+        desc: (
+          <>{t`Once the application has gone through, we will airdrop your Hexa Arcana to your wallet. Thus, please ensure the wallet address is correct in the application form!`}</>
+        ),
+      },
+      {
+        title: t`WHY DO I NEED TO CONNECT WALLET/LINK EMAIL?`,
+        desc: (
+          <>
+            {t`If you signed up with email, by connecting your wallet, we will be able to verify your Hexa Arcana token. Once verified, you will be able to log in using email and enjoy all functions available on the Hexa Hub website.`}
+            <br />
+            {t`If you signed up by connecting wallet, by linking your email, you will be able to access your Hexa membership through email.`}
+          </>
+        ),
+      },
+      {
+        title: t`IS IT ONLY AVAILABLE ON ETHEREUM?`,
+        desc: <>{t`For now, Hexa Arcana will only be available on the Ethereum blockchain.`}</>,
       },
     ]
   }, [i18n.locale])
@@ -129,7 +129,7 @@ const Page = () => {
                 <Box
                   pos='relative'
                   textStyle={'smp'}
-                  color='#616161'
+                  color='#595959'
                   py='14px'
                   px='15'
                   _before={{

@@ -84,16 +84,10 @@ const ArrowLine = () => {
 export const Screen2 = ({ fullpageApi }: any) => {
   const { i18n } = useLingui()
 
-  // console.log('fullpageApi:', fullpageApi)
-
-  // useEffect(() => {
-  //   fullpageApi?.setAllowScrolling(false)
-  // }, [fullpageApi])
-
   const descArr = useMemo(() => {
     return [
       t`Hexa Hub is a platform designed to empower community members in the ever-evolving landscape of technology and innovation. Contributors get personalised support for their journey as they navigate the market landscape.`,
-      t`Hexa Hub goes beyond individual support. We connect our members to world-class industry leaders, investors, service providers, and researchers who can help them realise their ambitions.`,
+      t`What we do goes beyond individual support. We connect our members to world-class industry leaders, investors, service providers, and researchers who can help them realise their ambitions.`,
       t`We are a community buzzing with entrepreneurial energy, where savvy minds gather to foster a powerful ecosystem of growth and opportunity.`,
     ]
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -114,6 +108,23 @@ export const Screen2 = ({ fullpageApi }: any) => {
         <LineBg m='auto' pos='absolute' left={0} right={0} top={'0'} bottom={0} />
 
         <ArrowLine />
+
+        <MotionBox
+          pos='absolute'
+          bottom={'55px'}
+          right={'80px'}
+          textStyle={'h2'}
+          initial='offscreen'
+          whileInView='onscreen'
+          variants={{
+            offscreen: {
+              opacity: 0,
+            },
+            onscreen: {
+              opacity: 1,
+            },
+          }}
+        >{t`Connect, Collaborate and Create`}</MotionBox>
 
         <LogoBox />
         <MotionCenter
@@ -186,14 +197,15 @@ const LogoBox = () => {
     <MotionBox
       initial='offscreen'
       whileInView='onscreen'
-      viewport={{ once: true, amount: 0.3 }}
+      // viewport={{ once: true, amount: 0.3 }}
       variants={{
         offscreen: {
-          top: '25%',
-          left: '8%',
-          width: '15vh',
-          height: '15vh',
+          top: '28%',
+          left: '2%',
+          width: '25vh',
+          height: '25vh',
           translateY: '-50%',
+          zIndex: 1,
         },
         onscreen: {
           zIndex: [3, 1],
@@ -212,16 +224,17 @@ const LogoBox = () => {
         },
       }}
       pos='absolute'
+      // top='28%'
+      // left={'2%'}
+      // width={'25vh'}
+      // height={'25vh'}
+      // translateY='-50%'
       zIndex={3}
-      top={'50%'}
-      left={'50%'}
-      translateY={'-50%'}
-      w='60vh'
-      h='60vh'
       userSelect={'none'}
       pointerEvents={'none'}
     >
       <MotionImage
+        opacity={0}
         variants={{
           offscreen: {
             opacity: 0,
@@ -244,6 +257,7 @@ const LogoBox = () => {
         alt='logo-line-img'
       />
       <MotionImage
+        opacity={0}
         variants={{
           offscreen: {
             opacity: 0,
@@ -266,6 +280,7 @@ const LogoBox = () => {
         alt='logo-noise-img'
       />
       <MotionImage
+        opacity={0}
         variants={{
           offscreen: {
             opacity: 0,

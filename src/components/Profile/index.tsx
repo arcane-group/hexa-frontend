@@ -34,7 +34,7 @@ const Profile = () => {
               )}
 
               {walletStore?.userExtInfo?.email && (
-                <Box textStyle={'csmp'} color='#616161'>
+                <Box textStyle={'csmp'} color='#595959'>
                   {walletStore?.userExtInfo?.email}
                 </Box>
               )}
@@ -62,7 +62,7 @@ const Profile = () => {
               {walletStore?.userExtInfo?.address ? (
                 <Box
                   textStyle={'csmp'}
-                  color='#616161'
+                  color='#595959'
                 >{`${walletStore?.userExtInfo?.address?.slice(
                   0,
                   6

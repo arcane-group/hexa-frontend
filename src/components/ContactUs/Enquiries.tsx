@@ -10,6 +10,8 @@ import { SubmitButton } from '@/components/Form/SubmitButton'
 import { FormControl } from '@/components/Form/FormControl'
 import { TextTextarea } from '@/components/Form/Textarea'
 
+// TODO: pop text
+// Thank you, we have received your enquiry and will respond shortly.
 export const EnquiriesForm = () => {
   const { i18n } = useLingui()
 

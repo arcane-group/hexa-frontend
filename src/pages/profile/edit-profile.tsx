@@ -22,7 +22,7 @@ const Info = observer(() => {
   return (
     <>
       <Box mt='55px'>
-        <Text textStyle={'ch2'}>{t`Edit profile`}</Text>
+        <Text textStyle={'ch2'}>{t`Edit Profile`}</Text>
       </Box>
       <Box mt='27px'>
         <EditName />

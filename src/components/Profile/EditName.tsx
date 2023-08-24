@@ -34,7 +34,7 @@ export const EditName = observer(() => {
       <Text
         mb='12px'
         textStyle={'ch1'}
-        color={'#616161'}
+        color={'#595959'}
         fontWeight={400}
       >{t`Change Username`}</Text>
       <Formik
@@ -75,7 +75,7 @@ export const EditName = observer(() => {
                   if (value) {
                     const isAvailable = await checkUsername(value)
                     if (!isAvailable) {
-                      errorMsg = t`Username is taken`
+                      errorMsg = t`Username already taken`
                     }
                   }
                   return errorMsg

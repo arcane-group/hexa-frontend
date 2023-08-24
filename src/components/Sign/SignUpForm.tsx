@@ -76,7 +76,7 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
                   if (value) {
                     const isAvailable = await checkUsername(value)
                     if (!isAvailable) {
-                      errorMsg = t`Username is taken`
+                      errorMsg = t`Username already taken`
                     }
                   }
                   return errorMsg

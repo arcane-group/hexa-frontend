@@ -26,7 +26,7 @@ export const NewsCard = ({ ...props }: FlexProps & {}) => {
           <UserImg src={''} w='69px' h='69px' />
           <Stack
             direction={'column'}
-            color='#616161'
+            color='#595959'
             textStyle={'csmp'}
             spacing={0}
             className='ellipsis'
@@ -51,7 +51,7 @@ export const NewsCard = ({ ...props }: FlexProps & {}) => {
           MEMBER TITLE MEMBER TITLEMEMBER TITLEMEMBER TITLEMEMBER TITLE
         </Text>
         <Text
-          color='#616161'
+          color='#595959'
           textStyle={'p'}
           sx={{
             overflow: 'hidden',

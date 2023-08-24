@@ -34,18 +34,18 @@ export const Membership = () => {
       {
         title: t`Elevations`,
         arr: [
-          t`nitiate: Fundraising support, structuring, legal and compliance support and human capital support.`,
-          t`Innovate: Consultation on product strategy, marketing, tech development and go-to-market strategy.`,
-          t`Ignite: Synergies from partnerships, deal flow, ecosystem growth and macro-analysis of the market.`,
+          t`Initiate: Fundraising support, structuring, legal and compliance support and human capital support`,
+          t`Innovate: Consultation on product strategy, marketing, tech development and go-to-market strategy`,
+          t`Ignite: Synergies from partnerships, deal flow, ecosystem growth and macro-analysis of the market`,
         ],
       },
       {
         title: t`Events`,
         arr: [
-          t`Online seminars conducted by respective specialists.`,
-          t`Expert industry panels and group discussions.`,
-          t`Offline events, such as major tech side events.`,
-          t`Quarterly office gatherings.`,
+          t`Online seminars conducted by respective specialists`,
+          t`Expert industry panels and group discussions`,
+          t`Offline events, such as major tech side events`,
+          t`Quarterly office gatherings`,
         ],
       },
     ]
@@ -134,7 +134,7 @@ export const Membership = () => {
             right='50%'
             top='55%'
             w='340px'
-            color={'#616161'}
+            color={'#595959'}
             textStyle={'cp'}
           >{t`Our soulbound token Hex Arcana serves as a proof of membership to Hexa Hub. It grants entry into our networks for unparalleled community-driven experiences.`}</MotionBox>
 
@@ -157,11 +157,11 @@ export const Membership = () => {
             left='50%'
             bottom='10%'
             w='360px'
-            color={'#616161'}
+            color={'#595959'}
             textStyle={'cp'}
-          >{t`Empowering individuals to express their true selves in the digital realm.`}</MotionBox>
+          >{t`Empowering individuals to express their true selves in the digital realm`}</MotionBox>
 
-          <Title title={t`Hexa Arcana`} desc={t`A SOULBOUND TOKEN FOR UNBREAKABLE BONDS.`} />
+          <Title title={t`Hexa Arcana`} desc={t`A SOULBOUND TOKEN FOR UNBREAKABLE BONDS`} />
         </MotionBox>
 
         <Box minH='100vh' pt='167px' pos='relative'>

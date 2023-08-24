@@ -5,7 +5,7 @@ import { Center } from '@chakra-ui/react'
 export const Footer = memo(() => {
   return (
     <Center as='footer' bgColor={'#F9C271'} h='60px' w='100%' textStyle={'ssmp'}>
-      2023 @ Hexa Hub. All rights reserved
+      2023@Hexa Hub. All rights reserved.
     </Center>
   )
 })

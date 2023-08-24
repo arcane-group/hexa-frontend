@@ -129,7 +129,7 @@ const Header = ({
         },
         children: [
           {
-            label: t`Founder's Exclusive`,
+            label: t`FOUNDER’S EXCLUSIVE`,
             href: '/library',
             query: {
               category: '1',
@@ -207,11 +207,11 @@ const Header = ({
         href: '/contact-us/faq',
         children: [
           {
-            label: t`Membership Application`,
+            label: t`MEMBERSHIP APPLICATION`,
             href: '/contact-us/membership-application',
           },
           {
-            label: t`Consultation Services`,
+            label: t`CONSULTATION SERVICES`,
             href: '/contact-us/consultation-services',
           },
           {
@@ -219,7 +219,7 @@ const Header = ({
             href: '/contact-us/faq',
           },
           {
-            label: t`Enquiries`,
+            label: t`ENQUIRIES`,
             href: '/contact-us/enquiries',
           },
         ],
@@ -465,7 +465,7 @@ const DesktopNav = memo(
                           colorMode === 'dark'
                             ? isCur
                               ? '#8AF7FC'
-                              : '#595959'
+                              : '#616161'
                             : isCur
                             ? '#1D1D1D'
                             : '#C29B60'

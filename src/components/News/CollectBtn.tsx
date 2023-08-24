@@ -45,7 +45,7 @@ export const UnCollect = ({
 export const CollectBtn = ({
   id,
   isLike = false,
-  num = 0,
+  // num = 0,
   btnProps,
   iconH,
 }: {
@@ -66,15 +66,15 @@ export const CollectBtn = ({
       defaultValuePropName: 'isLike',
     }
   )
-  const [newnum, setNum] = useControllableValue<number>(
-    {
-      num,
-    },
-    {
-      //   valuePropName: 'num',
-      defaultValuePropName: 'num',
-    }
-  )
+  // const [newnum, setNum] = useControllableValue<number>(
+  //   {
+  //     num,
+  //   },
+  //   {
+  //     //   valuePropName: 'num',
+  //     defaultValuePropName: 'num',
+  //   }
+  // )
 
   return (
     <Button
@@ -97,7 +97,7 @@ export const CollectBtn = ({
           }
         }
 
-        const newLikeState = !isLiked
+        // const newLikeState = !isLiked
         const res1 = await likeNews(id, isLiked ? 0 : 1)
           .then(r => {
             if (r?.data?.code >= 0) {
@@ -111,13 +111,13 @@ export const CollectBtn = ({
           })
         if (res1) {
           setIsLiked(!isLiked)
-          const n =
-            typeof res1?.praise_count === 'number'
-              ? res1.praise_count
-              : newLikeState
-              ? newnum + 1
-              : newnum - 1
-          setNum(n)
+          // const n =
+          //   typeof res1?.praise_count === 'number'
+          //     ? res1.praise_count
+          //     : newLikeState
+          //     ? newnum + 1
+          //     : newnum - 1
+          // setNum(n)
           //   PubSub.publish(.LIKE_MOMENT, {
           //     mid,
           //     isLiked: newLikeState,
@@ -162,7 +162,7 @@ export const CollectBtn = ({
         </Center>
       }
     >
-      {newnum}
+      {/* {newnum} */}
     </Button>
   )
 }

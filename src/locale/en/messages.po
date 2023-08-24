@@ -6,3 +6,928 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/components/Home/Screen-3.tsx
+msgid "The Library"
+msgstr "The Library"
+
+#: src/components/Home/Screen-2.tsx
+msgid "We are a community buzzing with entrepreneurial energy, where savvy minds gather to foster a powerful ecosystem of growth and opportunity."
+msgstr "We are a community buzzing with entrepreneurial energy, where savvy minds gather to foster a powerful ecosystem of growth and opportunity."
+
+#: src/components/ContactUs/Support.tsx
+msgid "Legal and Compliance Support"
+msgstr "Legal and Compliance Support"
+
+#: src/components/Membership/index.tsx
+msgid "Quarterly office gatherings"
+msgstr "Quarterly office gatherings"
+
+#: src/pages/forgot-password.tsx
+msgid "Forgot your password? Please enter your email below to receive a password reset link."
+msgstr "Forgot your password? Please enter your email below to receive a password reset link."
+
+#: src/components/Profile/EditPsd.tsx
+#: src/pages/reset-password.tsx
+msgid "New password"
+msgstr "New password"
+
+#: src/components/Form/TC.tsx
+msgid "T&C"
+msgstr "T&C"
+
+#: src/components/ContactUs/Application.tsx
+msgid "Twitter"
+msgstr "Twitter"
+
+#: src/components/Sign/ResendEmail.tsx
+msgid "We have sent a verification link to {0}, please click on the link to complete the verification process."
+msgstr "We have sent a verification link to {0}, please click on the link to complete the verification process."
+
+#: src/components/Membership/Screen-3.tsx
+msgid "A platform to discover potential co-hosts and sponsors for your next big industry event"
+msgstr "A platform to discover potential co-hosts and sponsors for your next big industry event"
+
+#: src/pages/contact-us/faq.tsx
+msgid "A gated access into our community allows us to identify like-minded individuals who are core contributors and leaders within the emerging tech space. By curating our members list, we hope to assemble individuals that are aligned with the vision of bringing forward the paradigm shift into the next digital society."
+msgstr "A gated access into our community allows us to identify like-minded individuals who are core contributors and leaders within the emerging tech space. By curating our members list, we hope to assemble individuals that are aligned with the vision of bringing forward the paradigm shift into the next digital society."
+
+#: src/components/Profile/SAVED.tsx
+msgid "SAVED"
+msgstr "SAVED"
+
+#: src/components/Membership/index.tsx
+msgid "Contributions"
+msgstr "Contributions"
+
+#: src/pages/contact-us/faq.tsx
+msgid "Did we mention our merch? We frequently gift our members with mystery boxes!"
+msgstr "Did we mention our merch? We frequently gift our members with mystery boxes!"
+
+#: src/components/Sign/SignInForm.tsx
+msgid "Wrong username, email or password"
+msgstr "Wrong username, email or password"
+
+#: src/components/Header/index.tsx
+msgid "MEMBERSHIP APPLICATION"
+msgstr "MEMBERSHIP APPLICATION"
+
+#: src/components/News/CollectBtn.tsx
+#: src/components/News/CollectBtn.tsx
+msgid "Star"
+msgstr "Star"
+
+#: src/components/ContactUs/Application.tsx
+msgid "ENS/Hexadecimal address (0x)"
+msgstr "ENS/Hexadecimal address (0x)"
+
+#: src/components/Header/index.tsx
+#: src/components/Header/index.tsx
+msgid "PODCAST"
+msgstr "PODCAST"
+
+#: src/components/Membership/index.tsx
+msgid "As a member, you get to collaborate, exchange knowledge, and shape the next big tech disruptions."
+msgstr "As a member, you get to collaborate, exchange knowledge, and shape the next big tech disruptions."
+
+#: src/hooks/useLogin.ts
+msgid "Login failed"
+msgstr "Login failed"
+
+#: src/components/Header/index.tsx
+msgid "MEMBERS"
+msgstr "MEMBERS"
+
+#: src/components/News/CollectBtn.tsx
+msgid "Failed to unstar"
+msgstr "Failed to unstar"
+
+#: src/components/Header/index.tsx
+msgid "NEWS ARTICLES"
+msgstr "NEWS ARTICLES"
+
+#: src/pages/contact-us/faq.tsx
+msgid "WHAT KIND OF MEMBERS ARE WE LOOKING FOR?"
+msgstr "WHAT KIND OF MEMBERS ARE WE LOOKING FOR?"
+
+#: src/components/ContactUs/Application.tsx
+msgid "Wechat ID"
+msgstr "Wechat ID"
+
+#: src/components/ContactUs/Application.tsx
+#: src/components/ContactUs/Enquiries.tsx
+#: src/components/ContactUs/Support.tsx
+msgid "Name"
+msgstr "Name"
+
+#: src/components/Membership/Screen-2.tsx
+msgid "APPLY NOW"
+msgstr "APPLY NOW"
+
+#: src/components/Home/Screen-2.tsx
+msgid "Connect, Collaborate and Create"
+msgstr "Connect, Collaborate and Create"
+
+#: src/components/Sign/SignUpForm.tsx
+msgid "Confirm"
+msgstr "Confirm"
+
+#: src/components/ContactUs/Application.tsx
+msgid "Developer"
+msgstr "Developer"
+
+#: src/components/ContactUs/Support.tsx
+msgid "Human Capital Support"
+msgstr "Human Capital Support"
+
+#: src/components/Sign/SignUpForm.tsx
+msgid "Username"
+msgstr "Username"
+
+#: src/pages/contact-us/consultation-services.tsx
+msgid "Looking for support?"
+msgstr "Looking for support?"
+
+#: src/components/Home/Screen-2.tsx
+msgid "What we do goes beyond individual support. We connect our members to world-class industry leaders, investors, service providers, and researchers who can help them realise their ambitions."
+msgstr "What we do goes beyond individual support. We connect our members to world-class industry leaders, investors, service providers, and researchers who can help them realise their ambitions."
+
+#: src/components/Home/Screen-3.tsx
+msgid "Labs"
+msgstr "Labs"
+
+#: src/hooks/useLogin.ts
+#: src/hooks/useLogin.ts
+msgid "Error getting user information"
+msgstr "Error getting user information"
+
+#: src/components/Sign/SignInForm.tsx
+#: src/components/Sign/SignUpForm.tsx
+msgid "Password"
+msgstr "Password"
+
+#: src/components/ContactUs/Application.tsx
+msgid "Service Provider"
+msgstr "Service Provider"
+
+#: src/components/ContactUs/Support.tsx
+msgid "Details of the service you require"
+msgstr "Details of the service you require"
+
+#: src/components/Home/Screen-3.tsx
+msgid "specially made for our esteemed members."
+msgstr "specially made for our esteemed members."
+
+#: src/pages/forgot-password.tsx
+msgid "Please check your email for the reset link (maybe in spam)."
+msgstr "Please check your email for the reset link (maybe in spam)."
+
+#: src/pages/reset-password.tsx
+msgid "You have successfully reset your password."
+msgstr "You have successfully reset your password."
+
+#: src/components/ContactUs/Support.tsx
+msgid "Fundraising Support"
+msgstr "Fundraising Support"
+
+#: src/components/ContactUs/Application.tsx
+msgid "I do not have a wallet, create one with my email"
+msgstr "I do not have a wallet, create one with my email"
+
+#: src/pages/contact-us/faq.tsx
+msgid "Apart from our services and solutions tailored to founders, we also are a community that promotes forming connections and fostering growth. By joining our community, you will have access to all of our events and an opportunity to connect, collaborate and create with some of the greatest minds in the emerging tech landscape."
+msgstr "Apart from our services and solutions tailored to founders, we also are a community that promotes forming connections and fostering growth. By joining our community, you will have access to all of our events and an opportunity to connect, collaborate and create with some of the greatest minds in the emerging tech landscape."
+
+#: src/pages/contact-us/faq.tsx
+msgid "WHAT IS THE APPLICATION PROCESS?"
+msgstr "WHAT IS THE APPLICATION PROCESS?"
+
+#: src/hooks/useLogin.ts
+msgid "Please enter email and password"
+msgstr "Please enter email and password"
+
+#: src/components/News/CollectBtn.tsx
+msgid "Failed to star"
+msgstr "Failed to star"
+
+#: src/components/Sign/ResendEmail.tsx
+msgid "Resend Email"
+msgstr "Resend Email"
+
+#: src/components/Membership/index.tsx
+msgid "Collaborations"
+msgstr "Collaborations"
+
+#: src/components/Sign/ConnectWallet.tsx
+msgid "or"
+msgstr "or"
+
+#: src/pages/contact-us/faq.tsx
+msgid "Most importantly, it helps us create an environment of openness and trust that enables deeper connections and richer conversations."
+msgstr "Most importantly, it helps us create an environment of openness and trust that enables deeper connections and richer conversations."
+
+#: src/components/Home/Screen-4.tsx
+msgid "Hexa Hub’s Discord channel is the nexus of the future. This is the one-stop-shop for our global community members to openly connect, discuss, and fuel their vision."
+msgstr "Hexa Hub’s Discord channel is the nexus of the future. This is the one-stop-shop for our global community members to openly connect, discuss, and fuel their vision."
+
+#: src/components/Profile/index.tsx
+msgid "Connect Wallet"
+msgstr "Connect Wallet"
+
+#: src/components/ContactUs/Application.tsx
+msgid "Apply"
+msgstr "Apply"
+
+#: src/pages/contact-us/faq.tsx
+msgid "application form"
+msgstr "application form"
+
+#: src/pages/contact-us/faq.tsx
+msgid "For now, Hexa Arcana will only be available on the Ethereum blockchain."
+msgstr "For now, Hexa Arcana will only be available on the Ethereum blockchain."
+
+#: src/components/Profile/EditName.tsx
+#: src/components/Sign/SignUpForm.tsx
+msgid "Username already taken"
+msgstr "Username already taken"
+
+#: src/components/Header/index.tsx
+msgid "BLOGS"
+msgstr "BLOGS"
+
+#: src/components/Membership/index.tsx
+msgid "From customised support and programmes to exclusive community events, our members can gain access to a wide range of perks."
+msgstr "From customised support and programmes to exclusive community events, our members can gain access to a wide range of perks."
+
+#: src/components/Profile/EditAvatar.tsx
+msgid "Upload Profile Pic"
+msgstr "Upload Profile Pic"
+
+#: src/components/Header/index.tsx
+msgid "MARKET COMMENTARY"
+msgstr "MARKET COMMENTARY"
+
+#: src/components/ContactUs/Application.tsx
+#: src/components/ContactUs/Application.tsx
+#: src/components/ContactUs/Application.tsx
+#: src/components/ContactUs/Application.tsx
+#: src/components/ContactUs/Application.tsx
+#: src/components/ContactUs/Application.tsx
+#: src/components/ContactUs/Enquiries.tsx
+#: src/components/ContactUs/Enquiries.tsx
+#: src/components/ContactUs/Enquiries.tsx
+#: src/components/ContactUs/Support.tsx
+#: src/components/ContactUs/Support.tsx
+#: src/components/ContactUs/Support.tsx
+#: src/components/Profile/EditName.tsx
+#: src/components/Profile/EditPsd.tsx
+#: src/components/Profile/EditPsd.tsx
+#: src/components/Profile/EditPsd.tsx
+#: src/components/Sign/SignInForm.tsx
+#: src/components/Sign/SignInForm.tsx
+#: src/components/Sign/SignUpForm.tsx
+#: src/components/Sign/SignUpForm.tsx
+#: src/components/Sign/SignUpForm.tsx
+#: src/pages/forgot-password.tsx
+#: src/pages/reset-password.tsx
+#: src/pages/reset-password.tsx
+msgid "Please enter"
+msgstr "Please enter"
+
+#: src/components/Home/Screen-3.tsx
+msgid "Market Commentary"
+msgstr "Market Commentary"
+
+#: src/pages/contact-us/faq.tsx
+msgid "Once the application has gone through, we will airdrop your Hexa Arcana to your wallet. Thus, please ensure the wallet address is correct in the application form!"
+msgstr "Once the application has gone through, we will airdrop your Hexa Arcana to your wallet. Thus, please ensure the wallet address is correct in the application form!"
+
+#: src/components/ContactUs/Application.tsx
+msgid "Background"
+msgstr "Background"
+
+#: src/components/Cropper/index.tsx
+msgid "Rotate 15"
+msgstr "Rotate 15"
+
+#: src/hooks/useLogin.ts
+msgid "Login is successful, the page is about to jump"
+msgstr "Login is successful, the page is about to jump"
+
+#: src/components/Membership/index.tsx
+msgid "Innovate: Consultation on product strategy, marketing, tech development and go-to-market strategy"
+msgstr "Innovate: Consultation on product strategy, marketing, tech development and go-to-market strategy"
+
+#: src/components/Home/Screen-3.tsx
+msgid "EXPLORE OUR LIBRARY"
+msgstr "EXPLORE OUR LIBRARY"
+
+#: src/components/Header/index.tsx
+msgid "FOUNDER’S EXCLUSIVE"
+msgstr "FOUNDER’S EXCLUSIVE"
+
+#: src/pages/contact-us/faq.tsx
+msgid "IS IT ONLY AVAILABLE ON ETHEREUM?"
+msgstr "IS IT ONLY AVAILABLE ON ETHEREUM?"
+
+#: src/components/Membership/Screen-3.tsx
+msgid "A channel connecting our members with researchers and developers to publish pioneering reports"
+msgstr "A channel connecting our members with researchers and developers to publish pioneering reports"
+
+#: src/pages/reset-password.tsx
+msgid "Reset Password"
+msgstr "Reset Password"
+
+#: src/components/ContactUs/Application.tsx
+msgid "Founder"
+msgstr "Founder"
+
+#: src/components/Membership/index.tsx
+msgid "Offline events, such as major tech side events"
+msgstr "Offline events, such as major tech side events"
+
+#: src/components/Membership/index.tsx
+msgid "Our soulbound token Hex Arcana serves as a proof of membership to Hexa Hub. It grants entry into our networks for unparalleled community-driven experiences."
+msgstr "Our soulbound token Hex Arcana serves as a proof of membership to Hexa Hub. It grants entry into our networks for unparalleled community-driven experiences."
+
+#: src/components/Membership/Screen-2.tsx
+msgid "And many more..."
+msgstr "And many more..."
+
+#: src/pages/contact-us/enquiries.tsx
+msgid "Enquiries"
+msgstr "Enquiries"
+
+#: src/components/Home/Screen-4.tsx
+msgid "Builder’s Playground"
+msgstr "Builder’s Playground"
+
+#: src/components/Home/Screen-3.tsx
+msgid "Curated in-depth analysis of the market landscape"
+msgstr "Curated in-depth analysis of the market landscape"
+
+#: src/components/ContactUs/Application.tsx
+msgid "Technologist"
+msgstr "Technologist"
+
+#: src/pages/contact-us/faq.tsx
+msgid "If you signed up by connecting wallet, by linking your email, you will be able to access your Hexa membership through email."
+msgstr "If you signed up by connecting wallet, by linking your email, you will be able to access your Hexa membership through email."
+
+#: src/components/Sign/SignInForm.tsx
+msgid "Don’t have an account yet? Sign up here"
+msgstr "Don’t have an account yet? Sign up here"
+
+#: src/components/ContactUs/Application.tsx
+msgid "Others"
+msgstr "Others"
+
+#: src/components/ContactUs/Application.tsx
+#: src/components/ContactUs/Enquiries.tsx
+#: src/components/ContactUs/Support.tsx
+#: src/components/Sign/SignUpForm.tsx
+#: src/pages/forgot-password.tsx
+msgid "Email"
+msgstr "Email"
+
+#: src/components/Header/index.tsx
+msgid "LIBRARY"
+msgstr "LIBRARY"
+
+#: src/components/News/LikeBtn.tsx
+#: src/components/News/LikeBtn.tsx
+msgid "Unlike"
+msgstr "Unlike"
+
+#: src/components/Cropper/index.tsx
+msgid "Reset"
+msgstr "Reset"
+
+#: src/components/ContactUs/Application.tsx
+#: src/components/ContactUs/Enquiries.tsx
+#: src/components/ContactUs/Support.tsx
+#: src/components/Sign/SignUpForm.tsx
+msgid "Please enter a valid email address"
+msgstr "Please enter a valid email address"
+
+#: src/pages/reset-password.tsx
+#: src/pages/verify-email.tsx
+msgid "Invalid link, please get it again in the mailbox"
+msgstr "Invalid link, please get it again in the mailbox"
+
+#: src/components/Profile/EditAvatar.tsx
+msgid "Upload success"
+msgstr "Upload success"
+
+#: src/components/Profile/index.tsx
+#: src/pages/profile/edit-profile.tsx
+msgid "Edit Profile"
+msgstr "Edit Profile"
+
+#: src/components/ContactUs/Application.tsx
+msgid "Referral person name, channels"
+msgstr "Referral person name, channels"
+
+#: src/components/ContactUs/Support.tsx
+msgid "Tech Development"
+msgstr "Tech Development"
+
+#: src/components/News/CollectBtn.tsx
+#: src/components/News/CollectBtn.tsx
+msgid "Unstar"
+msgstr "Unstar"
+
+#: src/components/Header/index.tsx
+msgid "All members"
+msgstr "All members"
+
+#: src/components/ContactUs/Support.tsx
+msgid "Ecosystem Growth Strategy"
+msgstr "Ecosystem Growth Strategy"
+
+#: src/pages/contact-us/faq.tsx
+msgid "WHY DO I NEED TO CONNECT WALLET/LINK EMAIL?"
+msgstr "WHY DO I NEED TO CONNECT WALLET/LINK EMAIL?"
+
+#: src/components/ContactUs/Support.tsx
+msgid "Go-to-Market Strategy"
+msgstr "Go-to-Market Strategy"
+
+#: src/components/ContactUs/Application.tsx
+msgid "Telegram"
+msgstr "Telegram"
+
+#: src/components/ContactUs/Support.tsx
+msgid "Service"
+msgstr "Service"
+
+#: src/components/Header/index.tsx
+msgid "Researchers"
+msgstr "Researchers"
+
+#: src/components/Membership/Screen-3.tsx
+msgid "Spark"
+msgstr "Spark"
+
+#: src/components/Membership/index.tsx
+msgid "Empowering individuals to express their true selves in the digital realm"
+msgstr "Empowering individuals to express their true selves in the digital realm"
+
+#: src/components/ContactUs/Application.tsx
+msgid "ENS/Hexadecimal address(0x)"
+msgstr "ENS/Hexadecimal address(0x)"
+
+#: src/components/Membership/index.tsx
+msgid "Expert industry panels and group discussions"
+msgstr "Expert industry panels and group discussions"
+
+#: src/components/Profile/EditPsd.tsx
+#: src/pages/reset-password.tsx
+msgid "Passwords must match"
+msgstr "Passwords must match"
+
+#: src/components/Profile/index.tsx
+msgid "Link Email"
+msgstr "Link Email"
+
+#: src/components/Profile/EditPsd.tsx
+msgid "Change Password"
+msgstr "Change Password"
+
+#: src/components/Membership/Screen-2.tsx
+msgid "Join our podcasts to share your unique experiences..."
+msgstr "Join our podcasts to share your unique experiences..."
+
+#: src/components/Header/index.tsx
+msgid "Service Providers"
+msgstr "Service Providers"
+
+#: src/pages/contact-us/faq.tsx
+msgid "Hexa Hub members are a group of industry builders and researchers who are motivated to explore and experiment innovations. By joining us, you will be able to access and take part in all the research and insights formulated within our ecosystem."
+msgstr "Hexa Hub members are a group of industry builders and researchers who are motivated to explore and experiment innovations. By joining us, you will be able to access and take part in all the research and insights formulated within our ecosystem."
+
+#: src/components/News/LikeBtn.tsx
+#: src/components/News/LikeBtn.tsx
+msgid "Like"
+msgstr "Like"
+
+#: src/components/News/LikeBtn.tsx
+msgid "Failed to like"
+msgstr "Failed to like"
+
+#: src/components/Membership/index.tsx
+msgid "Ignite: Synergies from partnerships, deal flow, ecosystem growth and macro-analysis of the market"
+msgstr "Ignite: Synergies from partnerships, deal flow, ecosystem growth and macro-analysis of the market"
+
+#: src/components/ContactUs/Support.tsx
+msgid "Product Strategy"
+msgstr "Product Strategy"
+
+#: src/components/InfiniteVirtualScroll/index.tsx
+msgid "Click to load more"
+msgstr "Click to load more"
+
+#: src/hooks/useLogin.ts
+#: src/hooks/useLogin.ts
+msgid "Login status has expired"
+msgstr "Login status has expired"
+
+#: src/components/Home/Screen-1.tsx
+msgid "Go Next Page"
+msgstr "Go Next Page"
+
+#: src/pages/contact-us/membership-application.tsx
+msgid "Hexa Hub Membership Application"
+msgstr "Hexa Hub Membership Application"
+
+#: src/pages/verify-email.tsx
+msgid "you have entered {email} as the email address for your Hexa account, please verify the email by clicking the below."
+msgstr "you have entered {email} as the email address for your Hexa account, please verify the email by clicking the below."
+
+#: src/pages/contact-us/faq.tsx
+msgid "Did we mention the occasional airdrop of goodies? Yes, we did."
+msgstr "Did we mention the occasional airdrop of goodies? Yes, we did."
+
+#: src/components/Header/index.tsx
+#: src/pages/contact-us/faq.tsx
+msgid "FAQs"
+msgstr "FAQs"
+
+#: src/components/Profile/EditName.tsx
+msgid "Change Username"
+msgstr "Change Username"
+
+#: src/components/Sign/ResendEmail.tsx
+msgid "You might need to check your spam folder."
+msgstr "You might need to check your spam folder."
+
+#: src/components/ContactUs/Application.tsx
+msgid "Website/Linkedin/Github (if applicable)"
+msgstr "Website/Linkedin/Github (if applicable)"
+
+#: src/components/Profile/EditAvatar.tsx
+msgid "Upload failed"
+msgstr "Upload failed"
+
+#: src/components/Cropper/index.tsx
+msgid "Scale"
+msgstr "Scale"
+
+#: src/components/ContactUs/Application.tsx
+msgid "How did you hear about us?"
+msgstr "How did you hear about us?"
+
+#: src/components/Membership/index.tsx
+msgid "Benefits Unlocked"
+msgstr "Benefits Unlocked"
+
+#: src/components/Header/index.tsx
+msgid "Project Founders"
+msgstr "Project Founders"
+
+#: src/components/News/LikeBtn.tsx
+msgid "Failed to unlike"
+msgstr "Failed to unlike"
+
+#: src/components/Header/index.tsx
+msgid "DEV GUIDES"
+msgstr "DEV GUIDES"
+
+#: src/components/Membership/index.tsx
+msgid "Community Members"
+msgstr "Community Members"
+
+#: src/components/Membership/Screen-2.tsx
+msgid "Become a panelist at major industry events..."
+msgstr "Become a panelist at major industry events..."
+
+#: src/components/ContactUs/Application.tsx
+msgid "Brief Introduction"
+msgstr "Brief Introduction"
+
+#: src/components/ContactUs/Application.tsx
+msgid "Telegram or Wechat, must fill at least one"
+msgstr "Telegram or Wechat, must fill at least one"
+
+#: src/components/Sign/SignInForm.tsx
+msgid "Username or Email"
+msgstr "Username or Email"
+
+#: src/pages/contact-us/faq.tsx
+msgid "IS THE MEMBERSHIP TRANSFERRABLE?"
+msgstr "IS THE MEMBERSHIP TRANSFERRABLE?"
+
+#: src/components/Home/Screen-3.tsx
+msgid "We provide an exclusive treasure trove of knowledge and insights"
+msgstr "We provide an exclusive treasure trove of knowledge and insights"
+
+#: src/pages/verify-email.tsx
+msgid "Verify your Email"
+msgstr "Verify your Email"
+
+#: src/pages/contact-us/faq.tsx
+msgid "If you signed up with email, by connecting your wallet, we will be able to verify your Hexa Arcana token. Once verified, you will be able to log in using email and enjoy all functions available on the Hexa Hub website."
+msgstr "If you signed up with email, by connecting your wallet, we will be able to verify your Hexa Arcana token. Once verified, you will be able to log in using email and enjoy all functions available on the Hexa Hub website."
+
+#: src/components/Profile/EditName.tsx
+msgid "Existing Username"
+msgstr "Existing Username"
+
+#: src/components/Profile/EditPsd.tsx
+msgid "Existing Password"
+msgstr "Existing Password"
+
+#: src/components/Sign/SignInForm.tsx
+msgid "Forgot your password?"
+msgstr "Forgot your password?"
+
+#: src/components/ContactUs/Enquiries.tsx
+#: src/components/ContactUs/Support.tsx
+#: src/components/Cropper/index.tsx
+#: src/components/Profile/EditName.tsx
+#: src/components/Profile/EditPsd.tsx
+#: src/pages/forgot-password.tsx
+msgid "Submit"
+msgstr "Submit"
+
+#: src/pages/contact-us/faq.tsx
+msgid "No. Our membership is tied with our soul bound tokens, hence non-transferrable. We want to ensure that every member within the community is vetted to ensure an open and intimate space for communication."
+msgstr "No. Our membership is tied with our soul bound tokens, hence non-transferrable. We want to ensure that every member within the community is vetted to ensure an open and intimate space for communication."
+
+#: src/components/Home/Screen-3.tsx
+msgid "Founder’s Exclusive"
+msgstr "Founder’s Exclusive"
+
+#: src/components/Header/index.tsx
+msgid "ENQUIRIES"
+msgstr "ENQUIRIES"
+
+#: src/pages/contact-us/faq.tsx
+msgid "WHY A MEMBERS-ONLY COMMUNITY?"
+msgstr "WHY A MEMBERS-ONLY COMMUNITY?"
+
+#: src/components/Membership/Screen-3.tsx
+msgid "Build"
+msgstr "Build"
+
+#: src/pages/forgot-password.tsx
+msgid "Please enter a valid email"
+msgstr "Please enter a valid email"
+
+#: src/pages/contact-us/faq.tsx
+msgid "WHY JOIN HEXA HUB?"
+msgstr "WHY JOIN HEXA HUB?"
+
+#: src/components/ContactUs/Application.tsx
+#: src/components/Sign/SignUpForm.tsx
+msgid "Please read and agree to the terms and conditions"
+msgstr "Please read and agree to the terms and conditions"
+
+#: src/pages/contact-us/faq.tsx
+msgid "WHAT ARE THE PERKS FOR MEMBERS?"
+msgstr "WHAT ARE THE PERKS FOR MEMBERS?"
+
+#: src/components/Header/index.tsx
+msgid "NEWS FEED"
+msgstr "NEWS FEED"
+
+#: src/components/ContactUs/Application.tsx
+msgid "Project Deck Link (if applicable)"
+msgstr "Project Deck Link (if applicable)"
+
+#: src/components/Home/Screen-4.tsx
+msgid "ENTER OUR DISCORD"
+msgstr "ENTER OUR DISCORD"
+
+#: src/pages/verify-email.tsx
+msgid "Failed to bind mailbox"
+msgstr "Failed to bind mailbox"
+
+#: src/hooks/useLogin.ts
+msgid "Sign message error"
+msgstr "Sign message error"
+
+#: src/components/Header/index.tsx
+msgid "MEMBERSHIP"
+msgstr "MEMBERSHIP"
+
+#: src/pages/verify-email.tsx
+msgid "Verify your email address"
+msgstr "Verify your email address"
+
+#: src/components/Header/index.tsx
+msgid "ABOUT"
+msgstr "ABOUT"
+
+#: src/components/Home/Screen-2.tsx
+msgid "Hexa Hub is a platform designed to empower community members in the ever-evolving landscape of technology and innovation. Contributors get personalised support for their journey as they navigate the market landscape."
+msgstr "Hexa Hub is a platform designed to empower community members in the ever-evolving landscape of technology and innovation. Contributors get personalised support for their journey as they navigate the market landscape."
+
+#: src/components/Sign/SignUpForm.tsx
+msgid "Sign Up"
+msgstr "Sign Up"
+
+#: src/components/Sign/ConnectWallet.tsx
+msgid "Waiting for signature verification from wallet with address:"
+msgstr "Waiting for signature verification from wallet with address:"
+
+#: src/components/Home/Screen-1.tsx
+msgid "Welcome to the knowledge hub of the emerging tech <br />landscape.<br />Discover resources and connect with industry leaders and insiders within."
+msgstr "Welcome to the knowledge hub of the emerging tech <br />landscape.<br />Discover resources and connect with industry leaders and insiders within."
+
+#: src/components/ContactUs/Application.tsx
+msgid "Web3 Enthusiast"
+msgstr "Web3 Enthusiast"
+
+#: src/components/Sign/ConnectWallet.tsx
+msgid "Signature"
+msgstr "Signature"
+
+#: src/components/Header/Wallet.tsx
+#: src/components/Sign/SignInForm.tsx
+msgid "Sign In"
+msgstr "Sign In"
+
+#: src/components/Header/Wallet.tsx
+msgid "Logout"
+msgstr "Logout"
+
+#: src/components/Membership/index.tsx
+msgid "Initiate: Fundraising support, structuring, legal and compliance support and human capital support"
+msgstr "Initiate: Fundraising support, structuring, legal and compliance support and human capital support"
+
+#: src/components/ContactUs/Support.tsx
+msgid "Structuring"
+msgstr "Structuring"
+
+#: src/pages/contact-us/faq.tsx
+msgid "Hexa Arcana also acts as a pass to all our ecosystem partners through rewards, discounts, whitelists or partnerships."
+msgstr "Hexa Arcana also acts as a pass to all our ecosystem partners through rewards, discounts, whitelists or partnerships."
+
+#: src/components/ContactUs/Application.tsx
+#: src/components/ContactUs/Application.tsx
+#: src/components/ContactUs/Support.tsx
+#: src/components/ContactUs/Support.tsx
+msgid "Please select"
+msgstr "Please select"
+
+#: src/components/Sign/ConnectWallet.tsx
+msgid "Please install app first."
+msgstr "Please install app first."
+
+#: src/components/Header/Wallet.tsx
+msgid "My Account"
+msgstr "My Account"
+
+#: src/components/Membership/index.tsx
+msgid "Elevations"
+msgstr "Elevations"
+
+#: src/components/InfiniteVirtualScroll/index.tsx
+msgid "No more"
+msgstr "No more"
+
+#: src/components/Header/index.tsx
+msgid "CONSULTATION SERVICES"
+msgstr "CONSULTATION SERVICES"
+
+#: src/components/Membership/index.tsx
+msgid "Online seminars conducted by respective specialists"
+msgstr "Online seminars conducted by respective specialists"
+
+#: src/pages/contact-us/faq.tsx
+msgid "After which, an evaluation will be done. If you are accepted to Hexa Hub, we will airdrop your Hexa Arcana token to your wallet."
+msgstr "After which, an evaluation will be done. If you are accepted to Hexa Hub, we will airdrop your Hexa Arcana token to your wallet."
+
+#: src/components/Home/Screen-3.tsx
+msgid "Guides for navigating the startup founder journey"
+msgstr "Guides for navigating the startup founder journey"
+
+#: src/components/Membership/index.tsx
+msgid "TRANSCENDING THE ORDINARY"
+msgstr "TRANSCENDING THE ORDINARY"
+
+#: src/components/Header/index.tsx
+msgid "CONTACT US"
+msgstr "CONTACT US"
+
+#: src/components/Profile/EditName.tsx
+msgid "New Username"
+msgstr "New Username"
+
+#: src/components/Header/index.tsx
+msgid "LABS"
+msgstr "LABS"
+
+#: src/components/Membership/index.tsx
+msgid "Events"
+msgstr "Events"
+
+#: src/components/Membership/index.tsx
+msgid "Hexa Arcana"
+msgstr "Hexa Arcana"
+
+#: src/components/Layout/VerifyLogin.tsx
+msgid "Please log in first"
+msgstr "Please log in first"
+
+#: src/pages/profile/edit-profile.tsx
+msgid "After binding the mailbox, you can modify the user name and password"
+msgstr "After binding the mailbox, you can modify the user name and password"
+
+#: src/components/Membership/Screen-2.tsx
+msgid "Publish your insights to an audience of industry leaders..."
+msgstr "Publish your insights to an audience of industry leaders..."
+
+#: src/components/Header/index.tsx
+msgid "TRENDING TWEETS"
+msgstr "TRENDING TWEETS"
+
+#: src/components/Profile/index.tsx
+msgid "Verify Email"
+msgstr "Verify Email"
+
+#: src/components/ContactUs/Application.tsx
+msgid "Wallet address for Airdrop"
+msgstr "Wallet address for Airdrop"
+
+#: src/components/Home/Screen-2.tsx
+msgid "Building Tomorrow, Today"
+msgstr "Building Tomorrow, Today"
+
+#: src/pages/contact-us/faq.tsx
+msgid "HOW DO I RECEIVE A HEXA ARCANA?"
+msgstr "HOW DO I RECEIVE A HEXA ARCANA?"
+
+#: src/components/ContactUs/Support.tsx
+msgid "Marketing Strategy"
+msgstr "Marketing Strategy"
+
+#: src/components/ContactUs/Application.tsx
+msgid "Investor"
+msgstr "Investor"
+
+#: src/components/Membership/index.tsx
+msgid "At Hexa Hub, we are all industry innovators, trailblazers, and engineers."
+msgstr "At Hexa Hub, we are all industry innovators, trailblazers, and engineers."
+
+#: src/components/ContactUs/Application.tsx
+msgid "Strategist"
+msgstr "Strategist"
+
+#: src/components/ContactUs/Enquiries.tsx
+#: src/components/ContactUs/Support.tsx
+msgid "Message"
+msgstr "Message"
+
+#: src/components/Sign/SignUpForm.tsx
+msgid "Email already registered"
+msgstr "Email already registered"
+
+#: src/components/Home/Screen-3.tsx
+msgid "Top-notch research by developers for developers"
+msgstr "Top-notch research by developers for developers"
+
+#: src/components/Header/index.tsx
+msgid "Investors"
+msgstr "Investors"
+
+#: src/components/Membership/index.tsx
+msgid "A SOULBOUND TOKEN FOR UNBREAKABLE BONDS"
+msgstr "A SOULBOUND TOKEN FOR UNBREAKABLE BONDS"
+
+#: src/components/Profile/EditPsd.tsx
+#: src/pages/reset-password.tsx
+msgid "Confirm New Password"
+msgstr "Confirm New Password"
+
+#: src/components/ContactUs/Application.tsx
+msgid "Including past work experiences, interested verticals, contributions to the tech space, education background, etc."
+msgstr "Including past work experiences, interested verticals, contributions to the tech space, education background, etc."
+
+#: src/components/Sign/SignUpForm.tsx
+msgid "Account registration failed"
+msgstr "Account registration failed"
+
+#: src/pages/contact-us/faq.tsx
+msgid "At Hexa Hub, we are looking for leaders within the emerging tech landscape. Whether you are a project, an investor, ecosystem partner, builder, researcher or simply a digital enthusiast, Hexa Hub is the place for you to explore and develop your passion. We believe in the power of collaboration and the strength that comes from a diverse community."
+msgstr "At Hexa Hub, we are looking for leaders within the emerging tech landscape. Whether you are a project, an investor, ecosystem partner, builder, researcher or simply a digital enthusiast, Hexa Hub is the place for you to explore and develop your passion. We believe in the power of collaboration and the strength that comes from a diverse community."
+
+#: src/components/Header/index.tsx
+msgid "Menu"
+msgstr "Menu"
+
+#: src/components/Home/Screen-1.tsx
+msgid "Go Previous Page"
+msgstr "Go Previous Page"
+
+#: src/components/Profile/EditName.tsx
+#: src/components/Profile/EditPsd.tsx
+msgid "Success"
+msgstr "Success"

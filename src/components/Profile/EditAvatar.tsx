@@ -98,7 +98,7 @@ export const EditAvatar = observer(() => {
                 inputRef?.current?.value && (inputRef.current.value = '')
                 inputRef?.current?.click()
               }}
-            >{t`Edit Profile Pic`}</Button>
+            >{t`Upload Profile Pic`}</Button>
           </Box>
         </Box>
       </Stack>

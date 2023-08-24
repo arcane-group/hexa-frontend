@@ -23,11 +23,11 @@ const Page = () => {
         <br />
         2. Website Content
         <br />
-        The content of this website is intended to convey general information about Arcane Group.
-        The information, products and services on this website are provided on a strictly “as is”,
-        “where available” and “where is” basis. They should not be relied upon as legal, tax or
-        investment or financial advice. This website is not intended to create a principal-agent or
-        fiduciary relationship. Equally,
+        Website Content The content of this website is intended to convey general information about
+        Arcane Group. The information, products and services on this website are provided on a
+        strictly “as is”, “where available” and “where is” basis. They should not be relied upon as
+        legal, tax or investment or financial advice. This website is not intended to create a
+        principal-agent or fiduciary relationship. Equally,
         <br />
         The content of any e-mail sent to Arcane Group or any of its employees at any e-mail
         addresses set forth in this website will not create a principal-agent or fiduciary
@@ -43,7 +43,7 @@ const Page = () => {
         <br />
         does not constitute an invitation to invest in any Digital Asset; <br />
         and constitute or form a part of any oﬀer for the sale or subscription of, or any invitation
-        to oﬀer to buy or subscribe for, any Digital Asset.
+        to offer to buy or subscribe for, any Digital Asset.
         <br />
         <br />
         3. Intellectual Property
@@ -143,7 +143,9 @@ const Page = () => {
         Arcane Group, to be given or withheld at our sole and absolute discretion.
         <br />
         To request reprint permission for any of our publications, please go to the Contact Us
-        section located on this website. 7. Governing Law and Dispute Resolution
+        section located on this website.
+        <br />
+        7. Governing Law and Dispute Resolution
         <br />
         Irrespective of the country from which you access or use this Form or our Services, to the
         extent permitted by law, these disclaimers and legal notices shall be governed in accordance
@@ -168,7 +170,7 @@ export default Page
 export const getStaticProps = async () => {
   return {
     props: {
-      title: 'Team Conditions',
+      title: 'Terms and Conditions',
       headerPosition: 'relative',
     },
   }

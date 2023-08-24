@@ -12,12 +12,12 @@ export const Screen3 = () => {
     return [
       {
         title: t`Build`,
-        desc: t`A channel connecting our members with researchers and developers to publish pioneering reports.`,
+        desc: t`A channel connecting our members with researchers and developers to publish pioneering reports`,
         img: '/images/membership/screen2/0.png',
       },
       {
         title: t`Spark`,
-        desc: t`A platform to discover potential co-hosts and sponsors for your next big industry event.`,
+        desc: t`A platform to discover potential co-hosts and sponsors for your next big industry event`,
         img: '/images/membership/screen2/1.png',
       },
     ]

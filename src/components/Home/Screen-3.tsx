@@ -3,6 +3,7 @@ import { useMemo } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 // import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 
 import { GoNextPage } from './Screen-1'
 import { MotionBox, MotionCenter } from '@/components/Motion'
@@ -43,21 +44,23 @@ const ArrowLine = () => {
 export const Screen3 = ({ fullpageApi }: any) => {
   const { i18n } = useLingui()
 
+  const { push } = useRouter()
+
   const descArr = useMemo(() => {
     return [
       {
         title: t`Founder’s Exclusive`,
-        desc: t`Guides for navigating the startup founder journey.`,
+        desc: t`Guides for navigating the startup founder journey`,
         img: '1.jpg',
       },
       {
         title: t`Market Commentary`,
-        desc: t`Curated in-depth analysis of the market landscape.`,
+        desc: t`Curated in-depth analysis of the market landscape`,
         img: '2.jpg',
       },
       {
         title: t`Labs`,
-        desc: t`Top-notch research by developers for developers.`,
+        desc: t`Top-notch research by developers for developers`,
         img: '3.jpg',
       },
     ]
@@ -109,9 +112,11 @@ export const Screen3 = ({ fullpageApi }: any) => {
               lg: '700px',
             }}
             textStyle={'cp'}
-            color='#616161'
+            color='#595959'
           >
-            {t`We provide an exclusive treasure trove of knowledge and insights specially made for our esteemed members.`}
+            {t`We provide an exclusive treasure trove of knowledge and insights`}
+            <br />
+            {t`specially made for our esteemed members.`}
             <ArrowLine />
           </Box>
           <Center flexDir={'column'} maxW={'max-content'}>
@@ -132,8 +137,6 @@ export const Screen3 = ({ fullpageApi }: any) => {
                 return (
                   <MotionBox
                     key={index}
-                    // whileHover={{ scale: 1.1 }}
-                    // cursor={'pointer'}
                     variants={{
                       offscreen: {
                         opacity: 0,
@@ -191,7 +194,7 @@ export const Screen3 = ({ fullpageApi }: any) => {
                       <Text color='#000000' textStyle={'csmp'}>
                         {item.title}
                       </Text>
-                      <Text color='#616161' textStyle={'cssmp'} mt='6px'>
+                      <Text color='#595959' textStyle={'cssmp'} mt='6px'>
                         {item.desc}
                       </Text>
                     </Box>
@@ -199,7 +202,16 @@ export const Screen3 = ({ fullpageApi }: any) => {
                 )
               })}
             </Stack>
-            <LineButton>{t`EXPLORE OUR LIBRARY`}</LineButton>
+            <LineButton
+              onClick={() => {
+                push({
+                  pathname: '/library',
+                  query: {
+                    category: '1',
+                  },
+                })
+              }}
+            >{t`EXPLORE OUR LIBRARY`}</LineButton>
           </Center>
         </MotionCenter>
       </Container>

@@ -11,6 +11,10 @@ import { FormControl } from '@/components/Form/FormControl'
 import { AsyncSelect } from '@/components/Form/AsyncSelect'
 import { TextTextarea } from '@/components/Form/Textarea'
 
+// TODO: pop text
+// We have received your request and will contact you shortly!
+// Oops! Please sign in and connect your wallet to verify membership.
+// Oops! Looks like you aren’t a Hexa Hub member yet! Consultation services are only available to Hexa Hub members, for more info on Hexa Hub membership, click here.
 export const SupportForm = () => {
   const { i18n } = useLingui()
 
@@ -55,7 +59,7 @@ export const SupportForm = () => {
       },
       {
         id: '5',
-        label: t`GO-to-Market Strategy`,
+        label: t`Go-to-Market Strategy`,
       },
       {
         id: '6',

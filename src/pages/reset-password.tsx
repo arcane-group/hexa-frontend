@@ -57,7 +57,7 @@ const ResetForm = ({ code }: { code?: string }) => {
   if (isShow) {
     return (
       <Box>
-        <Text textStyle={'cp'} w='max-content'>{t`You have successfully reset your password`}</Text>
+        <Text textStyle={'cp'} w='max-content'>{t`You have successfully reset your password.`}</Text>
       </Box>
     )
   }

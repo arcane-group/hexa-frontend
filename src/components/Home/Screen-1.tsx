@@ -91,8 +91,7 @@ export const Screen1 = ({ fullpageApi }: any) => {
   const propsTypejs = useMemo(() => {
     return {
       text: [
-        t`Welcome to the knowledge hub of the emerging tech <br />landscape.<br />
-Discover resources and connect with industry leaders and <br />insiders within.`,
+        t`Welcome to the knowledge hub of the emerging tech <br />landscape.<br />Discover resources and connect with industry leaders and insiders within.`,
       ],
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
