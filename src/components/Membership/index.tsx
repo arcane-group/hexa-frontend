@@ -165,7 +165,7 @@ export const Membership = () => {
         </MotionBox>
 
         <Box minH='100vh' pt='167px' pos='relative'>
-          <Box pos='absolute' zIndex={0} top={0} left={0} right={0} bottom={0} bgColor='#FED18F' />
+          <Box pos='absolute' zIndex={0} top={0} left={0} right={0} bottom={0} bgColor='#FDD9A6' />
           <Box
             className='blur-bg'
             pos='absolute'

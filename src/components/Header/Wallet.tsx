@@ -19,7 +19,7 @@ import { UserImg } from '@/components/UserImg'
 import { useStore } from '@/stores'
 import { useLogout } from '@/hooks/useLogin'
 
-const WalletLogin = observer(() => {
+const WalletLogin = observer(({ colorMode }: { colorMode: 'dark' | 'light' }) => {
   useLingui()
 
   const router = useRouter()
@@ -65,9 +65,7 @@ const WalletLogin = observer(() => {
                   lg: '45px',
                 }}
               />
-              <Text color='#000000' textStyle={'cp'}>
-                {nameStr}
-              </Text>
+              <Text textStyle={'cp'}>{nameStr}</Text>
             </Stack>
           </Link>
         </PopoverTrigger>
@@ -119,6 +117,7 @@ const WalletLogin = observer(() => {
           },
         })
       }}
+      color={colorMode === 'dark' ? '#8AF7FC' : '#000'}
     >
       {t`Sign In`}
     </MyButton>

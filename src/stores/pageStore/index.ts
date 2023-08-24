@@ -1,17 +1,20 @@
 import { makeObservable, action, observable } from 'mobx'
 
 import { Profile } from './Profile'
+import { Home } from './Home'
 
 // 全局页面路由设置
 export enum PAGEPATH {
   Profile = '/profile',
+  Home = '/',
 }
 
 const PageClass = {
   [PAGEPATH.Profile]: Profile,
+  [PAGEPATH.Home]: Home,
 }
 
-export type PageType = undefined | Profile
+export type PageType = undefined | Profile | Home
 
 // 全局页面数据
 export default class PageStore {
@@ -42,7 +45,8 @@ export default class PageStore {
   setHistory = (key: string, pathname: string) => {
     if (this.history.has(key)) {
     } else {
-      const newName = pathname.replace(/\/$/, '') as keyof typeof PageClass
+      const newName =
+        pathname !== '/' ? (pathname.replace(/\/$/, '') as keyof typeof PageClass) : PAGEPATH.Home
       if (PageClass[newName]) {
         this.history.set(key, new PageClass[newName](newName))
       }
