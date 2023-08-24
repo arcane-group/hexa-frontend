@@ -36,6 +36,7 @@ import { px2vw } from '@/utils/px2vw'
 import Logo from '@/assets/images/header/logo.png'
 import { CurNavIcon } from '@/assets/svg/header/index'
 import { usePageStore } from '@/hooks/usePageStore'
+import { useStore } from '@/stores'
 
 const WalletLogin = dynamic(() => import('./Wallet'), { ssr: false })
 
@@ -64,6 +65,10 @@ const Header = ({
   headerPosition?: ResponsiveValue<CSS.Property.Position>
 }) => {
   const { i18n } = useLingui()
+
+  const {
+    commonStore: { isPC },
+  } = useStore()
 
   const colorMode = useColorMode()
 
@@ -161,43 +166,40 @@ const Header = ({
       {
         label: t`NEWS FEED`,
         href: '/news-feed',
-        query: {
-          category: '1',
-        },
         children: [
           {
             label: t`NEWS ARTICLES`,
-            href: '/news-feed',
+            href: '/news-feed/category/[id]',
             query: {
-              category: '1',
+              id: '1',
             },
           },
           {
             label: t`BLOGS`,
-            href: '/news-feed',
+            href: '/news-feed/category/[id]',
             query: {
-              category: '2',
+              id: '2',
             },
           },
           {
             label: t`TRENDING TWEETS`,
-            href: '/news-feed',
+            href: '/news-feed/category/[id]',
             query: {
-              category: '3',
+              id: '3',
             },
           },
           {
             label: t`DEV GUIDES`,
-            href: '/news-feed',
+            href: '/news-feed/category/[id]',
             query: {
-              category: '4',
+              id: '4',
             },
           },
           {
             label: t`PODCAST`,
-            href: '/news-feed',
+            href: '/news-feed/category/[id]',
             query: {
-              category: '5',
+              id: '5',
             },
           },
         ],
@@ -336,7 +338,7 @@ const Header = ({
             <LangSwitcher />
           </Flex>
 
-          <RemoveScroll enabled={isOpen} forwardProps>
+          <RemoveScroll enabled={isPC ? false : isOpen} forwardProps>
             <MotionBox
               display={{
                 base: 'block',
@@ -356,6 +358,7 @@ const Header = ({
                   opacity: 1,
                   height: '100vh',
                   zIndex: 4,
+                  display: isPC ? 'none' : 'block',
                 },
                 closed: {
                   opacity: 0,
@@ -418,20 +421,18 @@ const DesktopNav = memo(
       >
         {Array.isArray(navs) &&
           navs.map((navItem: NavItem, index) => {
-            let isCur = false
-            if (Array.isArray(navItem?.children) && navItem?.children.length > 0) {
-              for (let i = 0; i < navItem.children.length; i++) {
-                const item = navItem?.children[i]
-                if (isCur === false && item?.href && router.pathname === item.href) {
-                  isCur = true
-                  break
+            let isCur = navItem?.href ? router.pathname === navItem.href : false
+            if (!isCur) {
+              if (Array.isArray(navItem?.children) && navItem?.children.length > 0) {
+                for (let i = 0; i < navItem.children.length; i++) {
+                  const item = navItem?.children[i]
+                  if (isCur === false && item?.href && router.pathname === item.href) {
+                    isCur = true
+                    break
+                  }
+                  isCur = false
                 }
-                isCur = false
               }
-            } else if (navItem?.href === '/') {
-              isCur = router.pathname === navItem?.href
-            } else {
-              isCur = navItem?.href ? router.pathname === navItem.href : false
             }
 
             return (
@@ -625,55 +626,76 @@ const MobileNavItem = ({
   colorMode: 'dark' | 'light'
 }) => {
   const router = useRouter()
-  const { isOpen, onToggle } = useDisclosure()
+  const { isOpen, onToggle } = useDisclosure({
+    defaultIsOpen: true,
+  })
   const hasChild: boolean = Array.isArray(children) && children.length > 0
 
-  let isCur = false
-  if (Array.isArray(children) && children.length > 0) {
-    for (let i = 0; i < children.length; i++) {
-      const item = children[i]
-      if (isCur === false && item?.href && router.pathname === item.href) {
-        isCur = true
-        break
+  let isCur = href ? router.pathname === href : false
+  if (!isCur) {
+    if (Array.isArray(children) && children.length > 0) {
+      for (let i = 0; i < children.length; i++) {
+        const item = children[i]
+        if (isCur === false && item?.href && router.pathname === item.href) {
+          isCur = true
+          break
+        }
+        isCur = false
       }
-      isCur = false
     }
-  } else if (href === '/') {
-    isCur = router.pathname === href
-  } else {
-    isCur = href ? router.pathname === href : false
   }
 
+  const main = (
+    <>
+      <Text
+        color={isCur ? '#1D1D1D' : '#C29B60'}
+        textStyle={'cp'}
+        py={px2vw(12)}
+        pr='20px'
+        minW={px2vw(200)}
+      >
+        {label}
+      </Text>
+      {hasChild && (
+        <Center
+          py={px2vw(12)}
+          flex={1}
+          justifyContent={'flex-end'}
+          onClick={e => {
+            e.preventDefault?.()
+            e.stopPropagation?.()
+            onToggle?.()
+          }}
+        >
+          <Icon
+            as={ChevronDownIcon}
+            transition='all .25s ease-in-out'
+            transform={isOpen ? 'rotate(180deg)' : ''}
+            w={px2vw(24)}
+            h={px2vw(24)}
+            color='#C29B60'
+          />
+        </Center>
+      )}
+    </>
+  )
+
   return (
-    <Stack textTransform={'uppercase'} spacing={px2vw(2)} onClick={children && onToggle}>
-      {hasChild ? (
+    <Stack textTransform={'uppercase'} spacing={px2vw(2)}>
+      {!href ? (
         <Box
           display='flex'
-          py={px2vw(18)}
           justifyContent='space-between'
           alignItems='center'
           _hover={{
             textDecoration: 'none',
           }}
         >
-          <Text color={isCur ? '#1D1D1D' : '#C29B60'} textStyle={'cp'}>
-            {label}
-          </Text>
-          {hasChild && (
-            <Icon
-              as={ChevronDownIcon}
-              transition='all .25s ease-in-out'
-              transform={isOpen ? 'rotate(180deg)' : ''}
-              w={px2vw(24)}
-              h={px2vw(24)}
-              color='#C29B60'
-            />
-          )}
+          {main}
         </Box>
       ) : (
         <Link
           display='flex'
-          py={px2vw(18)}
           href={{
             pathname: href ?? '#',
             query: navItem.query,
@@ -684,14 +706,12 @@ const MobileNavItem = ({
             textDecoration: 'none',
           }}
         >
-          <Text color={isCur ? '#1D1D1D' : '#C29B60'} textStyle={'cp'}>
-            {label}
-          </Text>
+          {main}
         </Link>
       )}
 
       <Collapse in={isOpen} animateOpacity style={{ marginTop: '0 !important' }}>
-        <Stack pl={4} align='start' mb={px2vw(12)}>
+        <Stack pl={4} align='start' mb={px2vw(12)} spacing={px2vw(2)}>
           {children?.map((child: NavItem) => {
             return <MobileNavItem2 key={child.label} colorMode={colorMode} {...child} />
           })}
@@ -733,7 +753,7 @@ const MobileNavItem2 = ({
         pathname: href,
         query,
       }}
-      py={px2vw(8)}
+      py={px2vw(6)}
       textStyle={'smp'}
       color={isCur ? '#616161' : '#C29B60'}
     >
