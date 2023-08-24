@@ -36,7 +36,7 @@ export const Membership = () => {
         arr: [
           t`Initiate: Fundraising support, structuring, legal and compliance support and human capital support`,
           t`Innovate: Consultation on product strategy, marketing, tech development and go-to-market strategy`,
-          t`Ignite: Synergies from partnerships, deal flow, ecosystem growth and macro-analysis of the market`,
+          t`Ignite: Synergies from partnerships, deal flow, ecosystem growth and macro-analysis of the market`,
         ],
       },
       {

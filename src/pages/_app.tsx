@@ -15,6 +15,7 @@ import { I18nProvider } from '@lingui/react'
 import 'react-toastify/dist/ReactToastify.css'
 import '@/lib/fullpage/src/css/fullpage.css'
 
+import Fonts from '@/theme/Fonts'
 import { useLinguiInit } from '@/hooks/useLinguiInit'
 import { pageview } from '@/utils/gtag'
 import theme from '@/theme'
@@ -145,6 +146,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       />
       <I18nProvider i18n={i18n}>
         <ChakraProvider resetCSS theme={theme} colorModeManager={manager}>
+          <Fonts />
           <StoreContext.Provider value={stores}>
             <WagmiConfig client={wagmiClient}>
               <Layout {...pageProps}>

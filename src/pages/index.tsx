@@ -7,6 +7,8 @@ import {
 } from 'framer-motion'
 import { observer } from 'mobx-react-lite'
 import { useMouse } from 'ahooks'
+import { t } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
 
 import type { Home } from '@/stores/pageStore/Home'
 import { usePageStore } from '@/hooks/usePageStore'
@@ -15,6 +17,7 @@ import { Screen1 } from '@/components/Home/Screen-1'
 import { Screen2 } from '@/components/Home/Screen-2'
 import { Screen3 } from '@/components/Home/Screen-3'
 import { Screen4 } from '@/components/Home/Screen-4'
+import { ClickMeIcon } from '@/assets/svg/home'
 
 const Main = () => {
   const screens = useMemo(() => {
@@ -46,6 +49,8 @@ const Main = () => {
 const VideoBox = forwardRef((props: any, ref) => <video ref={ref} {...props} />)
 const Video = chakra(VideoBox)
 const VideoScreen = ({ onClick }: { onClick: any }) => {
+  useLingui()
+
   const mouseRef = useRef(null)
   const { elementX, elementY, elementH, elementW } = useMouse(mouseRef.current)
 
@@ -60,9 +65,10 @@ const VideoScreen = ({ onClick }: { onClick: any }) => {
   // TODO: 待添加 首帧图逻辑
   const videoRef = useRef<HTMLVideoElement>(null)
   return (
-    <MotionBox pos='relative' h='100vh' w='100%'>
+    <MotionBox pos='relative' h='100vh' w='100%' userSelect={'none'}>
       <AbsoluteCenter
         ref={mouseRef}
+        top='70%'
         w={{
           base: '60vw',
           lg: '40vw',
@@ -71,7 +77,7 @@ const VideoScreen = ({ onClick }: { onClick: any }) => {
           base: '20vh',
           lg: '50vh',
         }}
-        className='hover'
+        cursor={'pointer'}
       >
         <MotionBox
           pos={'absolute'}
@@ -81,8 +87,21 @@ const VideoScreen = ({ onClick }: { onClick: any }) => {
           animate={animate}
           zIndex={2}
         >
-          <AbsoluteCenter onClick={onClick} className='hover' w='max-content'>
-            Click Enter
+          <AbsoluteCenter
+            onClick={onClick}
+            cursor={'pointer'}
+            w='max-content'
+            h='36px'
+            justifyContent={'space-between'}
+            flexDir={'row'}
+            display={'flex'}
+            alignItems={'center'}
+            color='#8AF7FC'
+            fontSize={'11px'}
+          >
+            <Box>{t`CLICK`}</Box>
+            <Box w='30px' mx='5px' />
+            <Box>{t`ENTER`}</Box>
           </AbsoluteCenter>
         </MotionBox>
         <MotionBox
@@ -93,13 +112,15 @@ const VideoScreen = ({ onClick }: { onClick: any }) => {
           animate={{
             ...animate,
             transition: {
-              duration: 0.2,
+              duration: 0.15,
               ease: 'linear',
             },
           }}
           zIndex={1}
         >
-          <AbsoluteCenter w='10px' h='10px' bgColor={'red'}></AbsoluteCenter>
+          <AbsoluteCenter>
+            <ClickMeIcon h='36px' />
+          </AbsoluteCenter>
         </MotionBox>
       </AbsoluteCenter>
       <Video
