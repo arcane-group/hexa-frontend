@@ -1,7 +1,13 @@
 import { Box } from '@chakra-ui/react'
 import type { GetStaticProps, GetStaticPaths } from 'next'
 
-import { Category } from '@/components/News/Category'
+import dynamic from 'next/dynamic'
+import { DynamicLoading } from '@/components/Loading'
+
+const Category = dynamic(() => import('@/components/News/Category'), {
+  ssr: false,
+  loading: () => <DynamicLoading />,
+})
 
 const Page = () => {
   return (

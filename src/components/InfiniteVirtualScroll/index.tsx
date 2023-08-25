@@ -39,9 +39,9 @@ type TProps<TData extends Data, T = any> = Pick<BoxProps, Exclude<keyof BoxProps
   containerRef?: React.MutableRefObject<HTMLDivElement | null> // 滚动容器的 ref，用于监听滚动事件，默认是document.body
   offsetHeight?: number // 用于预渲染判断
   defaultState?: {
-    domsData: TDomsData
-    startIndex: number
-    scrollNum: number
+    domsData?: TDomsData
+    startIndex?: number
+    scrollNum?: number
   }
   onStateChange?: (defaultState: {
     domsData?: TDomsData

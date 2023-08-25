@@ -7,7 +7,7 @@ export const Container = (props: BoxProps) => {
         base: 'full',
         // lg: '',
         // xl: '',
-        xxl: '1320px',
+        xxl: '1440px',
       }}
       px={{
         lg: '12px',

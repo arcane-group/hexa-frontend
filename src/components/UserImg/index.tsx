@@ -1,7 +1,6 @@
-import { Avatar, type AvatarProps } from '@chakra-ui/react'
+import { Avatar, type AvatarProps, Image } from '@chakra-ui/react'
 
-// TODO: 待UI给一个图片
-// const defaultIcon = ''
+import defaultIcon from '@/assets/images/user-placeholder.jpg'
 
 export const UserImg = (props: AvatarProps) => {
   return (
@@ -12,7 +11,8 @@ export const UserImg = (props: AvatarProps) => {
       borderColor={'#155973'}
       borderWidth={'1px'}
       borderStyle={'solid'}
-      //   icon={defaultIcon}
+      overflow={'hidden'}
+      icon={<Image src={defaultIcon.src} alt='' w='100%' h='100%' />}
       {...props}
     ></Avatar>
   )

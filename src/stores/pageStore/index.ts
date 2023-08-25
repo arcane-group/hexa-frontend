@@ -2,19 +2,25 @@ import { makeObservable, action, observable } from 'mobx'
 
 import { Profile } from './Profile'
 import { Home } from './Home'
+import { NewsIndex } from './NewsIndex'
+import { NewsCategory } from './NewsCategory'
 
 // 全局页面路由设置
 export enum PAGEPATH {
   Profile = '/profile',
   Home = '/',
+  NewsIndex = '/news-feed',
+  NewsCategory = '/news-feed/category/[id]',
 }
 
 const PageClass = {
   [PAGEPATH.Profile]: Profile,
   [PAGEPATH.Home]: Home,
+  [PAGEPATH.NewsIndex]: NewsIndex,
+  [PAGEPATH.NewsCategory]: NewsCategory,
 }
 
-export type PageType = undefined | Profile | Home
+export type PageType = undefined | Profile | Home | NewsIndex | NewsCategory
 
 // 全局页面数据
 export default class PageStore {

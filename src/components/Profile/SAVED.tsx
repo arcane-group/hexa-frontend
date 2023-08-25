@@ -24,7 +24,7 @@ export const SAVED = () => {
     getSaved: finalData,
     getInfiniteScrollProps,
     setInfiniteScrollProps,
-  } = usePageStore<Profile>('') as any
+  } = usePageStore<Profile>('')
 
   const infiniteScrollResult = useInfiniteScroll(
     {
@@ -100,7 +100,7 @@ const Cell = memo(({ data }: any) => {
         if (!item) {
           return null
         }
-        return <NewsCard key={index} />
+        return <NewsCard key={index} data={item} />
       })}
     </Stack>
   )

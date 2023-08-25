@@ -1,12 +1,21 @@
 import { Flex, Box, type FlexProps, Text, Stack, AspectRatio, Image } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 
 import { LikeBtn } from './LikeBtn'
 import { CollectBtn } from './CollectBtn'
 import { UserImg } from '@/components/UserImg'
 import lineBgImg from '@/assets/svg/news/news-line.svg'
 import defaultImg from '@/assets/images/news/default.jpg'
+import { formatTime } from '@/utils/formatTime'
 
-export const NewsCard = ({ ...props }: FlexProps & {}) => {
+export const NewsCard = ({
+  data,
+  ...props
+}: FlexProps & {
+  data: any
+}) => {
+  const router = useRouter()
+
   return (
     <Flex
       flexDir={'column'}
@@ -16,6 +25,19 @@ export const NewsCard = ({ ...props }: FlexProps & {}) => {
       bgSize={'100% 100%'}
       bgColor={'transparent'}
       {...props}
+      className='hover'
+      _hover={{
+        bgColor: 'whiteAlpha.300',
+      }}
+      transition={'all 0.3s'}
+      onClick={() => {
+        router.push({
+          pathname: '/news-feed/sub-page',
+          query: {
+            id: data?.id,
+          },
+        })
+      }}
     >
       <Box px='22px' pt='30px' pb='20px'>
         <Text textStyle={'h2'} color='#000000' className='ellipsis'>
@@ -32,7 +54,7 @@ export const NewsCard = ({ ...props }: FlexProps & {}) => {
             className='ellipsis'
           >
             <Text className='ellipsis'>ellenellenellenellenellenellen</Text>
-            <Text className='ellipsis'>Date of publication</Text>
+            <Text className='ellipsis'>{formatTime(1692930902631)}</Text>
           </Stack>
         </Stack>
       </Box>
@@ -86,8 +108,8 @@ export const NewsCard = ({ ...props }: FlexProps & {}) => {
         </Stack>
 
         <Stack pos='absolute' bottom={'38px'} right={'21px'} direction='row' spacing={'25px'}>
-          <LikeBtn />
-          <CollectBtn />
+          <LikeBtn id={data?.id} />
+          <CollectBtn id={data?.id} />
         </Stack>
       </Box>
     </Flex>
