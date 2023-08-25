@@ -1,16 +1,16 @@
 import { useRouter } from 'next/router'
 import { observer } from 'mobx-react-lite'
 import { Stack } from '@chakra-ui/react'
-import { memo, useCallback } from 'react'
+import { memo, useCallback, useMemo } from 'react'
 
 import { useInitSetPageScroll, useInitPageScroll, usePageStore } from '@/hooks/usePageStore'
-import { GoSaved } from './index'
+import { GoSaved } from '@/components/News/index'
 import { Container } from '@/components/Container'
-import type { NewsCategory } from '@/stores/pageStore/NewsCategory'
+import type { LibraryCategory } from '@/stores/pageStore/LibraryCategory'
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
-import { getNewsCategoryList } from '@/services/news'
+import { getLibraryCategoryList } from '@/services/library'
 import { InfiniteVirtualScroll } from '../InfiniteVirtualScroll'
-import { NewsCard } from './Card'
+import { LibraryCard } from './Card'
 import { px2vw } from '@/utils/px2vw'
 
 const Category = observer(() => {
@@ -30,18 +30,38 @@ const Category = observer(() => {
 })
 export default Category
 
-const Rows = 10
-const Columns = 2
-const PAGE_SIZE = Rows * Columns // 需要是 4 的倍数
 const List = observer(({ id }: { id: string }) => {
   useInitPageScroll(id)
 
+  const { Rows, Columns, PAGE_SIZE } = useMemo(() => {
+    // 判断屏幕尺寸, 不做 resize 监听
+    const width = window.innerWidth
+    if (width >= 1440) {
+      return {
+        Rows: 6,
+        Columns: 4,
+        PAGE_SIZE: 6 * 4,
+      }
+    } else if (width >= 768) {
+      return {
+        Rows: 8,
+        Columns: 3,
+        PAGE_SIZE: 8 * 3,
+      }
+    }
+    return {
+      Rows: 24,
+      Columns: 1,
+      PAGE_SIZE: 24 * 1,
+    }
+  }, [])
+
   const {
-    setNews: setFinalData,
-    getNews: finalData,
+    setData: setFinalData,
+    getData: finalData,
     getInfiniteScrollProps,
     setInfiniteScrollProps,
-  } = usePageStore<NewsCategory>(id)
+  } = usePageStore<LibraryCategory>(id)
 
   const infiniteScrollResult = useInfiniteScroll(
     {
@@ -50,7 +70,7 @@ const List = observer(({ id }: { id: string }) => {
     },
     d => {
       const page = d ? Math.ceil(d.list.length / PAGE_SIZE) + 1 : 1
-      return getNewsCategoryList(page, PAGE_SIZE, id).then((res: any) => {
+      return getLibraryCategoryList(page, PAGE_SIZE, id).then((res: any) => {
         if (res?.data?.code >= 0) {
           const newL = (res.data?.data?.list as any[]) || []
           const list: any[] = []
@@ -75,7 +95,7 @@ const List = observer(({ id }: { id: string }) => {
     },
     {
       manual: finalData?.list?.length > 0,
-      reloadDeps: [setFinalData],
+      reloadDeps: [setFinalData, Columns, Rows],
       isNoMore: d => {
         return !(d && d.hasMore)
       },
@@ -90,7 +110,7 @@ const List = observer(({ id }: { id: string }) => {
     <InfiniteVirtualScroll
       infiniteScrollResult={infiniteScrollResult}
       pageSize={PAGE_SIZE}
-      renderPageSize={PAGE_SIZE / 2}
+      renderPageSize={PAGE_SIZE / Columns}
       itemKey={itemKey}
       defaultState={getInfiniteScrollProps}
       onStateChange={setInfiniteScrollProps}
@@ -107,12 +127,12 @@ const Cell = memo(({ data }: any) => {
   }
 
   return (
-    <Stack direction={'row'} spacing={'152px'} mb='40px' w='max-content' mx='auto'>
+    <Stack direction={'row'} spacing={'26px'} mb='22px' w='max-content' mx='auto'>
       {data?.map((item, index) => {
         if (!item) {
           return null
         }
-        return <NewsCard key={index} data={item} />
+        return <LibraryCard key={index} data={item} />
       })}
     </Stack>
   )

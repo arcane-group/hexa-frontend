@@ -86,6 +86,7 @@ export const LikeBtn = ({
       fontSize={'24px'}
       w='max-content'
       minW='max-content'
+      h='max-content'
       {...btnProps}
       alignItems={'center'}
       display={'flex'}

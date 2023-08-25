@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react'
-
 import dynamic from 'next/dynamic'
+
 import { DynamicLoading } from '@/components/Loading'
 
 const SubPage = dynamic(() => import('@/components/News/SubPage'), {

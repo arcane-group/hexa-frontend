@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 
 import { DynamicLoading } from '@/components/Loading'
 
-const Category = dynamic(() => import('@/components/News/Category'), {
+const Category = dynamic(() => import('@/components/Library/Category'), {
   ssr: false,
   loading: () => <DynamicLoading />,
 })
@@ -22,28 +22,36 @@ export default Page
 
 const pathCfg = [
   {
-    label: `NEWS ARTICLES`,
-    href: '/news-feed/category/1',
+    label: `FOUNDER’S EXCLUSIVE`,
+    href: '/library/category/[id]',
+    query: {
+      category: '1',
+    },
   },
   {
-    label: `BLOGS`,
-    href: '/news-feed/category/2',
+    label: `LABS`,
+    href: '/library/category/[id]',
+    query: {
+      category: '2',
+    },
   },
   {
-    label: `TRENDING TWEETS`,
-    href: '/news-feed/category/3',
-  },
-  {
-    label: `DEV GUIDES`,
-    href: '/news-feed/category/4',
+    label: `MARKET COMMENTARY`,
+    href: '/library/category/[id]',
+    query: {
+      category: '3',
+    },
   },
   {
     label: `PODCAST`,
-    href: '/news-feed/category/5',
+    href: '/library/category/[id]',
+    query: {
+      category: '4',
+    },
   },
 ].map(item => {
   return {
-    id: item.href.split('/').pop(),
+    id: item.query.category,
     ...item,
   }
 })

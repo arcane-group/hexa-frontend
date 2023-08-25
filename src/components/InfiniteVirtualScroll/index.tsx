@@ -1,4 +1,4 @@
-import { Box, Button, Center, Divider, type BoxProps } from '@chakra-ui/react'
+import { Box, Button, Center, type BoxProps } from '@chakra-ui/react'
 import {
   useState,
   useMemo,
@@ -274,7 +274,7 @@ export function InfiniteVirtualScroll<TData extends Data, T = any> ({
   }, [startIndex, domsData])
 
   return (
-    <Box {...reset} ref={boxRef}>
+    <Box className={'my-infinite-virtual-scroll'} {...reset} ref={boxRef}>
       {loading ? (
         <Center p='12px'>
           <Loading size='md' />
@@ -287,6 +287,7 @@ export function InfiniteVirtualScroll<TData extends Data, T = any> ({
             style={{
               minHeight: typeof minHeight === 'number' ? Math.max(0, minHeight) : undefined,
             }}
+            className={'my-infinite-virtual-scroll-main'}
             overflow={'hidden'}
           >
             {main}
@@ -372,9 +373,9 @@ const ListItem = ({
       style={{
         transform: `translateY(${typeof top !== 'undefined' ? top : -999}px)`,
       }}
+      className={'my-infinite-virtual-scroll-item'}
     >
       {children}
-      {/* <Divider borderColor={'#F3F3F3'} /> */}
     </MotionBox>
   )
 }

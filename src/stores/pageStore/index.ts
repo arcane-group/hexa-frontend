@@ -4,6 +4,9 @@ import { Profile } from './Profile'
 import { Home } from './Home'
 import { NewsIndex } from './NewsIndex'
 import { NewsCategory } from './NewsCategory'
+import { MemberIndex } from './MemberIndex'
+import { LibraryIndex } from './LibraryIndex'
+import { LibraryCategory } from './LibraryCategory'
 
 // 全局页面路由设置
 export enum PAGEPATH {
@@ -11,6 +14,9 @@ export enum PAGEPATH {
   Home = '/',
   NewsIndex = '/news-feed',
   NewsCategory = '/news-feed/category/[id]',
+  MemberIndex = '/members',
+  LibraryIndex = '/library',
+  LibraryCategory = '/library/category/[id]',
 }
 
 const PageClass = {
@@ -18,9 +24,20 @@ const PageClass = {
   [PAGEPATH.Home]: Home,
   [PAGEPATH.NewsIndex]: NewsIndex,
   [PAGEPATH.NewsCategory]: NewsCategory,
+  [PAGEPATH.MemberIndex]: MemberIndex,
+  [PAGEPATH.LibraryIndex]: LibraryIndex,
+  [PAGEPATH.LibraryCategory]: LibraryCategory,
 }
 
-export type PageType = undefined | Profile | Home | NewsIndex | NewsCategory
+export type PageType =
+  | undefined
+  | Profile
+  | Home
+  | NewsIndex
+  | NewsCategory
+  | MemberIndex
+  | LibraryIndex
+  | LibraryCategory
 
 // 全局页面数据
 export default class PageStore {

@@ -129,36 +129,33 @@ const Header = ({
       {
         label: t`LIBRARY`,
         href: '/library',
-        query: {
-          category: '1',
-        },
         children: [
           {
             label: t`FOUNDER’S EXCLUSIVE`,
-            href: '/library',
+            href: '/library/category/[id]',
             query: {
-              category: '1',
+              id: '1',
             },
           },
           {
             label: t`LABS`,
-            href: '/library',
+            href: '/library/category/[id]',
             query: {
-              category: '2',
+              id: '2',
             },
           },
           {
             label: t`MARKET COMMENTARY`,
-            href: '/library',
+            href: '/library/category/[id]',
             query: {
-              category: '3',
+              id: '3',
             },
           },
           {
             label: t`PODCAST`,
-            href: '/library',
+            href: '/library/category/[id]',
             query: {
-              category: '4',
+              id: '4',
             },
           },
         ],
@@ -423,6 +420,9 @@ const DesktopNav = memo(
           navs.map((navItem: NavItem, index) => {
             let isCur = navItem?.href ? router.pathname === navItem.href : false
             if (!isCur) {
+              isCur = router.pathname.includes(`${navItem.href}/`)
+            }
+            if (!isCur) {
               if (Array.isArray(navItem?.children) && navItem?.children.length > 0) {
                 for (let i = 0; i < navItem.children.length; i++) {
                   const item = navItem?.children[i]
@@ -632,6 +632,9 @@ const MobileNavItem = ({
   const hasChild: boolean = Array.isArray(children) && children.length > 0
 
   let isCur = href ? router.pathname === href : false
+  if (!isCur) {
+    isCur = router.pathname.includes(`${href}/`)
+  }
   if (!isCur) {
     if (Array.isArray(children) && children.length > 0) {
       for (let i = 0; i < children.length; i++) {
