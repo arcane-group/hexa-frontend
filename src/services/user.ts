@@ -3,7 +3,7 @@ import request from '@/utils/request'
 
 // ---------------------------- login ----------------------------
 
-// 用邮箱或者用户名登录
+// 用邮箱或者用户名登录 1
 export const login = async (username: string, password: string) => {
   return Promise.resolve({
     data: {
@@ -21,7 +21,7 @@ export const login = async (username: string, password: string) => {
   })
 }
 
-// 钱包签名登录
+// 钱包签名登录 1
 export const loginWithWallet = async (
   signature: string,
   address: `0x${string}`,
@@ -53,7 +53,7 @@ export const loginWithWallet = async (
   })
 }
 
-// 获取钱包待签名的消息
+// 获取钱包待签名的消息 1
 export const preLogin = async (address: `0x${string}`, chainId: number) => {
   return Promise.resolve({
     data: {
@@ -79,7 +79,7 @@ export const checkLogin = async () => {
   return await request.post('/web/check_token')
 }
 
-// 获取用户信息
+// 获取用户信息 1
 export const getUserInfo = async () => {
   return Promise.resolve({
     data: {
@@ -100,7 +100,7 @@ export const getUserInfo = async () => {
 
 // ---------------------------- register ----------------------------
 
-// 查询用户名是否可用
+// 查询用户名是否可用 1
 export const checkUsername = async (username: string) => {
   return Promise.resolve(username === 'kring')
 
@@ -117,7 +117,7 @@ export const checkUsername = async (username: string) => {
     })
 }
 
-// 查询邮箱是否可用
+// 查询邮箱是否可用 1
 export const checkEmail = async (email: string) => {
   return Promise.resolve(true)
 
@@ -134,7 +134,7 @@ export const checkEmail = async (email: string) => {
     })
 }
 
-// 注册账号
+// 注册账号 1
 export const register = async (username: string, email: string, password: string) => {
   return Promise.resolve({
     data: {
@@ -153,7 +153,7 @@ export const register = async (username: string, email: string, password: string
   })
 }
 
-// 验证邮箱中的链接（绑定到账户）
+// 验证邮箱中的链接（绑定到账户）1
 export const verifyEmail = async (code: string) => {
   return Promise.resolve({
     data: {
@@ -167,7 +167,7 @@ export const verifyEmail = async (code: string) => {
   })
 }
 
-// 忘记密码 通过邮箱发送邮件
+// 忘记密码 通过邮箱发送邮件 1
 export const forgotPasswordByEmail = async (email: string) => {
   return Promise.resolve({
     data: {
@@ -181,7 +181,7 @@ export const forgotPasswordByEmail = async (email: string) => {
   })
 }
 
-// reset password
+// reset password  1
 export const resetPassword = async (code: string, password: string) => {
   return Promise.resolve({
     data: {
@@ -210,7 +210,7 @@ export const sendVerifyEmail = async (email: string) => {
   })
 }
 
-// link email
+// link email 1
 export const linkEmail = async (username: string, email: string, password: string) => {
   return Promise.resolve({
     data: {
