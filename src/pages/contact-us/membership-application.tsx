@@ -4,13 +4,19 @@ import { t } from '@lingui/macro'
 
 import { Container } from '@/components/Sign/Container'
 import { ApplicationForm } from '@/components/ContactUs/Application'
+import px2vw from '@/utils/px2vw'
 
 const Page = () => {
   useLingui()
 
   return (
     <>
-      <Container spacing='52px'>
+      <Container
+        spacing={{
+          base: px2vw(20),
+          lg: '52px',
+        }}
+      >
         <Box w='100%' maxW='100%' pt='0px'>
           <Text
             textStyle={'ch2'}

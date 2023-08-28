@@ -65,7 +65,7 @@ export const EditAvatar = observer(() => {
   }, [isOpen])
 
   return (
-    <Center flexDir={'row'}>
+    <Center flexDir={'row'} w={{ base: '100%', lg: 'max-content' }}>
       {Modal}
       <Input
         ref={inputRef}
@@ -86,8 +86,17 @@ export const EditAvatar = observer(() => {
           }
         }}
       />
-      <Stack spacing={'20px'} direction={'row'} alignItems={'center'}>
-        <UserImg src={walletStore?.userExtInfo?.pic} w='120px' h='120px' />
+      <Stack
+        spacing={'20px'}
+        direction={'row'}
+        alignItems={'center'}
+        w={{ base: '100%', lg: 'max-content' }}
+      >
+        <UserImg
+          src={walletStore?.userExtInfo?.pic}
+          w={{ base: px2vw(84), lg: '120px' }}
+          h={{ base: px2vw(84), lg: '120px' }}
+        />
         <Box>
           <Box>
             <Button

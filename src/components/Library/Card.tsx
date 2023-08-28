@@ -4,6 +4,7 @@ import dayjs from 'dayjs'
 
 import { CollectBtn } from '@/components/News/CollectBtn'
 import defaultImg from '@/assets/images/news/default.jpg'
+import { px2vw } from '@/utils/px2vw'
 
 export const LibraryCard = ({
   data,
@@ -16,8 +17,8 @@ export const LibraryCard = ({
   return (
     <Flex
       flexDir={'column'}
-      w='300px'
-      h='570px'
+      w={{ base: '100%', lg: '300px' }}
+      h={{ lg: '570px' }}
       className='hover'
       {...props}
       onClick={() => {
@@ -47,7 +48,10 @@ export const LibraryCard = ({
         flex={1}
         px='16px'
         pt='21px'
-        pb='36px'
+        pb={{
+          base: px2vw(106),
+          lg: '36px',
+        }}
         bgGradient={'linear-gradient(164.72deg, #8AF7FC 0%, rgba(138, 247, 252, 0) 75.08%)'}
       >
         <Flex justifyContent={'space-between'}>
@@ -75,7 +79,7 @@ export const LibraryCard = ({
         </Flex>
         <Text
           color='#595959'
-          textStyle={'p'}
+          textStyle={{ base: 'smp', lg: 'p' }}
           sx={{
             overflow: 'hidden',
             textOverflow: 'ellipsis',
@@ -86,7 +90,10 @@ export const LibraryCard = ({
           overflow={'hidden'}
           textOverflow='ellipsis'
           display={'-webkit-box'}
-          h={`${16 * 1.5 * 2}px`}
+          h={{
+            base: px2vw(14 * 1.5 * 2),
+            lg: `${16 * 1.5 * 2}px`,
+          }}
         >
           Arcane welcomes the different, the trailblazers, the novel. If you have a growth mindset
           and deep，if you have Arcane welcomes the different, the trailblazers, the novel. If you
@@ -98,7 +105,7 @@ export const LibraryCard = ({
           the novel. If you have a growth mindset and deep，if you have Arcane welcomes the
           different, the trailblazers, the novel. If you have a growth mindset and deep，if you have
         </Text>
-        <Text color='#595959' textStyle={'p'} mt='12px'>
+        <Text color='#595959' textStyle={{ base: 'smp', lg: 'p' }} mt='12px'>
           {dayjs(1692864161725).format('YYYY-MM-DD HH:mm:ss')}
         </Text>
       </Box>

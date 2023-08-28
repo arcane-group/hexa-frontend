@@ -1,7 +1,7 @@
 import { Box, Stack, Text } from '@chakra-ui/react'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
-import { memo, useCallback } from 'react'
+import { memo, useCallback, useMemo } from 'react'
 
 import { useInitPageScroll } from '@/hooks/usePageStore'
 import { NewsCard } from '@/components/News/Card'
@@ -10,14 +10,30 @@ import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
 import { getMyCollectList } from '@/services/news'
 import { usePageStore } from '@/hooks/usePageStore'
 import type { Profile } from '@/stores/pageStore/Profile'
+import { observer } from 'mobx-react-lite'
+import px2vw from '@/utils/px2vw'
 
-const Rows = 10
-const Columns = 2
-const PAGE_SIZE = Rows * Columns // 需要是 4 的倍数
-export const SAVED = () => {
+export const SAVED = observer(() => {
   useLingui()
 
   useInitPageScroll(`saved`)
+
+  const { Rows, Columns, PAGE_SIZE } = useMemo(() => {
+    // 判断屏幕尺寸, 不做 resize 监听
+    const width = window.innerWidth
+    if (width >= 768) {
+      return {
+        Rows: 10,
+        Columns: 2,
+        PAGE_SIZE: 10 * 2,
+      }
+    }
+    return {
+      Rows: 20,
+      Columns: 1,
+      PAGE_SIZE: 20 * 1,
+    }
+  }, [])
 
   const {
     setSaved: setFinalData,
@@ -58,7 +74,7 @@ export const SAVED = () => {
     },
     {
       manual: finalData?.list?.length > 0,
-      reloadDeps: [setFinalData],
+      reloadDeps: [setFinalData, Columns, Rows],
       isNoMore: d => {
         return !(d && d.hasMore)
       },
@@ -70,13 +86,18 @@ export const SAVED = () => {
   }, [])
 
   return (
-    <Box w='max-content' m='auto'>
+    <Box w={{ base: '100%', lg: 'max-content' }} m='auto'>
       <Text textStyle={'ch2'} color='#000'>{t`SAVED`}</Text>
-      <Box mt='26px' minW={410 * 2 + 152}>
+      <Box
+        mt='26px'
+        minW={{
+          lg: 410 * 2 + 152,
+        }}
+      >
         <InfiniteVirtualScroll
           infiniteScrollResult={infiniteScrollResult}
           pageSize={PAGE_SIZE}
-          renderPageSize={PAGE_SIZE / 2}
+          renderPageSize={Rows}
           itemKey={itemKey}
           defaultState={getInfiniteScrollProps}
           onStateChange={setInfiniteScrollProps}
@@ -86,7 +107,7 @@ export const SAVED = () => {
       </Box>
     </Box>
   )
-}
+})
 
 // eslint-disable-next-line react/display-name
 const Cell = memo(({ data }: any) => {
@@ -95,7 +116,7 @@ const Cell = memo(({ data }: any) => {
   }
 
   return (
-    <Stack direction={'row'} spacing={'152px'} mb='75px'>
+    <Stack direction={'row'} spacing={{ lg: '152px' }} mb={{ base: px2vw(25), lg: '75px' }}>
       {data?.map((item, index) => {
         if (!item) {
           return null

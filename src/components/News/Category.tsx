@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { observer } from 'mobx-react-lite'
 import { Stack } from '@chakra-ui/react'
-import { memo, useCallback } from 'react'
+import { memo, useCallback, useMemo } from 'react'
 
 import { useInitSetPageScroll, useInitPageScroll, usePageStore } from '@/hooks/usePageStore'
 import { GoSaved } from './index'
@@ -22,7 +22,7 @@ const Category = observer(() => {
   useInitSetPageScroll()
 
   return (
-    <Container py='120px' pos='relative'>
+    <Container py={{ base: px2vw(70), lg: '120px' }} pos='relative'>
       <GoSaved right={{ base: px2vw(20), lg: '40px', xxl: '80px' }} />
       {idStr && <List id={idStr} />}
     </Container>
@@ -30,11 +30,25 @@ const Category = observer(() => {
 })
 export default Category
 
-const Rows = 10
-const Columns = 2
-const PAGE_SIZE = Rows * Columns // 需要是 4 的倍数
 const List = observer(({ id }: { id: string }) => {
   useInitPageScroll(id)
+
+  const { Rows, Columns, PAGE_SIZE } = useMemo(() => {
+    // 判断屏幕尺寸, 不做 resize 监听
+    const width = window.innerWidth
+    if (width >= 768) {
+      return {
+        Rows: 10,
+        Columns: 2,
+        PAGE_SIZE: 10 * 2,
+      }
+    }
+    return {
+      Rows: 20,
+      Columns: 1,
+      PAGE_SIZE: 20 * 1,
+    }
+  }, [])
 
   const {
     setNews: setFinalData,
@@ -75,7 +89,7 @@ const List = observer(({ id }: { id: string }) => {
     },
     {
       manual: finalData?.list?.length > 0,
-      reloadDeps: [setFinalData],
+      reloadDeps: [setFinalData, Columns, Rows],
       isNoMore: d => {
         return !(d && d.hasMore)
       },
@@ -90,7 +104,7 @@ const List = observer(({ id }: { id: string }) => {
     <InfiniteVirtualScroll
       infiniteScrollResult={infiniteScrollResult}
       pageSize={PAGE_SIZE}
-      renderPageSize={PAGE_SIZE / 2}
+      renderPageSize={Rows}
       itemKey={itemKey}
       defaultState={getInfiniteScrollProps}
       onStateChange={setInfiniteScrollProps}
@@ -107,7 +121,16 @@ const Cell = memo(({ data }: any) => {
   }
 
   return (
-    <Stack direction={'row'} spacing={'152px'} mb='40px' w='max-content' mx='auto'>
+    <Stack
+      direction={'row'}
+      spacing={'152px'}
+      mb='40px'
+      w={{
+        base: '100%',
+        lg: 'max-content',
+      }}
+      mx='auto'
+    >
       {data?.map((item, index) => {
         if (!item) {
           return null

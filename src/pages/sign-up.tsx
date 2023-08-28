@@ -8,7 +8,7 @@ const Page = () => {
   return (
     <>
       <Container>
-        <Box w='420px' maxW='100%' pt='0px'>
+        <Box w={{ lg: '420px' }} maxW='100%' pt='0px'>
           <SignUpForm />
           <OrLine />
           <ConnectWallet />

@@ -9,13 +9,14 @@ import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
 import { getMemberList } from '@/services/member'
 import { InfiniteVirtualScroll } from '../InfiniteVirtualScroll'
 import { MemberCard } from './Card'
+import px2vw from '@/utils/px2vw'
 
 // TODO： 待加判断，只有当用户有 SBT 权限时候才能访问
 const Members = observer(({ id }: { id: string }) => {
   useInitSetPageScroll()
 
   return (
-    <Container py='120px' pos='relative'>
+    <Container py={{ base: px2vw(20), lg: '120px' }} pos='relative'>
       <List id={id} />
     </Container>
   )
@@ -119,7 +120,13 @@ const Cell = memo(({ data }: any) => {
   }
 
   return (
-    <Stack direction={'row'} spacing={'26px'} mb='22px' w='max-content' mx='auto'>
+    <Stack
+      direction={'row'}
+      spacing={'26px'}
+      mb='22px'
+      w={{ base: '100%', lg: 'max-content' }}
+      mx='auto'
+    >
       {data?.map((item, index) => {
         if (!item) {
           return null

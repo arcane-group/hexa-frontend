@@ -9,6 +9,7 @@ import { TextInput } from '@/components/Form/Input'
 import { FormControl } from '@/components/Form/FormControl'
 import { Container, CountdownButton } from '@/components/Sign/Container'
 import { forgotPasswordByEmail } from '@/services/user'
+import px2vw from '@/utils/px2vw'
 
 const Page = () => {
   useLingui()
@@ -17,12 +18,12 @@ const Page = () => {
     <>
       <Container>
         <Text
-          w='80%'
+          w={{ lg: '80%' }}
           as='h2'
           textStyle={'ch2'}
           color='#000'
         >{t`Forgot your password? Please enter your email below to receive a password reset link.`}</Text>
-        <Box w='420px' maxW='100%' mt='30px'>
+        <Box w={{ lg: '420px' }} maxW='100%' mt={{ base: px2vw(30), lg: '30px' }}>
           <ForgotForm />
         </Box>
       </Container>

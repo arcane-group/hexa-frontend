@@ -21,7 +21,14 @@ const Page = () => {
   return (
     <>
       <Container>
-        <Center flexDir={'column'} minH='100%' h='max-content' w='80%'>
+        <Center
+          flexDir={'column'}
+          minH='100%'
+          h='max-content'
+          w={{
+            lg: '80%',
+          }}
+        >
           <Text as='h2' textStyle={'ch1'} color='#000'>{t`Verify your email address`}</Text>
           <Text textStyle={'ch2'} color='#595959'>
             {t`you have entered ${email} as the email address for your Hexa account, please verify the email by clicking the below.`}

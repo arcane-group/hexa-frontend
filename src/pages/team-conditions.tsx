@@ -3,6 +3,7 @@ import { useLingui } from '@lingui/react'
 import { useMemo } from 'react'
 
 import { Container } from '@/components/Container'
+import px2vw from '@/utils/px2vw'
 
 const Page = () => {
   const { i18n } = useLingui()
@@ -159,7 +160,16 @@ const Page = () => {
 
   return (
     <>
-      <Box as='main' minH='100vh' color='#000' py='120px' textStyle={'csmp'}>
+      <Box
+        as='main'
+        minH='100vh'
+        color='#000'
+        py={{
+          base: px2vw(20),
+          lg: '120px',
+        }}
+        textStyle={'csmp'}
+      >
         <Container maxW='1060px'>{main}</Container>
       </Box>
     </>

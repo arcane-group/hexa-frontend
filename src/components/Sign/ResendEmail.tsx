@@ -16,7 +16,7 @@ export const ResendEmail = () => {
   const emailStr = Array.isArray(email) ? email[0] : email
 
   return (
-    <Center flexDir={'column'} minH='100%' h='max-content' w='80%'>
+    <Center flexDir={'column'} minH='100%' h='max-content' w={{ lg: '80%' }}>
       <Text textStyle={'ch2'} color='#000'>
         {t`We have sent a verification link to ${
           emailStr || '--'

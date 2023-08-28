@@ -11,6 +11,7 @@ import {
 
 import { Container as ContainerBox } from '@/components/Container'
 import { LineButton } from '@/components/LineButton'
+import px2vw from '@/utils/px2vw'
 // import { px2vw } from '@/utils/px2vw'
 
 // // 0 未注册 1 注册成功但未验证邮箱 2 注册并已经验证邮件
@@ -64,17 +65,47 @@ export const Container = ({ spacing, children }: { spacing?: any; children: Reac
     //     setRegisterState,
     //   }}
     // >
-    <ContainerBox as='main' minH={'100vh'} pt={'45px'} pb='114px'>
-      <Stack direction={'row'} spacing={spacing || '143px'}>
+    <ContainerBox
+      as='main'
+      minH={'100vh'}
+      pt={{
+        base: px2vw(20),
+        lg: '45px',
+      }}
+      pb='114px'
+    >
+      <Stack
+        direction={{
+          base: 'column',
+          lg: 'row',
+        }}
+        spacing={
+          spacing || {
+            base: px2vw(20),
+            lg: '143px',
+          }
+        }
+      >
         <Box
-          w='320px'
-          h='743px'
+          w={{
+            base: '100%',
+            lg: '320px',
+          }}
+          h={{
+            base: px2vw(100),
+            lg: '743px',
+          }}
           border='3px solid #1ECADC'
           bgGradient='linear(164.72deg, #8AF7FC 1.21%, transparent 75.08%)'
         >
           <Image src='' alt='' w='100%' h='100%' />
         </Box>
-        <Box flex={1} w={0}>
+        <Box
+          flex={1}
+          w={{
+            lg: 0,
+          }}
+        >
           {/* {main} */}
           {children}
         </Box>

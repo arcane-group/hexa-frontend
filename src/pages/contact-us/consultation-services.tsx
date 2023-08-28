@@ -5,14 +5,20 @@ import { t } from '@lingui/macro'
 
 import { Container } from '@/components/Sign/Container'
 import { SupportForm } from '@/components/ContactUs/Support'
+import px2vw from '@/utils/px2vw'
 
 const Page = () => {
   useLingui()
 
   return (
     <>
-      <Container spacing='52px'>
-        <Box maxW='100%' pt='40px'>
+      <Container
+        spacing={{
+          base: px2vw(20),
+          lg: '52px',
+        }}
+      >
+        <Box maxW='100%' pt={{ lg: '40px' }}>
           <Text
             textStyle={'ch2'}
             color='#000000'

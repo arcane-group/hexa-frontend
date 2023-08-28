@@ -88,6 +88,11 @@ export const LikeBtn = ({
       minW='max-content'
       h='max-content'
       {...btnProps}
+      sx={{
+        '.chakra-button__icon': {
+          mr: '0px',
+        },
+      }}
       alignItems={'center'}
       display={'flex'}
       onClick={async e => {

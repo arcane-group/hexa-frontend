@@ -66,7 +66,7 @@ export const CropperModal = ({
       px='12px'
       margin='auto'
     >
-      <Center overflow={'hidden'} mb={{ base: px2vw(40), lg: '30px' }} w='100%' flex={1}>
+      <Center overflow={'hidden'} mb={{ base: px2vw(0), lg: '30px' }} w='100%' flex={1}>
         <Cropper
           src={data}
           dragMode='move'
@@ -80,13 +80,13 @@ export const CropperModal = ({
         />
       </Center>
       <Stack
-        spacing={{ base: px2vw(40), lg: '20px' }}
+        spacing={{ base: px2vw(20), lg: '20px' }}
         direction={{ base: 'column', lg: 'row' }}
         justifyContent={'center'}
         alignItems={'center'}
         mt='12px'
       >
-        <HStack spacing={{ base: px2vw(40), lg: '12px' }}>
+        <HStack spacing={{ base: px2vw(20), lg: '12px' }}>
           <Button onClick={onReset} variant='ghost' size={'sm'}>{t`Reset`}</Button>
           <Button onClick={onRotate} variant='ghost' size={'sm'}>{t`Rotate 15`}</Button>
           <Button onClick={onScale} variant='ghost' size={'sm'}>{t`Scale`}</Button>

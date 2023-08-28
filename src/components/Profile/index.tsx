@@ -10,6 +10,7 @@ import { useStore } from '@/stores'
 import { UserImg } from '@/components/UserImg'
 import { SAVED } from './SAVED'
 import { useInitSetPageScroll } from '@/hooks/usePageStore'
+import px2vw from '@/utils/px2vw'
 
 const Profile = () => {
   useLingui()
@@ -22,11 +23,34 @@ const Profile = () => {
 
   return (
     <VerifyLogin>
-      <Box py='110px'>
-        <Center flexDir={'row'} pb='24px'>
-          <Stack spacing={'20px'} direction={'row'} alignItems={'center'}>
-            <UserImg src={walletStore?.userExtInfo?.pic} w='120px' h='120px' />
-            <Box>
+      <Box
+        py={{
+          base: px2vw(20),
+          lg: '110px',
+        }}
+        px={{
+          base: px2vw(20),
+          lg: 0,
+        }}
+      >
+        <Center flexDir={'row'} pb='24px' w={{ base: '100%', lg: 'max-content' }}>
+          <Stack
+            spacing={'20px'}
+            direction={'row'}
+            alignItems={'center'}
+            w={{ base: '100%', lg: 'max-content' }}
+          >
+            <UserImg
+              src={walletStore?.userExtInfo?.pic}
+              w={{ base: px2vw(84), lg: '120px' }}
+              h={{ base: px2vw(84), lg: '120px' }}
+            />
+            <Box
+              flex={{
+                base: 1,
+                lg: undefined,
+              }}
+            >
               {walletStore?.userExtInfo?.name && (
                 <Box textStyle={'ch1'} color='#000000'>
                   {walletStore?.userExtInfo?.name}

@@ -12,7 +12,7 @@ const Page = () => {
       <Container>
         <NoSSR>
           <VerifyLogin>
-            <Box w='420px' maxW='100%' pt='80px'>
+            <Box w={{ lg: '420px' }} maxW='100%' pt={{ lg: '80px' }}>
               <ConnectWallet isLinkWallet />
             </Box>
           </VerifyLogin>

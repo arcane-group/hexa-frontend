@@ -15,7 +15,7 @@ import { AsyncSelect } from '@/components/Form/AsyncSelect'
 import { TextTextarea } from '@/components/Form/Textarea'
 
 // TODO: pop text
-// Oops! Looks like you are already a member. 
+// Oops! Looks like you are already a member.
 // Thank you for your application! We will contact you shortly for the next steps.
 const ensRegExp = /^[a-z0-9-]+\.eth$/i
 export const ApplicationForm = () => {
@@ -126,7 +126,13 @@ export const ApplicationForm = () => {
           setSubmitting(false)
         }}
       >
-        <Stack direction={'column'} spacing={'20px'} w='420px'>
+        <Stack
+          direction={'column'}
+          spacing={'20px'}
+          w={{
+            lg: '420px',
+          }}
+        >
           <FormControl name='name' label={t`Name`}>
             <TextInput name='name' />
           </FormControl>

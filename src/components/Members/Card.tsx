@@ -1,6 +1,7 @@
 import { Flex, Box, type FlexProps, Text, AspectRatio, Image } from '@chakra-ui/react'
 
 import defaultImg from '@/assets/images/news/default.jpg'
+import px2vw from '@/utils/px2vw'
 
 export const MemberCard = ({
   data,
@@ -9,7 +10,7 @@ export const MemberCard = ({
   data: any
 }) => {
   return (
-    <Flex flexDir={'column'} w='300px' h='570px' {...props}>
+    <Flex flexDir={'column'} w={{ base: '100%', lg: '300px' }} h={{ lg: '570px' }} {...props}>
       <AspectRatio maxW='100%' ratio={300 / 254}>
         <Image
           src={''}
@@ -27,7 +28,10 @@ export const MemberCard = ({
         flex={1}
         px='16px'
         pt='21px'
-        pb='36px'
+        pb={{
+          base: px2vw(106),
+          lg: '36px',
+        }}
         bgGradient={'linear-gradient(164.72deg, #8AF7FC 0%, rgba(138, 247, 252, 0) 75.08%)'}
       >
         <Text
@@ -49,7 +53,7 @@ export const MemberCard = ({
         </Text>
         <Text
           color='#595959'
-          textStyle={'p'}
+          textStyle={{ base: 'smp', lg: 'p' }}
           sx={{
             overflow: 'hidden',
             textOverflow: 'ellipsis',
@@ -60,7 +64,10 @@ export const MemberCard = ({
           overflow={'hidden'}
           textOverflow='ellipsis'
           display={'-webkit-box'}
-          h={`${16 * 1.5 * 2}px`}
+          h={{
+            base: px2vw(14 * 1.5 * 2),
+            lg: `${16 * 1.5 * 2}px`,
+          }}
         >
           Arcane welcomes the different, the trailblazers, the novel. If you have a growth mindset
           and deep，if you have Arcane welcomes the different, the trailblazers, the novel. If you
@@ -72,13 +79,13 @@ export const MemberCard = ({
           the novel. If you have a growth mindset and deep，if you have Arcane welcomes the
           different, the trailblazers, the novel. If you have a growth mindset and deep，if you have
         </Text>
-        <Text color='#595959' textStyle={'p'} className='ellipsis'>
+        <Text color='#595959' textStyle={{ base: 'smp', lg: 'p' }} className='ellipsis'>
           Product/Service Info
         </Text>
-        <Text color='#595959' textStyle={'p'} className='ellipsis'>
+        <Text color='#595959' textStyle={{ base: 'smp', lg: 'p' }} className='ellipsis'>
           Services available for Hexa Hub members
         </Text>
-        <Text color='#595959' textStyle={'p'} className='ellipsis'>
+        <Text color='#595959' textStyle={{ base: 'smp', lg: 'p' }} className='ellipsis'>
           Discord ID
         </Text>
       </Box>

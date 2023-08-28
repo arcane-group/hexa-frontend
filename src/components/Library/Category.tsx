@@ -22,7 +22,7 @@ const Category = observer(() => {
   useInitSetPageScroll()
 
   return (
-    <Container py='120px' pos='relative'>
+    <Container py={{ base: px2vw(70), lg: '120px' }} pos='relative'>
       <GoSaved right={{ base: px2vw(20), lg: '40px', xxl: '80px' }} />
       {idStr && <List id={idStr} />}
     </Container>
@@ -127,7 +127,16 @@ const Cell = memo(({ data }: any) => {
   }
 
   return (
-    <Stack direction={'row'} spacing={'26px'} mb='22px' w='max-content' mx='auto'>
+    <Stack
+      direction={'row'}
+      spacing={'26px'}
+      mb='22px'
+      w={{
+        base: '100%',
+        lg: 'max-content',
+      }}
+      mx='auto'
+    >
       {data?.map((item, index) => {
         if (!item) {
           return null

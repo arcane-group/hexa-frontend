@@ -21,6 +21,8 @@ import { Container } from '@/components/Container'
 import savedImg from '@/assets/svg/news/saved-icon.svg'
 import { usePageStore } from '@/hooks/usePageStore'
 import type { NewsIndex } from '@/stores/pageStore/NewsIndex'
+import px2vw from '@/utils/px2vw'
+import { useStore } from '@/stores'
 
 export const GoSaved = (reset: StackProps) => {
   useLingui()
@@ -32,8 +34,14 @@ export const GoSaved = (reset: StackProps) => {
       direction={'row'}
       spacing={'6px'}
       pos='absolute'
-      right={0}
-      top='44px'
+      right={{
+        base: px2vw(20),
+        lg: 0,
+      }}
+      top={{
+        base: px2vw(20),
+        lg: '44px',
+      }}
       alignItems={'center'}
       className='hover'
       onClick={() => {
@@ -65,6 +73,10 @@ const HotTopic = () => {
       alignItems={'center'}
       px='23px'
       py='36px'
+      display={{
+        base: 'none',
+        lg: 'flex',
+      }}
     >
       <Box
         pos='absolute'
@@ -104,10 +116,12 @@ export const News = observer(() => {
 
   useInitSetPageScroll()
 
-  // const [index, setIndex] = useState(0)
+  const {
+    commonStore: { isPC },
+  } = useStore()
 
   return (
-    <Container py='119px' maxW='1117px' pos='relative'>
+    <Container py={{ base: px2vw(70), lg: '119px' }} maxW='1117px' pos='relative'>
       <GoSaved />
       <HotTopic />
       <MotionCenter
@@ -127,8 +141,14 @@ export const News = observer(() => {
           <Text textStyle={'ch1'}>{t`TRENDING`}</Text>
         </Box>
         <Box
-          w='1240px'
-          mt='235px'
+          w={{
+            base: '100%',
+            lg: '1240px',
+          }}
+          mt={{
+            base: px2vw(28),
+            lg: '235px',
+          }}
           sx={{
             '.swiper': {
               width: '100%',
@@ -136,26 +156,28 @@ export const News = observer(() => {
               overflow: 'visible',
             },
             '.news-swiper-slide': {
-              width: '306px',
-              height: '570px',
-              _hover: {
-                zIndex: '9 !important',
+              base: {
+                width: '100%',
+                height: '100%',
+              },
+              lg: {
+                width: '306px',
+                height: '570px',
+                _hover: {
+                  zIndex: '9 !important',
+                },
               },
             },
           }}
         >
           <Swiper
-            // initialSlide={index}
-            // onSlideChange={swiper => {
-            //   setIndex(swiper?.realIndex)
-            // }}
             effect={'coverflow'}
             centeredSlides
             centeredSlidesBounds
             centerInsufficientSlides
             grabCursor={false}
-            slidesPerView={4}
-            modules={[EffectCoverflow]}
+            slidesPerView={isPC ? 4 : 1.2}
+            modules={isPC ? [EffectCoverflow] : undefined}
           >
             {/* TODO: data 必须是偶数 */}
             {[1, 2, 3, 4].map(item => {
@@ -180,7 +202,7 @@ export const News = observer(() => {
           },
         }}
         flexDir={'column'}
-        mt='44px'
+        mt={{ base: px2vw(44), lg: '44px' }}
       >
         <Box w='100%'>
           <Text textStyle={'ch1'}>{t`LATEST`}</Text>
@@ -214,7 +236,13 @@ const CategoryCard = ({ data }: { data: any }) => {
         }}
         overflow={'hidden'}
       >
-        <AspectRatio w='100%' ratio={306 / 255}>
+        <AspectRatio
+          w='100%'
+          ratio={{
+            base: 250 / 254,
+            lg: 306 / 255,
+          }}
+        >
           <Image
             src='https://swiperjs.com/demos/images/nature-1.jpg'
             alt=''
@@ -233,12 +261,12 @@ const CategoryCard = ({ data }: { data: any }) => {
         py='26px'
         bgGradient={'linear-gradient(164.72deg, #8AF7FC 20%, rgba(138, 247, 252, 0) 75.08%)'}
       >
-        <Text textStyle={'h1'} color='#1D1D1D'>
+        <Text textStyle={{ base: 'h2', lg: 'h1' }} color='#1D1D1D'>
           MEMBER TITLE - {data}
         </Text>
         <Text
           color='#595959'
-          textStyle={'p'}
+          textStyle={{ base: 'smp', lg: 'p' }}
           sx={{
             overflow: 'hidden',
             textOverflow: 'ellipsis',
@@ -249,7 +277,10 @@ const CategoryCard = ({ data }: { data: any }) => {
           overflow={'hidden'}
           textOverflow='ellipsis'
           display={'-webkit-box'}
-          h={`${16 * 1.5 * 3}px`}
+          h={{
+            base: px2vw(14 * 1.5 * 3),
+            lg: `${16 * 1.5 * 3}px`,
+          }}
           my='14px'
         >
           Arcane welcomes the different, the trailblazers, the novel. If you have a growth mindset

@@ -5,6 +5,7 @@ import { LikeBtn } from './LikeBtn'
 import { CollectBtn } from './CollectBtn'
 import { formatTime } from '@/utils/formatTime'
 import { UserImg } from '@/components/UserImg'
+import px2vw from '@/utils/px2vw'
 
 export const NewsItem = ({ data }: { data: any }) => {
   const router = useRouter()
@@ -26,8 +27,28 @@ export const NewsItem = ({ data }: { data: any }) => {
         })
       }}
     >
-      <Center justifyContent={'space-between'}>
-        <Text color='#000000' textStyle={'cp'}>
+      <Center
+        justifyContent={'space-between'}
+        flexDir={{
+          base: 'column-reverse',
+          lg: 'row',
+        }}
+        alignItems={{
+          base: 'flex-start',
+          lg: 'center',
+        }}
+      >
+        <Text
+          color='#000000'
+          textStyle={{
+            base: 'h2',
+            lg: 'cp',
+          }}
+          mt={{
+            base: px2vw(20),
+            lg: '0',
+          }}
+        >
           TITLE OF DEV GUIDE
         </Text>
         <Stack direction={'row'} spacing={'15px'} alignItems={'center'}>
@@ -46,7 +67,10 @@ export const NewsItem = ({ data }: { data: any }) => {
       </Center>
       <Box
         mt='7px'
-        textStyle={'h2'}
+        textStyle={{
+          base: 'p',
+          lg: 'h2',
+        }}
         color='#595959'
         sx={{
           overflow: 'hidden',
@@ -58,7 +82,10 @@ export const NewsItem = ({ data }: { data: any }) => {
         overflow={'hidden'}
         textOverflow='ellipsis'
         display={'-webkit-box'}
-        maxH={`${22 * 1.5 * 2}px`}
+        maxH={{
+          base: `${18 * 1.5 * 2}px`,
+          lg: `${22 * 1.5 * 2}px`,
+        }}
       >
         At Hexa Hub, we are looking for leaders within the emerging tech landscape. Whether you are
         a project, an investor,At Hexa Hub, we are looking for leaders within the emerging tech
@@ -84,7 +111,7 @@ export const NewsItem = ({ data }: { data: any }) => {
       </Center>
       <Box
         m='auto'
-        mt='50px'
+        mt={{ base: '20px', lg: '50px' }}
         borderColor={'gray.200'}
         borderWidth={'1px'}
         borderStyle={'solid'}

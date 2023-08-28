@@ -4,9 +4,9 @@ import { useRouter } from 'next/router'
 import { LikeBtn } from './LikeBtn'
 import { CollectBtn } from './CollectBtn'
 import { UserImg } from '@/components/UserImg'
-import lineBgImg from '@/assets/svg/news/news-line.svg'
 import defaultImg from '@/assets/images/news/default.jpg'
 import { formatTime } from '@/utils/formatTime'
+import px2vw from '@/utils/px2vw'
 
 export const NewsCard = ({
   data,
@@ -18,13 +18,41 @@ export const NewsCard = ({
 
   return (
     <Flex
+      pos='relative'
       flexDir={'column'}
-      w='410px'
-      h='720px'
-      bgImage={lineBgImg.src}
-      bgSize={'100% 100%'}
-      bgColor={'transparent'}
+      w={{ base: '100%', lg: '410px' }}
+      h={{ lg: '720px' }}
       {...props}
+      _before={{
+        userSelect: 'none',
+        pointerEvents: 'none',
+        display: 'block',
+        pos: 'absolute',
+        zIndex: 0,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        content: '""',
+        border: '2px solid',
+        borderImageSource: 'linear-gradient(135deg, #1ECADC 0.8%, rgba(17, 71, 92, 0) 33.6%)',
+        borderImageSlice: 1,
+      }}
+      _after={{
+        userSelect: 'none',
+        pointerEvents: 'none',
+        display: 'block',
+        pos: 'absolute',
+        zIndex: 0,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        content: '""',
+        border: '2px solid',
+        borderImageSource: 'linear-gradient(-45deg, #1ECADC 18.93%, rgba(21, 89, 115, 0) 27.54%)',
+        borderImageSlice: 1,
+      }}
       className='hover'
       _hover={{
         bgColor: 'whiteAlpha.300',
@@ -66,7 +94,10 @@ export const NewsCard = ({
         flex={1}
         px='25px'
         pt='22px'
-        pb='36px'
+        pb={{
+          base: px2vw(106),
+          lg: '36px',
+        }}
         bgGradient={'linear-gradient(164.72deg, #8AF7FC 0%, rgba(138, 247, 252, 0) 75.08%)'}
       >
         <Text textStyle={'h2'} color='#000000' className='ellipsis'>
@@ -74,7 +105,7 @@ export const NewsCard = ({
         </Text>
         <Text
           color='#595959'
-          textStyle={'p'}
+          textStyle={{ base: 'smp', lg: 'p' }}
           sx={{
             overflow: 'hidden',
             textOverflow: 'ellipsis',
@@ -85,7 +116,10 @@ export const NewsCard = ({
           overflow={'hidden'}
           textOverflow='ellipsis'
           display={'-webkit-box'}
-          h={`${16 * 1.5 * 5}px`}
+          h={{
+            base: px2vw(14 * 1.5 * 5),
+            lg: `${16 * 1.5 * 5}px`,
+          }}
         >
           Arcane welcomes the different, the trailblazers, the novel. If you have a growth mindset
           and deep，if you have Arcane welcomes the different, the trailblazers, the novel. If you

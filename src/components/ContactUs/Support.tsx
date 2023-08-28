@@ -101,7 +101,7 @@ export const SupportForm = () => {
           setSubmitting(false)
         }}
       >
-        <Stack direction={'column'} spacing={'20px'} w='420px'>
+        <Stack direction={'column'} spacing={'20px'} w={{ lg: '420px' }}>
           <FormControl name='name' label={t`Name`}>
             <TextInput name='name' />
           </FormControl>

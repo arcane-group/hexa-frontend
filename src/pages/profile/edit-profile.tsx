@@ -1,6 +1,7 @@
 import { Box, Text } from '@chakra-ui/react'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
+import { observer } from 'mobx-react-lite'
 
 import { EditAvatar } from '@/components/Profile/EditAvatar'
 import { EditName } from '@/components/Profile/EditName'
@@ -8,7 +9,7 @@ import { EditPsd } from '@/components/Profile/EditPsd'
 import { VerifyLogin } from '@/components/Layout/VerifyLogin'
 import { NoSSR } from '@/components/NoSSRWrapper'
 import { useStore } from '@/stores'
-import { observer } from 'mobx-react-lite'
+import { px2vw } from '@/utils/px2vw'
 
 const Info = observer(() => {
   const { walletStore } = useStore()
@@ -41,7 +42,20 @@ const Page = () => {
     <>
       <NoSSR>
         <VerifyLogin>
-          <Box w='426px' minH='100vh' maxW='100%' m='auto' py='126px'>
+          <Box
+            w={{ lg: '426px' }}
+            minH='100vh'
+            maxW='100%'
+            m='auto'
+            py={{
+              base: px2vw(30),
+              lg: '126px',
+            }}
+            px={{
+              base: px2vw(20),
+              lg: 0,
+            }}
+          >
             <EditAvatar />
             <Info />
           </Box>

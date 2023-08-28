@@ -77,12 +77,13 @@ function ModalView<TData> ({
         pos='absolute'
         left={{ base: '0', lg: 'auto' }}
         bottom={{ base: '0', lg: 'auto' }}
-        w={{ base: px2vw(750), lg: '400px' }}
-        minW={{ base: px2vw(750), lg: '400px' }}
-        maxW={{ base: px2vw(750), lg: '400px' }}
+        w={{ base: px2vw(375), lg: '400px' }}
+        minW={{ base: px2vw(375), lg: '400px' }}
+        maxW={{ base: px2vw(375), lg: '400px' }}
         maxH='100vh'
         bgSize='100% 100%'
         p={0}
+        borderRadius={0}
         {...contentProps}
       >
         {title && (
@@ -90,9 +91,9 @@ function ModalView<TData> ({
             textStyle={'h2'}
             fontWeight='bold'
             color='#000000'
-            px={{ base: px2vw(64), lg: '27px' }}
-            pt={{ base: px2vw(48), lg: '24px' }}
-            pb={{ base: px2vw(32), lg: '16px' }}
+            px={{ base: px2vw(32), lg: '27px' }}
+            pt={{ base: px2vw(24), lg: '24px' }}
+            pb={{ base: px2vw(16), lg: '16px' }}
             borderStyle='solid'
             borderBottomWidth={'1px'}
             // borderColor='blackAlpha.200'
@@ -104,10 +105,10 @@ function ModalView<TData> ({
         {hasCloseBtn && (
           <ModalCloseButton
             zIndex={2}
-            top={{ base: px2vw(48), lg: '20px' }}
-            right={{ base: px2vw(48), lg: '20px' }}
-            w={{ base: px2vw(48), lg: '32px' }}
-            h={{ base: px2vw(48), lg: '32px' }}
+            top={{ base: px2vw(24), lg: '20px' }}
+            right={{ base: px2vw(24), lg: '20px' }}
+            w={{ base: px2vw(24), lg: '32px' }}
+            h={{ base: px2vw(24), lg: '32px' }}
           />
         )}
         {/* scrollBehavior="inside" 时候 overflow="auto"， 会导致隐藏内容区 */}

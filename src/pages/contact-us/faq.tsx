@@ -5,6 +5,7 @@ import { Link } from '@chakra-ui/next-js'
 import { useMemo } from 'react'
 
 import { Container } from '@/components/Sign/Container'
+import px2vw from '@/utils/px2vw'
 
 const Page = () => {
   const { i18n } = useLingui()
@@ -102,7 +103,12 @@ const Page = () => {
 
   return (
     <>
-      <Container spacing='52px'>
+      <Container
+        spacing={{
+          base: px2vw(20),
+          lg: '52px',
+        }}
+      >
         <Box maxW='100%' pt='0px'>
           <Text textStyle={'ch2'} color='#000000' mb='20px' fontWeight={700}>{t`FAQs`}</Text>
           <Box
@@ -111,7 +117,10 @@ const Page = () => {
                 base: 1,
                 lg: 2,
               },
-              columnGap: '64px',
+              columnGap: {
+                base: px2vw(26),
+                lg: '64px',
+              },
               counterReset: 'count',
             }}
           >
@@ -123,7 +132,13 @@ const Page = () => {
                   pageBreakInside: 'avoid',
                 }}
               >
-                <Text textStyle={'csmp'} color='#000'>
+                <Text
+                  textStyle={{
+                    base: 'p',
+                    lg: 'csmp',
+                  }}
+                  color='#000'
+                >
                   {item?.title}
                 </Text>
                 <Box

@@ -20,6 +20,8 @@ import { MotionCenter } from '@/components/Motion'
 import { usePageStore } from '@/hooks/usePageStore'
 import { CollectBtn } from '@/components/News/CollectBtn'
 import type { LibraryIndex } from '@/stores/pageStore/LibraryIndex'
+import px2vw from '@/utils/px2vw'
+import { useStore } from '@/stores'
 
 // TODO： 待加判断，只有当用户有 SBT 权限时候才能访问
 const Library = observer(() => {
@@ -27,10 +29,19 @@ const Library = observer(() => {
 
   useInitSetPageScroll()
 
+  const {
+    commonStore: { isPC },
+  } = useStore()
+
   const router = useRouter()
 
   return (
-    <Container py='119px' maxW='1117px' pos='relative'>
+    <Container
+      py={{ base: px2vw(70), lg: '119px' }}
+      maxW='1117px'
+      pos='relative'
+      overflow={'hidden'}
+    >
       <GoSaved />
 
       <MotionCenter
@@ -54,24 +65,22 @@ const Library = observer(() => {
               height: '100%',
               overflow: 'visible',
             },
-            '.news-swiper-slide': {
+            '.library-swiper-slide': {
               width: '100%',
               height: '100%',
             },
           }}
         >
           <Swiper
-            effect={'coverflow'}
             centeredSlides
             centeredSlidesBounds
             centerInsufficientSlides
             grabCursor={false}
-            slidesPerView={4}
+            slidesPerView={isPC ? 4 : 1.1}
           >
-            {/* TODO: data 必须是偶数 */}
             {[1, 2, 3, 4].map(item => {
               return (
-                <SwiperSlide key={item} className='news-swiper-slide'>
+                <SwiperSlide key={item} className='library-swiper-slide'>
                   <CategoryCard data={item} />
                 </SwiperSlide>
               )
@@ -91,12 +100,15 @@ const Library = observer(() => {
             opacity: 1,
           },
         }}
-        flexDir={'row'}
-        mt='200px'
+        flexDir={{
+          base: 'column',
+          lg: 'row',
+        }}
+        mt={{ base: px2vw(80), lg: '200px' }}
       >
         <Box
-          w='520px'
-          h='520px'
+          w={{ base: px2vw(320), lg: '520px' }}
+          h={{ base: px2vw(320), lg: '520px' }}
           bgGradient={'linear-gradient(164.72deg, #8AF7FC 1.2%, rgba(138, 247, 252, 0) 75.08%)'}
           border='3px solid #1ECADC'
           pos='relative'
@@ -110,11 +122,11 @@ const Library = observer(() => {
             border: '1px solid #1ECADC',
             zIndex: 0,
           }}
-          mr='53px'
+          mr={{ lg: '53px' }}
         >
           <Image w='100%' h='100%' src={''} alt='' />
         </Box>
-        <Box flex={1} pos='relative'>
+        <Box flex={1} pos='relative' mt={{ base: px2vw(21), lg: '0' }}>
           <Box pos='absolute' zIndex={2} right={'0'} top={'0'}>
             <CollectBtn
               id={'123'}
@@ -127,12 +139,12 @@ const Library = observer(() => {
           <Text textStyle={'cp'} color='#1D1D1D'>
             Podcast
           </Text>
-          <Text textStyle={'ch2'} color='#1D1D1D'>
+          <Text textStyle={'ch2'} mt={{ base: px2vw(13), lg: '0' }} color='#1D1D1D'>
             TITLE OF LASTEST ARTICLE
           </Text>
           <Text
             color='#595959'
-            textStyle={'cp'}
+            textStyle={{ base: 'smp', lg: 'cp' }}
             sx={{
               overflow: 'hidden',
               textOverflow: 'ellipsis',
@@ -143,8 +155,11 @@ const Library = observer(() => {
             overflow={'hidden'}
             textOverflow='ellipsis'
             display={'-webkit-box'}
-            h={`${24 * 1.5 * 3}px`}
-            my='14px'
+            h={{
+              base: px2vw(14 * 1.5 * 3),
+              lg: `${24 * 1.5 * 3}px`,
+            }}
+            my={{ base: px2vw(13), lg: '14px' }}
           >
             Arcane welcomes the different, the trailblazers, the novel. If you have a growth mindset
             and deep，if you have Arcane welcomes the different, the trailblazers, the novel. If you
@@ -157,7 +172,7 @@ const Library = observer(() => {
             welcomes the different, the trailblazers, the novel. If you have a growth mindset and
             deep，if you have
           </Text>
-          <Text color='#595959' textStyle={'csmp'} mb='100px'>
+          <Text color='#595959' textStyle={'csmp'} mb={{ base: px2vw(20), lg: '100px' }}>
             {dayjs(1692864161725).format('YYYY-MM-DD HH:mm:ss')}
           </Text>
           <LineButton
@@ -186,7 +201,7 @@ const Library = observer(() => {
           },
         }}
         flexDir={'column'}
-        mt='200px'
+        mt={{ base: px2vw(80), lg: '200px' }}
       >
         <Box w='100%'>
           <Text textStyle={'ch1'}>{t`LATEST`}</Text>
@@ -204,7 +219,13 @@ const CategoryCard = ({ data }: { data: any }) => {
   const router = useRouter()
 
   return (
-    <AspectRatio w='100%' ratio={320 / 578}>
+    <AspectRatio
+      w='100%'
+      ratio={{
+        base: 280 / 578,
+        lg: 320 / 578,
+      }}
+    >
       <Flex
         className='hover'
         pos='relative'
@@ -253,7 +274,7 @@ const CategoryCard = ({ data }: { data: any }) => {
           </Text>
           <Text
             color='#595959'
-            textStyle={'p'}
+            textStyle={{ base: 'smp', lg: 'p' }}
             sx={{
               overflow: 'hidden',
               textOverflow: 'ellipsis',
@@ -264,7 +285,10 @@ const CategoryCard = ({ data }: { data: any }) => {
             overflow={'hidden'}
             textOverflow='ellipsis'
             display={'-webkit-box'}
-            h={`${16 * 1.5 * 5}px`}
+            h={{
+              base: px2vw(14 * 1.5 * 5),
+              lg: `${16 * 1.5 * 5}px`,
+            }}
             my='14px'
           >
             Arcane welcomes the different, the trailblazers, the novel. If you have a growth mindset

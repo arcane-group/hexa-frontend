@@ -7,7 +7,7 @@ const Page = () => {
   return (
     <>
       <Container>
-        <Box maxW='80%' pt='0px'>
+        <Box maxW={{ lg: '80%' }} pt='0px'>
           <ResendEmail />
         </Box>
       </Container>
