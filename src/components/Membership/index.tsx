@@ -4,6 +4,7 @@ import { useLingui } from '@lingui/react'
 import { useMemo } from 'react'
 import { useMotionValue, useTransform } from 'framer-motion'
 // import dynamic from 'next/dynamic'
+import { observer } from 'mobx-react-lite'
 
 import { Container } from '@/components/Container'
 import { Screen2 } from './Screen-2'
@@ -12,11 +13,17 @@ import { Screen4 } from './Screen-4'
 import { MotionBox, MotionImage, MotionCenter } from '@/components/Motion'
 import logoNoiseImg from '@/assets/images/home/logo-noise.png'
 import { MembershipLine } from '@/components/Three/MembershipLine'
+import px2vw from '@/utils/px2vw'
+import { useStore } from '@/stores'
 
 // const MembershipLine = dynamic(() => import('@/components/Three/MembershipLine'), { ssr: false })
 
-export const Membership = () => {
+export const Membership = observer(() => {
   const { i18n } = useLingui()
+
+  const {
+    commonStore: { isPC },
+  } = useStore()
 
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
@@ -63,7 +70,16 @@ export const Membership = () => {
           perspective: '1000px',
         }}
       >
-        <Center h='0' pos='sticky' top='100vh' zIndex={1}>
+        <Center
+          w='100%'
+          h='0'
+          pos={{
+            base: 'absolute',
+            lg: 'sticky',
+          }}
+          top='100vh'
+          zIndex={1}
+        >
           <MotionImage
             initial='offscreen'
             whileInView='onscreen'
@@ -86,8 +102,14 @@ export const Membership = () => {
             viewport={{ once: true, amount: 0.3 }}
             src={logoNoiseImg.src}
             alt='noise logo'
-            w='50vh'
-            h='50vh'
+            w={{
+              base: '60vw',
+              lg: '50vh',
+            }}
+            h={{
+              base: '60vw',
+              lg: '50vh',
+            }}
             pos='absolute'
             left={'50%'}
             top='-40vh'
@@ -111,11 +133,21 @@ export const Membership = () => {
           whileInView='onscreen'
           viewport={{ once: true, amount: 0.3 }}
           w='100%'
-          h='100vh'
-          pt='184px'
-          pos='sticky'
+          minH='100vh'
+          h={{
+            lg: '100vh',
+          }}
+          pt={{ base: px2vw(130), lg: '184px' }}
+          pb={{ base: px2vw(26), lg: '0' }}
+          pos={{
+            lg: 'sticky',
+          }}
           top={0}
           overflow={'hidden'}
+          px={{
+            base: px2vw(20),
+            lg: '0',
+          }}
         >
           <MotionBox
             pos='absolute'
@@ -133,56 +165,96 @@ export const Membership = () => {
           >
             <MembershipLine />
           </MotionBox>
+
+          <Title title={t`Hexa Arcana`} desc={t`A SOULBOUND TOKEN FOR UNBREAKABLE BONDS`} />
+
           <MotionBox
             viewport={{ once: true, amount: 0.3 }}
-            variants={{
-              offscreen: {
-                opacity: 0,
-                y: '-50%',
-                x: '-200px',
-              },
-              onscreen: {
-                opacity: 1,
-                y: '-50%',
-                x: '-200px',
-              },
+            variants={
+              isPC
+                ? {
+                    offscreen: {
+                      opacity: 0,
+                      y: '-50%',
+                      x: '-200px',
+                    },
+                    onscreen: {
+                      opacity: 1,
+                      y: '-50%',
+                      x: '-200px',
+                    },
+                  }
+                : undefined
+            }
+            pos={{
+              lg: 'absolute',
             }}
-            pos='absolute'
             zIndex={1}
-            right='50%'
-            top='55%'
-            w='340px'
+            right={{
+              lg: '50%',
+            }}
+            top={{
+              lg: '55%',
+            }}
+            mt={{
+              base: '80vw',
+              lg: '0',
+            }}
+            w={{ lg: '340px' }}
             color={'#595959'}
             textStyle={'cp'}
           >{t`Our soulbound token Hex Arcana serves as a proof of membership to Hexa Hub. It grants entry into our networks for unparalleled community-driven experiences.`}</MotionBox>
 
           <MotionBox
             viewport={{ once: true, amount: 0.3 }}
-            variants={{
-              offscreen: {
-                opacity: 0,
-                y: '-50%',
-                x: '200px',
-              },
-              onscreen: {
-                opacity: 1,
-                y: '0%',
-                x: '200px',
-              },
+            variants={
+              isPC
+                ? {
+                    offscreen: {
+                      opacity: 0,
+                      y: '-50%',
+                      x: '200px',
+                    },
+                    onscreen: {
+                      opacity: 1,
+                      y: '0%',
+                      x: '200px',
+                    },
+                  }
+                : undefined
+            }
+            pos={{
+              lg: 'absolute',
             }}
-            pos='absolute'
             zIndex={1}
-            left='50%'
-            bottom='10%'
-            w='360px'
+            left={{ lg: '50%' }}
+            bottom={{ lg: '10%' }}
+            mt={{
+              base: px2vw(20),
+              lg: '0',
+            }}
+            w={{ lg: '360px' }}
             color={'#595959'}
             textStyle={'cp'}
           >{t`Empowering individuals to express their true selves in the digital realm`}</MotionBox>
-
-          <Title title={t`Hexa Arcana`} desc={t`A SOULBOUND TOKEN FOR UNBREAKABLE BONDS`} />
         </MotionBox>
 
-        <Box minH='100vh' pt='167px' pos='relative'>
+        <Box
+          minH='100vh'
+          pt={{
+            base: px2vw(36),
+            lg: '167px',
+          }}
+          pb={{
+            base: px2vw(69),
+            lg: '0',
+          }}
+          pos='relative'
+          px={{
+            base: px2vw(20),
+            lg: '0',
+          }}
+        >
           <Box pos='absolute' zIndex={0} top={0} left={0} right={0} bottom={0} bgColor='#FDD9A6' />
           <Box
             className='blur-bg'
@@ -209,7 +281,7 @@ export const Membership = () => {
               base: 1,
               lg: 2,
             }}
-            spacing={'180px'}
+            spacing={{ base: px2vw(38), lg: '180px' }}
           >
             {benefitsArr.map((item, index) => {
               return <BenefitsList key={index} data={item} />
@@ -218,7 +290,21 @@ export const Membership = () => {
         </Box>
       </Box>
 
-      <Box as='section' pt='167px'>
+      <Box
+        as='section'
+        pt={{
+          base: px2vw(36),
+          lg: '167px',
+        }}
+        pb={{
+          base: px2vw(48),
+          lg: '0',
+        }}
+        px={{
+          base: px2vw(20),
+          lg: '0',
+        }}
+      >
         <Title
           maxW='800px'
           title={t`Contributions`}
@@ -229,14 +315,42 @@ export const Membership = () => {
         </Box>
       </Box>
 
-      <Box as='section' pt='167px'>
+      <Box
+        as='section'
+        pt={{
+          base: px2vw(36),
+          lg: '167px',
+        }}
+        pb={{
+          base: px2vw(48),
+          lg: '0',
+        }}
+        px={{
+          base: px2vw(20),
+          lg: '0',
+        }}
+      >
         <Title title={t`Collaborations`} desc={t`TRANSCENDING THE ORDINARY`} />
         <Container pt='32px'>
           <Screen3 />
         </Container>
       </Box>
 
-      <Box as='section' pt='167px'>
+      <Box
+        as='section'
+        pt={{
+          base: px2vw(36),
+          lg: '167px',
+        }}
+        pb={{
+          base: px2vw(48),
+          lg: '0',
+        }}
+        px={{
+          base: px2vw(20),
+          lg: '0',
+        }}
+      >
         <Title
           title={t`Community Members`}
           desc={t`At Hexa Hub, we are all industry innovators, trailblazers, and engineers.`}
@@ -247,7 +361,7 @@ export const Membership = () => {
       </Box>
     </>
   )
-}
+})
 export default Membership
 
 const Title = ({ title, desc, maxW }: { title: string; desc: string; maxW?: any }) => {
@@ -282,9 +396,14 @@ const Title = ({ title, desc, maxW }: { title: string; desc: string; maxW?: any 
         textStyle={'cp'}
         color='#4E4E4E'
         mt={{
+          base: px2vw(10),
           lg: '10px',
         }}
         maxW={maxW || '950px'}
+        wordBreak={{
+          base: 'break-all',
+          lg: 'break-word',
+        }}
       >
         {desc}
       </Center>

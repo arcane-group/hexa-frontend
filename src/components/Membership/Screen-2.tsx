@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import { LineButton } from '@/components/LineButton'
 import { MotionCenter, MotionStack, MotionBox } from '@/components/Motion'
 import { Container } from '@/components/Container'
+import px2vw from '@/utils/px2vw'
 
 export const Screen2 = () => {
   const { i18n } = useLingui()
@@ -35,7 +36,10 @@ export const Screen2 = () => {
           return (
             <MotionCenter
               key={index}
-              height={'90px'}
+              height={{
+                base: px2vw(72),
+                lg: '90px',
+              }}
               border='1px solid #8AF7FC'
               bgGradient={`linear(to-${index % 2 === 1 ? 'l' : 'r'}, #9DD5EA, transparent)`}
               variants={{
@@ -51,7 +55,14 @@ export const Screen2 = () => {
                 },
               }}
             >
-              <Container maxW='xxl' textAlign={index % 2 === 1 ? 'right' : 'left'} px='138px'>
+              <Container
+                maxW='xxl'
+                textAlign={index % 2 === 1 ? 'right' : 'left'}
+                px={{
+                  base: px2vw(19),
+                  lg: '138px',
+                }}
+              >
                 <MotionBox
                   variants={{
                     offscreen: {
@@ -65,7 +76,10 @@ export const Screen2 = () => {
                       },
                     },
                   }}
-                  textStyle={'cp'}
+                  textStyle={{
+                    base: 'csmp',
+                    lg: 'cp',
+                  }}
                   color='#4E4E4E'
                 >
                   {item}

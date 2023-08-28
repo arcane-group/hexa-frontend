@@ -8,7 +8,7 @@ export const TypedBox = ({ text, opts }: { text: string[]; opts?: TypedOptions }
   useEffect(() => {
     const options: TypedOptions = {
       strings: text,
-      typeSpeed: 30,
+      typeSpeed: 15,
       showCursor: true,
       ...opts,
     }

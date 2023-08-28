@@ -203,7 +203,7 @@ const Header = ({
       },
       {
         label: t`CONTACT US`,
-        href: '/contact-us/faq',
+        href: '/contact-us/membership-application',
         children: [
           {
             label: t`MEMBERSHIP APPLICATION`,

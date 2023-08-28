@@ -1,8 +1,16 @@
-import { MotionSimpleGrid, MotionBox } from '@/components/Motion'
 import { useMemo } from 'react'
 import { AspectRatio, Image } from '@chakra-ui/react'
+import { observer } from 'mobx-react-lite'
 
-export const Screen4 = () => {
+import { MotionSimpleGrid, MotionBox } from '@/components/Motion'
+import px2vw from '@/utils/px2vw'
+import { useStore } from '@/stores'
+
+export const Screen4 = observer(() => {
+  const {
+    commonStore: { isPC },
+  } = useStore()
+
   const arr = useMemo(() => {
     return [
       {
@@ -75,8 +83,14 @@ export const Screen4 = () => {
       initial='offscreen'
       whileInView='onscreen'
       viewport={{ once: true, amount: 0.3 }}
-      minChildWidth='280px'
-      spacing='56px'
+      minChildWidth={{
+        base: px2vw(280),
+        lg: '280px',
+      }}
+      spacing={{
+        base: px2vw(23),
+        lg: '56px',
+      }}
     >
       {arr?.map((item, index) => {
         return (
@@ -87,6 +101,8 @@ export const Screen4 = () => {
               backgroundImage: 'linear-gradient(to top, rgb(255, 255, 255), rgb(255, 255, 255))',
             }}
             key={index}
+            initial={!isPC ? 'offscreen' : undefined}
+            whileInView={!isPC ? 'onscreen' : undefined}
             variants={{
               offscreen: {
                 opacity: 0,
@@ -95,7 +111,7 @@ export const Screen4 = () => {
                 opacity: 1,
                 transition: {
                   duration: 0.3,
-                  delay: index * 0.1,
+                  delay: isPC ? index * 0.1 : 0,
                 },
               },
             }}
@@ -117,4 +133,4 @@ export const Screen4 = () => {
       })}
     </MotionSimpleGrid>
   )
-}
+})

@@ -4,6 +4,7 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 // import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
+import { observer } from 'mobx-react-lite'
 
 import { GoNextPage } from './Screen-1'
 import { MotionBox, MotionCenter } from '@/components/Motion'
@@ -11,6 +12,8 @@ import { Container } from '@/components/Container'
 import { LineButton } from '@/components/LineButton'
 import { ArrowIcon, Line285Icon } from '@/assets/svg/home/index'
 import { HomeLine as LineBg } from '@/components/Three/HomeLine'
+import { px2vw } from '@/utils/px2vw'
+import { useStore } from '@/stores'
 
 // const LineBg = dynamic(() => import('@/components/Three/HomeLine'), { ssr: false })
 
@@ -34,6 +37,10 @@ const ArrowLine = () => {
       flexDir={'column'}
       userSelect={'none'}
       pointerEvents={'none'}
+      display={{
+        base: 'none',
+        lg: 'flex',
+      }}
     >
       <ArrowIcon w='32px' h='32px' />
       <Line285Icon mt='13px' w='4px' h='285px' />
@@ -41,8 +48,12 @@ const ArrowLine = () => {
   )
 }
 
-export const Screen3 = ({ fullpageApi }: any) => {
+export const Screen3 = observer(({ fullpageApi }: any) => {
   const { i18n } = useLingui()
+
+  const {
+    commonStore: { isPC },
+  } = useStore()
 
   const { push } = useRouter()
 
@@ -68,14 +79,24 @@ export const Screen3 = ({ fullpageApi }: any) => {
   }, [i18n.locale])
 
   return (
-    <Box h='100vh'>
+    <Box
+      minH='100vh'
+      h={{
+        lg: '100vh',
+      }}
+    >
       <Container
         pos='relative'
         zIndex={2}
         px={{
+          base: px2vw(20),
           lg: '162px',
         }}
         h='100%'
+        pb={{
+          base: px2vw(20),
+          lg: 'inherit',
+        }}
       >
         <GoNextPage fullpageApi={fullpageApi} />
 
@@ -106,6 +127,7 @@ export const Screen3 = ({ fullpageApi }: any) => {
           <Box
             pos='relative'
             mt={{
+              base: px2vw(20),
               lg: '3vh',
             }}
             maxW={{
@@ -119,17 +141,30 @@ export const Screen3 = ({ fullpageApi }: any) => {
             {t`specially made for our esteemed members.`}
             <ArrowLine />
           </Box>
-          <Center flexDir={'column'} maxW={'max-content'}>
+          <Center
+            flexDir={'column'}
+            maxW={{
+              lg: 'max-content',
+            }}
+            w='100%'
+          >
             <Stack
-              direction={'row'}
+              direction={{
+                base: 'column',
+                lg: 'row',
+              }}
               spacing={{
+                base: px2vw(20),
                 lg: '60px',
                 xxl: '112px',
               }}
+              m='auto'
               mt={{
+                base: px2vw(20),
                 lg: '3vh',
               }}
               mb={{
+                base: px2vw(40),
                 lg: '10vh',
               }}
             >
@@ -145,7 +180,7 @@ export const Screen3 = ({ fullpageApi }: any) => {
                       onscreen: {
                         opacity: 1,
                         y: 0,
-                        scale: index === 1 ? 1.1 : 1,
+                        scale: isPC ? (index === 1 ? 1.1 : 1) : 1,
                         transition: {
                           type: 'spring',
                           bounce: 0.4,
@@ -191,10 +226,23 @@ export const Screen3 = ({ fullpageApi }: any) => {
                       pt='30px'
                       px='23px'
                     >
-                      <Text color='#000000' textStyle={'csmp'}>
+                      <Text
+                        color='#000000'
+                        textStyle={{
+                          base: 'p',
+                          lg: 'csmp',
+                        }}
+                      >
                         {item.title}
                       </Text>
-                      <Text color='#595959' textStyle={'cssmp'} mt='6px'>
+                      <Text
+                        color='#595959'
+                        textStyle={{
+                          base: 'p',
+                          lg: 'csmp',
+                        }}
+                        mt='6px'
+                      >
                         {item.desc}
                       </Text>
                     </Box>
@@ -217,4 +265,4 @@ export const Screen3 = ({ fullpageApi }: any) => {
       </Container>
     </Box>
   )
-}
+})

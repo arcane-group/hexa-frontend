@@ -9,6 +9,7 @@ import { Container } from '@/components/Container'
 import { TypedBox } from '@/components/Typed'
 import { PointParticle } from '@/components/PointParticle'
 import { ArrowIcon, GoNextIcon, Line285Icon } from '@/assets/svg/home/index'
+import px2vw from '@/utils/px2vw'
 
 const ArrowLine = () => {
   return (
@@ -32,6 +33,10 @@ const ArrowLine = () => {
       flexDir={'column'}
       userSelect={'none'}
       pointerEvents={'none'}
+      display={{
+        base: 'none',
+        lg: 'flex',
+      }}
     >
       <ArrowIcon w='32px' h='32px' />
       <Line285Icon mt='13px' w='4px' h='244px' />
@@ -54,8 +59,14 @@ export const GoNextPage = ({
         scale: 1.2,
       }}
       pos='absolute'
-      bottom={'74px'}
-      left={'70px'}
+      bottom={{
+        base: px2vw(30),
+        lg: '74px',
+      }}
+      left={{
+        base: px2vw(20),
+        lg: '70px',
+      }}
       zIndex={0}
       animate={{
         y: [0, 5, 0],
@@ -73,13 +84,17 @@ export const GoNextPage = ({
         h='50px'
         cursor={'pointer'}
         className='hover'
-        onClick={() => {
-          if (isNext) {
-            fullpageApi.moveSectionDown()
-          } else {
-            fullpageApi.moveSectionUp()
-          }
-        }}
+        onClick={
+          fullpageApi
+            ? () => {
+                if (isNext) {
+                  fullpageApi.moveSectionDown()
+                } else {
+                  fullpageApi.moveSectionUp()
+                }
+              }
+            : undefined
+        }
       />
     </MotionBox>
   )
@@ -104,9 +119,11 @@ export const Screen1 = ({ fullpageApi }: any) => {
         pos='relative'
         zIndex={2}
         px={{
+          base: px2vw(20),
           lg: '162px',
         }}
         pt={{
+          base: px2vw(35 + 26 * 2 + 30),
           lg: px2vh(298),
         }}
         h='100%'
@@ -139,6 +156,7 @@ export const Screen1 = ({ fullpageApi }: any) => {
             textStyle={'cp'}
             color='#4E4E4E'
             mt={{
+              base: px2vw(20),
               lg: '10px',
             }}
             sx={{

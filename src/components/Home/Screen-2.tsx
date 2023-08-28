@@ -13,10 +13,11 @@ import logoNoiseImg from '@/assets/images/home/logo-noise.png'
 import logoImg from '@/assets/images/home/logo.png'
 import { ArrowIcon, Line285Icon } from '@/assets/svg/home/index'
 import { HomeLine as LineBg } from '@/components/Three/HomeLine'
+import px2vw from '@/utils/px2vw'
 
 // const LineBg = dynamic(() => import('@/components/Three/HomeLine'), { ssr: false })
 
-const delay = 1
+const delay = 0.5
 const ArrowLine = () => {
   return (
     <MotionCenter
@@ -39,6 +40,10 @@ const ArrowLine = () => {
       flexDir={'column'}
       userSelect={'none'}
       pointerEvents={'none'}
+      display={{
+        base: 'none',
+        lg: 'flex',
+      }}
     >
       <Line285Icon mb='3px' w='4px' h='175px' transform='rotate(180deg)' />
 
@@ -94,37 +99,30 @@ export const Screen2 = ({ fullpageApi }: any) => {
   }, [i18n.locale])
 
   return (
-    <Box h='100vh'>
+    <Box
+      minH='100vh'
+      h={{
+        lg: '100vh',
+      }}
+    >
       <Container
         pos='relative'
         zIndex={2}
         px={{
+          base: px2vw(20),
           lg: '162px',
         }}
         h='100%'
+        pb={{
+          base: px2vw(100),
+          lg: 'inherit',
+        }}
       >
         <GoNextPage fullpageApi={fullpageApi} />
 
         <LineBg m='auto' pos='absolute' left={0} right={0} top={'0'} bottom={0} />
 
         <ArrowLine />
-
-        <MotionBox
-          pos='absolute'
-          bottom={'55px'}
-          right={'80px'}
-          textStyle={'h2'}
-          initial='offscreen'
-          whileInView='onscreen'
-          variants={{
-            offscreen: {
-              opacity: 0,
-            },
-            onscreen: {
-              opacity: 1,
-            },
-          }}
-        >{t`Connect, Collaborate and Create`}</MotionBox>
 
         <LogoBox />
         <MotionCenter
@@ -155,6 +153,7 @@ export const Screen2 = ({ fullpageApi }: any) => {
             direction={'column'}
             spacing={'5vh'}
             mt={{
+              base: px2vw(20),
               lg: '5vh',
             }}
           >
@@ -187,6 +186,37 @@ export const Screen2 = ({ fullpageApi }: any) => {
             })}
           </Stack>
         </MotionCenter>
+
+        <MotionBox
+          pos={{
+            base: 'relative',
+            lg: 'absolute',
+          }}
+          bottom={{
+            lg: '55px',
+          }}
+          right={{
+            lg: '80px',
+          }}
+          mt={{
+            base: px2vw(20),
+            lg: 'inherit',
+          }}
+          textStyle={{
+            base: 'p',
+            lg: 'h2',
+          }}
+          initial='offscreen'
+          whileInView='onscreen'
+          variants={{
+            offscreen: {
+              opacity: 0,
+            },
+            onscreen: {
+              opacity: 1,
+            },
+          }}
+        >{t`Connect, Collaborate and Create`}</MotionBox>
       </Container>
     </Box>
   )
@@ -195,6 +225,10 @@ export const Screen2 = ({ fullpageApi }: any) => {
 const LogoBox = () => {
   return (
     <MotionBox
+      display={{
+        base: 'none',
+        lg: 'block',
+      }}
       initial='offscreen'
       whileInView='onscreen'
       // viewport={{ once: true, amount: 0.3 }}
@@ -218,8 +252,8 @@ const LogoBox = () => {
             type: 'spring',
             bounce: 0.2,
             times: [0, 0.99, 1],
-            delay: 4.5,
-            duration: 1,
+            delay: 4.5 / 2,
+            duration: 1 / 2,
           },
         },
       }}
@@ -267,7 +301,7 @@ const LogoBox = () => {
             transition: {
               ease: 'linear',
               times: [0, 0.5, 1],
-              delay: 1,
+              delay: 1 / 2,
               duration: 3,
             },
           },
@@ -289,7 +323,7 @@ const LogoBox = () => {
             opacity: 1,
             transition: {
               ease: 'linear',
-              delay: 2.5,
+              delay: 2.5 / 2,
               duration: 2,
             },
           },

@@ -18,11 +18,30 @@ import { Screen2 } from '@/components/Home/Screen-2'
 import { Screen3 } from '@/components/Home/Screen-3'
 import { Screen4 } from '@/components/Home/Screen-4'
 import { ClickMeIcon } from '@/assets/svg/home'
+import { useStore } from '@/stores'
 
-const Main = () => {
+const Main = observer(() => {
+  const {
+    commonStore: { isPC },
+  } = useStore()
+
   const screens = useMemo(() => {
     return [Screen1, Screen2, Screen3, Screen4]
   }, [])
+
+  if (!isPC) {
+    return (
+      <>
+        {screens.map((Screen, index) => {
+          return (
+            <Box as='section' key={index} className='section' pos='relative'>
+              <Screen />
+            </Box>
+          )
+        })}
+      </>
+    )
+  }
 
   return (
     <ReactFullpage
@@ -43,7 +62,7 @@ const Main = () => {
       }}
     />
   )
-}
+})
 
 // eslint-disable-next-line react/display-name
 const VideoBox = forwardRef((props: any, ref) => <video ref={ref} {...props} />)

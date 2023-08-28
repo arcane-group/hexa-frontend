@@ -12,6 +12,7 @@ import { NoiseBg } from '@/components/NoiseBg'
 import { useAutoLogin } from '@/hooks/useLogin'
 import { PAGE_EVENT } from '@/constants/page'
 import { useStore } from '@/stores'
+import px2vw from '@/utils/px2vw'
 
 const Layout = ({
   ignoreHeader,
@@ -78,7 +79,7 @@ const Layout = ({
         pt={
           needPaddingHeader
             ? {
-                base: '120px',
+                base: px2vw(35 + 26 * 2),
                 lg: '120px',
               }
             : undefined

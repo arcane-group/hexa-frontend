@@ -4,6 +4,7 @@ import { useLingui } from '@lingui/react'
 import { MotionStack } from '@/components/Motion'
 import { useMemo } from 'react'
 import { Center, Image, Text } from '@chakra-ui/react'
+import px2vw from '@/utils/px2vw'
 
 export const Screen3 = () => {
   const { i18n } = useLingui()
@@ -29,7 +30,10 @@ export const Screen3 = () => {
       initial='offscreen'
       whileInView='onscreen'
       viewport={{ once: true, amount: 0.3 }}
-      spacing={0}
+      spacing={{
+        base: px2vw(32),
+        lg: 0,
+      }}
       direction={'column'}
       m='auto'
       w='max-content'
@@ -53,30 +57,76 @@ export const Screen3 = () => {
               },
             }}
             key={index}
-            direction={isLeft ? 'row' : 'row-reverse'}
+            direction={{
+              base: 'column-reverse',
+              lg: isLeft ? 'row' : 'row-reverse',
+            }}
             spacing={0}
-            h='350px'
-            w={`${558 * 2}px`}
+            h={{
+              lg: '350px',
+            }}
+            w={{
+              base: px2vw(315),
+              lg: `${558 * 2}px`,
+            }}
           >
-            <Center w={'50%'} h='100%'>
+            <Center
+              w={{
+                base: '100%',
+                lg: '50%',
+              }}
+              h='100%'
+            >
               <Center
                 h='100%'
                 alignItems={'flex-start'}
                 flexDir={'column'}
-                mr={!isLeft ? '50px' : '0'}
-                ml={isLeft ? '50px' : '0'}
-                px='60px'
-                bgGradient={`linear(to-${isLeft ? 'l' : 'r'}, #8AF7FC, transparent)`}
+                mr={{
+                  lg: !isLeft ? '50px' : '0',
+                }}
+                ml={{
+                  lg: isLeft ? '50px' : '0',
+                }}
+                px={{
+                  base: px2vw(18),
+                  lg: '60px',
+                }}
+                py={{
+                  base: px2vw(28),
+                  lg: '0',
+                }}
+                bgGradient={{
+                  base: `linear(to-r, #8AF7FC, transparent)`,
+                  lg: `linear(to-${isLeft ? 'l' : 'r'}, #8AF7FC, transparent)`,
+                }}
               >
                 <Text textStyle={'ch2'} color='#1D1D1D'>
                   {item?.title}
                 </Text>
-                <Text textStyle={'csmp'} color='#4E4E4E' mt='36px'>
+                <Text
+                  textStyle={'csmp'}
+                  color='#4E4E4E'
+                  mt={{
+                    base: px2vw(13),
+                    lg: '36px',
+                  }}
+                >
                   {item?.desc}
                 </Text>
               </Center>
             </Center>
-            <Image src={item?.img} alt='' w='50%' h='100%' />
+            <Image
+              src={item?.img}
+              alt=''
+              w={{
+                base: '100%',
+                lg: '50%',
+              }}
+              h={{
+                base: px2vw(185),
+                lg: '100%',
+              }}
+            />
           </MotionStack>
         )
       })}

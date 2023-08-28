@@ -11,6 +11,7 @@ import { Footer } from '@/components/Footer'
 import { LineButton } from '@/components/LineButton'
 import { ArrowIcon, Line285Icon } from '@/assets/svg/home/index'
 import { HomeLine as LineBg } from '@/components/Three/HomeLine'
+import { px2vw } from '@/utils/px2vw'
 
 // const LineBg = dynamic(() => import('@/components/Three/HomeLine'), { ssr: false })
 
@@ -34,6 +35,10 @@ const ArrowLine = () => {
       flexDir={'column'}
       userSelect={'none'}
       pointerEvents={'none'}
+      display={{
+        base: 'none',
+        lg: 'flex',
+      }}
     >
       <Line285Icon mb='8px' w='4px' h='285px' transform='rotate(180deg)' />
       <ArrowIcon w='32px' h='32px' transform='rotate(180deg)' />
@@ -45,12 +50,23 @@ export const Screen4 = ({ fullpageApi }: any) => {
   useLingui()
 
   return (
-    <Flex flexDir={'column'} h='100vh'>
+    <Flex
+      flexDir={'column'}
+      minH='100vh'
+      h={{
+        lg: '100vh',
+      }}
+    >
       <Container
         pos='relative'
         zIndex={2}
         px={{
+          base: px2vw(20),
           lg: '162px',
+        }}
+        pt={{
+          base: px2vw(40),
+          lg: '0',
         }}
         flex={1}
       >
@@ -66,18 +82,16 @@ export const Screen4 = ({ fullpageApi }: any) => {
           transform=' scale(-1, 1)'
         />
 
-        <Box w='85vh' h='85vh' pos='absolute' zIndex={0} top={0} right={0}>
-          <ThreeMoon />
-        </Box>
-
         <Box mt={{ lg: '40vh' }} pos='relative' zIndex={1}>
           <Text as='h2' textStyle={'ch1'}>{t`Builder’s Playground`}</Text>
           <Box
             pos='relative'
             mt={{
+              base: px2vw(20),
               lg: '3vh',
             }}
             mb={{
+              base: px2vw(30),
               lg: '7vh',
             }}
             maxW={{
@@ -95,6 +109,25 @@ export const Screen4 = ({ fullpageApi }: any) => {
               window.open('https://discord.com/', '_blank')
             }}
           >{t`ENTER OUR DISCORD`}</LineButton>
+        </Box>
+
+        <Box
+          w={{
+            base: '90vw',
+            lg: '85vh',
+          }}
+          h={{
+            base: '90vw',
+            lg: '85vh',
+          }}
+          pos={{
+            lg: 'absolute',
+          }}
+          zIndex={0}
+          top={0}
+          right={0}
+        >
+          <ThreeMoon />
         </Box>
       </Container>
       <Footer />

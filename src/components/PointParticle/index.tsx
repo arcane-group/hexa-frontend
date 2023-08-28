@@ -1,16 +1,22 @@
-import { useCallback, useId } from 'react'
+import { useCallback, useId, useMemo } from 'react'
 import Particles from 'react-particles'
 //import { loadFull } from "tsparticles";
 import { loadSlim } from 'tsparticles-slim'
-import { useConst } from '@chakra-ui/react'
 import type {
   // Container,
   ISourceOptions,
   Engine,
 } from 'tsparticles-engine'
+import { observer } from 'mobx-react-lite'
 
-export const PointParticle = () => {
+import { useStore } from '@/stores'
+
+export const PointParticle = observer(() => {
   const particlesId = useId()
+
+  const {
+    commonStore: { isPC },
+  } = useStore()
 
   const particlesInit = useCallback(async (engine: Engine) => {
     //await loadFull(engine);
@@ -21,7 +27,7 @@ export const PointParticle = () => {
   //   await console.log(container)
   // }, [])
 
-  const opts: ISourceOptions = useConst(() => {
+  const opts: ISourceOptions = useMemo(() => {
     return {
       fullScreen: {
         enable: false,
@@ -50,7 +56,7 @@ export const PointParticle = () => {
         },
         links: {
           color: '#80EAEF',
-          distance: 400,
+          distance: isPC ? 400 : 200,
           enable: true,
           opacity: 0.8,
           width: 2,
@@ -68,9 +74,9 @@ export const PointParticle = () => {
         number: {
           density: {
             enable: false,
-            area: 2000,
+            area: isPC ? 2000 : 768,
           },
-          value: 40,
+          value: isPC ? 40 : 20,
         },
         opacity: {
           value: 1,
@@ -89,7 +95,7 @@ export const PointParticle = () => {
       },
       detectRetina: true,
     }
-  })
+  }, [isPC])
 
   return (
     <Particles
@@ -105,4 +111,4 @@ export const PointParticle = () => {
       }}
     />
   )
-}
+})
