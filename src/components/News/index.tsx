@@ -178,6 +178,7 @@ export const News = observer(() => {
             grabCursor={false}
             slidesPerView={isPC ? 4 : 1.2}
             modules={isPC ? [EffectCoverflow] : undefined}
+            spaceBetween={isPC ? undefined : 20}
           >
             {/* TODO: data 必须是偶数 */}
             {[1, 2, 3, 4].map(item => {

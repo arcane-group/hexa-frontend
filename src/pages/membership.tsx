@@ -5,7 +5,14 @@ import { Membership } from '@/components/Membership'
 const Page = () => {
   return (
     <>
-      <Box as='main' minH={'100vh'}>
+      <Box
+        as='main'
+        minH={'100vh'}
+        overflowX={{
+          base: 'hidden',
+          lg: 'inherit',
+        }}
+      >
         <Membership />
       </Box>
     </>

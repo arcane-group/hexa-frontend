@@ -77,6 +77,7 @@ const Library = observer(() => {
             centerInsufficientSlides
             grabCursor={false}
             slidesPerView={isPC ? 4 : 1.1}
+            spaceBetween={isPC ? undefined : 20}
           >
             {[1, 2, 3, 4].map(item => {
               return (

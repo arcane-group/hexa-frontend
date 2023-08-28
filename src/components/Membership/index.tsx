@@ -91,14 +91,18 @@ export const Membership = observer(() => {
                 opacity: 0.8,
               },
             }}
-            animate={{
-              y: [0, 5, 0],
-              transition: {
-                duration: 2,
-                repeat: Infinity,
-                repeatType: 'reverse',
-              },
-            }}
+            animate={
+              isPC
+                ? {
+                    y: [0, 5, 0],
+                    transition: {
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatType: 'reverse',
+                    },
+                  }
+                : undefined
+            }
             viewport={{ once: true, amount: 0.3 }}
             src={logoNoiseImg.src}
             alt='noise logo'
@@ -117,12 +121,16 @@ export const Membership = observer(() => {
               translate: '-50% -50%',
               transformOrigin: 'center',
             }}
-            style={{
-              rotateX: xRotation,
-              // rotateY: yRotation,
-              translateX: xTranslation,
-              translateY: yTranslation,
-            }}
+            style={
+              isPC
+                ? {
+                    rotateX: xRotation,
+                    // rotateY: yRotation,
+                    translateX: xTranslation,
+                    translateY: yTranslation,
+                  }
+                : undefined
+            }
             pointerEvents={'none'}
             userSelect={'none'}
           />
@@ -148,6 +156,7 @@ export const Membership = observer(() => {
             base: px2vw(20),
             lg: '0',
           }}
+          overflowX={'hidden'}
         >
           <MotionBox
             pos='absolute'
@@ -156,10 +165,14 @@ export const Membership = observer(() => {
             top={'60px'}
             bottom={0}
             m='auto'
-            style={{
-              translateX: xTranslationBg,
-              translateY: yTranslationBg,
-            }}
+            style={
+              isPC
+                ? {
+                    translateX: xTranslationBg,
+                    translateY: yTranslationBg,
+                  }
+                : undefined
+            }
             pointerEvents={'none'}
             userSelect={'none'}
           >
@@ -169,6 +182,8 @@ export const Membership = observer(() => {
           <Title title={t`Hexa Arcana`} desc={t`A SOULBOUND TOKEN FOR UNBREAKABLE BONDS`} />
 
           <MotionBox
+            initial='offscreen'
+            whileInView='onscreen'
             viewport={{ once: true, amount: 0.3 }}
             variants={
               isPC
@@ -197,7 +212,7 @@ export const Membership = observer(() => {
               lg: '55%',
             }}
             mt={{
-              base: '80vw',
+              base: '85vw',
               lg: '0',
             }}
             w={{ lg: '340px' }}
@@ -206,6 +221,8 @@ export const Membership = observer(() => {
           >{t`Our soulbound token Hex Arcana serves as a proof of membership to Hexa Hub. It grants entry into our networks for unparalleled community-driven experiences.`}</MotionBox>
 
           <MotionBox
+            initial='offscreen'
+            whileInView='onscreen'
             viewport={{ once: true, amount: 0.3 }}
             variants={
               isPC
@@ -254,6 +271,7 @@ export const Membership = observer(() => {
             base: px2vw(20),
             lg: '0',
           }}
+          overflowX={'hidden'}
         >
           <Box pos='absolute' zIndex={0} top={0} left={0} right={0} bottom={0} bgColor='#FDD9A6' />
           <Box
@@ -445,8 +463,8 @@ const BenefitsList = ({
                   opacity: 1,
                   x: 0,
                   transition: {
-                    duration: 0.5,
-                    delay: index * 0.5,
+                    duration: 0.3,
+                    delay: index * 0.3,
                   },
                 },
               }}

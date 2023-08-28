@@ -84,6 +84,10 @@ const Layout = ({
               }
             : undefined
         }
+        overflowX={{
+          base: 'hidden',
+          lg: 'inherit',
+        }}
       >
         {!ignoreHeader ? <Header headerPosition={headerPosition} /> : null}
         {children}

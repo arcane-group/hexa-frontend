@@ -164,7 +164,7 @@ const Page = () => {
 
   return (
     <>
-      <Box as='main' minH={'100vh'}>
+      <Box as='main' minH={'100vh'} overflowX={'hidden'}>
         <AnimatePresence mode='wait' initial={false}>
           {isShow ? (
             <MotionBox

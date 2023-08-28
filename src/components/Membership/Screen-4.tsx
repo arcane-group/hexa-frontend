@@ -4,13 +4,8 @@ import { observer } from 'mobx-react-lite'
 
 import { MotionSimpleGrid, MotionBox } from '@/components/Motion'
 import px2vw from '@/utils/px2vw'
-import { useStore } from '@/stores'
 
 export const Screen4 = observer(() => {
-  const {
-    commonStore: { isPC },
-  } = useStore()
-
   const arr = useMemo(() => {
     return [
       {
@@ -80,9 +75,6 @@ export const Screen4 = observer(() => {
     <MotionSimpleGrid
       mt='30px'
       mb='78px'
-      initial='offscreen'
-      whileInView='onscreen'
-      viewport={{ once: true, amount: 0.3 }}
       minChildWidth={{
         base: px2vw(280),
         lg: '280px',
@@ -101,8 +93,9 @@ export const Screen4 = observer(() => {
               backgroundImage: 'linear-gradient(to top, rgb(255, 255, 255), rgb(255, 255, 255))',
             }}
             key={index}
-            initial={!isPC ? 'offscreen' : undefined}
-            whileInView={!isPC ? 'onscreen' : undefined}
+            initial='offscreen'
+            whileInView='onscreen'
+            viewport={{ once: true, amount: 0.3 }}
             variants={{
               offscreen: {
                 opacity: 0,
@@ -111,7 +104,6 @@ export const Screen4 = observer(() => {
                 opacity: 1,
                 transition: {
                   duration: 0.3,
-                  delay: isPC ? index * 0.1 : 0,
                 },
               },
             }}

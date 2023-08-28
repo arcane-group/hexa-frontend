@@ -50,7 +50,7 @@ export const Screen2 = () => {
                   opacity: 1,
                   transition: {
                     duration: 0.3,
-                    delay: index * 0.5,
+                    delay: index * 0.3,
                   },
                 },
               }}

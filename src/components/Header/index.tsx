@@ -606,6 +606,7 @@ const MobileNav = memo(({ navs, colorMode }: { navs?: NavItem[]; colorMode: 'dar
       height={'100%'}
       overflow={'auto'}
       px={px2vw(20)}
+      pb={px2vw(100)}
       spacing={0}
       divider={<StackDivider borderColor='rgba(255, 255, 255, 0.2)' borderStyle={'dashed'} />}
     >
