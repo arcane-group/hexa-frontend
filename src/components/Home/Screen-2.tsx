@@ -205,10 +205,10 @@ const LogoBox = () => {
           width: '25vh',
           height: '25vh',
           translateY: '-50%',
-          zIndex: 1,
+          zIndex: 0,
         },
         onscreen: {
-          zIndex: [3, 1],
+          zIndex: [3, 3, 0],
           translateY: '-50%',
           width: ['60vh', '25vh'],
           height: ['60vh', '25vh'],
@@ -217,7 +217,7 @@ const LogoBox = () => {
           transition: {
             type: 'spring',
             bounce: 0.2,
-            times: [0, 1],
+            times: [0, 0.99, 1],
             delay: 4.5,
             duration: 1,
           },

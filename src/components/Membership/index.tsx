@@ -26,8 +26,10 @@ export const Membership = () => {
   }
   const xRotation = useTransform(mouseX, [0, 1440], [5, -5])
   // const yRotation = useTransform(mouseY, [0, 1080], [10, -10])
-  const xTranslation = useTransform(mouseX, [0, 1440], [-5, 5])
-  const yTranslation = useTransform(mouseY, [0, 1080], [-5, 5])
+  const xTranslation = useTransform(mouseX, [0, 1440], [-10, 10])
+  const yTranslation = useTransform(mouseY, [0, 1080], [-10, 10])
+  const xTranslationBg = useTransform(mouseX, [0, 1440], [-5, 5])
+  const yTranslationBg = useTransform(mouseY, [0, 1080], [-5, 5])
 
   const benefitsArr = useMemo(() => {
     return [
@@ -113,8 +115,24 @@ export const Membership = () => {
           pt='184px'
           pos='sticky'
           top={0}
+          overflow={'hidden'}
         >
-          <MembershipLine m='auto' pos='absolute' left={0} right={0} top={'60px'} bottom={0} />
+          <MotionBox
+            pos='absolute'
+            left={0}
+            right={0}
+            top={'60px'}
+            bottom={0}
+            m='auto'
+            style={{
+              translateX: xTranslationBg,
+              translateY: yTranslationBg,
+            }}
+            pointerEvents={'none'}
+            userSelect={'none'}
+          >
+            <MembershipLine />
+          </MotionBox>
           <MotionBox
             viewport={{ once: true, amount: 0.3 }}
             variants={{
@@ -125,7 +143,7 @@ export const Membership = () => {
               },
               onscreen: {
                 opacity: 1,
-                y: '-80%',
+                y: '-50%',
                 x: '-200px',
               },
             }}
