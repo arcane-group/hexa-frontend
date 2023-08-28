@@ -2,6 +2,7 @@ import { Box, Flex, Text } from '@chakra-ui/react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 // import dynamic from 'next/dynamic'
+import getConfig from 'next/config'
 
 import { MotionCenter } from '@/components/Motion'
 import { GoNextPage } from './Screen-1'
@@ -12,6 +13,8 @@ import { LineButton } from '@/components/LineButton'
 import { ArrowIcon, Line285Icon } from '@/assets/svg/home/index'
 import { HomeLine as LineBg } from '@/components/Three/HomeLine'
 import { px2vw } from '@/utils/px2vw'
+
+const { publicRuntimeConfig } = getConfig()
 
 // const LineBg = dynamic(() => import('@/components/Three/HomeLine'), { ssr: false })
 
@@ -105,8 +108,7 @@ export const Screen4 = ({ fullpageApi }: any) => {
           </Box>
           <LineButton
             onClick={() => {
-              // TODO: 待添加 Discord 链接
-              window.open('https://discord.com/', '_blank')
+              window.open('https://discord.com/' + publicRuntimeConfig.discord, '_blank')
             }}
           >{t`ENTER OUR DISCORD`}</LineButton>
         </Box>

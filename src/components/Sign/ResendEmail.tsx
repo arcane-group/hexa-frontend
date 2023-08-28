@@ -25,7 +25,6 @@ export const ResendEmail = () => {
         {t`You might need to check your spam folder.`}
       </Text>
       <Box w='100%' mt='30px'>
-        {/* TODO： 待添加一个倒计时限制 */}
         <CountdownButton
           minW='180px'
           onClick={async () => {

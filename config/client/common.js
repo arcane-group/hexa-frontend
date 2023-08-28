@@ -1,23 +1,31 @@
 module.exports = {
-  title: 'Hexa Hub',
-  description: '',
-  keywords: '',
+  title: 'Hexa Hub', // 网页通用标题
+  description: '', // seo 描述
+  keywords: '', // seo 关键字
   cookiePrefix: 'Hexa_Hub_',
   localStoragePrefix: 'Hexa_Hub_',
   storeVersion: 1,
-  cdn: '',
+  cdn: '', // 是否使用cdn存储静态资源
   basePath: '',
   api: {
-    base: '',
+    base: '', // 接口地址
   },
-  gtag: '',
-  facebookAppId: undefined,
-  defaultChainId: 1,
+  gtag: '', // 谷歌统计id
+  facebookAppId: undefined, // 脸书id
+  defaultChainId: 1, // 默认链id
   canTestnet: true,
   walletConnect: '',
   particle: {
-    projectId: '23050462-2fbf-49dc-b334-95e2c5131421',
-    clientKey: 'chQw39D0Zq3CNEPtuGF3a6vGsLge5oByTAS7CYcQ',
-    appId: '53945a9c-8e6e-4f92-8075-91ed0c618283',
+    // particle 配置
+    projectId: '',
+    clientKey: '',
+    appId: '',
+  },
+  discord: '', // discord 链接
+  twitter: {
+    // twitter 配置
+    handle: '',
+    site: '',
+    cardType: 'summary',
   },
 }

@@ -92,6 +92,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           handle: '',
           site: '',
           cardType: 'summary',
+          ...publicRuntimeConfig.twitter,
         }}
       />
       <Head>
