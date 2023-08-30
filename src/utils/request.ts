@@ -37,8 +37,9 @@ service.interceptors.response.use(
     return response
   },
   (error) => {
-    console.log('api error:', error)
-    return Promise.reject(error)
+    // console.log('api error:', error)
+    // return Promise.reject(error)
+    return error?.response
   }
 )
 

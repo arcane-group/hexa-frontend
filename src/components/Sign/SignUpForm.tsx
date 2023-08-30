@@ -9,7 +9,7 @@ import { TC } from '@/components/Form/TC'
 import { TextInput } from '@/components/Form/Input'
 import { SubmitButton } from '@/components/Form/SubmitButton'
 import { FormControl } from '@/components/Form/FormControl'
-import { register, checkUsername, checkEmail, linkEmail } from '@/services/user'
+import { register, checkUsername, checkEmail, linkEmail } from '@/services/api/user'
 import { useRouter } from 'next/router'
 
 export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
@@ -42,14 +42,17 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
+        validateOnBlur
+        validateOnChange={false}
         onSubmit={async (values, { setSubmitting, resetForm, setFieldError }) => {
           setSubmitting(true)
 
-          let fn = isLinkEmail ? linkEmail : register
-          const res = await fn(values.username, values.email, values.password).catch(() => {
-            return null
-          })
-          if (res?.data?.code >= 0) {
+          // let fn = isLinkEmail ? linkEmail : register
+          // const res = await fn(values.username, values.email, values.password).catch(() => {
+          //   return null
+          // })
+          const res = await register(values.username, values.email, values.password)
+          if (res?.code >= 0) {
             resetForm({
               values: initialValues,
             })
@@ -60,7 +63,7 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
               },
             })
           } else {
-            setFieldError('readTC', res?.data?.msg || t`Account registration failed`)
+            setFieldError('readTC', res?.msg || t`Account registration failed`)
           }
 
           setSubmitting(false)
@@ -74,8 +77,8 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
                 validate: async value => {
                   let errorMsg: string | undefined = undefined
                   if (value) {
-                    const isAvailable = await checkUsername(value)
-                    if (!isAvailable) {
+                    const res = await checkUsername(value)
+                    if (res?.code < 0) {
                       errorMsg = t`Username already taken`
                     }
                   }
@@ -92,8 +95,8 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
                 validate: async value => {
                   let errorMsg: string | undefined = undefined
                   if (value) {
-                    const isAvailable = await checkEmail(value)
-                    if (!isAvailable) {
+                    const res = await checkEmail(value)
+                    if (res?.code < 0) {
                       errorMsg = t`Email already registered`
                     }
                   }

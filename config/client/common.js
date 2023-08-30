@@ -8,7 +8,7 @@ module.exports = {
   cdn: '', // 是否使用cdn存储静态资源
   basePath: '',
   api: {
-    base: '', // 接口地址
+    base: 'https://serene-sea-77879-baf803fd7d60.herokuapp.com', // 接口地址
   },
   gtag: '', // 谷歌统计id
   facebookAppId: undefined, // 脸书id

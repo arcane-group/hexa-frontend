@@ -27,6 +27,14 @@ const nextConfig = {
     ...clientConfig,
     version: process.env.APP_VERSION || version,
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: `https://serene-sea-77879-baf803fd7d60.herokuapp.com/:path*`,
+      },
+    ]
+  },
   generateBuildId: async () => {
     return `v${(process.env.APP_VERSION || version).replace('.', '_')}__${Date.now()}`
   },

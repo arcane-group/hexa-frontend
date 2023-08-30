@@ -20,14 +20,17 @@ export const EditName = observer(() => {
 
   const validationSchema = useMemo(() => {
     return Yup.object({
-      existingUsername: Yup.string().default(walletStore?.userExtInfo?.name),
+      existingUsername: Yup.string().default(undefined),
       username: Yup.string()
         .default('')
         .required(t`Please enter`),
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [i18n.locale, walletStore?.userExtInfo?.name])
-  const initialValues = validationSchema.getDefault()
+  }, [i18n.locale])
+  const initialValues = {
+    ...validationSchema.getDefault(),
+    existingUsername: walletStore?.userExtInfo?.name,
+  }
 
   return (
     <Box>

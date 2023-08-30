@@ -5,7 +5,13 @@ import { useLingui } from '@lingui/react'
 import { useCallback } from 'react'
 import { useRouter } from 'next/router'
 
-import { preLogin, checkLogin, getUserInfo, loginWithWallet, login } from '@/services/user'
+import {
+  preLogin,
+  // checkLogin,
+  getUserInfo,
+  loginWithWallet,
+  login,
+} from '@/services/api/user'
 import { useStore } from '@/stores'
 import { sleep } from '@/utils/sleep'
 
@@ -75,20 +81,20 @@ export const useAutoLogin = () => {
         if (walletStore?.userInfo?.token && walletStore?.userInfo?.userId) {
           walletStore.setLoginState(2)
 
-          const res = await checkLogin()
-          if (res?.data?.code >= 0) {
-            const res2 = await getUserInfo()
-            if (res2?.data?.code >= 0) {
-              walletStore.setUserExtInfo(res2?.data?.data)
-              walletStore.setLoginState(3)
+          // const res = await checkLogin()
+          // if (res?.data?.code >= 0) {
+          //   const res2 = await getUserInfo()
+          //   if (res2?.data?.code >= 0) {
+          //     walletStore.setUserExtInfo(res2?.data?.data)
+          //     walletStore.setLoginState(3)
 
-              if (['/sigin-in', '/sign-up'].includes(pathname)) {
-                await redirectFn()
-              }
+          //     if (['/sigin-in', '/sign-up'].includes(pathname)) {
+          //       await redirectFn()
+          //     }
 
-              return true
-            }
-          }
+          //     return true
+          //   }
+          // }
           throw new Error(t`Login status has expired`)
         }
       } catch (e: any) {
@@ -132,24 +138,23 @@ export const useWalletLogin = (isLinkWallet?: boolean) => {
         !isLinkWallet && walletStore.setLoginState(2)
 
         // 先获取待签名的消息
-        const res = await preLogin(address, chain?.id)
-        if (res.data?.code < 0) {
-          throw new Error(res?.data?.msg)
+        const res = await preLogin(address, `${chain?.id}`)
+        if (res?.code < 0) {
+          throw new Error(res?.msg)
         }
-        const message = res?.data?.data
         // 用钱包签名
         const sign = await signMessageAsync({
-          message,
+          message: res?.data,
         })
         if (!sign) {
           throw new Error(t`Sign message error`)
         }
 
-        const res3 = await loginWithWallet(sign, address, chain?.id, isLinkWallet)
-        if (res3.data?.code < 0) {
-          throw new Error(res3?.data?.msg)
+        const res3 = await loginWithWallet(sign, address, `${chain?.id}`, isLinkWallet)
+        if (res3?.code < 0) {
+          throw new Error(res3?.msg)
         }
-        const userData = res3?.data?.data
+        const userData = res3?.data
         // 设置基础用户信息
         walletStore.setUserInfo({
           token: userData?.token,
@@ -157,12 +162,12 @@ export const useWalletLogin = (isLinkWallet?: boolean) => {
         })
         await sleep(500)
 
-        const res4 = await getUserInfo()
-        if (res4?.data?.code < 0) {
-          throw new Error(res4?.data?.msg || t`Error getting user information`)
+        const res4 = await getUserInfo(userData?._id)
+        if (res4?.code < 0) {
+          throw new Error(res4?.msg || t`Error getting user information`)
         }
         // 设置详细用户信息
-        walletStore.setUserExtInfo(res4?.data?.data)
+        walletStore.setUserExtInfo(res4?.data)
         !isLinkWallet && walletStore.setLoginState(3)
         await redirectFn()
         return true
@@ -205,10 +210,10 @@ export const useAccountLogin = () => {
 
         // TODO: 需要加一个判断，当已注册 未验证邮箱的时候 跳转验证邮箱页面
         const res3 = await login(email, password)
-        if (res3.data?.code < 0) {
-          throw new Error(res3?.data?.msg)
+        if (res3?.code < 0) {
+          throw new Error(res3?.msg)
         }
-        const userData = res3?.data?.data
+        const userData = res3?.data
         // 设置基础用户信息
         walletStore.setUserInfo({
           token: userData?.token,
@@ -216,12 +221,12 @@ export const useAccountLogin = () => {
         })
         await sleep(500)
 
-        const res4 = await getUserInfo()
-        if (res4?.data?.code < 0) {
-          throw new Error(res4?.data?.msg || t`Error getting user information`)
+        const res4 = await getUserInfo(userData?._id)
+        if (res4?.code < 0) {
+          throw new Error(res4?.msg || t`Error getting user information`)
         }
         // 设置详细用户信息
-        walletStore.setUserExtInfo(res4?.data?.data)
+        walletStore.setUserExtInfo(res4?.data)
         walletStore.setLoginState(3)
         await redirectFn()
         return {

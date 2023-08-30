@@ -56,6 +56,7 @@ export const checkUsername = async (username: string) => {
         return {
           code: 0,
           data: true,
+          msg: '',
         }
       }
       throw new Error('Username already taken')
@@ -78,6 +79,7 @@ export const getUserInfo = async (id: string) => {
         return {
           code: 0,
           data: res?.data,
+          msg: '',
         }
       }
       throw new Error('Error retrieving user')
@@ -129,6 +131,7 @@ export const register = async (username: string, email: string, password: string
         return {
           code: 0,
           data: res?.data as UserSchema,
+          msg: '',
         }
       } else if (res?.status === 401) {
         throw new Error('Email already registered')
@@ -208,8 +211,9 @@ export const preLogin = async (address: `0x${string}`, chainId: string) => {
     .then((res) => {
       if (res?.status === 200) {
         return {
-          code: 0,
+          code: 1,
           data: res?.data,
+          msg: '',
         }
       }
       throw new Error('Error generating signature')
@@ -235,6 +239,7 @@ export const login = async (email: string, password: string) => {
         return {
           code: 0,
           data: res?.data,
+          msg: '',
         }
       }
       //   else if (res?.status === 401) {
@@ -255,16 +260,16 @@ export const login = async (email: string, password: string) => {
 export const loginWithWallet = async (
   signature: string,
   walletAddress: `0x${string}`,
-  chainId: string
-  //   isLinkWallet?: boolean // 是否是关联钱包到现有账户
+  chainId: string,
+  isLinkWallet?: boolean // 是否是关联钱包到现有账户
 ) => {
-  //   if (isLinkWallet === true) {
-  //     return await request.post('/web/link_wallet', {
-  //       walletAddress,
-  //       chainId,
-  //       signature,
-  //     })
-  //   }
+  if (isLinkWallet === true) {
+    //     return await request.post('/web/link_wallet', {
+    //       walletAddress,
+    //       chainId,
+    //       signature,
+    //     })
+  }
 
   return await request
     .post('/session/walletLogin', {
@@ -278,6 +283,7 @@ export const loginWithWallet = async (
         return {
           code: 0,
           data: res?.data,
+          msg: '',
         }
       } else if (res?.status === 401) {
         throw new Error('Invalid signature')
@@ -317,10 +323,10 @@ export const editInfo = async (uid: string, data: { username?: string; password?
 
 // 绑定邮箱
 export const linkEmail = async (
-  address: string,
   username: string,
   email: string,
-  password: string
+  password: string,
+  address: string
 ) => {
   return await request
     .put(`/user/edit/${address}`, {
@@ -333,6 +339,7 @@ export const linkEmail = async (
         return {
           code: 0,
           data: res?.data,
+          msg: '',
         }
       }
       throw new Error('Error updating profile')
