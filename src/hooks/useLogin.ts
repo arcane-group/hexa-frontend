@@ -65,11 +65,11 @@ export const useLogout = (isLinkWallet?: boolean) => {
 export const useAutoLogin = () => {
   useLingui()
 
-  const { pathname } = useRouter()
+  // const { pathname } = useRouter()
 
   const { walletStore } = useStore()
   const logoutFn = useLogout()
-  const redirectFn = useRedirect()
+  // const redirectFn = useRedirect()
 
   return useCallback(
     async (hasToast: boolean = false) => {
@@ -103,7 +103,11 @@ export const useAutoLogin = () => {
       }
       return false
     },
-    [logoutFn, walletStore, redirectFn, pathname]
+    [
+      logoutFn,
+      walletStore,
+      // redirectFn, pathname
+    ]
   )
 }
 

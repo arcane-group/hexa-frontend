@@ -123,12 +123,12 @@ export const Membership = observer(() => {
             }}
             style={
               isPC
-                ? {
+                ? ({
                     rotateX: xRotation,
                     // rotateY: yRotation,
                     translateX: xTranslation,
                     translateY: yTranslation,
-                  }
+                  } as any)
                 : undefined
             }
             pointerEvents={'none'}
@@ -167,10 +167,10 @@ export const Membership = observer(() => {
             m='auto'
             style={
               isPC
-                ? {
+                ? ({
                     translateX: xTranslationBg,
                     translateY: yTranslationBg,
-                  }
+                  } as any)
                 : undefined
             }
             pointerEvents={'none'}

@@ -85,7 +85,13 @@ export const SupportForm = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={async (values, { setSubmitting, resetForm, setFieldError }) => {
+        onSubmit={async (
+          _values,
+          {
+            setSubmitting,
+            // resetForm, setFieldError
+          }
+        ) => {
           setSubmitting(true)
 
           // TODO: 提交申请接口

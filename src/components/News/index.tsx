@@ -24,6 +24,8 @@ import type { NewsIndex } from '@/stores/pageStore/NewsIndex'
 import px2vw from '@/utils/px2vw'
 import { useStore } from '@/stores'
 
+const Swiper2: any = Swiper
+
 export const GoSaved = (reset: StackProps) => {
   useLingui()
 
@@ -170,7 +172,7 @@ export const News = observer(() => {
             },
           }}
         >
-          <Swiper
+          <Swiper2
             effect={'coverflow'}
             centeredSlides
             centeredSlidesBounds
@@ -188,7 +190,7 @@ export const News = observer(() => {
                 </SwiperSlide>
               )
             })}
-          </Swiper>
+          </Swiper2>
         </Box>
       </MotionCenter>
       <MotionCenter

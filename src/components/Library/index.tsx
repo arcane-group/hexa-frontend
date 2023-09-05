@@ -23,6 +23,8 @@ import type { LibraryIndex } from '@/stores/pageStore/LibraryIndex'
 import px2vw from '@/utils/px2vw'
 import { useStore } from '@/stores'
 
+const Swiper2: any = Swiper
+
 // TODO： 待加判断，只有当用户有 SBT 权限时候才能访问
 const Library = observer(() => {
   useLingui()
@@ -71,7 +73,7 @@ const Library = observer(() => {
             },
           }}
         >
-          <Swiper
+          <Swiper2
             centeredSlides
             centeredSlidesBounds
             centerInsufficientSlides
@@ -86,7 +88,7 @@ const Library = observer(() => {
                 </SwiperSlide>
               )
             })}
-          </Swiper>
+          </Swiper2>
         </Box>
       </MotionCenter>
 

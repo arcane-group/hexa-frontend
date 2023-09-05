@@ -27,6 +27,9 @@ const nextConfig = {
     ...clientConfig,
     version: process.env.APP_VERSION || version,
   },
+  images: {
+    unoptimized: true,
+  },
   async rewrites() {
     return [
       {
