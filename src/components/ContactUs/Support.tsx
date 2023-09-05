@@ -42,39 +42,48 @@ export const SupportForm = () => {
     return Promise.resolve([
       {
         id: '1',
+        value: 'Fundraising Support',
         label: t`Fundraising Support`,
       },
       {
         id: '2',
+        value: 'Structuring',
         label: t`Structuring`,
       },
 
       {
         id: '3',
+        value: 'Human Capital Support',
         label: t`Human Capital Support`,
       },
       {
         id: '4',
+        value: 'Product Strategy',
         label: t`Product Strategy`,
       },
       {
         id: '5',
+        value: 'Go-to-Market Strategy',
         label: t`Go-to-Market Strategy`,
       },
       {
         id: '6',
+        value: 'Tech Development',
         label: t`Tech Development`,
       },
       {
         id: '7',
+        value: 'Marketing Strategy',
         label: t`Marketing Strategy`,
       },
       {
         id: '8',
+        value: 'Ecosystem Growth Strategy',
         label: t`Ecosystem Growth Strategy`,
       },
       {
         id: '9',
+        value: 'Legal and Compliance Support',
         label: t`Legal and Compliance Support`,
       },
     ])
@@ -86,13 +95,15 @@ export const SupportForm = () => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={async (
-          _values,
+          values,
           {
             setSubmitting,
             // resetForm, setFieldError
           }
         ) => {
           setSubmitting(true)
+
+          console.log('values:', values)
 
           // TODO: 提交申请接口
           // const res = await loginFn(values.username, values.password)
@@ -119,7 +130,7 @@ export const SupportForm = () => {
             <AsyncSelect
               name={'service'}
               placeholder={t`Please select`}
-              valueStr='id'
+              valueStr='value'
               labelStr='label'
               getOpFn={getOpFn1}
             />

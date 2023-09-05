@@ -225,7 +225,7 @@ export const useAccountLogin = () => {
         })
         await sleep(500)
 
-        const res4 = await getUserInfo(userData?._id)
+        const res4 = await getUserInfo(userData?.user_id)
         if (res4?.code < 0) {
           throw new Error(res4?.msg || t`Error getting user information`)
         }

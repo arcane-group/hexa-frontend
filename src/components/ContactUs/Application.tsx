@@ -71,35 +71,43 @@ export const ApplicationForm = () => {
     return Promise.resolve([
       {
         id: '1',
+        value: 'Founder',
         label: t`Founder`,
       },
       {
         id: '2',
+        value: 'Developer',
         label: t`Developer`,
       },
 
       {
         id: '3',
+        value: 'Service Provider',
         label: t`Service Provider`,
       },
       {
         id: '4',
+        value: 'Investor',
         label: t`Investor`,
       },
       {
         id: '5',
+        value: 'Web3 Enthusiast',
         label: t`Web3 Enthusiast`,
       },
       {
         id: '6',
+        value: 'Technologist',
         label: t`Technologist`,
       },
       {
         id: '7',
+        value: 'Strategist',
         label: t`Strategist`,
       },
       {
         id: '8',
+        value: 'Others',
         label: t`Others`,
       },
     ])
@@ -111,13 +119,15 @@ export const ApplicationForm = () => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={async (
-          _values,
+          values,
           {
             setSubmitting,
             // resetForm, setFieldError
           }
         ) => {
           setSubmitting(true)
+
+          console.log('values:', values)
 
           // TODO: 提交申请接口
           // const res = await loginFn(values.username, values.password)
@@ -158,7 +168,7 @@ export const ApplicationForm = () => {
             <AsyncSelect
               name={'background'}
               placeholder={t`Please select`}
-              valueStr='id'
+              valueStr='value'
               labelStr='label'
               getOpFn={getOpFn1}
             />

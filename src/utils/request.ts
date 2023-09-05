@@ -1,6 +1,6 @@
 import axios from 'axios'
 import getConfig from 'next/config'
-// import { i18n } from '@lingui/core'
+import { i18n } from '@lingui/core'
 
 import { store } from '@/stores'
 
@@ -16,11 +16,12 @@ service.interceptors.request.use(
     if (!config?.headers) {
       config.headers = {}
     }
-    // config.headers['language'] = i18n?.locale || 'en'
+    config.headers['language'] = i18n?.locale || 'en'
 
     try {
       const { token } = store?.walletStore?.userInfo || {}
       if (token) {
+        config.headers['Authorization'] = `Bearer ${token}`
         config.headers['token'] = token
       }
     } catch (e) {}
