@@ -242,10 +242,7 @@ export const login = async (email: string, password: string) => {
           msg: '',
         }
       }
-      //   else if (res?.status === 401) {
-      //     throw new Error('Invalid signature')
-      //   }
-      throw new Error('Error logging in')
+      throw new Error('Email or Password error')
     })
     .catch((e) => {
       return {
@@ -274,7 +271,6 @@ export const loginWithWallet = async (
   return await request
     .post('/session/walletLogin', {
       walletAddress,
-      address: walletAddress,
       chainId,
       signature,
     })

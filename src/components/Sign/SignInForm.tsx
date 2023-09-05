@@ -49,7 +49,7 @@ export const SignInForm = observer(() => {
               values: initialValues,
             })
           } else {
-            setFieldError('password', res?.msg || t`Wrong email or password`)
+            setFieldError('password', res?.msg || t`Email or Password error`)
           }
 
           setSubmitting(false)

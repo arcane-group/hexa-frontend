@@ -652,6 +652,10 @@ msgstr ""
 msgid "Existing Username"
 msgstr "现用户名"
 
+#: src/components/Sign/SignInForm.tsx
+msgid "Email or Password error"
+msgstr ""
+
 #: src/components/Profile/EditPsd.tsx
 msgid "Existing Password"
 msgstr "现密码"
@@ -870,10 +874,6 @@ msgstr ""
 #: src/components/Profile/index.tsx
 msgid "Verify Email"
 msgstr "认证邮箱"
-
-#: src/components/Sign/SignInForm.tsx
-msgid "Wrong email or password"
-msgstr ""
 
 #: src/components/ContactUs/Application.tsx
 msgid "Wallet address for Airdrop"

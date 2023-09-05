@@ -652,6 +652,10 @@ msgstr "If you signed up with email, by connecting your wallet, we will be able 
 msgid "Existing Username"
 msgstr "Existing Username"
 
+#: src/components/Sign/SignInForm.tsx
+msgid "Email or Password error"
+msgstr "Email or Password error"
+
 #: src/components/Profile/EditPsd.tsx
 msgid "Existing Password"
 msgstr "Existing Password"
@@ -870,10 +874,6 @@ msgstr "TRENDING TWEETS"
 #: src/components/Profile/index.tsx
 msgid "Verify Email"
 msgstr "Verify Email"
-
-#: src/components/Sign/SignInForm.tsx
-msgid "Wrong email or password"
-msgstr "Wrong email or password"
 
 #: src/components/ContactUs/Application.tsx
 msgid "Wallet address for Airdrop"
