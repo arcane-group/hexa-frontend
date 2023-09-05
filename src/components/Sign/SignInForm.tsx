@@ -23,8 +23,9 @@ export const SignInForm = observer(() => {
 
   const validationSchema = useMemo(() => {
     return Yup.object({
-      username: Yup.string()
+      email: Yup.string()
         .default('')
+        .email(t`Please enter a valid email`)
         .required(t`Please enter`),
       password: Yup.string()
         .default('')
@@ -42,21 +43,21 @@ export const SignInForm = observer(() => {
         onSubmit={async (values, { setSubmitting, resetForm, setFieldError }) => {
           setSubmitting(true)
 
-          const res = await loginFn(values.username, values.password)
+          const res = await loginFn(values.email, values.password)
           if (res?.code >= 0) {
             resetForm({
               values: initialValues,
             })
           } else {
-            setFieldError('password', res?.msg || t`Wrong username, email or password`)
+            setFieldError('password', res?.msg || t`Wrong email or password`)
           }
 
           setSubmitting(false)
         }}
       >
         <Stack direction={'column'} spacing={'30px'}>
-          <FormControl name='username' label={t`Username or Email`}>
-            <TextInput name='username' />
+          <FormControl name='email' label={t`Email`}>
+            <TextInput name='email' />
           </FormControl>
           <FormControl
             name='password'

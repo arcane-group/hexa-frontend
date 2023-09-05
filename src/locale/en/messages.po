@@ -71,10 +71,6 @@ msgstr "Contributions"
 msgid "Did we mention our merch? We frequently gift our members with mystery boxes!"
 msgstr "Did we mention our merch? We frequently gift our members with mystery boxes!"
 
-#: src/components/Sign/SignInForm.tsx
-msgid "Wrong username, email or password"
-msgstr "Wrong username, email or password"
-
 #: src/components/Header/index.tsx
 msgid "MEMBERSHIP APPLICATION"
 msgstr "MEMBERSHIP APPLICATION"
@@ -92,6 +88,10 @@ msgstr "ENS/Hexadecimal address (0x)"
 #: src/components/Header/index.tsx
 msgid "PODCAST"
 msgstr "PODCAST"
+
+#: src/components/Home/Screen-1.tsx
+msgid "Welcome to the knowledge hub of the emerging tech landscape.<br />Discover resources and connect with industry leaders and insiders within."
+msgstr "Welcome to the knowledge hub of the emerging tech landscape.<br />Discover resources and connect with industry leaders and insiders within."
 
 #: src/components/Membership/index.tsx
 msgid "As a member, you get to collaborate, exchange knowledge, and shape the next big tech disruptions."
@@ -299,6 +299,7 @@ msgstr "MARKET COMMENTARY"
 #: src/components/Sign/SignUpForm.tsx
 #: src/components/Sign/SignUpForm.tsx
 #: src/components/Sign/SignUpForm.tsx
+#: src/components/Sign/SignUpForm.tsx
 #: src/pages/forgot-password.tsx
 #: src/pages/reset-password.tsx
 #: src/pages/reset-password.tsx
@@ -405,6 +406,7 @@ msgstr "Others"
 #: src/components/ContactUs/Application.tsx
 #: src/components/ContactUs/Enquiries.tsx
 #: src/components/ContactUs/Support.tsx
+#: src/components/Sign/SignInForm.tsx
 #: src/components/Sign/SignUpForm.tsx
 #: src/pages/forgot-password.tsx
 msgid "Email"
@@ -506,6 +508,7 @@ msgid "Expert industry panels and group discussions"
 msgstr "Expert industry panels and group discussions"
 
 #: src/components/Profile/EditPsd.tsx
+#: src/components/Sign/SignUpForm.tsx
 #: src/pages/reset-password.tsx
 msgid "Passwords must match"
 msgstr "Passwords must match"
@@ -633,10 +636,6 @@ msgstr "Brief Introduction"
 msgid "Telegram or Wechat, must fill at least one"
 msgstr "Telegram or Wechat, must fill at least one"
 
-#: src/components/Sign/SignInForm.tsx
-msgid "Username or Email"
-msgstr "Username or Email"
-
 #: src/pages/contact-us/faq.tsx
 msgid "IS THE MEMBERSHIP TRANSFERRABLE?"
 msgstr "IS THE MEMBERSHIP TRANSFERRABLE?"
@@ -690,6 +689,7 @@ msgstr "WHY A MEMBERS-ONLY COMMUNITY?"
 msgid "Build"
 msgstr "Build"
 
+#: src/components/Sign/SignInForm.tsx
 #: src/pages/forgot-password.tsx
 msgid "Please enter a valid email"
 msgstr "Please enter a valid email"
@@ -751,10 +751,6 @@ msgstr "Sign Up"
 msgid "Waiting for signature verification from wallet with address:"
 msgstr "Waiting for signature verification from wallet with address:"
 
-#: src/components/Home/Screen-1.tsx
-msgid "Welcome to the knowledge hub of the emerging tech <br />landscape.<br />Discover resources and connect with industry leaders and insiders within."
-msgstr "Welcome to the knowledge hub of the emerging tech <br />landscape.<br />Discover resources and connect with industry leaders and insiders within."
-
 #: src/components/ContactUs/Application.tsx
 msgid "Web3 Enthusiast"
 msgstr "Web3 Enthusiast"
@@ -783,6 +779,10 @@ msgstr "Initiate: Fundraising support, structuring, legal and compliance support
 #: src/components/ContactUs/Support.tsx
 msgid "Structuring"
 msgstr "Structuring"
+
+#: src/components/Sign/SignUpForm.tsx
+msgid "Confirm Password"
+msgstr "Confirm Password"
 
 #: src/pages/contact-us/faq.tsx
 msgid "Hexa Arcana also acts as a pass to all our ecosystem partners through rewards, discounts, whitelists or partnerships."
@@ -870,6 +870,10 @@ msgstr "TRENDING TWEETS"
 #: src/components/Profile/index.tsx
 msgid "Verify Email"
 msgstr "Verify Email"
+
+#: src/components/Sign/SignInForm.tsx
+msgid "Wrong email or password"
+msgstr "Wrong email or password"
 
 #: src/components/ContactUs/Application.tsx
 msgid "Wallet address for Airdrop"

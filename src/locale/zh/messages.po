@@ -71,10 +71,6 @@ msgstr ""
 msgid "Did we mention our merch? We frequently gift our members with mystery boxes!"
 msgstr ""
 
-#: src/components/Sign/SignInForm.tsx
-msgid "Wrong username, email or password"
-msgstr ""
-
 #: src/components/Header/index.tsx
 msgid "MEMBERSHIP APPLICATION"
 msgstr ""
@@ -91,6 +87,10 @@ msgstr ""
 #: src/components/Header/index.tsx
 #: src/components/Header/index.tsx
 msgid "PODCAST"
+msgstr ""
+
+#: src/components/Home/Screen-1.tsx
+msgid "Welcome to the knowledge hub of the emerging tech landscape.<br />Discover resources and connect with industry leaders and insiders within."
 msgstr ""
 
 #: src/components/Membership/index.tsx
@@ -299,6 +299,7 @@ msgstr ""
 #: src/components/Sign/SignUpForm.tsx
 #: src/components/Sign/SignUpForm.tsx
 #: src/components/Sign/SignUpForm.tsx
+#: src/components/Sign/SignUpForm.tsx
 #: src/pages/forgot-password.tsx
 #: src/pages/reset-password.tsx
 #: src/pages/reset-password.tsx
@@ -405,6 +406,7 @@ msgstr ""
 #: src/components/ContactUs/Application.tsx
 #: src/components/ContactUs/Enquiries.tsx
 #: src/components/ContactUs/Support.tsx
+#: src/components/Sign/SignInForm.tsx
 #: src/components/Sign/SignUpForm.tsx
 #: src/pages/forgot-password.tsx
 msgid "Email"
@@ -506,6 +508,7 @@ msgid "Expert industry panels and group discussions"
 msgstr ""
 
 #: src/components/Profile/EditPsd.tsx
+#: src/components/Sign/SignUpForm.tsx
 #: src/pages/reset-password.tsx
 msgid "Passwords must match"
 msgstr ""
@@ -633,10 +636,6 @@ msgstr ""
 msgid "Telegram or Wechat, must fill at least one"
 msgstr ""
 
-#: src/components/Sign/SignInForm.tsx
-msgid "Username or Email"
-msgstr "用户名或邮箱地址"
-
 #: src/pages/contact-us/faq.tsx
 msgid "IS THE MEMBERSHIP TRANSFERRABLE?"
 msgstr ""
@@ -690,6 +689,7 @@ msgstr ""
 msgid "Build"
 msgstr ""
 
+#: src/components/Sign/SignInForm.tsx
 #: src/pages/forgot-password.tsx
 msgid "Please enter a valid email"
 msgstr ""
@@ -751,10 +751,6 @@ msgstr ""
 msgid "Waiting for signature verification from wallet with address:"
 msgstr ""
 
-#: src/components/Home/Screen-1.tsx
-msgid "Welcome to the knowledge hub of the emerging tech <br />landscape.<br />Discover resources and connect with industry leaders and insiders within."
-msgstr ""
-
 #: src/components/ContactUs/Application.tsx
 msgid "Web3 Enthusiast"
 msgstr ""
@@ -782,6 +778,10 @@ msgstr ""
 
 #: src/components/ContactUs/Support.tsx
 msgid "Structuring"
+msgstr ""
+
+#: src/components/Sign/SignUpForm.tsx
+msgid "Confirm Password"
 msgstr ""
 
 #: src/pages/contact-us/faq.tsx
@@ -870,6 +870,10 @@ msgstr ""
 #: src/components/Profile/index.tsx
 msgid "Verify Email"
 msgstr "认证邮箱"
+
+#: src/components/Sign/SignInForm.tsx
+msgid "Wrong email or password"
+msgstr ""
 
 #: src/components/ContactUs/Application.tsx
 msgid "Wallet address for Airdrop"
