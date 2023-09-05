@@ -146,6 +146,7 @@ const Page = () => {
         To request reprint permission for any of our publications, please go to the Contact Us
         section located on this website.
         <br />
+        <br />
         7. Governing Law and Dispute Resolution
         <br />
         Irrespective of the country from which you access or use this Form or our Services, to the

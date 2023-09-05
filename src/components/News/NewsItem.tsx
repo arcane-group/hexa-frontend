@@ -14,9 +14,6 @@ export const NewsItem = ({ data }: { data: any }) => {
     <Box
       pt='28px'
       className='hover'
-      _hover={{
-        bgColor: 'whiteAlpha.300',
-      }}
       transition={'all 0.3s'}
       onClick={() => {
         router.push({
@@ -60,7 +57,9 @@ export const NewsItem = ({ data }: { data: any }) => {
             spacing={0}
             className='ellipsis'
           >
-            <Text className='ellipsis' mr="10px">kring</Text>
+            <Text className='ellipsis' mr='10px'>
+              kring
+            </Text>
             <Text className='ellipsis'>{formatTime(1692930902631, true)}</Text>
           </Stack>
         </Stack>

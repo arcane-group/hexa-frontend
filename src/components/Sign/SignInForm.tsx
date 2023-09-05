@@ -8,6 +8,7 @@ import { Link } from '@chakra-ui/next-js'
 import { useRouter } from 'next/router'
 import { observer } from 'mobx-react-lite'
 
+import { PasswordInput } from '@/components/Form/PasswordInput'
 import { TextInput } from '@/components/Form/Input'
 import { SubmitButton } from '@/components/Form/SubmitButton'
 import { FormControl } from '@/components/Form/FormControl'
@@ -71,7 +72,7 @@ export const SignInForm = observer(() => {
               >{t`Don’t have an account yet? Sign up here`}</Link>
             }
           >
-            <TextInput name='password' type='password' />
+            <PasswordInput name='password' type='password' />
           </FormControl>
           <SubmitButton w='100%' mt='5px'>{t`Sign In`}</SubmitButton>
         </Stack>

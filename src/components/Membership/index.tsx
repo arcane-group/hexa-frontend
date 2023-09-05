@@ -74,11 +74,11 @@ export const Membership = observer(() => {
           w='100%'
           h='0'
           pos={{
-            base: 'absolute',
             lg: 'sticky',
           }}
           top='100vh'
           zIndex={1}
+          display={{ base: 'none', lg: 'block' }}
         >
           <MotionImage
             initial='offscreen'
@@ -116,7 +116,7 @@ export const Membership = observer(() => {
             }}
             pos='absolute'
             left={'50%'}
-            top='-40vh'
+            top={'-40vh'}
             sx={{
               translate: '-50% -50%',
               transformOrigin: 'center',
@@ -181,6 +181,32 @@ export const Membership = observer(() => {
 
           <Title title={t`Hexa Arcana`} desc={t`A SOULBOUND TOKEN FOR UNBREAKABLE BONDS`} />
 
+          <MotionImage
+            display={{
+              base: 'block',
+              lg: 'none',
+            }}
+            initial='offscreen'
+            whileInView='onscreen'
+            variants={{
+              offscreen: {
+                opacity: 0,
+              },
+              onscreen: {
+                opacity: 0.8,
+              },
+            }}
+            viewport={{ once: true, amount: 0.3 }}
+            src={logoNoiseImg.src}
+            alt='noise logo h5'
+            w={'60vw'}
+            h={'60vw'}
+            mx='auto'
+            my='20px'
+            pointerEvents={'none'}
+            userSelect={'none'}
+          />
+
           <MotionBox
             initial='offscreen'
             whileInView='onscreen'
@@ -210,10 +236,6 @@ export const Membership = observer(() => {
             }}
             top={{
               lg: '55%',
-            }}
-            mt={{
-              base: '85vw',
-              lg: '0',
             }}
             w={{ lg: '340px' }}
             color={'#595959'}
@@ -410,6 +432,10 @@ const Title = ({ title, desc, maxW }: { title: string; desc: string; maxW?: any 
       </Text>
       <Center
         as='p'
+        // textAlign={{
+        //   base: 'center',
+        //   lg: 'left',
+        // }}
         textAlign={'left'}
         textStyle={'cp'}
         color='#4E4E4E'
@@ -419,7 +445,7 @@ const Title = ({ title, desc, maxW }: { title: string; desc: string; maxW?: any 
         }}
         maxW={maxW || '950px'}
         wordBreak={{
-          base: 'break-all',
+          // base: 'break-all',
           lg: 'break-word',
         }}
       >

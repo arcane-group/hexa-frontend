@@ -10,6 +10,9 @@ export const TypedBox = ({ text, opts }: { text: string[]; opts?: TypedOptions }
       strings: text,
       typeSpeed: 15,
       showCursor: true,
+      onComplete: () => {
+        typed.current?.cursor?.style?.setProperty('display', 'none')
+      },
       ...opts,
     }
 

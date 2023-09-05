@@ -5,7 +5,7 @@ import { useMemo } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 
-import { TextInput } from '@/components/Form/Input'
+import { PasswordInput } from '@/components/Form/PasswordInput'
 import { SubmitButton } from '@/components/Form/SubmitButton'
 import { FormControl } from '@/components/Form/FormControl'
 import { toast } from 'react-toastify'
@@ -65,13 +65,13 @@ export const EditPsd = () => {
       >
         <Stack direction={'column'} spacing={'20px'}>
           <FormControl name='existingPassword' label={t`Existing Password`}>
-            <TextInput name='existingPassword' type='password' />
+            <PasswordInput name='existingPassword' type='password' />
           </FormControl>
           <FormControl name='password' label={t`New password`}>
-            <TextInput name='password' type='password' />
+            <PasswordInput name='password' type='password' />
           </FormControl>
           <FormControl name='password2' label={t`Confirm New Password`}>
-            <TextInput name='password2' type='password' />
+            <PasswordInput name='password2' type='password' />
           </FormControl>
 
           <SubmitButton w='100%' mt='30px'>

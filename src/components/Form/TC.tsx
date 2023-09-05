@@ -27,12 +27,12 @@ export const TC = ({ name }: { name: string }) => {
           >
             <Link
               target='_blank'
-              href='/team-conditions'
+              href='/terms-and-conditions'
               onClick={e => {
                 e.preventDefault()
                 e.stopPropagation()
 
-                window.open('/team-conditions', '_blank')
+                window.open('/terms-and-conditions', '_blank')
               }}
             >{t`T&C`}</Link>
           </Checkbox>

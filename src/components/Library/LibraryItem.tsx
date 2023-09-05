@@ -26,9 +26,6 @@ export const LibraryItem = observer(({ data, index }: { data: any; index: number
     <Box
       mt='20px'
       className='hover'
-      _hover={{
-        bgColor: 'whiteAlpha.300',
-      }}
       transition={'all 0.3s'}
       onClick={() => {
         router.push({
@@ -47,6 +44,8 @@ export const LibraryItem = observer(({ data, index }: { data: any; index: number
         pl={pl}
         _groupHover={{
           pl: 0,
+          bgGradient:
+            'linear(to-r, rgba(30, 202, 220, 0.0) 320px,  rgba(138, 247, 252, 1) 0%, rgba(30, 202, 220, 0.0) 100%)',
         }}
         transition={'all 0.3s'}
       >

@@ -293,6 +293,10 @@ const Header = ({
                 base: 'none',
                 lg: 'flex',
               }}
+              onClick={() => {
+                router.push('/')
+              }}
+              className='hover'
             >
               <Image
                 w={{ base: px2vw(90), lg: '48px' }}
@@ -460,7 +464,7 @@ const DesktopNav = memo(
                         cursor={navItem.href === '#' ? 'default' : 'pointer'}
                         position='relative'
                         py='6px'
-                        textStyle='cp'
+                        textStyle='h2'
                         fontWeight={isCur ? 700 : 400}
                         color={
                           colorMode === 'dark'

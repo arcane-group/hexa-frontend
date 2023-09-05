@@ -7,8 +7,8 @@ import { useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 
+import { PasswordInput } from '@/components/Form/PasswordInput'
 import { SubmitButton } from '@/components/Form/SubmitButton'
-import { TextInput } from '@/components/Form/Input'
 import { FormControl } from '@/components/Form/FormControl'
 import { Container } from '@/components/Sign/Container'
 import { resetPassword } from '@/services/user'
@@ -93,10 +93,10 @@ const ResetForm = ({ code }: { code?: string }) => {
       >
         <Stack direction={'column'} spacing={'30px'}>
           <FormControl name='password' label={t`New password`}>
-            <TextInput name='password' type='password' />
+            <PasswordInput name='password' type='password' />
           </FormControl>
           <FormControl name='password2' label={t`Confirm New Password`}>
-            <TextInput name='password2' type='password' />
+            <PasswordInput name='password2' type='password' />
           </FormControl>
           <SubmitButton w='full'>{t`Reset Password`}</SubmitButton>
         </Stack>

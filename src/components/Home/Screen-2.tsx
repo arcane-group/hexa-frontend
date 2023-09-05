@@ -32,10 +32,11 @@ const ArrowLine = () => {
         },
       }}
       pos='absolute'
-      top={{
-        lg: px2vh(300),
-      }}
-      left={'70px'}
+      top={'10px'}
+      // top={{
+      //   lg: px2vh(300),
+      // }}
+      left={'-93px'}
       zIndex={0}
       flexDir={'column'}
       userSelect={'none'}
@@ -120,9 +121,7 @@ export const Screen2 = ({ fullpageApi }: any) => {
       >
         <GoNextPage fullpageApi={fullpageApi} />
 
-        <LineBg m='auto' pos='absolute' left={0} right={0} top={'0'} bottom={0} />
-
-        <ArrowLine />
+        <LineBg m='auto' pos='absolute' zIndex={1} left={0} right={0} top={'0'} bottom={0} />
 
         <LogoBox />
         <MotionCenter
@@ -150,6 +149,7 @@ export const Screen2 = ({ fullpageApi }: any) => {
             {t`Building Tomorrow, Today`}
           </Text>
           <Stack
+            pos='relative'
             direction={'column'}
             spacing={'5vh'}
             mt={{
@@ -157,6 +157,7 @@ export const Screen2 = ({ fullpageApi }: any) => {
               lg: '5vh',
             }}
           >
+            <ArrowLine />
             {descArr.map((item, index) => {
               return (
                 <MotionBox

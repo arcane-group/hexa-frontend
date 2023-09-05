@@ -83,6 +83,7 @@ export const Screen4 = ({ fullpageApi }: any) => {
           top={'0'}
           bottom={0}
           transform=' scale(-1, 1)'
+          zIndex={1}
         />
 
         <Box mt={{ lg: '40vh' }} pos='relative' zIndex={1}>

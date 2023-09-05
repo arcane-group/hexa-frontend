@@ -6,6 +6,7 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 
 import { TC } from '@/components/Form/TC'
+import { PasswordInput } from '@/components/Form/PasswordInput'
 import { TextInput } from '@/components/Form/Input'
 import { SubmitButton } from '@/components/Form/SubmitButton'
 import { FormControl } from '@/components/Form/FormControl'
@@ -34,6 +35,10 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
       password: Yup.string()
         .default('')
         .required(t`Please enter`),
+      password2: Yup.string()
+        .default('')
+        .required(t`Please enter`)
+        .oneOf([Yup.ref('password')], t`Passwords must match`),
       readTC: Yup.boolean()
         .default(!!isLinkEmail)
         .oneOf([true], t`Please read and agree to the terms and conditions`),
@@ -111,7 +116,10 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
             />
           </FormControl>
           <FormControl name='password' label={t`Password`}>
-            <TextInput name='password' type='password' />
+            <PasswordInput name='password' type='password' />
+          </FormControl>
+          <FormControl name='password2' label={t`Confirm Password`}>
+            <PasswordInput name='password2' type='password' />
           </FormControl>
           <FormControl name='readTC'>{isLinkEmail ? null : <TC name='readTC' />}</FormControl>
           <SubmitButton w='100%' mt='5px'>

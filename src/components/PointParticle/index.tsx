@@ -46,7 +46,7 @@ export const PointParticle = observer(() => {
             line_linked: {
               opacity: 0.7,
             },
-            distance: 400,
+            distance: 300,
           },
         },
       },
@@ -56,7 +56,7 @@ export const PointParticle = observer(() => {
         },
         links: {
           color: '#80EAEF',
-          distance: isPC ? 400 : 200,
+          distance: isPC ? 250 : 200,
           enable: true,
           opacity: 0.8,
           width: 2,
@@ -76,7 +76,7 @@ export const PointParticle = observer(() => {
             enable: false,
             area: isPC ? 2000 : 768,
           },
-          value: isPC ? 40 : 20,
+          value: isPC ? 35 : 20,
         },
         opacity: {
           value: 1,
