@@ -58,6 +58,7 @@ msgstr "A platform to discover potential co-hosts and sponsors for your next big
 msgid "A gated access into our community allows us to identify like-minded individuals who are core contributors and leaders within the emerging tech space. By curating our members list, we hope to assemble individuals that are aligned with the vision of bringing forward the paradigm shift into the next digital society."
 msgstr "A gated access into our community allows us to identify like-minded individuals who are core contributors and leaders within the emerging tech space. By curating our members list, we hope to assemble individuals that are aligned with the vision of bringing forward the paradigm shift into the next digital society."
 
+#: src/components/News/index.tsx
 #: src/components/Profile/SAVED.tsx
 msgid "SAVED"
 msgstr "SAVED"
@@ -180,10 +181,6 @@ msgstr "Service Provider"
 msgid "Details of the service you require"
 msgstr "Details of the service you require"
 
-#: src/components/Home/Screen-3.tsx
-msgid "specially made for our esteemed members."
-msgstr "specially made for our esteemed members."
-
 #: src/pages/forgot-password.tsx
 msgid "Please check your email for the reset link (maybe in spam)."
 msgstr "Please check your email for the reset link (maybe in spam)."
@@ -228,6 +225,10 @@ msgstr "Collaborations"
 msgid "or"
 msgstr "or"
 
+#: src/components/News/index.tsx
+msgid "TRENDING"
+msgstr "TRENDING"
+
 #: src/pages/contact-us/faq.tsx
 msgid "Most importantly, it helps us create an environment of openness and trust that enables deeper connections and richer conversations."
 msgstr "Most importantly, it helps us create an environment of openness and trust that enables deeper connections and richer conversations."
@@ -247,6 +248,10 @@ msgstr "Apply"
 #: src/pages/contact-us/faq.tsx
 msgid "application form"
 msgstr "application form"
+
+#: src/components/Home/Screen-3.tsx
+msgid "We provide an exclusive treasure trove of knowledge and insights specially made for our esteemed members."
+msgstr "We provide an exclusive treasure trove of knowledge and insights specially made for our esteemed members."
 
 #: src/pages/contact-us/faq.tsx
 msgid "For now, Hexa Arcana will only be available on the Ethereum blockchain."
@@ -348,9 +353,18 @@ msgstr "Reset Password"
 msgid "Founder"
 msgstr "Founder"
 
+#: src/pages/index.tsx
+msgid "ENTER"
+msgstr "ENTER"
+
 #: src/components/Membership/index.tsx
 msgid "Offline events, such as major tech side events"
 msgstr "Offline events, such as major tech side events"
+
+#: src/components/Library/index.tsx
+#: src/components/News/index.tsx
+msgid "LATEST"
+msgstr "LATEST"
 
 #: src/components/Membership/index.tsx
 msgid "Our soulbound token Hex Arcana serves as a proof of membership to Hexa Hub. It grants entry into our networks for unparalleled community-driven experiences."
@@ -467,6 +481,10 @@ msgstr "Telegram"
 msgid "Service"
 msgstr "Service"
 
+#: src/components/Library/index.tsx
+msgid "Play"
+msgstr "Play"
+
 #: src/components/Header/index.tsx
 msgid "Researchers"
 msgstr "Researchers"
@@ -521,10 +539,6 @@ msgstr "Like"
 msgid "Failed to like"
 msgstr "Failed to like"
 
-#: src/components/Membership/index.tsx
-msgid "Ignite: Synergies from partnerships, deal flow, ecosystem growth and macro-analysis of the market"
-msgstr "Ignite: Synergies from partnerships, deal flow, ecosystem growth and macro-analysis of the market"
-
 #: src/components/ContactUs/Support.tsx
 msgid "Product Strategy"
 msgstr "Product Strategy"
@@ -549,6 +563,10 @@ msgstr "Hexa Hub Membership Application"
 #: src/pages/verify-email.tsx
 msgid "you have entered {email} as the email address for your Hexa account, please verify the email by clicking the below."
 msgstr "you have entered {email} as the email address for your Hexa account, please verify the email by clicking the below."
+
+#: src/pages/index.tsx
+msgid "CLICK"
+msgstr "CLICK"
 
 #: src/pages/contact-us/faq.tsx
 msgid "Did we mention the occasional airdrop of goodies? Yes, we did."
@@ -622,10 +640,6 @@ msgstr "Username or Email"
 #: src/pages/contact-us/faq.tsx
 msgid "IS THE MEMBERSHIP TRANSFERRABLE?"
 msgstr "IS THE MEMBERSHIP TRANSFERRABLE?"
-
-#: src/components/Home/Screen-3.tsx
-msgid "We provide an exclusive treasure trove of knowledge and insights"
-msgstr "We provide an exclusive treasure trove of knowledge and insights"
 
 #: src/pages/verify-email.tsx
 msgid "Verify your Email"
@@ -757,6 +771,10 @@ msgstr "Sign In"
 #: src/components/Header/Wallet.tsx
 msgid "Logout"
 msgstr "Logout"
+
+#: src/components/Membership/index.tsx
+msgid "Ignite: Synergies from partnerships, deal flow, ecosystem growth and macro-analysis of the market"
+msgstr "Ignite: Synergies from partnerships, deal flow, ecosystem growth and macro-analysis of the market"
 
 #: src/components/Membership/index.tsx
 msgid "Initiate: Fundraising support, structuring, legal and compliance support and human capital support"

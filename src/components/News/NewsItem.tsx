@@ -60,7 +60,7 @@ export const NewsItem = ({ data }: { data: any }) => {
             spacing={0}
             className='ellipsis'
           >
-            <Text className='ellipsis'>kring</Text>
+            <Text className='ellipsis' mr="10px">kring</Text>
             <Text className='ellipsis'>{formatTime(1692930902631, true)}</Text>
           </Stack>
         </Stack>

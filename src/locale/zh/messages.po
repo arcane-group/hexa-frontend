@@ -58,6 +58,7 @@ msgstr ""
 msgid "A gated access into our community allows us to identify like-minded individuals who are core contributors and leaders within the emerging tech space. By curating our members list, we hope to assemble individuals that are aligned with the vision of bringing forward the paradigm shift into the next digital society."
 msgstr ""
 
+#: src/components/News/index.tsx
 #: src/components/Profile/SAVED.tsx
 msgid "SAVED"
 msgstr ""
@@ -180,10 +181,6 @@ msgstr ""
 msgid "Details of the service you require"
 msgstr ""
 
-#: src/components/Home/Screen-3.tsx
-msgid "specially made for our esteemed members."
-msgstr ""
-
 #: src/pages/forgot-password.tsx
 msgid "Please check your email for the reset link (maybe in spam)."
 msgstr ""
@@ -228,6 +225,10 @@ msgstr ""
 msgid "or"
 msgstr ""
 
+#: src/components/News/index.tsx
+msgid "TRENDING"
+msgstr ""
+
 #: src/pages/contact-us/faq.tsx
 msgid "Most importantly, it helps us create an environment of openness and trust that enables deeper connections and richer conversations."
 msgstr ""
@@ -246,6 +247,10 @@ msgstr ""
 
 #: src/pages/contact-us/faq.tsx
 msgid "application form"
+msgstr ""
+
+#: src/components/Home/Screen-3.tsx
+msgid "We provide an exclusive treasure trove of knowledge and insights specially made for our esteemed members."
 msgstr ""
 
 #: src/pages/contact-us/faq.tsx
@@ -348,8 +353,17 @@ msgstr "重置密码"
 msgid "Founder"
 msgstr ""
 
+#: src/pages/index.tsx
+msgid "ENTER"
+msgstr ""
+
 #: src/components/Membership/index.tsx
 msgid "Offline events, such as major tech side events"
+msgstr ""
+
+#: src/components/Library/index.tsx
+#: src/components/News/index.tsx
+msgid "LATEST"
 msgstr ""
 
 #: src/components/Membership/index.tsx
@@ -467,6 +481,10 @@ msgstr ""
 msgid "Service"
 msgstr ""
 
+#: src/components/Library/index.tsx
+msgid "Play"
+msgstr ""
+
 #: src/components/Header/index.tsx
 msgid "Researchers"
 msgstr "研究员"
@@ -521,10 +539,6 @@ msgstr ""
 msgid "Failed to like"
 msgstr ""
 
-#: src/components/Membership/index.tsx
-msgid "Ignite: Synergies from partnerships, deal flow, ecosystem growth and macro-analysis of the market"
-msgstr ""
-
 #: src/components/ContactUs/Support.tsx
 msgid "Product Strategy"
 msgstr ""
@@ -548,6 +562,10 @@ msgstr ""
 
 #: src/pages/verify-email.tsx
 msgid "you have entered {email} as the email address for your Hexa account, please verify the email by clicking the below."
+msgstr ""
+
+#: src/pages/index.tsx
+msgid "CLICK"
 msgstr ""
 
 #: src/pages/contact-us/faq.tsx
@@ -621,10 +639,6 @@ msgstr "用户名或邮箱地址"
 
 #: src/pages/contact-us/faq.tsx
 msgid "IS THE MEMBERSHIP TRANSFERRABLE?"
-msgstr ""
-
-#: src/components/Home/Screen-3.tsx
-msgid "We provide an exclusive treasure trove of knowledge and insights"
 msgstr ""
 
 #: src/pages/verify-email.tsx
@@ -756,6 +770,10 @@ msgstr "登录"
 
 #: src/components/Header/Wallet.tsx
 msgid "Logout"
+msgstr ""
+
+#: src/components/Membership/index.tsx
+msgid "Ignite: Synergies from partnerships, deal flow, ecosystem growth and macro-analysis of the market"
 msgstr ""
 
 #: src/components/Membership/index.tsx

@@ -136,9 +136,7 @@ export const Screen3 = observer(({ fullpageApi }: any) => {
             textStyle={'cp'}
             color='#595959'
           >
-            {t`We provide an exclusive treasure trove of knowledge and insights`}
-            <br />
-            {t`specially made for our esteemed members.`}
+            {t`We provide an exclusive treasure trove of knowledge and insights specially made for our esteemed members.`}
             <ArrowLine />
           </Box>
           <Center
