@@ -157,6 +157,7 @@ export const Membership = observer(() => {
             lg: '0',
           }}
           overflowX={'hidden'}
+          zIndex={2}
         >
           <MotionBox
             pos='absolute'
