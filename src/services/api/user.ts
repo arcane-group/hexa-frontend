@@ -308,6 +308,7 @@ export const editInfo = async (uid: string, data: { username?: string; password?
         return {
           code: 0,
           data: res?.data,
+          msg: '',
         }
       }
       throw new Error('Error updating profile')

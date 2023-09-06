@@ -5,13 +5,13 @@ import { useMemo, useState } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { observer } from 'mobx-react-lite'
+import { toast } from 'react-toastify'
 
 import { TextInput } from '@/components/Form/Input'
 import { SubmitButton } from '@/components/Form/SubmitButton'
 import { FormControl } from '@/components/Form/FormControl'
-import { checkUsername } from '@/services/api/user'
+import { checkUsername, editInfo } from '@/services/api/user'
 import { useStore } from '@/stores'
-import { toast } from 'react-toastify'
 
 export const EditName = observer(() => {
   const { i18n } = useLingui()
@@ -35,6 +35,10 @@ export const EditName = observer(() => {
     existingUsername: walletStore?.userExtInfo?.username,
   }
 
+  if (!walletStore?.userInfo?.userId) {
+    return null
+  }
+
   return (
     <Box>
       <Text
@@ -49,16 +53,23 @@ export const EditName = observer(() => {
         onSubmit={async (values, { setSubmitting, resetForm, setFieldError }) => {
           setSubmitting(true)
 
-          // TODO: 没有写接口
-          const fn = (name: string) => Promise.resolve({ data: { code: 1, data: name, msg: '' } })
-          const res = await fn(values.username).catch(() => {
+          const res = await editInfo(`${walletStore?.userInfo?.userId}`, {
+            username: values.username,
+          }).catch(() => {
             return null
           })
-          if (res && res?.data?.code >= 0) {
+          if (res && res?.code >= 0) {
+            walletStore?.setUserExtInfo(
+              walletStore?.userExtInfo
+                ? {
+                    ...walletStore?.userExtInfo,
+                    username: values.username,
+                  }
+                : null
+            )
             resetForm({
-              values: initialValues,
+              values: { ...initialValues, existingUsername: values.username },
             })
-            // TODO: 重新请求用户信息  或者 直接刷新本地数据
             toast.success(t`Success`)
           } else {
             setFieldError('username', res?.data?.msg || 'App error')
@@ -76,6 +87,7 @@ export const EditName = observer(() => {
             <FormControl name='username' label={t`New Username`}>
               <TextInput
                 name='username'
+                isLoading={apiLoading}
                 fieldCfg={{
                   validate: () => {
                     return apiError
@@ -99,12 +111,7 @@ export const EditName = observer(() => {
               />
             </FormControl>
 
-            <SubmitButton
-              w='100%'
-              mt='30px'
-              isLoading={apiLoading}
-              isDisabled={apiLoading || !!apiError}
-            >
+            <SubmitButton w='100%' mt='30px' isDisabled={apiLoading || !!apiError}>
               {apiError || t`Submit`}
             </SubmitButton>
           </Stack>

@@ -22,6 +22,7 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
   const { i18n } = useLingui()
 
   const [apiLoading, setApiLoading] = useState(false)
+  const [apiLoading2, setApiLoading2] = useState(false)
   const [apiError, setApiError] = useState('')
   const [apiError2, setApiError2] = useState('')
 
@@ -86,6 +87,7 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
             <Stack direction={'column'} spacing={'30px'}>
               <FormControl name='username' label={t`Username`}>
                 <TextInput
+                  isLoading={apiLoading}
                   name='username'
                   fieldCfg={{
                     validate: () => {
@@ -111,6 +113,7 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
               </FormControl>
               <FormControl name='email' label={t`Email`}>
                 <TextInput
+                  isLoading={apiLoading2}
                   name='email'
                   type='email'
                   fieldCfg={{
@@ -121,7 +124,7 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
                   onBlur={async e => {
                     const value = e.target.value
                     if (value) {
-                      setApiLoading(true)
+                      setApiLoading2(true)
                       const res = await await checkEmail(value)
                       if (res?.code < 0) {
                         setFieldError('email', t`Email already registered`)
@@ -130,7 +133,7 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
                         setFieldError('email', '')
                         setApiError2('')
                       }
-                      setApiLoading(false)
+                      setApiLoading2(false)
                     }
                   }}
                 />
@@ -145,8 +148,7 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
               <SubmitButton
                 w='100%'
                 mt='5px'
-                isLoading={apiLoading}
-                isDisabled={apiLoading || !!apiError || !!apiError2}
+                isDisabled={apiLoading || apiLoading2 || !!apiError || !!apiError2}
               >
                 {apiError || apiError2 || (isLinkEmail ? t`Confirm` : t`Sign Up`)}
               </SubmitButton>

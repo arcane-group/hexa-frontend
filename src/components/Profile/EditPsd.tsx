@@ -4,14 +4,22 @@ import { Box, Stack, Text } from '@chakra-ui/react'
 import { useMemo } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
+import { toast } from 'react-toastify'
+import { observer } from 'mobx-react-lite'
 
 import { PasswordInput } from '@/components/Form/PasswordInput'
 import { SubmitButton } from '@/components/Form/SubmitButton'
 import { FormControl } from '@/components/Form/FormControl'
-import { toast } from 'react-toastify'
+import { editInfo } from '@/services/api/user'
+import { useStore } from '@/stores'
+import { useLogout } from '@/hooks/useLogin'
 
-export const EditPsd = () => {
+export const EditPsd = observer(() => {
   const { i18n } = useLingui()
+
+  const { walletStore } = useStore()
+
+  const logoutFn = useLogout()
 
   const validationSchema = useMemo(() => {
     return Yup.object({
@@ -44,18 +52,18 @@ export const EditPsd = () => {
         onSubmit={async (values, { setSubmitting, resetForm, setFieldError }) => {
           setSubmitting(true)
 
-          // TODO: 没有写接口
-          const fn = (p1: string, p2: string) =>
-            Promise.resolve({ data: { code: 1, data: `${p1}${p2}`, msg: '' } })
-          const res = await fn(values.existingPassword, values.password).catch(() => {
+          const res = await editInfo(`${walletStore?.userInfo?.userId}`, {
+            password: values.password,
+          }).catch(() => {
             return null
           })
-          if (res && res?.data?.code >= 0) {
+          if (res && res?.code >= 0) {
             resetForm({
               values: initialValues,
             })
-            // TODO: 重新请求用户信息  或者 直接刷新本地数据
             toast.success(t`Success`)
+
+            logoutFn?.()
           } else {
             setFieldError('password2', res?.data?.msg || 'App error')
           }
@@ -81,4 +89,4 @@ export const EditPsd = () => {
       </Formik>
     </Box>
   )
-}
+})

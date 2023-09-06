@@ -11,7 +11,10 @@ import { UserImg } from '@/components/UserImg'
 import { Button } from '@/components/Button'
 import { useModal } from '@/components/Modal'
 import { px2vw } from '@/utils/px2vw'
-import { fileToBase64, hashBlob } from '@/utils/blob2hash'
+import {
+  fileToBase64,
+  // hashBlob
+} from '@/utils/blob2hash'
 
 export const EditAvatar = observer(() => {
   useLingui()
@@ -33,22 +36,26 @@ export const EditAvatar = observer(() => {
       <CropperModal
         canvasWidth={300}
         canvasHeight={300}
-        onOk={cropperHtml => {
+        onOk={(cropperHtml: HTMLCanvasElement) => {
           try {
             onClose()
 
-            cropperHtml?.toBlob(async (blob: Blob) => {
-              const fileName = await hashBlob('sha256', blob)
-              const file = new File([blob], `${fileName}.png`, {
-                type: 'image/png',
-              })
-              console.log('file:', file)
-              // const url = await uploadFiles(file)
-              // console.log('上传后的 url：', url)
-              // setFieldValue(name, url)
+            const dataUrl = cropperHtml?.toDataURL('image/png')
+            console.log('dataUrl:', dataUrl)
 
-              toast.success(t`Upload success`)
-            }, 'image/png')
+            // cropperHtml?.toBlob(async (blob: Blob) => {
+            //   console.log('blob:', blob)
+            //   // const fileName = await hashBlob('sha256', blob)
+            //   // const file = new File([blob], `${fileName}.png`, {
+            //   //   type: 'image/png',
+            //   // })
+            //   // console.log('file:', file)
+            //   // const url = await uploadFiles(file)
+            //   // console.log('上传后的 url：', url)
+            //   // setFieldValue(name, url)
+
+            //   toast.success(t`Upload success`)
+            // }, 'image/png')
           } catch (e) {
             console.error(e)
           }

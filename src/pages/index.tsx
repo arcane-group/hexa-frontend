@@ -1,5 +1,5 @@
 import { Box, chakra, AbsoluteCenter } from '@chakra-ui/react'
-import { forwardRef, useMemo, useRef } from 'react'
+import { forwardRef, useMemo, useRef, useState } from 'react'
 import ReactFullpage from '@fullpage/react-fullpage'
 import {
   AnimatePresence,
@@ -83,8 +83,23 @@ const VideoScreen = ({ onClick }: { onClick: any }) => {
 
   // TODO: 待添加 首帧图逻辑
   const videoRef = useRef<HTMLVideoElement>(null)
+
+  const [videoUrl, setVideo] = useState<undefined | string>(undefined)
+
   return (
-    <MotionBox pos='relative' h='100vh' w='100%' userSelect={'none'}>
+    <MotionBox
+      pos='relative'
+      h='100vh'
+      w='100%'
+      userSelect={'none'}
+      // bgImage={'/video/HexaArcana1003x560_0906.png'}
+      // bgPos='center'
+      // bgSize={'cover'}
+      bgColor={'#000'}
+      onViewportEnter={() => {
+        setVideo('/video/HexaArcanaSBT_0906.mp4')
+      }}
+    >
       <AbsoluteCenter
         ref={mouseRef}
         top='70%'
@@ -142,19 +157,21 @@ const VideoScreen = ({ onClick }: { onClick: any }) => {
           </AbsoluteCenter>
         </MotionBox>
       </AbsoluteCenter>
-      <Video
-        ref={videoRef}
-        disablePictureInPicture
-        pointerEvents={'none'}
-        src={'/video/134_1691829781.mp4'}
-        w={'100%'}
-        h={'100%'}
-        autoPlay
-        loop
-        muted
-        playsInline
-        objectFit={'cover'}
-      ></Video>
+      {videoUrl && (
+        <Video
+          ref={videoRef}
+          disablePictureInPicture
+          pointerEvents={'none'}
+          src={videoUrl}
+          w={'100%'}
+          h={'100%'}
+          autoPlay
+          loop
+          muted
+          playsInline
+          objectFit={'cover'}
+        ></Video>
+      )}
     </MotionBox>
   )
 }
