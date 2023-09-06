@@ -4,7 +4,7 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 // import dynamic from 'next/dynamic'
 
-import { px2vh } from '@/utils/px2vh'
+// import { px2vh } from '@/utils/px2vh'
 import { GoNextPage } from './Screen-1'
 import { MotionBox, MotionCenter, MotionImage } from '@/components/Motion'
 import { Container } from '@/components/Container'

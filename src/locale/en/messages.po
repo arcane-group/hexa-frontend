@@ -447,10 +447,6 @@ msgstr "Please enter a valid email address"
 msgid "Invalid link, please get it again in the mailbox"
 msgstr "Invalid link, please get it again in the mailbox"
 
-#: src/components/Profile/EditAvatar.tsx
-msgid "Upload success"
-msgstr "Upload success"
-
 #: src/components/Profile/index.tsx
 #: src/pages/profile/edit-profile.tsx
 msgid "Edit Profile"
