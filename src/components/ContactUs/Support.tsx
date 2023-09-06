@@ -1,22 +1,25 @@
-import { Box, Stack } from '@chakra-ui/react'
+import { Box, Stack, Text } from '@chakra-ui/react'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import * as Yup from 'yup'
 import { Formik } from 'formik'
+import { observer } from 'mobx-react-lite'
 
 import { TextInput } from '@/components/Form/Input'
 import { SubmitButton } from '@/components/Form/SubmitButton'
 import { FormControl } from '@/components/Form/FormControl'
 import { AsyncSelect } from '@/components/Form/AsyncSelect'
 import { TextTextarea } from '@/components/Form/Textarea'
+import { postConsultation } from '@/services/api/consultation'
 
-// TODO: pop text
-// We have received your request and will contact you shortly!
+// TODO: 客户端判断 是否已经是SBT会员  或 是否已经登录
 // Oops! Please sign in and connect your wallet to verify membership.
 // Oops! Looks like you aren’t a Hexa Hub member yet! Consultation services are only available to Hexa Hub members, for more info on Hexa Hub membership, click here.
-export const SupportForm = () => {
+export const SupportForm = observer(() => {
   const { i18n } = useLingui()
+
+  const [showTips, setTips] = useState('')
 
   const validationSchema = useMemo(() => {
     return Yup.object({
@@ -89,31 +92,35 @@ export const SupportForm = () => {
     ])
   }, [])
 
+  if (showTips) {
+    return (
+      <Box pt='200px'>
+        <Text textStyle={'cp'}>{showTips}</Text>
+      </Box>
+    )
+  }
+
   return (
     <Box>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={async (
-          values,
-          {
-            setSubmitting,
-            // resetForm, setFieldError
-          }
-        ) => {
+        onSubmit={async (values, { setSubmitting, setFieldError }) => {
           setSubmitting(true)
 
           console.log('values:', values)
 
-          // TODO: 提交申请接口
-          // const res = await loginFn(values.username, values.password)
-          // if (res?.code >= 0) {
-          //   resetForm({
-          //     values: initialValues,
-          //   })
-          // } else {
-          //   setFieldError('password', res?.msg || t`Wrong username, email or password`)
-          // }
+          const res = await postConsultation({
+            name: values?.name,
+            email: values?.email,
+            service: values?.service,
+            message: values?.message,
+          })
+          if (res?.code >= 0) {
+            setTips(t`We have received your request and will contact you shortly!`)
+          } else {
+            setFieldError('message', res?.msg || t`API Error`)
+          }
 
           setSubmitting(false)
         }}
@@ -145,4 +152,4 @@ export const SupportForm = () => {
       </Formik>
     </Box>
   )
-}
+})

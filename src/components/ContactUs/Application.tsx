@@ -1,7 +1,7 @@
-import { Box, Stack } from '@chakra-ui/react'
+import { Box, Stack, Text } from '@chakra-ui/react'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import * as Yup from 'yup'
 import { Formik } from 'formik'
 import { Link } from '@chakra-ui/next-js'
@@ -13,13 +13,14 @@ import { SubmitButton } from '@/components/Form/SubmitButton'
 import { FormControl } from '@/components/Form/FormControl'
 import { AsyncSelect } from '@/components/Form/AsyncSelect'
 import { TextTextarea } from '@/components/Form/Textarea'
+import { postMembershipApplication } from '@/services/api/membership'
 
-// TODO: pop text
 // Oops! Looks like you are already a member.
-// Thank you for your application! We will contact you shortly for the next steps.
 const ensRegExp = /^[a-z0-9-]+\.eth$/i
 export const ApplicationForm = () => {
   const { i18n } = useLingui()
+
+  const [showTips, setTips] = useState('')
 
   const validationSchema = useMemo(() => {
     return Yup.object({
@@ -113,31 +114,46 @@ export const ApplicationForm = () => {
     ])
   }, [])
 
+  if (showTips) {
+    return (
+      <Box pt='200px'>
+        <Text textStyle={'cp'}>{showTips}</Text>
+      </Box>
+    )
+  }
+
   return (
     <Box>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={async (
-          values,
-          {
-            setSubmitting,
-            // resetForm, setFieldError
-          }
-        ) => {
+        onSubmit={async (values, { setSubmitting, setFieldError }) => {
           setSubmitting(true)
 
           console.log('values:', values)
 
-          // TODO: 提交申请接口
-          // const res = await loginFn(values.username, values.password)
-          // if (res?.code >= 0) {
-          //   resetForm({
-          //     values: initialValues,
-          //   })
-          // } else {
-          //   setFieldError('password', res?.msg || t`Wrong username, email or password`)
-          // }
+          const res = await postMembershipApplication({
+            name: values?.name,
+            email: values?.email,
+            telegram: values?.telegram,
+            wechat: values?.wechat,
+            twitter: values?.twitter,
+            background: values?.background,
+            projectLink: values?.project,
+            website: values?.website,
+            walletAddress: values?.address,
+            introduction: values?.introduction,
+            referral: values?.referral,
+            approved: values?.readTC,
+          })
+          if (res?.code >= 0) {
+            setTips(
+              t`Thank you for your application! We will contact you shortly for the next steps.`
+            )
+            window.scrollTo(0, 0)
+          } else {
+            setFieldError('readTC', res?.msg || t`API error`)
+          }
 
           setSubmitting(false)
         }}

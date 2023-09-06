@@ -87,6 +87,7 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
                 validate: async value => {
                   let errorMsg: string | undefined = undefined
                   if (value) {
+                    console.log('checkUsername', value)
                     const res = await checkUsername(value)
                     if (res?.code < 0) {
                       errorMsg = t`Username already taken`
@@ -105,6 +106,7 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
                 validate: async value => {
                   let errorMsg: string | undefined = undefined
                   if (value) {
+                    console.log('checkEmail', value)
                     const res = await checkEmail(value)
                     if (res?.code < 0) {
                       errorMsg = t`Email already registered`

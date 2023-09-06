@@ -23,6 +23,7 @@ export const postMembershipApplication = async (data: ApplicationSchema) => {
         return {
           code: 0,
           data: res?.data as ApplicationSchema,
+          msg: '',
         }
       }
       throw new Error('Error retrieving applications')

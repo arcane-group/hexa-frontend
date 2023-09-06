@@ -1,7 +1,7 @@
-import { Box, Stack } from '@chakra-ui/react'
+import { Box, Stack, Text } from '@chakra-ui/react'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import * as Yup from 'yup'
 import { Formik } from 'formik'
 
@@ -9,11 +9,12 @@ import { TextInput } from '@/components/Form/Input'
 import { SubmitButton } from '@/components/Form/SubmitButton'
 import { FormControl } from '@/components/Form/FormControl'
 import { TextTextarea } from '@/components/Form/Textarea'
+import { postEnquiry } from '@/services/api/enquiry'
 
-// TODO: pop text
-// Thank you, we have received your enquiry and will respond shortly.
 export const EnquiriesForm = () => {
   const { i18n } = useLingui()
+
+  const [showTips, setTips] = useState('')
 
   const validationSchema = useMemo(() => {
     return Yup.object({
@@ -32,29 +33,32 @@ export const EnquiriesForm = () => {
   }, [i18n.locale])
   const initialValues = validationSchema.getDefault()
 
+  if (showTips) {
+    return (
+      <Box pt='200px'>
+        <Text textStyle={'cp'}>{showTips}</Text>
+      </Box>
+    )
+  }
+
   return (
     <Box>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={async (
-          _values,
-          {
-            setSubmitting,
-            // resetForm, setFieldError
-          }
-        ) => {
+        onSubmit={async (values, { setSubmitting, setFieldError }) => {
           setSubmitting(true)
 
-          // TODO: 提交申请接口
-          // const res = await loginFn(values.username, values.password)
-          // if (res?.code >= 0) {
-          //   resetForm({
-          //     values: initialValues,
-          //   })
-          // } else {
-          //   setFieldError('password', res?.msg || t`Wrong username, email or password`)
-          // }
+          const res = await postEnquiry({
+            name: values?.name,
+            email: values?.email,
+            message: values?.message,
+          })
+          if (res?.code >= 0) {
+            setTips(t`Thank you, we have received your enquiry and will respond shortly.`)
+          } else {
+            setFieldError('message', res?.msg || t`API Error`)
+          }
 
           setSubmitting(false)
         }}

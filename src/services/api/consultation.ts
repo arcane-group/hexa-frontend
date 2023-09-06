@@ -5,7 +5,7 @@ export interface ConsultationSchema {
   email: string
   service: string
   message: string
-  completed: boolean
+  completed?: boolean
 }
 
 export const postConsultation = async (data: ConsultationSchema) => {
@@ -16,6 +16,7 @@ export const postConsultation = async (data: ConsultationSchema) => {
         return {
           code: 0,
           data: res?.data as ConsultationSchema,
+          msg: '',
         }
       }
       throw new Error('Error retrieving applications')
