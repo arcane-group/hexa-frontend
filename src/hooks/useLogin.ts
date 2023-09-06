@@ -151,19 +151,24 @@ export const useWalletLogin = (isLinkWallet?: boolean) => {
           throw new Error(t`Sign message error`)
         }
 
-        const res3 = await loginWithWallet(sign, address, `${chain?.id}`, isLinkWallet)
+        const res3 = await loginWithWallet(
+          sign,
+          address,
+          `${chain?.id}`,
+          isLinkWallet ? walletStore?.userInfo?.userId : undefined
+        )
         if (res3?.code < 0) {
           throw new Error(res3?.msg)
         }
         const userData = res3?.data
         // 设置基础用户信息
         walletStore.setUserInfo({
-          token: userData?.token,
-          userId: userData?.user_id,
+          token: userData?.jwt,
+          userId: userData?.userId,
         })
         await sleep(500)
 
-        const res4 = await getUserInfo(userData?._id)
+        const res4 = await getUserInfo(userData?.userId)
         if (res4?.code < 0) {
           throw new Error(res4?.msg || t`Error getting user information`)
         }

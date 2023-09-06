@@ -100,7 +100,7 @@ export const getUserInfo = async (id: string) => {
 // 验证邮箱中的链接（绑定到账户）
 export const verifyEmail = async (id: string, token: string) => {
   return await request
-    .get(`/user/verify/${id}/${token}`)
+    .get(`/user/verifyEmail/${id}/${token}`)
     .then((res) => {
       if (res?.status === 200) {
         return {
@@ -112,6 +112,37 @@ export const verifyEmail = async (id: string, token: string) => {
         throw new Error('Invalid link provided')
       }
       throw new Error('Error verifying email')
+    })
+    .catch((e) => {
+      return {
+        code: -1,
+        data: false,
+        msg: e.message,
+      }
+    })
+}
+
+// 绑定钱包到账户
+export const verifyWallet = async (
+  id: string,
+  data: {
+    signature: string
+    walletAddress: `0x${string}`
+  }
+) => {
+  return await request
+    .get(`/user/verifyWallet/${id}`, {
+      data,
+    })
+    .then((res) => {
+      if (res?.status === 200) {
+        return {
+          code: 0,
+          data: true,
+          msg: '',
+        }
+      }
+      throw new Error('Error verifying wallet address')
     })
     .catch((e) => {
       return {
@@ -262,14 +293,14 @@ export const loginWithWallet = async (
   signature: string,
   walletAddress: `0x${string}`,
   chainId: string,
-  isLinkWallet?: boolean // 是否是关联钱包到现有账户
+  userId?: string // 是否是关联钱包到现有账户
 ) => {
-  if (isLinkWallet === true) {
-    //     return await request.post('/web/link_wallet', {
-    //       walletAddress,
-    //       chainId,
-    //       signature,
-    //     })
+  if (userId) {
+    return await verifyWallet(userId, {
+      signature,
+      // chainId,
+      walletAddress,
+    })
   }
 
   return await request
