@@ -1,7 +1,7 @@
 import * as Yup from 'yup'
 import { Formik } from 'formik'
 import { Box, Stack } from '@chakra-ui/react'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 
@@ -20,6 +20,10 @@ import { useRouter } from 'next/router'
 
 export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
   const { i18n } = useLingui()
+
+  const [apiLoading, setApiLoading] = useState(false)
+  const [apiError, setApiError] = useState('')
+  const [apiError2, setApiError2] = useState('')
 
   const { push } = useRouter()
 
@@ -52,8 +56,6 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        validateOnBlur
-        validateOnChange={false}
         onSubmit={async (values, { setSubmitting, resetForm, setFieldError }) => {
           setSubmitting(true)
 
@@ -79,55 +81,78 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
           setSubmitting(false)
         }}
       >
-        <Stack direction={'column'} spacing={'30px'}>
-          <FormControl name='username' label={t`Username`}>
-            <TextInput
-              name='username'
-              fieldCfg={{
-                validate: async value => {
-                  let errorMsg: string | undefined = undefined
-                  if (value) {
-                    console.log('checkUsername', value)
-                    const res = await checkUsername(value)
-                    if (res?.code < 0) {
-                      errorMsg = t`Username already taken`
+        {({ setFieldError }) => {
+          return (
+            <Stack direction={'column'} spacing={'30px'}>
+              <FormControl name='username' label={t`Username`}>
+                <TextInput
+                  name='username'
+                  fieldCfg={{
+                    validate: () => {
+                      return apiError
+                    },
+                  }}
+                  onBlur={async e => {
+                    const value = e.target.value
+                    if (value) {
+                      setApiLoading(true)
+                      const res = await checkUsername(value)
+                      if (res?.code < 0) {
+                        setFieldError('username', t`Username already taken`)
+                        setApiError(t`Username already taken`)
+                      } else {
+                        setFieldError('username', '')
+                        setApiError('')
+                      }
+                      setApiLoading(false)
                     }
-                  }
-                  return errorMsg
-                },
-              }}
-            />
-          </FormControl>
-          <FormControl name='email' label={t`Email`}>
-            <TextInput
-              name='email'
-              type='email'
-              fieldCfg={{
-                validate: async value => {
-                  let errorMsg: string | undefined = undefined
-                  if (value) {
-                    console.log('checkEmail', value)
-                    const res = await checkEmail(value)
-                    if (res?.code < 0) {
-                      errorMsg = t`Email already registered`
+                  }}
+                />
+              </FormControl>
+              <FormControl name='email' label={t`Email`}>
+                <TextInput
+                  name='email'
+                  type='email'
+                  fieldCfg={{
+                    validate: () => {
+                      return apiError2
+                    },
+                  }}
+                  onBlur={async e => {
+                    const value = e.target.value
+                    if (value) {
+                      setApiLoading(true)
+                      const res = await await checkEmail(value)
+                      if (res?.code < 0) {
+                        setFieldError('email', t`Email already registered`)
+                        setApiError2(t`Email already registered`)
+                      } else {
+                        setFieldError('email', '')
+                        setApiError2('')
+                      }
+                      setApiLoading(false)
                     }
-                  }
-                  return errorMsg
-                },
-              }}
-            />
-          </FormControl>
-          <FormControl name='password' label={t`Password`}>
-            <PasswordInput name='password' type='password' />
-          </FormControl>
-          <FormControl name='password2' label={t`Confirm Password`}>
-            <PasswordInput name='password2' type='password' />
-          </FormControl>
-          <FormControl name='readTC'>{isLinkEmail ? null : <TC name='readTC' />}</FormControl>
-          <SubmitButton w='100%' mt='5px'>
-            {isLinkEmail ? t`Confirm` : t`Sign Up`}
-          </SubmitButton>
-        </Stack>
+                  }}
+                />
+              </FormControl>
+              <FormControl name='password' label={t`Password`}>
+                <PasswordInput name='password' type='password' />
+              </FormControl>
+              <FormControl name='password2' label={t`Confirm Password`}>
+                <PasswordInput name='password2' type='password' />
+              </FormControl>
+              <FormControl name='readTC'>{isLinkEmail ? null : <TC name='readTC' />}</FormControl>
+              <SubmitButton
+                w='100%'
+                mt='5px'
+                isLoading={apiLoading}
+                isDisabled={apiLoading || !!apiError || !!apiError2}
+              >
+                {apiError || apiError2 || (isLinkEmail ? t`Confirm` : t`Sign Up`)}
+              </SubmitButton>
+            </Stack>
+          )
+        }}
       </Formik>
     </Box>
   )

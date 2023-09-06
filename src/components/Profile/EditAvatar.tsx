@@ -93,7 +93,7 @@ export const EditAvatar = observer(() => {
         w={{ base: '100%', lg: 'max-content' }}
       >
         <UserImg
-          src={walletStore?.userExtInfo?.pic}
+          src={walletStore?.userExtInfo?.avatar}
           w={{ base: px2vw(84), lg: '120px' }}
           h={{ base: px2vw(84), lg: '120px' }}
         />

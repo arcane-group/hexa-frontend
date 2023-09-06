@@ -14,7 +14,7 @@ import { px2vw } from '@/utils/px2vw'
 const Info = observer(() => {
   const { walletStore } = useStore()
 
-  if (!walletStore?.userExtInfo?.name) {
+  if (!walletStore?.userExtInfo?.username) {
     return (
       <Text mt='55px'>{t`After binding the mailbox, you can modify the user name and password`}</Text>
     )

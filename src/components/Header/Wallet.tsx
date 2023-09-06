@@ -30,12 +30,12 @@ const WalletLogin = observer(({ colorMode }: { colorMode: 'dark' | 'light' }) =>
   // 已登录
   if (walletStore?.loginState === 3) {
     const nameStr =
-      walletStore?.userExtInfo?.name ||
+      walletStore?.userExtInfo?.username ||
       walletStore?.userExtInfo?.email ||
-      `${walletStore?.userExtInfo?.address?.slice(
+      `${walletStore?.userExtInfo?.walletAddress?.slice(
         0,
         6
-      )}...${walletStore?.userExtInfo?.address?.slice(-4)}`
+      )}...${walletStore?.userExtInfo?.walletAddress?.slice(-4)}`
 
     return (
       <Popover trigger='hover'>
@@ -55,7 +55,7 @@ const WalletLogin = observer(({ colorMode }: { colorMode: 'dark' | 'light' }) =>
               className='hover'
             >
               <UserImg
-                src={walletStore?.userExtInfo?.pic}
+                src={walletStore?.userExtInfo?.avatar}
                 w={{
                   base: px2vw(40),
                   lg: '45px',

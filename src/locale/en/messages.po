@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/components/ContactUs/Enquiries.tsx
+msgid "Thank you, we have received your enquiry and will respond shortly."
+msgstr "Thank you, we have received your enquiry and will respond shortly."
+
 #: src/components/Home/Screen-3.tsx
 msgid "The Library"
 msgstr "The Library"
@@ -85,7 +89,6 @@ msgid "ENS/Hexadecimal address (0x)"
 msgstr "ENS/Hexadecimal address (0x)"
 
 #: src/components/Header/index.tsx
-#: src/components/Header/index.tsx
 msgid "PODCAST"
 msgstr "PODCAST"
 
@@ -108,10 +111,6 @@ msgstr "MEMBERS"
 #: src/components/News/CollectBtn.tsx
 msgid "Failed to unstar"
 msgstr "Failed to unstar"
-
-#: src/components/Header/index.tsx
-msgid "NEWS ARTICLES"
-msgstr "NEWS ARTICLES"
 
 #: src/pages/contact-us/faq.tsx
 msgid "WHAT KIND OF MEMBERS ARE WE LOOKING FOR?"
@@ -205,6 +204,10 @@ msgstr "Apart from our services and solutions tailored to founders, we also are 
 msgid "WHAT IS THE APPLICATION PROCESS?"
 msgstr "WHAT IS THE APPLICATION PROCESS?"
 
+#: src/components/ContactUs/Support.tsx
+msgid "We have received your request and will contact you shortly!"
+msgstr "We have received your request and will contact you shortly!"
+
 #: src/hooks/useLogin.ts
 msgid "Please enter email and password"
 msgstr "Please enter email and password"
@@ -245,6 +248,11 @@ msgstr "Connect Wallet"
 msgid "Apply"
 msgstr "Apply"
 
+#: src/components/ContactUs/Enquiries.tsx
+#: src/components/ContactUs/Support.tsx
+msgid "API Error"
+msgstr "API Error"
+
 #: src/pages/contact-us/faq.tsx
 msgid "application form"
 msgstr "application form"
@@ -258,13 +266,11 @@ msgid "For now, Hexa Arcana will only be available on the Ethereum blockchain."
 msgstr "For now, Hexa Arcana will only be available on the Ethereum blockchain."
 
 #: src/components/Profile/EditName.tsx
+#: src/components/Profile/EditName.tsx
+#: src/components/Sign/SignUpForm.tsx
 #: src/components/Sign/SignUpForm.tsx
 msgid "Username already taken"
 msgstr "Username already taken"
-
-#: src/components/Header/index.tsx
-msgid "BLOGS"
-msgstr "BLOGS"
 
 #: src/components/Membership/index.tsx
 msgid "From customised support and programmes to exclusive community events, our members can gain access to a wide range of perks."
@@ -402,6 +408,10 @@ msgstr "Don’t have an account yet? Sign up here"
 #: src/components/ContactUs/Application.tsx
 msgid "Others"
 msgstr "Others"
+
+#: src/components/ContactUs/Application.tsx
+msgid "API error"
+msgstr "API error"
 
 #: src/components/ContactUs/Application.tsx
 #: src/components/ContactUs/Enquiries.tsx
@@ -616,10 +626,6 @@ msgstr "Project Founders"
 msgid "Failed to unlike"
 msgstr "Failed to unlike"
 
-#: src/components/Header/index.tsx
-msgid "DEV GUIDES"
-msgstr "DEV GUIDES"
-
 #: src/components/Membership/index.tsx
 msgid "Community Members"
 msgstr "Community Members"
@@ -711,9 +717,9 @@ msgstr "Please read and agree to the terms and conditions"
 msgid "WHAT ARE THE PERKS FOR MEMBERS?"
 msgstr "WHAT ARE THE PERKS FOR MEMBERS?"
 
-#: src/components/Header/index.tsx
-msgid "NEWS FEED"
-msgstr "NEWS FEED"
+#: src/components/ContactUs/Application.tsx
+msgid "Thank you for your application! We will contact you shortly for the next steps."
+msgstr "Thank you for your application! We will contact you shortly for the next steps."
 
 #: src/components/ContactUs/Application.tsx
 msgid "Project Deck Link (if applicable)"
@@ -867,10 +873,6 @@ msgstr "After binding the mailbox, you can modify the user name and password"
 msgid "Publish your insights to an audience of industry leaders..."
 msgstr "Publish your insights to an audience of industry leaders..."
 
-#: src/components/Header/index.tsx
-msgid "TRENDING TWEETS"
-msgstr "TRENDING TWEETS"
-
 #: src/components/Profile/index.tsx
 msgid "Verify Email"
 msgstr "Verify Email"
@@ -908,6 +910,7 @@ msgstr "Strategist"
 msgid "Message"
 msgstr "Message"
 
+#: src/components/Sign/SignUpForm.tsx
 #: src/components/Sign/SignUpForm.tsx
 msgid "Email already registered"
 msgstr "Email already registered"

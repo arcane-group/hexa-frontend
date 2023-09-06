@@ -33,7 +33,12 @@ const Profile = () => {
           lg: 0,
         }}
       >
-        <Center flexDir={'row'} pb='24px' w={{ base: '100%', lg: 'max-content' }}>
+        <Center
+          flexDir={'row'}
+          pb='24px'
+          w={{ base: '100%', lg: 'max-content' }}
+          m={{ lg: 'auto' }}
+        >
           <Stack
             spacing={'20px'}
             direction={'row'}
@@ -41,7 +46,7 @@ const Profile = () => {
             w={{ base: '100%', lg: 'max-content' }}
           >
             <UserImg
-              src={walletStore?.userExtInfo?.pic}
+              src={walletStore?.userExtInfo?.avatar}
               w={{ base: px2vw(84), lg: '120px' }}
               h={{ base: px2vw(84), lg: '120px' }}
             />
@@ -51,9 +56,9 @@ const Profile = () => {
                 lg: undefined,
               }}
             >
-              {walletStore?.userExtInfo?.name && (
+              {walletStore?.userExtInfo?.username && (
                 <Box textStyle={'ch1'} color='#000000'>
-                  {walletStore?.userExtInfo?.name}
+                  {walletStore?.userExtInfo?.username}
                 </Box>
               )}
 
@@ -63,34 +68,32 @@ const Profile = () => {
                 </Box>
               )}
 
-              {walletStore?.userExtInfo?.email &&
-                // TODO：判断是否已经验证过邮箱
-                true && (
-                  <Box>
-                    <Button
-                      mt='10px'
-                      size='sm'
-                      height={'26px'}
-                      onClick={() => {
-                        push({
-                          pathname: '/resend-email',
-                          query: {
-                            email: walletStore?.userExtInfo?.email,
-                          },
-                        })
-                      }}
-                    >{t`Verify Email`}</Button>
-                  </Box>
-                )}
+              {walletStore?.userExtInfo?.walletVerified === false && (
+                <Box>
+                  <Button
+                    mt='10px'
+                    size='sm'
+                    height={'26px'}
+                    onClick={() => {
+                      push({
+                        pathname: '/resend-email',
+                        query: {
+                          email: walletStore?.userExtInfo?.email,
+                        },
+                      })
+                    }}
+                  >{t`Verify Email`}</Button>
+                </Box>
+              )}
 
-              {walletStore?.userExtInfo?.address ? (
+              {walletStore?.userExtInfo?.walletAddress ? (
                 <Box
                   textStyle={'csmp'}
                   color='#595959'
-                >{`${walletStore?.userExtInfo?.address?.slice(
+                >{`${walletStore?.userExtInfo?.walletAddress?.slice(
                   0,
                   6
-                )}...${walletStore?.userExtInfo?.address?.slice(-4)}`}</Box>
+                )}...${walletStore?.userExtInfo?.walletAddress?.slice(-4)}`}</Box>
               ) : (
                 <Box>
                   <Button

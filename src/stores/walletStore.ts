@@ -2,22 +2,15 @@ import { observable, action, makeObservable, computed } from 'mobx'
 import getConfig from 'next/config'
 
 import { getCookie, removeCookie, setCookie } from '@/utils/cookie'
+import type { UserSchema } from '@/services/api/user'
 
 const { publicRuntimeConfig } = getConfig()
 
 const userStoreKey = 'USER_LOCAL_KEY_' + publicRuntimeConfig.storeVersion
 
-export type TUserExtInfo = {
-  userId: number
-  address?: `0x${string}`
-  email?: string
-  hasSBT?: boolean // 是否有 SBT
-  pic?: string // 头像
-  name?: string // 昵称
-}
-
-export type TUserInfo = Pick<TUserExtInfo, 'userId'> & {
+export type TUserInfo = {
   token: string
+  userId: string
 }
 
 export default class WalletStore {
@@ -31,7 +24,7 @@ export default class WalletStore {
 
   // 扩展用户信息
   @observable
-  userExtInfo: TUserExtInfo | null = null
+  userExtInfo: UserSchema | null = null
 
   // 登录状态
   @observable
@@ -71,7 +64,7 @@ export default class WalletStore {
   }
 
   @action
-  setUserExtInfo(data: TUserExtInfo | null) {
+  setUserExtInfo(data: UserSchema | null) {
     this.userExtInfo = data
   }
 

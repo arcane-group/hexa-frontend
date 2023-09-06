@@ -15,6 +15,10 @@ export interface UserSchema {
   whitelistStatus: boolean
   savedArticles: ArticleSchema[]
   savedNews: NewsSchema[]
+  _id: string
+  __v: number
+  createdAt: string
+  updatedAt: string
 }
 
 // 查询邮箱是否可用
@@ -54,7 +58,7 @@ export const checkUsername = async (username: string) => {
     .then((res) => {
       if (res?.status === 200) {
         return {
-          code: 0,
+          code: 1,
           data: true,
           msg: '',
         }
@@ -78,7 +82,7 @@ export const getUserInfo = async (id: string) => {
       if (res?.status === 200) {
         return {
           code: 0,
-          data: res?.data,
+          data: (Array.isArray(res?.data) ? res?.data[0] : res?.data) as UserSchema,
           msg: '',
         }
       }

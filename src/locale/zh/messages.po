@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/components/ContactUs/Enquiries.tsx
+msgid "Thank you, we have received your enquiry and will respond shortly."
+msgstr ""
+
 #: src/components/Home/Screen-3.tsx
 msgid "The Library"
 msgstr ""
@@ -85,7 +89,6 @@ msgid "ENS/Hexadecimal address (0x)"
 msgstr ""
 
 #: src/components/Header/index.tsx
-#: src/components/Header/index.tsx
 msgid "PODCAST"
 msgstr ""
 
@@ -107,10 +110,6 @@ msgstr "我们的会员"
 
 #: src/components/News/CollectBtn.tsx
 msgid "Failed to unstar"
-msgstr ""
-
-#: src/components/Header/index.tsx
-msgid "NEWS ARTICLES"
 msgstr ""
 
 #: src/pages/contact-us/faq.tsx
@@ -205,6 +204,10 @@ msgstr ""
 msgid "WHAT IS THE APPLICATION PROCESS?"
 msgstr ""
 
+#: src/components/ContactUs/Support.tsx
+msgid "We have received your request and will contact you shortly!"
+msgstr ""
+
 #: src/hooks/useLogin.ts
 msgid "Please enter email and password"
 msgstr "请输入邮箱和密码"
@@ -245,6 +248,11 @@ msgstr "链接钱包"
 msgid "Apply"
 msgstr ""
 
+#: src/components/ContactUs/Enquiries.tsx
+#: src/components/ContactUs/Support.tsx
+msgid "API Error"
+msgstr ""
+
 #: src/pages/contact-us/faq.tsx
 msgid "application form"
 msgstr ""
@@ -258,12 +266,10 @@ msgid "For now, Hexa Arcana will only be available on the Ethereum blockchain."
 msgstr ""
 
 #: src/components/Profile/EditName.tsx
+#: src/components/Profile/EditName.tsx
+#: src/components/Sign/SignUpForm.tsx
 #: src/components/Sign/SignUpForm.tsx
 msgid "Username already taken"
-msgstr ""
-
-#: src/components/Header/index.tsx
-msgid "BLOGS"
 msgstr ""
 
 #: src/components/Membership/index.tsx
@@ -401,6 +407,10 @@ msgstr ""
 
 #: src/components/ContactUs/Application.tsx
 msgid "Others"
+msgstr ""
+
+#: src/components/ContactUs/Application.tsx
+msgid "API error"
 msgstr ""
 
 #: src/components/ContactUs/Application.tsx
@@ -616,10 +626,6 @@ msgstr "创始人"
 msgid "Failed to unlike"
 msgstr ""
 
-#: src/components/Header/index.tsx
-msgid "DEV GUIDES"
-msgstr ""
-
 #: src/components/Membership/index.tsx
 msgid "Community Members"
 msgstr ""
@@ -711,9 +717,9 @@ msgstr ""
 msgid "WHAT ARE THE PERKS FOR MEMBERS?"
 msgstr ""
 
-#: src/components/Header/index.tsx
-msgid "NEWS FEED"
-msgstr "新闻快讯"
+#: src/components/ContactUs/Application.tsx
+msgid "Thank you for your application! We will contact you shortly for the next steps."
+msgstr ""
 
 #: src/components/ContactUs/Application.tsx
 msgid "Project Deck Link (if applicable)"
@@ -867,10 +873,6 @@ msgstr ""
 msgid "Publish your insights to an audience of industry leaders..."
 msgstr ""
 
-#: src/components/Header/index.tsx
-msgid "TRENDING TWEETS"
-msgstr ""
-
 #: src/components/Profile/index.tsx
 msgid "Verify Email"
 msgstr "认证邮箱"
@@ -908,6 +910,7 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
+#: src/components/Sign/SignUpForm.tsx
 #: src/components/Sign/SignUpForm.tsx
 msgid "Email already registered"
 msgstr ""

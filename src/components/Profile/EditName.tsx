@@ -1,7 +1,7 @@
 import * as Yup from 'yup'
 import { Formik } from 'formik'
 import { Box, Stack, Text } from '@chakra-ui/react'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { observer } from 'mobx-react-lite'
@@ -9,12 +9,15 @@ import { observer } from 'mobx-react-lite'
 import { TextInput } from '@/components/Form/Input'
 import { SubmitButton } from '@/components/Form/SubmitButton'
 import { FormControl } from '@/components/Form/FormControl'
-import { checkUsername } from '@/services/user'
+import { checkUsername } from '@/services/api/user'
 import { useStore } from '@/stores'
 import { toast } from 'react-toastify'
 
 export const EditName = observer(() => {
   const { i18n } = useLingui()
+
+  const [apiLoading, setApiLoading] = useState(false)
+  const [apiError, setApiError] = useState('')
 
   const { walletStore } = useStore()
 
@@ -29,7 +32,7 @@ export const EditName = observer(() => {
   }, [i18n.locale])
   const initialValues = {
     ...validationSchema.getDefault(),
-    existingUsername: walletStore?.userExtInfo?.name,
+    existingUsername: walletStore?.userExtInfo?.username,
   }
 
   return (
@@ -64,33 +67,48 @@ export const EditName = observer(() => {
           setSubmitting(false)
         }}
       >
-        <Stack direction={'column'} spacing={'20px'}>
-          <FormControl name='existingUsername' label={t`Existing Username`}>
-            <TextInput name='existingUsername' isDisabled={true} />
-          </FormControl>
+        {({ setFieldError }) => (
+          <Stack direction={'column'} spacing={'20px'}>
+            <FormControl name='existingUsername' label={t`Existing Username`}>
+              <TextInput name='existingUsername' isDisabled={true} />
+            </FormControl>
 
-          <FormControl name='username' label={t`New Username`}>
-            <TextInput
-              name='username'
-              fieldCfg={{
-                validate: async value => {
-                  let errorMsg: string | undefined = undefined
+            <FormControl name='username' label={t`New Username`}>
+              <TextInput
+                name='username'
+                fieldCfg={{
+                  validate: () => {
+                    return apiError
+                  },
+                }}
+                onBlur={async e => {
+                  const value = e.target.value
                   if (value) {
-                    const isAvailable = await checkUsername(value)
-                    if (!isAvailable) {
-                      errorMsg = t`Username already taken`
+                    setApiLoading(true)
+                    const res = await checkUsername(value)
+                    if (res?.code < 0) {
+                      setFieldError('username', t`Username already taken`)
+                      setApiError(t`Username already taken`)
+                    } else {
+                      setFieldError('username', '')
+                      setApiError('')
                     }
+                    setApiLoading(false)
                   }
-                  return errorMsg
-                },
-              }}
-            />
-          </FormControl>
+                }}
+              />
+            </FormControl>
 
-          <SubmitButton w='100%' mt='30px'>
-            {t`Submit`}
-          </SubmitButton>
-        </Stack>
+            <SubmitButton
+              w='100%'
+              mt='30px'
+              isLoading={apiLoading}
+              isDisabled={apiLoading || !!apiError}
+            >
+              {apiError || t`Submit`}
+            </SubmitButton>
+          </Stack>
+        )}
       </Formik>
     </Box>
   )

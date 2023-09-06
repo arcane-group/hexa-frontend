@@ -32,6 +32,12 @@ export const TextInput: FC<
       minH='40px'
       {...props}
       {...field}
+      onBlur={(...args) => {
+        field.onBlur(...args)
+        if (props?.onBlur) {
+          props.onBlur(...args)
+        }
+      }}
     />
   )
 }

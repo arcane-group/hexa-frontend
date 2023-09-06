@@ -65,11 +65,11 @@ export const useLogout = (isLinkWallet?: boolean) => {
 export const useAutoLogin = () => {
   useLingui()
 
-  // const { pathname } = useRouter()
+  const { pathname } = useRouter()
 
   const { walletStore } = useStore()
   const logoutFn = useLogout()
-  // const redirectFn = useRedirect()
+  const redirectFn = useRedirect()
 
   return useCallback(
     async (hasToast: boolean = false) => {
@@ -81,19 +81,20 @@ export const useAutoLogin = () => {
         if (walletStore?.userInfo?.token && walletStore?.userInfo?.userId) {
           walletStore.setLoginState(2)
 
+          // TODO: 差接口 先用直接查询用户信息的接口 替代
           // const res = await checkLogin()
-          // if (res?.data?.code >= 0) {
-          //   const res2 = await getUserInfo()
-          //   if (res2?.data?.code >= 0) {
-          //     walletStore.setUserExtInfo(res2?.data?.data)
-          //     walletStore.setLoginState(3)
+          // if (res?.code >= 0) {
+          const res2 = await getUserInfo(walletStore?.userInfo?.userId)
+          if (res2?.code >= 0) {
+            walletStore.setUserExtInfo(res2?.data)
+            walletStore.setLoginState(3)
 
-          //     if (['/sigin-in', '/sign-up'].includes(pathname)) {
-          //       await redirectFn()
-          //     }
+            if (['/sigin-in', '/sign-up'].includes(pathname)) {
+              await redirectFn()
+            }
 
-          //     return true
-          //   }
+            return true
+          }
           // }
           throw new Error(t`Login status has expired`)
         }
@@ -103,11 +104,7 @@ export const useAutoLogin = () => {
       }
       return false
     },
-    [
-      logoutFn,
-      walletStore,
-      // redirectFn, pathname
-    ]
+    [logoutFn, walletStore, redirectFn, pathname]
   )
 }
 
@@ -220,12 +217,12 @@ export const useAccountLogin = () => {
         const userData = res3?.data
         // 设置基础用户信息
         walletStore.setUserInfo({
-          token: userData?.token,
-          userId: userData?.user_id,
+          token: userData?.jwt,
+          userId: userData?.userId,
         })
         await sleep(500)
 
-        const res4 = await getUserInfo(userData?.user_id)
+        const res4 = await getUserInfo(userData?.userId)
         if (res4?.code < 0) {
           throw new Error(res4?.msg || t`Error getting user information`)
         }
