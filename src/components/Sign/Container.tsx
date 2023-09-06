@@ -7,9 +7,11 @@ import {
   useEffect,
   forwardRef,
   useImperativeHandle,
+  useMemo,
 } from 'react'
 
 import { Container as ContainerBox } from '@/components/Container'
+import { MotionImage } from '@/components/Motion'
 import { LineButton } from '@/components/LineButton'
 import px2vw from '@/utils/px2vw'
 // import { px2vw } from '@/utils/px2vw'
@@ -56,6 +58,10 @@ export const Container = ({ spacing, children }: { spacing?: any; children: Reac
   //   }
   // }, [registerState, children])
 
+  const bgImg = useMemo(() => {
+    return `/images/card-bg/${Math.ceil(Math.random() * 4)}.png`
+  }, [])
+
   return (
     // <StoreContext.Provider
     //   value={{
@@ -87,6 +93,7 @@ export const Container = ({ spacing, children }: { spacing?: any; children: Reac
         }
       >
         <Box
+          pos='relative'
           w={{
             base: '100%',
             lg: '320px',
@@ -96,9 +103,34 @@ export const Container = ({ spacing, children }: { spacing?: any; children: Reac
             lg: '743px',
           }}
           border='3px solid #1ECADC'
-          bgGradient='linear(164.72deg, #8AF7FC 1.21%, transparent 75.08%)'
         >
-          <Image src='' alt='' w='100%' h='100%' />
+          <Box
+            pos='absolute'
+            zIndex={2}
+            left={0}
+            top={0}
+            w={'100%'}
+            h={'100%'}
+            bgGradient='linear(164.72deg, #8AF7FC 1.21%, transparent 75.08%)'
+          ></Box>
+          <MotionImage
+            initial='offscreen'
+            whileInView='onscreen'
+            variants={{
+              offscreen: {
+                opacity: 0,
+              },
+              onscreen: {
+                opacity: 1,
+              },
+            }}
+            pos='relative'
+            zIndex={0}
+            src={bgImg}
+            alt=''
+            w='100%'
+            h='100%'
+          />
         </Box>
         <Box
           flex={1}
