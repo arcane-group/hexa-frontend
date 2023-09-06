@@ -12,6 +12,7 @@ import { getLibraryCategoryList } from '@/services/library'
 import { InfiniteVirtualScroll } from '../InfiniteVirtualScroll'
 import { LibraryCard } from './Card'
 import { px2vw } from '@/utils/px2vw'
+import { HasSBT } from '@/components/Layout/HasSBT'
 
 const Category = observer(() => {
   const router = useRouter()
@@ -23,8 +24,10 @@ const Category = observer(() => {
 
   return (
     <Container py={{ base: px2vw(70), lg: '120px' }} pos='relative'>
-      <GoSaved right={{ base: px2vw(20), lg: '40px', xxl: '80px' }} />
-      {idStr && <List id={idStr} />}
+      <HasSBT>
+        <GoSaved right={{ base: px2vw(20), lg: '40px', xxl: '80px' }} />
+        {idStr && <List id={idStr} />}
+      </HasSBT>
     </Container>
   )
 })

@@ -5,6 +5,7 @@ import { useCallback, useMemo, useState } from 'react'
 import * as Yup from 'yup'
 import { Formik } from 'formik'
 import { observer } from 'mobx-react-lite'
+import { Link } from '@chakra-ui/next-js'
 
 import { TextInput } from '@/components/Form/Input'
 import { SubmitButton } from '@/components/Form/SubmitButton'
@@ -12,14 +13,14 @@ import { FormControl } from '@/components/Form/FormControl'
 import { AsyncSelect } from '@/components/Form/AsyncSelect'
 import { TextTextarea } from '@/components/Form/Textarea'
 import { postConsultation } from '@/services/api/consultation'
+import { useStore } from '@/stores'
 
-// TODO: 客户端判断 是否已经是SBT会员  或 是否已经登录
-// Oops! Please sign in and connect your wallet to verify membership.
-// Oops! Looks like you aren’t a Hexa Hub member yet! Consultation services are only available to Hexa Hub members, for more info on Hexa Hub membership, click here.
 export const SupportForm = observer(() => {
   const { i18n } = useLingui()
 
-  const [showTips, setTips] = useState('')
+  const { walletStore } = useStore()
+
+  const [showTips, setTips] = useState<any>('')
 
   const validationSchema = useMemo(() => {
     return Yup.object({
@@ -95,7 +96,7 @@ export const SupportForm = observer(() => {
   if (showTips) {
     return (
       <Box pt='200px'>
-        <Text textStyle={'cp'}>{showTips}</Text>
+        <Box textStyle={'cp'}>{showTips}</Box>
       </Box>
     )
   }
@@ -106,6 +107,37 @@ export const SupportForm = observer(() => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={async (values, { setSubmitting, setFieldError }) => {
+          if (!walletStore?.userExtInfo?._id) {
+            setTips(
+              <Box>
+                {t`Oops! Please`}
+                <Link
+                  mx='4px'
+                  className='hover'
+                  color='#1ccadc'
+                  href={`/sign-in?redirectTo=${encodeURIComponent(
+                    '/contact-us/consultation-services'
+                  )}`}
+                >{t`sign in`}</Link>
+                {`and connect your wallet to verify membership.`}
+              </Box>
+            )
+            return
+          } else if (walletStore?.userExtInfo?.whitelistStatus !== true) {
+            setTips(
+              <Box>
+                {t`Oops! Looks like you aren’t a Hexa Hub member yet! Consultation services are only available to Hexa Hub members, for more info on Hexa Hub membership,`}
+                <Link
+                  ml='4px'
+                  className='hover'
+                  color='#1ccadc'
+                  href='/contact-us/membership-application'
+                >{t`click here`}</Link>
+              </Box>
+            )
+            return
+          }
+
           setSubmitting(true)
 
           console.log('values:', values)

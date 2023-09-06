@@ -22,6 +22,7 @@ import { CollectBtn } from '@/components/News/CollectBtn'
 import type { LibraryIndex } from '@/stores/pageStore/LibraryIndex'
 import px2vw from '@/utils/px2vw'
 import { useStore } from '@/stores'
+import { HasSBT } from '@/components/Layout/HasSBT'
 
 const Swiper2: any = Swiper
 
@@ -44,175 +45,177 @@ const Library = observer(() => {
       pos='relative'
       overflow={'hidden'}
     >
-      <GoSaved />
+      <HasSBT>
+        <GoSaved />
 
-      <MotionCenter
-        initial='offscreen'
-        whileInView='onscreen'
-        variants={{
-          offscreen: {
-            opacity: 0,
-          },
-          onscreen: {
-            opacity: 1,
-          },
-        }}
-        flexDir={'column'}
-      >
-        <Box
-          w='100%'
-          sx={{
-            '.swiper': {
-              width: '100%',
-              height: '100%',
-              overflow: 'visible',
+        <MotionCenter
+          initial='offscreen'
+          whileInView='onscreen'
+          variants={{
+            offscreen: {
+              opacity: 0,
             },
-            '.library-swiper-slide': {
-              width: '100%',
-              height: '100%',
+            onscreen: {
+              opacity: 1,
             },
           }}
+          flexDir={'column'}
         >
-          <Swiper2
-            centeredSlides
-            centeredSlidesBounds
-            centerInsufficientSlides
-            grabCursor={false}
-            slidesPerView={isPC ? 4 : 1.1}
-            spaceBetween={isPC ? undefined : 20}
-          >
-            {[1, 2, 3, 4].map(item => {
-              return (
-                <SwiperSlide key={item} className='library-swiper-slide'>
-                  <CategoryCard data={item} />
-                </SwiperSlide>
-              )
-            })}
-          </Swiper2>
-        </Box>
-      </MotionCenter>
-
-      <MotionCenter
-        initial='offscreen'
-        whileInView='onscreen'
-        variants={{
-          offscreen: {
-            opacity: 0,
-          },
-          onscreen: {
-            opacity: 1,
-          },
-        }}
-        flexDir={{
-          base: 'column',
-          lg: 'row',
-        }}
-        mt={{ base: px2vw(80), lg: '200px' }}
-      >
-        <Box
-          w={{ base: px2vw(320), lg: '520px' }}
-          h={{ base: px2vw(320), lg: '520px' }}
-          bgGradient={'linear-gradient(164.72deg, #8AF7FC 1.2%, rgba(138, 247, 252, 0) 75.08%)'}
-          border='3px solid #1ECADC'
-          pos='relative'
-          _after={{
-            content: `" "`,
-            pos: 'absolute',
-            top: '9px',
-            left: '9px',
-            width: '100%',
-            height: '100%',
-            border: '1px solid #1ECADC',
-            zIndex: 0,
-          }}
-          mr={{ lg: '53px' }}
-        >
-          <Image w='100%' h='100%' src={''} alt='' />
-        </Box>
-        <Box flex={1} pos='relative' mt={{ base: px2vw(21), lg: '0' }}>
-          <Box pos='absolute' zIndex={2} right={'0'} top={'0'}>
-            <CollectBtn
-              id={'123'}
-              iconH={'28px'}
-              btnProps={{
-                h: '28px',
-              }}
-            />
-          </Box>
-          <Text textStyle={'cp'} color='#1D1D1D'>
-            Podcast
-          </Text>
-          <Text textStyle={'ch2'} mt={{ base: px2vw(13), lg: '0' }} color='#1D1D1D'>
-            TITLE OF LASTEST ARTICLE
-          </Text>
-          <Text
-            color='#595959'
-            textStyle={{ base: 'smp', lg: 'cp' }}
+          <Box
+            w='100%'
             sx={{
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              display: '-webkit-box',
-              WebkitLineClamp: 3,
-              WebkitBoxOrient: 'vertical',
+              '.swiper': {
+                width: '100%',
+                height: '100%',
+                overflow: 'visible',
+              },
+              '.library-swiper-slide': {
+                width: '100%',
+                height: '100%',
+              },
             }}
-            overflow={'hidden'}
-            textOverflow='ellipsis'
-            display={'-webkit-box'}
-            h={{
-              base: px2vw(14 * 1.5 * 3),
-              lg: `${24 * 1.5 * 3}px`,
-            }}
-            my={{ base: px2vw(13), lg: '14px' }}
           >
-            Arcane welcomes the different, the trailblazers, the novel. If you have a growth mindset
-            and deep，if you have Arcane welcomes the different, the trailblazers, the novel. If you
-            have a growth mindset and deep，if you have Arcane welcomes the different, the
-            trailblazers, the novel. If you have a growth mindset and deep，if you have Arcane
-            welcomes the different, the trailblazers, the novel. If you have a growth mindset and
-            deep，if you have Arcane welcomes the different, the trailblazers, the novel. If you
-            have a growth mindset and deep，if you have Arcane welcomes the different, the
-            trailblazers, the novel. If you have a growth mindset and deep，if you have Arcane
-            welcomes the different, the trailblazers, the novel. If you have a growth mindset and
-            deep，if you have
-          </Text>
-          <Text color='#595959' textStyle={'csmp'} mb={{ base: px2vw(20), lg: '100px' }}>
-            {dayjs(1692864161725).format('YYYY-MM-DD HH:mm:ss')}
-          </Text>
-          <LineButton
-            w='210px'
-            onClick={() => {
-              router.push({
-                pathname: '/library/category/[id]',
-                query: {
-                  id: '123',
-                },
-              })
-            }}
-          >{t`Play`}</LineButton>
-        </Box>
-      </MotionCenter>
+            <Swiper2
+              centeredSlides
+              centeredSlidesBounds
+              centerInsufficientSlides
+              grabCursor={false}
+              slidesPerView={isPC ? 4 : 1.1}
+              spaceBetween={isPC ? undefined : 20}
+            >
+              {[1, 2, 3, 4].map(item => {
+                return (
+                  <SwiperSlide key={item} className='library-swiper-slide'>
+                    <CategoryCard data={item} />
+                  </SwiperSlide>
+                )
+              })}
+            </Swiper2>
+          </Box>
+        </MotionCenter>
 
-      <MotionCenter
-        initial='offscreen'
-        whileInView='onscreen'
-        variants={{
-          offscreen: {
-            opacity: 0,
-          },
-          onscreen: {
-            opacity: 1,
-          },
-        }}
-        flexDir={'column'}
-        mt={{ base: px2vw(80), lg: '200px' }}
-      >
-        <Box w='100%'>
-          <Text textStyle={'ch1'}>{t`LATEST`}</Text>
-        </Box>
-        <Box w='100%'>
-          <LatestList />
-        </Box>
-      </MotionCenter>
+        <MotionCenter
+          initial='offscreen'
+          whileInView='onscreen'
+          variants={{
+            offscreen: {
+              opacity: 0,
+            },
+            onscreen: {
+              opacity: 1,
+            },
+          }}
+          flexDir={{
+            base: 'column',
+            lg: 'row',
+          }}
+          mt={{ base: px2vw(80), lg: '200px' }}
+        >
+          <Box
+            w={{ base: px2vw(320), lg: '520px' }}
+            h={{ base: px2vw(320), lg: '520px' }}
+            bgGradient={'linear-gradient(164.72deg, #8AF7FC 1.2%, rgba(138, 247, 252, 0) 75.08%)'}
+            border='3px solid #1ECADC'
+            pos='relative'
+            _after={{
+              content: `" "`,
+              pos: 'absolute',
+              top: '9px',
+              left: '9px',
+              width: '100%',
+              height: '100%',
+              border: '1px solid #1ECADC',
+              zIndex: 0,
+            }}
+            mr={{ lg: '53px' }}
+          >
+            <Image w='100%' h='100%' src={''} alt='' />
+          </Box>
+          <Box flex={1} pos='relative' mt={{ base: px2vw(21), lg: '0' }}>
+            <Box pos='absolute' zIndex={2} right={'0'} top={'0'}>
+              <CollectBtn
+                id={'123'}
+                iconH={'28px'}
+                btnProps={{
+                  h: '28px',
+                }}
+              />
+            </Box>
+            <Text textStyle={'cp'} color='#1D1D1D'>
+              Podcast
+            </Text>
+            <Text textStyle={'ch2'} mt={{ base: px2vw(13), lg: '0' }} color='#1D1D1D'>
+              TITLE OF LASTEST ARTICLE
+            </Text>
+            <Text
+              color='#595959'
+              textStyle={{ base: 'smp', lg: 'cp' }}
+              sx={{
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: '-webkit-box',
+                WebkitLineClamp: 3,
+                WebkitBoxOrient: 'vertical',
+              }}
+              overflow={'hidden'}
+              textOverflow='ellipsis'
+              display={'-webkit-box'}
+              h={{
+                base: px2vw(14 * 1.5 * 3),
+                lg: `${24 * 1.5 * 3}px`,
+              }}
+              my={{ base: px2vw(13), lg: '14px' }}
+            >
+              Arcane welcomes the different, the trailblazers, the novel. If you have a growth
+              mindset and deep，if you have Arcane welcomes the different, the trailblazers, the
+              novel. If you have a growth mindset and deep，if you have Arcane welcomes the
+              different, the trailblazers, the novel. If you have a growth mindset and deep，if you
+              have Arcane welcomes the different, the trailblazers, the novel. If you have a growth
+              mindset and deep，if you have Arcane welcomes the different, the trailblazers, the
+              novel. If you have a growth mindset and deep，if you have Arcane welcomes the
+              different, the trailblazers, the novel. If you have a growth mindset and deep，if you
+              have Arcane welcomes the different, the trailblazers, the novel. If you have a growth
+              mindset and deep，if you have
+            </Text>
+            <Text color='#595959' textStyle={'csmp'} mb={{ base: px2vw(20), lg: '100px' }}>
+              {dayjs(1692864161725).format('YYYY-MM-DD HH:mm:ss')}
+            </Text>
+            <LineButton
+              w='210px'
+              onClick={() => {
+                router.push({
+                  pathname: '/library/category/[id]',
+                  query: {
+                    id: '123',
+                  },
+                })
+              }}
+            >{t`Play`}</LineButton>
+          </Box>
+        </MotionCenter>
+
+        <MotionCenter
+          initial='offscreen'
+          whileInView='onscreen'
+          variants={{
+            offscreen: {
+              opacity: 0,
+            },
+            onscreen: {
+              opacity: 1,
+            },
+          }}
+          flexDir={'column'}
+          mt={{ base: px2vw(80), lg: '200px' }}
+        >
+          <Box w='100%'>
+            <Text textStyle={'ch1'}>{t`LATEST`}</Text>
+          </Box>
+          <Box w='100%'>
+            <LatestList />
+          </Box>
+        </MotionCenter>
+      </HasSBT>
     </Container>
   )
 })

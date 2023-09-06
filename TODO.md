@@ -31,3 +31,19 @@
 # 后端对接
 
 1. 
+
+
+# test 
+
+1. 
+hexa@test1.com
+hexatest 
+
+2. 0xdFCE1a5dA749b3254CBf4162aEC6d6b2D33ef876
+
+3. 0xAf35680C243ab73bF90d3704688c6038f127f3b0 whitelistStatus
+
+4. 
+hexa@test2.com
+hexatest 
+0xAf35680C243ab73bF90d3704688c6038f127f3b0

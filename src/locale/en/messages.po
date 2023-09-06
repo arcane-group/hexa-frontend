@@ -17,6 +17,10 @@ msgstr ""
 msgid "Thank you, we have received your enquiry and will respond shortly."
 msgstr "Thank you, we have received your enquiry and will respond shortly."
 
+#: src/components/ContactUs/Support.tsx
+msgid "Oops! Please sign in and connect your wallet to verify membership."
+msgstr "Oops! Please sign in and connect your wallet to verify membership."
+
 #: src/components/Home/Screen-3.tsx
 msgid "The Library"
 msgstr "The Library"
@@ -625,6 +629,12 @@ msgstr "Failed to unlike"
 #: src/components/Membership/index.tsx
 msgid "Community Members"
 msgstr "Community Members"
+
+#. js-lingui-explicit-id
+#: src/components/ContactUs/Support.tsx
+#: src/components/ContactUs/Support.tsx
+msgid "contactus-support"
+msgstr "contactus-support"
 
 #: src/components/Membership/Screen-2.tsx
 msgid "Become a panelist at major industry events..."

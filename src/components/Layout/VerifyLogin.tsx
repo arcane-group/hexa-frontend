@@ -10,7 +10,7 @@ export const VerifyLogin = observer(({ children }: { children: any }) => {
 
   const { walletStore } = useStore()
 
-  if (!walletStore?.userInfo?.token) {
+  if (!walletStore?.userExtInfo?._id) {
     return <Center minH='calc(100vh - 120px - 60px)'>{t`Please log in first`}</Center>
   }
 
