@@ -4,6 +4,7 @@ import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
 import { useEffect, useRef, useState } from 'react'
 import { toast } from 'react-toastify'
+import { useRequest } from 'ahooks'
 
 import { CropperModal } from '@/components/Cropper'
 import { useStore } from '@/stores'
@@ -15,6 +16,7 @@ import {
   fileToBase64,
   // hashBlob
 } from '@/utils/blob2hash'
+import { editInfo } from '@/services/api/user'
 
 export const EditAvatar = observer(() => {
   useLingui()
@@ -26,6 +28,32 @@ export const EditAvatar = observer(() => {
 
   const { walletStore } = useStore()
 
+  const { loading, run } = useRequest(
+    async data => {
+      const res = await editInfo(`${walletStore?.userInfo?.userId}`, {
+        avatar: data,
+      }).catch(() => {
+        return null
+      })
+      if (res && res?.code >= 0) {
+        walletStore?.setUserExtInfo(
+          walletStore?.userExtInfo
+            ? {
+                ...walletStore?.userExtInfo,
+                avatar: data,
+              }
+            : null
+        )
+        toast.success(t`Success`)
+      } else {
+        toast.error(res?.data?.msg || 'App error')
+      }
+    },
+    {
+      manual: true,
+    }
+  )
+
   const { onOpen, Modal, onClose, isOpen } = useModal({
     contentProps: {
       w: { base: px2vw(750), lg: 'max-content' },
@@ -34,14 +62,16 @@ export const EditAvatar = observer(() => {
     blockScrollOnMount: false,
     children: (
       <CropperModal
-        canvasWidth={300}
-        canvasHeight={300}
+        canvasWidth={160}
+        canvasHeight={160}
         onOk={(cropperHtml: HTMLCanvasElement) => {
           try {
             onClose()
 
             const dataUrl = cropperHtml?.toDataURL('image/png')
-            console.log('dataUrl:', dataUrl)
+            console.log('upload image data:', dataUrl)
+
+            run?.(dataUrl)
 
             // cropperHtml?.toBlob(async (blob: Blob) => {
             //   console.log('blob:', blob)
@@ -108,7 +138,7 @@ export const EditAvatar = observer(() => {
           <Box>
             <Button
               size='sm'
-              isLoading={isLoading}
+              isLoading={isLoading || loading}
               height={'26px'}
               onClick={() => {
                 inputRef?.current?.value && (inputRef.current.value = '')

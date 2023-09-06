@@ -300,7 +300,10 @@ export const loginWithWallet = async (
 }
 
 // 编辑用户信息
-export const editInfo = async (uid: string, data: { username?: string; password?: string }) => {
+export const editInfo = async (
+  uid: string,
+  data: { username?: string; password?: string; avatar?: string }
+) => {
   return await request
     .put(`/user/edit/${uid}`, data)
     .then((res) => {

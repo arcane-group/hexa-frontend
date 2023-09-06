@@ -58,14 +58,14 @@ const WalletLogin = observer(({ colorMode }: { colorMode: 'dark' | 'light' }) =>
                 src={walletStore?.userExtInfo?.avatar}
                 w={{
                   base: px2vw(40),
-                  lg: '45px',
+                  lg: '40px',
                 }}
                 h={{
                   base: px2vw(40),
-                  lg: '45px',
+                  lg: '40px',
                 }}
               />
-              <Text textStyle={'cp'}>{nameStr}</Text>
+              <Text textStyle={'p'}>{nameStr}</Text>
             </Stack>
           </Link>
         </PopoverTrigger>
