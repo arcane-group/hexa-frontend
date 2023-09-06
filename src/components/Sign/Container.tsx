@@ -1,4 +1,4 @@
-import { Stack, Box, Image, ButtonProps } from '@chakra-ui/react'
+import { Stack, Box, ButtonProps } from '@chakra-ui/react'
 import {
   useState,
   // useContext,

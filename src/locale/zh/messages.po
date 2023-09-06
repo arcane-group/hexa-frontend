@@ -948,6 +948,7 @@ msgstr ""
 msgid "Go Previous Page"
 msgstr ""
 
+#: src/components/Profile/EditAvatar.tsx
 #: src/components/Profile/EditName.tsx
 #: src/components/Profile/EditPsd.tsx
 msgid "Success"

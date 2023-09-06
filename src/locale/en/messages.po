@@ -948,6 +948,7 @@ msgstr "Menu"
 msgid "Go Previous Page"
 msgstr "Go Previous Page"
 
+#: src/components/Profile/EditAvatar.tsx
 #: src/components/Profile/EditName.tsx
 #: src/components/Profile/EditPsd.tsx
 msgid "Success"

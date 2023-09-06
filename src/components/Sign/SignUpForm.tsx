@@ -10,12 +10,7 @@ import { PasswordInput } from '@/components/Form/PasswordInput'
 import { TextInput } from '@/components/Form/Input'
 import { SubmitButton } from '@/components/Form/SubmitButton'
 import { FormControl } from '@/components/Form/FormControl'
-import {
-  register,
-  checkUsername,
-  checkEmail,
-  // linkEmail
-} from '@/services/api/user'
+import { register, checkUsername, checkEmail, linkEmail } from '@/services/api/user'
 import { useRouter } from 'next/router'
 
 export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
@@ -60,11 +55,8 @@ export const SignUpForm = ({ isLinkEmail }: { isLinkEmail?: boolean }) => {
         onSubmit={async (values, { setSubmitting, resetForm, setFieldError }) => {
           setSubmitting(true)
 
-          // let fn = isLinkEmail ? linkEmail : register
-          // const res = await fn(values.username, values.email, values.password).catch(() => {
-          //   return null
-          // })
-          const res = await register(values.username, values.email, values.password)
+          let fn = isLinkEmail ? linkEmail : register
+          const res = await fn(values.username, values.email, values.password)
           if (res?.code >= 0) {
             resetForm({
               values: initialValues,

@@ -23,7 +23,7 @@ export default Page
 export const getStaticProps = async () => {
   return {
     props: {
-      title: 'Merbership',
+      title: 'Membership',
     },
   }
 }

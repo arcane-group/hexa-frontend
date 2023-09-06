@@ -357,14 +357,10 @@ export const editInfo = async (
 }
 
 // 绑定邮箱
-export const linkEmail = async (
-  username: string,
-  email: string,
-  password: string,
-  address: string
-) => {
+export const linkEmail = async (username: string, email: string, password: string) => {
+  throw new Error('Error')
   return await request
-    .put(`/user/edit/${address}`, {
+    .post(``, {
       username,
       password,
       email,

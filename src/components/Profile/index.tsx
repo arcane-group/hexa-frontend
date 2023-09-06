@@ -68,23 +68,24 @@ const Profile = () => {
                 </Box>
               )}
 
-              {walletStore?.userExtInfo?.walletVerified === false && (
-                <Box>
-                  <Button
-                    mt='10px'
-                    size='sm'
-                    height={'26px'}
-                    onClick={() => {
-                      push({
-                        pathname: '/resend-email',
-                        query: {
-                          email: walletStore?.userExtInfo?.email,
-                        },
-                      })
-                    }}
-                  >{t`Verify Email`}</Button>
-                </Box>
-              )}
+              {walletStore?.userExtInfo?.email &&
+                walletStore?.userExtInfo?.walletVerified === false && (
+                  <Box>
+                    <Button
+                      mt='10px'
+                      size='sm'
+                      height={'26px'}
+                      onClick={() => {
+                        push({
+                          pathname: '/resend-email',
+                          query: {
+                            email: walletStore?.userExtInfo?.email,
+                          },
+                        })
+                      }}
+                    >{t`Verify Email`}</Button>
+                  </Box>
+                )}
 
               {walletStore?.userExtInfo?.walletAddress ? (
                 <Box
