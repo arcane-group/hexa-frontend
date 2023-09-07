@@ -17,10 +17,6 @@ msgstr ""
 msgid "Thank you, we have received your enquiry and will respond shortly."
 msgstr "Thank you, we have received your enquiry and will respond shortly."
 
-#: src/components/ContactUs/Support.tsx
-msgid "Oops! Please sign in and connect your wallet to verify membership."
-msgstr "Oops! Please sign in and connect your wallet to verify membership."
-
 #: src/components/Home/Screen-3.tsx
 msgid "The Library"
 msgstr "The Library"
@@ -276,6 +272,11 @@ msgstr "For now, Hexa Arcana will only be available on the Ethereum blockchain."
 msgid "Username already taken"
 msgstr "Username already taken"
 
+#: src/components/ContactUs/Support.tsx
+#: src/components/Layout/HasSBT.tsx
+msgid "click here"
+msgstr "click here"
+
 #: src/components/Membership/index.tsx
 msgid "From customised support and programmes to exclusive community events, our members can gain access to a wide range of perks."
 msgstr "From customised support and programmes to exclusive community events, our members can gain access to a wide range of perks."
@@ -327,6 +328,11 @@ msgstr "Once the application has gone through, we will airdrop your Hexa Arcana 
 #: src/components/ContactUs/Application.tsx
 msgid "Background"
 msgstr "Background"
+
+#: src/components/ContactUs/Support.tsx
+#: src/components/Layout/HasSBT.tsx
+msgid "sign in"
+msgstr "sign in"
 
 #: src/components/Cropper/index.tsx
 msgid "Rotate 15"
@@ -630,12 +636,6 @@ msgstr "Failed to unlike"
 msgid "Community Members"
 msgstr "Community Members"
 
-#. js-lingui-explicit-id
-#: src/components/ContactUs/Support.tsx
-#: src/components/ContactUs/Support.tsx
-msgid "contactus-support"
-msgstr "contactus-support"
-
 #: src/components/Membership/Screen-2.tsx
 msgid "Become a panelist at major industry events..."
 msgstr "Become a panelist at major industry events..."
@@ -751,6 +751,11 @@ msgstr "MEMBERSHIP"
 msgid "Verify your email address"
 msgstr "Verify your email address"
 
+#: src/components/ContactUs/Support.tsx
+#: src/components/Layout/HasSBT.tsx
+msgid "Oops! Please"
+msgstr "Oops! Please"
+
 #: src/components/Header/index.tsx
 msgid "ABOUT"
 msgstr "ABOUT"
@@ -850,6 +855,11 @@ msgstr "TRANSCENDING THE ORDINARY"
 #: src/components/Header/index.tsx
 msgid "CONTACT US"
 msgstr "CONTACT US"
+
+#: src/components/ContactUs/Support.tsx
+#: src/components/Layout/HasSBT.tsx
+msgid "Oops! Looks like you aren’t a Hexa Hub member yet! Consultation services are only available to Hexa Hub members, for more info on Hexa Hub membership,"
+msgstr "Oops! Looks like you aren’t a Hexa Hub member yet! Consultation services are only available to Hexa Hub members, for more info on Hexa Hub membership,"
 
 #: src/components/Profile/EditName.tsx
 msgid "New Username"

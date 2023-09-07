@@ -17,10 +17,6 @@ msgstr ""
 msgid "Thank you, we have received your enquiry and will respond shortly."
 msgstr ""
 
-#: src/components/ContactUs/Support.tsx
-msgid "Oops! Please sign in and connect your wallet to verify membership."
-msgstr ""
-
 #: src/components/Home/Screen-3.tsx
 msgid "The Library"
 msgstr ""
@@ -276,6 +272,11 @@ msgstr ""
 msgid "Username already taken"
 msgstr ""
 
+#: src/components/ContactUs/Support.tsx
+#: src/components/Layout/HasSBT.tsx
+msgid "click here"
+msgstr ""
+
 #: src/components/Membership/index.tsx
 msgid "From customised support and programmes to exclusive community events, our members can gain access to a wide range of perks."
 msgstr ""
@@ -326,6 +327,11 @@ msgstr ""
 
 #: src/components/ContactUs/Application.tsx
 msgid "Background"
+msgstr ""
+
+#: src/components/ContactUs/Support.tsx
+#: src/components/Layout/HasSBT.tsx
+msgid "sign in"
 msgstr ""
 
 #: src/components/Cropper/index.tsx
@@ -630,12 +636,6 @@ msgstr ""
 msgid "Community Members"
 msgstr ""
 
-#. js-lingui-explicit-id
-#: src/components/ContactUs/Support.tsx
-#: src/components/ContactUs/Support.tsx
-msgid "contactus-support"
-msgstr ""
-
 #: src/components/Membership/Screen-2.tsx
 msgid "Become a panelist at major industry events..."
 msgstr ""
@@ -751,6 +751,11 @@ msgstr "会员介绍"
 msgid "Verify your email address"
 msgstr ""
 
+#: src/components/ContactUs/Support.tsx
+#: src/components/Layout/HasSBT.tsx
+msgid "Oops! Please"
+msgstr ""
+
 #: src/components/Header/index.tsx
 msgid "ABOUT"
 msgstr "关于我们"
@@ -850,6 +855,11 @@ msgstr ""
 #: src/components/Header/index.tsx
 msgid "CONTACT US"
 msgstr "联系我们"
+
+#: src/components/ContactUs/Support.tsx
+#: src/components/Layout/HasSBT.tsx
+msgid "Oops! Looks like you aren’t a Hexa Hub member yet! Consultation services are only available to Hexa Hub members, for more info on Hexa Hub membership,"
+msgstr ""
 
 #: src/components/Profile/EditName.tsx
 msgid "New Username"

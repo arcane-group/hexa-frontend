@@ -1,7 +1,7 @@
 import { Box, Stack, Text } from '@chakra-ui/react'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import * as Yup from 'yup'
 import { Formik } from 'formik'
 import { observer } from 'mobx-react-lite'
@@ -93,6 +93,37 @@ export const SupportForm = observer(() => {
     ])
   }, [])
 
+  useEffect(() => {
+    if (!walletStore?.userExtInfo?._id) {
+      setTips(
+        <Box>
+          {t`Oops! Please`}
+          <Link
+            mx='4px'
+            className='hover'
+            color='#1ccadc'
+            href={`/sign-in?redirectTo=${encodeURIComponent('/contact-us/consultation-services')}`}
+          >{t`sign in`}</Link>
+          {`and connect your wallet to verify membership.`}
+        </Box>
+      )
+      return
+    } else if (walletStore?.userExtInfo?.whitelistStatus !== true) {
+      setTips(
+        <Box>
+          {t`Oops! Looks like you aren’t a Hexa Hub member yet! Consultation services are only available to Hexa Hub members, for more info on Hexa Hub membership,`}
+          <Link
+            ml='4px'
+            className='hover'
+            color='#1ccadc'
+            href='/contact-us/membership-application'
+          >{t`click here`}</Link>
+        </Box>
+      )
+      return
+    }
+  }, [walletStore?.userExtInfo?._id, walletStore?.userExtInfo?.whitelistStatus])
+
   if (showTips) {
     return (
       <Box pt='200px'>
@@ -107,37 +138,6 @@ export const SupportForm = observer(() => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={async (values, { setSubmitting, setFieldError }) => {
-          if (!walletStore?.userExtInfo?._id) {
-            setTips(
-              <Box>
-                {t`Oops! Please`}
-                <Link
-                  mx='4px'
-                  className='hover'
-                  color='#1ccadc'
-                  href={`/sign-in?redirectTo=${encodeURIComponent(
-                    '/contact-us/consultation-services'
-                  )}`}
-                >{t`sign in`}</Link>
-                {`and connect your wallet to verify membership.`}
-              </Box>
-            )
-            return
-          } else if (walletStore?.userExtInfo?.whitelistStatus !== true) {
-            setTips(
-              <Box>
-                {t`Oops! Looks like you aren’t a Hexa Hub member yet! Consultation services are only available to Hexa Hub members, for more info on Hexa Hub membership,`}
-                <Link
-                  ml='4px'
-                  className='hover'
-                  color='#1ccadc'
-                  href='/contact-us/membership-application'
-                >{t`click here`}</Link>
-              </Box>
-            )
-            return
-          }
-
           setSubmitting(true)
 
           console.log('values:', values)
