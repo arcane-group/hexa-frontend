@@ -3,12 +3,13 @@ import { useRouter } from 'next/router'
 import dayjs from 'dayjs'
 import { observer } from 'mobx-react-lite'
 
-import { CollectBtn } from '@/components/News/CollectBtn'
+import { CollectBtn } from '@/components/Library/CollectBtn'
 import { useStore } from '@/stores'
 import px2vw from '@/utils/px2vw'
+import type { ArticleSchema } from '@/services/api/library'
 
 const PL_NUM = 50
-export const LibraryItem = observer(({ data, index }: { data: any; index: number }) => {
+export const LibraryItem = observer(({ data, index }: { data: ArticleSchema; index: number }) => {
   const router = useRouter()
 
   const {
@@ -31,7 +32,7 @@ export const LibraryItem = observer(({ data, index }: { data: any; index: number
         router.push({
           pathname: '/library/sub-page',
           query: {
-            id: data?.id,
+            id: data?._id,
           },
         })
       }}
@@ -59,16 +60,16 @@ export const LibraryItem = observer(({ data, index }: { data: any; index: number
           }}
         >
           <AspectRatio w='100%' ratio={320 / 200}>
-            <Image src={''} alt='' />
+            <Image src={data?.image} alt='' />
           </AspectRatio>
         </Box>
         <Box pos='relative' flex={1} w={{ lg: '0' }} h='max-content'>
           <Center justifyContent={'space-between'}>
             <Text color='#000000' textStyle={'h2'}>
-              TITLE OF DEV GUIDE
+              {data?.title}
             </Text>
             <Box>
-              <CollectBtn iconH='29px' id={data?.id} />
+              <CollectBtn iconH='29px' id={data?._id} />
             </Box>
           </Center>
           <Box
@@ -90,15 +91,10 @@ export const LibraryItem = observer(({ data, index }: { data: any; index: number
               lg: `${16 * 1.5 * 5}px`,
             }}
           >
-            At Hexa Hub, we are looking for leaders within the emerging tech landscape. Whether you
-            are a project, an investor,At Hexa Hub, we are looking for leaders within the emerging
-            tech landscape. Whether you are a project, an investor,At Hexa Hub, we are looking for
-            leaders within the emerging tech landscape. Whether you are a project, an investor,At
-            Hexa Hub, we are looking for leaders within the emerging tech landscape. Whether you are
-            a project, an investor,
+            {data?.text}
           </Box>
           <Text color='#595959' textStyle={'smp'} mt={{ base: px2vw(14), lg: '38px' }}>
-            {dayjs(1692864161725).format('YYYY-MM-DD HH:mm:ss')}
+            {dayjs(data?.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
           </Text>
         </Box>
       </Stack>

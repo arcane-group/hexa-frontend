@@ -6,18 +6,20 @@ import { useInitSetPageScroll, useInitPageScroll, usePageStore } from '@/hooks/u
 import { Container } from '@/components/Container'
 import type { MemberIndex } from '@/stores/pageStore/MemberIndex'
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
-import { getMemberList } from '@/services/member'
+import { getMemberCategoryList } from '@/services/api/members'
 import { InfiniteVirtualScroll } from '../InfiniteVirtualScroll'
 import { MemberCard } from './Card'
 import px2vw from '@/utils/px2vw'
+import { HasSBT } from '@/components/Layout/HasSBT'
 
-// TODO： 待加判断，只有当用户有 SBT 权限时候才能访问
 const Members = observer(({ id }: { id: string }) => {
   useInitSetPageScroll()
 
   return (
     <Container py={{ base: px2vw(20), lg: '120px' }} pos='relative'>
-      <List id={id} />
+      <HasSBT>
+        <List id={id} />
+      </HasSBT>
     </Container>
   )
 })
@@ -61,11 +63,11 @@ const List = observer(({ id }: { id: string }) => {
       finalData,
       setFinalData,
     },
-    d => {
-      const page = d ? Math.ceil(d.list.length / PAGE_SIZE) + 1 : 1
-      return getMemberList(page, PAGE_SIZE, id).then((res: any) => {
-        if (res?.data?.code >= 0) {
-          const newL = (res.data?.data?.list as any[]) || []
+    _d => {
+      // const page = d ? Math.ceil(d.list.length / PAGE_SIZE) + 1 : 1
+      return getMemberCategoryList(id).then(res => {
+        if (res?.code >= 0) {
+          const newL = res.data || []
           const list: any[] = []
           newL.forEach((item, index) => {
             const rowIndex = Math.floor(index / Columns)
@@ -77,7 +79,7 @@ const List = observer(({ id }: { id: string }) => {
 
           return {
             list: list,
-            hasMore: newL?.length >= PAGE_SIZE,
+            hasMore: false, // newL?.length >= PAGE_SIZE,
           }
         }
         return {

@@ -2,12 +2,13 @@ import { Flex, Box, type FlexProps, Text, AspectRatio, Image } from '@chakra-ui/
 
 import defaultImg from '@/assets/images/news/default.jpg'
 import px2vw from '@/utils/px2vw'
+import type { MembersSchema } from '@/services/api/members'
 
 export const MemberCard = ({
   data,
   ...props
 }: FlexProps & {
-  data: any
+  data: MembersSchema
 }) => {
   return (
     <Flex flexDir={'column'} w={{ base: '100%', lg: '300px' }} h={{ lg: '570px' }} {...props}>
@@ -49,7 +50,7 @@ export const MemberCard = ({
           display={'-webkit-box'}
           minH={`${22 * 1.5 * 2}px`}
         >
-          MEMBER TITLE MEMBER TITLEMEMBER TITLEMEMBER TITLEMEMBER TITLE
+          {data?.name}
         </Text>
         <Text
           color='#595959'
@@ -69,24 +70,13 @@ export const MemberCard = ({
             lg: `${16 * 1.5 * 2}px`,
           }}
         >
-          Arcane welcomes the different, the trailblazers, the novel. If you have a growth mindset
-          and deep，if you have Arcane welcomes the different, the trailblazers, the novel. If you
-          have a growth mindset and deep，if you have Arcane welcomes the different, the
-          trailblazers, the novel. If you have a growth mindset and deep，if you have Arcane
-          welcomes the different, the trailblazers, the novel. If you have a growth mindset and
-          deep，if you have Arcane welcomes the different, the trailblazers, the novel. If you have
-          a growth mindset and deep，if you have Arcane welcomes the different, the trailblazers,
-          the novel. If you have a growth mindset and deep，if you have Arcane welcomes the
-          different, the trailblazers, the novel. If you have a growth mindset and deep，if you have
+          {data?.description}
         </Text>
         <Text color='#595959' textStyle={{ base: 'smp', lg: 'p' }} className='ellipsis'>
-          Product/Service Info
+          {data?.serviceInfo}
         </Text>
         <Text color='#595959' textStyle={{ base: 'smp', lg: 'p' }} className='ellipsis'>
-          Services available for Hexa Hub members
-        </Text>
-        <Text color='#595959' textStyle={{ base: 'smp', lg: 'p' }} className='ellipsis'>
-          Discord ID
+          {data?.discord}
         </Text>
       </Box>
     </Flex>

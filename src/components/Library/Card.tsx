@@ -2,15 +2,16 @@ import { Flex, Box, type FlexProps, Text, AspectRatio, Image } from '@chakra-ui/
 import { useRouter } from 'next/router'
 import dayjs from 'dayjs'
 
-import { CollectBtn } from '@/components/News/CollectBtn'
+import { CollectBtn } from '@/components/Library/CollectBtn'
 import defaultImg from '@/assets/images/news/default.jpg'
 import { px2vw } from '@/utils/px2vw'
+import type { ArticleSchema } from '@/services/api/library'
 
 export const LibraryCard = ({
   data,
   ...props
 }: FlexProps & {
-  data: any
+  data: ArticleSchema
 }) => {
   const router = useRouter()
 
@@ -25,14 +26,14 @@ export const LibraryCard = ({
         router.push({
           pathname: '/library/sub-page',
           query: {
-            id: data?.id,
+            id: data?._id,
           },
         })
       }}
     >
       <AspectRatio maxW='100%' ratio={300 / 254}>
         <Image
-          src={''}
+          src={data?.image}
           fallbackSrc={defaultImg.src}
           objectFit='cover'
           alt=''
@@ -71,10 +72,10 @@ export const LibraryCard = ({
             display={'-webkit-box'}
             minH={`${22 * 1.5 * 2}px`}
           >
-            MEMBER TITLE MEMBER TITLEMEMBER TITLEMEMBER TITLEMEMBER TITLE
+            {data?.title}
           </Text>
           <Box>
-            <CollectBtn id={data?.id} iconH={'28px'} />
+            <CollectBtn id={data?._id} iconH={'28px'} />
           </Box>
         </Flex>
         <Text
@@ -95,18 +96,10 @@ export const LibraryCard = ({
             lg: `${16 * 1.5 * 2}px`,
           }}
         >
-          Arcane welcomes the different, the trailblazers, the novel. If you have a growth mindset
-          and deep，if you have Arcane welcomes the different, the trailblazers, the novel. If you
-          have a growth mindset and deep，if you have Arcane welcomes the different, the
-          trailblazers, the novel. If you have a growth mindset and deep，if you have Arcane
-          welcomes the different, the trailblazers, the novel. If you have a growth mindset and
-          deep，if you have Arcane welcomes the different, the trailblazers, the novel. If you have
-          a growth mindset and deep，if you have Arcane welcomes the different, the trailblazers,
-          the novel. If you have a growth mindset and deep，if you have Arcane welcomes the
-          different, the trailblazers, the novel. If you have a growth mindset and deep，if you have
+          {data?.text}
         </Text>
         <Text color='#595959' textStyle={{ base: 'smp', lg: 'p' }} mt='12px'>
-          {dayjs(1692864161725).format('YYYY-MM-DD HH:mm:ss')}
+          {dayjs(data?.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
         </Text>
       </Box>
     </Flex>

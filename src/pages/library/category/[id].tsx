@@ -25,28 +25,28 @@ const pathCfg = [
     label: `FOUNDER’S EXCLUSIVE`,
     href: '/library/category/[id]',
     query: {
-      category: '1',
+      category: 'founders-exclusive',
     },
   },
   {
     label: `LABS`,
     href: '/library/category/[id]',
     query: {
-      category: '2',
+      category: 'labs',
     },
   },
   {
     label: `MARKET COMMENTARY`,
     href: '/library/category/[id]',
     query: {
-      category: '3',
+      category: 'market-commentary',
     },
   },
   {
     label: `PODCAST`,
     href: '/library/category/[id]',
     query: {
-      category: '4',
+      category: 'podcasts',
     },
   },
 ].map(item => {

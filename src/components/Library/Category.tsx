@@ -8,7 +8,7 @@ import { GoSaved } from '@/components/News/index'
 import { Container } from '@/components/Container'
 import type { LibraryCategory } from '@/stores/pageStore/LibraryCategory'
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
-import { getLibraryCategoryList } from '@/services/library'
+import { getLibraryCategoryList } from '@/services/api/library'
 import { InfiniteVirtualScroll } from '../InfiniteVirtualScroll'
 import { LibraryCard } from './Card'
 import { px2vw } from '@/utils/px2vw'
@@ -71,11 +71,11 @@ const List = observer(({ id }: { id: string }) => {
       finalData,
       setFinalData,
     },
-    d => {
-      const page = d ? Math.ceil(d.list.length / PAGE_SIZE) + 1 : 1
-      return getLibraryCategoryList(page, PAGE_SIZE, id).then((res: any) => {
-        if (res?.data?.code >= 0) {
-          const newL = (res.data?.data?.list as any[]) || []
+    _d => {
+      // const page = d ? Math.ceil(d.list.length / PAGE_SIZE) + 1 : 1
+      return getLibraryCategoryList(id).then(res => {
+        if (res?.code >= 0) {
+          const newL = res?.data || []
           const list: any[] = []
           newL.forEach((item, index) => {
             const rowIndex = Math.floor(index / Columns)
@@ -87,7 +87,7 @@ const List = observer(({ id }: { id: string }) => {
 
           return {
             list: list,
-            hasMore: newL?.length >= PAGE_SIZE,
+            hasMore: false, // newL?.length >= PAGE_SIZE,
           }
         }
         return {
@@ -105,8 +105,8 @@ const List = observer(({ id }: { id: string }) => {
     }
   )
 
-  const itemKey = useCallback((index: number) => {
-    return `${index}`
+  const itemKey = useCallback((index: number, data: any) => {
+    return `${index}_${data?._id}`
   }, [])
 
   return (

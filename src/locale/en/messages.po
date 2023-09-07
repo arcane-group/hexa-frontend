@@ -272,7 +272,6 @@ msgstr "For now, Hexa Arcana will only be available on the Ethereum blockchain."
 msgid "Username already taken"
 msgstr "Username already taken"
 
-#: src/components/ContactUs/Support.tsx
 #: src/components/Layout/HasSBT.tsx
 msgid "click here"
 msgstr "click here"
@@ -329,7 +328,6 @@ msgstr "Once the application has gone through, we will airdrop your Hexa Arcana 
 msgid "Background"
 msgstr "Background"
 
-#: src/components/ContactUs/Support.tsx
 #: src/components/Layout/HasSBT.tsx
 msgid "sign in"
 msgstr "sign in"
@@ -751,7 +749,6 @@ msgstr "MEMBERSHIP"
 msgid "Verify your email address"
 msgstr "Verify your email address"
 
-#: src/components/ContactUs/Support.tsx
 #: src/components/Layout/HasSBT.tsx
 msgid "Oops! Please"
 msgstr "Oops! Please"
@@ -856,7 +853,6 @@ msgstr "TRANSCENDING THE ORDINARY"
 msgid "CONTACT US"
 msgstr "CONTACT US"
 
-#: src/components/ContactUs/Support.tsx
 #: src/components/Layout/HasSBT.tsx
 msgid "Oops! Looks like you aren’t a Hexa Hub member yet! Consultation services are only available to Hexa Hub members, for more info on Hexa Hub membership,"
 msgstr "Oops! Looks like you aren’t a Hexa Hub member yet! Consultation services are only available to Hexa Hub members, for more info on Hexa Hub membership,"

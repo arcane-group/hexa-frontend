@@ -272,7 +272,6 @@ msgstr ""
 msgid "Username already taken"
 msgstr ""
 
-#: src/components/ContactUs/Support.tsx
 #: src/components/Layout/HasSBT.tsx
 msgid "click here"
 msgstr ""
@@ -329,7 +328,6 @@ msgstr ""
 msgid "Background"
 msgstr ""
 
-#: src/components/ContactUs/Support.tsx
 #: src/components/Layout/HasSBT.tsx
 msgid "sign in"
 msgstr ""
@@ -751,7 +749,6 @@ msgstr "会员介绍"
 msgid "Verify your email address"
 msgstr ""
 
-#: src/components/ContactUs/Support.tsx
 #: src/components/Layout/HasSBT.tsx
 msgid "Oops! Please"
 msgstr ""
@@ -856,7 +853,6 @@ msgstr ""
 msgid "CONTACT US"
 msgstr "联系我们"
 
-#: src/components/ContactUs/Support.tsx
 #: src/components/Layout/HasSBT.tsx
 msgid "Oops! Looks like you aren’t a Hexa Hub member yet! Consultation services are only available to Hexa Hub members, for more info on Hexa Hub membership,"
 msgstr ""

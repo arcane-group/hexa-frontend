@@ -4,19 +4,23 @@ import { t } from '@lingui/macro'
 import { memo, useCallback, useMemo } from 'react'
 
 import { useInitPageScroll } from '@/hooks/usePageStore'
-import { NewsCard } from '@/components/News/Card'
+// import { NewsCard } from '@/components/News/Card'
+import { LibraryCard } from '@/components/Library/Card'
 import { InfiniteVirtualScroll } from '@/components/InfiniteVirtualScroll'
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
-import { getMyCollectList } from '@/services/news'
+// import { getMyCollectList } from '@/services/news'
 import { usePageStore } from '@/hooks/usePageStore'
 import type { Profile } from '@/stores/pageStore/Profile'
 import { observer } from 'mobx-react-lite'
 import px2vw from '@/utils/px2vw'
+import { useStore } from '@/stores'
 
 export const SAVED = observer(() => {
   useLingui()
 
   useInitPageScroll(`saved`)
+
+  const { walletStore } = useStore()
 
   const { Rows, Columns, PAGE_SIZE } = useMemo(() => {
     // 判断屏幕尺寸, 不做 resize 监听
@@ -47,34 +51,47 @@ export const SAVED = observer(() => {
       finalData,
       setFinalData,
     },
-    d => {
-      const page = d ? Math.ceil((d.list.length * Columns) / PAGE_SIZE) + 1 : 1
-      return getMyCollectList(page, PAGE_SIZE).then((res: any) => {
-        if (res?.data?.code >= 0) {
-          const newL = (res.data?.data?.list as any[]) || []
-          const list: any[] = []
-          newL.forEach((item, index) => {
-            const rowIndex = Math.floor(index / Columns)
-            if (!list[rowIndex]) {
-              list[rowIndex] = []
-            }
-            list[rowIndex].push(item)
-          })
-
-          return {
-            list: list,
-            hasMore: newL?.length >= PAGE_SIZE,
-          }
+    _d => {
+      const newL = walletStore?.userExtInfo?.savedArticles || []
+      const list: any[] = []
+      newL.forEach((item, index) => {
+        const rowIndex = Math.floor(index / Columns)
+        if (!list[rowIndex]) {
+          list[rowIndex] = []
         }
-        return {
-          list: [],
-          hasMore: false,
-        }
+        list[rowIndex].push(item)
       })
+      return Promise.resolve({
+        list: list,
+        hasMore: false,
+      })
+      // const page = d ? Math.ceil((d.list.length * Columns) / PAGE_SIZE) + 1 : 1
+      // return getMyCollectList(page, PAGE_SIZE).then((res: any) => {
+      //   if (res?.data?.code >= 0) {
+      //     const newL = (res.data?.data?.list as any[]) || []
+      //     const list: any[] = []
+      //     newL.forEach((item, index) => {
+      //       const rowIndex = Math.floor(index / Columns)
+      //       if (!list[rowIndex]) {
+      //         list[rowIndex] = []
+      //       }
+      //       list[rowIndex].push(item)
+      //     })
+
+      //     return {
+      //       list: list,
+      //       hasMore: newL?.length >= PAGE_SIZE,
+      //     }
+      //   }
+      //   return {
+      //     list: [],
+      //     hasMore: false,
+      //   }
+      // })
     },
     {
       manual: finalData?.list?.length > 0,
-      reloadDeps: [setFinalData, Columns, Rows],
+      reloadDeps: [walletStore?.userExtInfo?.savedArticles, setFinalData, Columns, Rows],
       isNoMore: d => {
         return !(d && d.hasMore)
       },
@@ -121,7 +138,7 @@ const Cell = memo(({ data }: any) => {
         if (!item) {
           return null
         }
-        return <NewsCard key={index} data={item} />
+        return <LibraryCard key={index} data={item} />
       })}
     </Stack>
   )

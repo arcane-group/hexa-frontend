@@ -100,28 +100,28 @@ const Header = ({
             label: t`Project Founders`,
             href: '/members',
             query: {
-              category: '1',
+              category: 'founders',
             },
           },
           {
             label: t`Investors`,
             href: '/members',
             query: {
-              category: '2',
+              category: 'investors',
             },
           },
           {
             label: t`Service Providers`,
             href: '/members',
             query: {
-              category: '3',
+              category: 'service-providers',
             },
           },
           {
             label: t`Researchers`,
             href: '/members',
             query: {
-              category: '4',
+              category: 'researchers',
             },
           },
         ],
@@ -134,28 +134,28 @@ const Header = ({
             label: t`FOUNDER’S EXCLUSIVE`,
             href: '/library/category/[id]',
             query: {
-              id: '1',
+              id: 'founders-exclusive',
             },
           },
           {
             label: t`LABS`,
             href: '/library/category/[id]',
             query: {
-              id: '2',
+              id: 'labs',
             },
           },
           {
             label: t`MARKET COMMENTARY`,
             href: '/library/category/[id]',
             query: {
-              id: '3',
+              id: 'market-commentary',
             },
           },
           {
             label: t`PODCAST`,
             href: '/library/category/[id]',
             query: {
-              id: '4',
+              id: 'podcasts',
             },
           },
         ],

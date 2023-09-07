@@ -3,11 +3,14 @@ import { t } from '@lingui/macro'
 import { observer } from 'mobx-react-lite'
 import { Box } from '@chakra-ui/react'
 import { Link } from '@chakra-ui/next-js'
+import { useRouter } from 'next/router'
 
 import { useStore } from '@/stores'
 
 export const HasSBT = observer(({ children }: any) => {
   useLingui()
+
+  const { asPath } = useRouter()
 
   const { walletStore } = useStore()
 
@@ -36,7 +39,7 @@ export const HasSBT = observer(({ children }: any) => {
         mx='4px'
         className='hover'
         color='#1ccadc'
-        href={`/sign-in?redirectTo=${encodeURIComponent('/contact-us/consultation-services')}`}
+        href={`/sign-in?redirectTo=${encodeURIComponent(asPath)}`}
       >{t`sign in`}</Link>
       {`and connect your wallet to verify membership.`}
     </Box>

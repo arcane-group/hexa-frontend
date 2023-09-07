@@ -1,4 +1,3 @@
-// 咨询服务  token 会员专属
 import { Box, Text } from '@chakra-ui/react'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
@@ -6,6 +5,7 @@ import { t } from '@lingui/macro'
 import { Container } from '@/components/Sign/Container'
 import { SupportForm } from '@/components/ContactUs/Support'
 import px2vw from '@/utils/px2vw'
+import { HasSBT } from '@/components/Layout/HasSBT'
 
 const Page = () => {
   useLingui()
@@ -18,15 +18,18 @@ const Page = () => {
           lg: '52px',
         }}
       >
-        <Box maxW='100%' pt={{ lg: '40px' }}>
-          <Text
-            textStyle={'ch2'}
-            color='#000000'
-            mb='20px'
-            fontWeight={700}
-          >{t`Looking for support?`}</Text>
-          <SupportForm />
-        </Box>
+        <HasSBT>
+          <Box maxW='100%' pt={{ lg: '40px' }}>
+            <Text
+              textStyle={'ch2'}
+              color='#000000'
+              mb='20px'
+              fontWeight={700}
+            >{t`Looking for support?`}</Text>
+
+            <SupportForm />
+          </Box>
+        </HasSBT>
       </Container>
     </>
   )
