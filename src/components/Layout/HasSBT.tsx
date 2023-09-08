@@ -21,7 +21,7 @@ export const HasSBT = observer(({ children, tips }: any) => {
   if (walletStore?.userExtInfo?._id) {
     return (
       <Box textStyle={'cp'} pt='200px' textAlign={'center'}>
-        {t`Oops! Looks like you aren’t a Hexa Hub member yet! ${tips} are only available to Hexa Hub members, for more info on Hexa Hub membership,`}
+        {tips}
         <Link
           ml='4px'
           className='hover'

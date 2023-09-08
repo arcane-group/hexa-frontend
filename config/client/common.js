@@ -19,9 +19,9 @@ module.exports = {
   walletConnect: '',
   particle: {
     // particle 配置
-    projectId: '',
-    clientKey: '',
-    appId: '',
+    projectId: 'b9d2d5a1-47a7-4898-8a69-0be4baf020da',
+    clientKey: 'cY6kzBXOVj9R2UAV5z97vF4g0hxzgVlHjQaUh06w',
+    appId: '20e96175-f677-480d-876f-a8b061c4d99a',
   },
   discord: '', // discord 链接
   twitter: {

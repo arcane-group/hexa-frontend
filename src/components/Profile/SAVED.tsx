@@ -8,7 +8,7 @@ import { useInitPageScroll } from '@/hooks/usePageStore'
 import { LibraryCard } from '@/components/Library/Card'
 import { InfiniteVirtualScroll } from '@/components/InfiniteVirtualScroll'
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
-// import { getMyCollectList } from '@/services/news'
+import { getSavedArticles } from '@/services/api/user'
 import { usePageStore } from '@/hooks/usePageStore'
 import type { Profile } from '@/stores/pageStore/Profile'
 import { observer } from 'mobx-react-lite'
@@ -27,15 +27,15 @@ export const SAVED = observer(() => {
     const width = window.innerWidth
     if (width >= 768) {
       return {
-        Rows: 10,
+        Rows: 8,
         Columns: 2,
-        PAGE_SIZE: 10 * 2,
+        PAGE_SIZE: 8 * 2,
       }
     }
     return {
-      Rows: 20,
+      Rows: 24,
       Columns: 1,
-      PAGE_SIZE: 20 * 1,
+      PAGE_SIZE: 24 * 1,
     }
   }, [])
 
@@ -52,46 +52,36 @@ export const SAVED = observer(() => {
       setFinalData,
     },
     _d => {
-      const newL = walletStore?.userExtInfo?.savedArticles || []
-      const list: any[] = []
-      newL.forEach((item, index) => {
-        const rowIndex = Math.floor(index / Columns)
-        if (!list[rowIndex]) {
-          list[rowIndex] = []
-        }
-        list[rowIndex].push(item)
-      })
-      return Promise.resolve({
-        list: list,
-        hasMore: false,
-      })
-      // const page = d ? Math.ceil((d.list.length * Columns) / PAGE_SIZE) + 1 : 1
-      // return getMyCollectList(page, PAGE_SIZE).then((res: any) => {
-      //   if (res?.data?.code >= 0) {
-      //     const newL = (res.data?.data?.list as any[]) || []
-      //     const list: any[] = []
-      //     newL.forEach((item, index) => {
-      //       const rowIndex = Math.floor(index / Columns)
-      //       if (!list[rowIndex]) {
-      //         list[rowIndex] = []
-      //       }
-      //       list[rowIndex].push(item)
-      //     })
+      return getSavedArticles(walletStore?.userInfo?.userId as string).then(res => {
+        if (res?.code >= 0) {
+          const newL = (res.data || [])?.filter(item => {
+            return item?._id
+          })
+          const list: any[] = []
+          newL.forEach((item, index: number) => {
+            const rowIndex = Math.floor(index / Columns)
+            if (!list[rowIndex]) {
+              list[rowIndex] = []
+            }
+            list[rowIndex].push(item)
+          })
 
-      //     return {
-      //       list: list,
-      //       hasMore: newL?.length >= PAGE_SIZE,
-      //     }
-      //   }
-      //   return {
-      //     list: [],
-      //     hasMore: false,
-      //   }
-      // })
+          return {
+            list: list,
+            Columns,
+            hasMore: false, // newL?.length >= PAGE_SIZE,
+          }
+        }
+        return {
+          list: [],
+          Columns,
+          hasMore: false,
+        }
+      })
     },
     {
       manual: finalData?.list?.length > 0,
-      reloadDeps: [walletStore?.userExtInfo?.savedArticles, setFinalData, Columns, Rows],
+      reloadDeps: [walletStore?.userInfo?.userId, setFinalData, Columns, Rows],
       isNoMore: d => {
         return !(d && d.hasMore)
       },
@@ -108,7 +98,7 @@ export const SAVED = observer(() => {
       <Box
         mt='26px'
         minW={{
-          lg: 410 * 2 + 152,
+          lg: 300 * 2 + 152,
         }}
       >
         <InfiniteVirtualScroll

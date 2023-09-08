@@ -1,18 +1,21 @@
 import { Box } from '@chakra-ui/react'
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 
-import { DynamicLoading } from '@/components/Loading'
+// import { DynamicLoading } from '@/components/Loading'
 
-const SubPage = dynamic(() => import('@/components/News/SubPage'), {
-  ssr: false,
-  loading: () => <DynamicLoading />,
-})
+// const SubPage = dynamic(() => import('@/components/News/SubPage'), {
+//   ssr: false,
+//   loading: () => <DynamicLoading />,
+// })
+
+import { LaunchingSoon } from '@/components/LaunchingSoon'
 
 const Page = () => {
   return (
     <>
       <Box as='main' minH='100vh'>
-        <SubPage />
+        {/* <SubPage /> */}
+        <LaunchingSoon />
       </Box>
     </>
   )

@@ -160,47 +160,47 @@ const Header = ({
           },
         ],
       },
-      // {
-      //   label: t`NEWS FEED`,
-      //   href: '/news-feed',
-      //   children: [
-      //     {
-      //       label: t`NEWS ARTICLES`,
-      //       href: '/news-feed/category/[id]',
-      //       query: {
-      //         id: '1',
-      //       },
-      //     },
-      //     {
-      //       label: t`BLOGS`,
-      //       href: '/news-feed/category/[id]',
-      //       query: {
-      //         id: '2',
-      //       },
-      //     },
-      //     {
-      //       label: t`TRENDING TWEETS`,
-      //       href: '/news-feed/category/[id]',
-      //       query: {
-      //         id: '3',
-      //       },
-      //     },
-      //     {
-      //       label: t`DEV GUIDES`,
-      //       href: '/news-feed/category/[id]',
-      //       query: {
-      //         id: '4',
-      //       },
-      //     },
-      //     {
-      //       label: t`PODCAST`,
-      //       href: '/news-feed/category/[id]',
-      //       query: {
-      //         id: '5',
-      //       },
-      //     },
-      //   ],
-      // },
+      {
+        label: t`NEWS FEED`,
+        href: '/news-feed',
+        children: [
+          {
+            label: t`NEWS ARTICLES`,
+            href: '/news-feed/category/[id]',
+            query: {
+              id: '1',
+            },
+          },
+          {
+            label: t`BLOGS`,
+            href: '/news-feed/category/[id]',
+            query: {
+              id: '2',
+            },
+          },
+          {
+            label: t`TRENDING TWEETS`,
+            href: '/news-feed/category/[id]',
+            query: {
+              id: '3',
+            },
+          },
+          {
+            label: t`DEV GUIDES`,
+            href: '/news-feed/category/[id]',
+            query: {
+              id: '4',
+            },
+          },
+          {
+            label: t`PODCAST`,
+            href: '/news-feed/category/[id]',
+            query: {
+              id: '5',
+            },
+          },
+        ],
+      },
       {
         label: t`CONTACT US`,
         href: '/contact-us/membership-application',

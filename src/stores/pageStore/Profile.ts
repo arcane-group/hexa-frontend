@@ -1,8 +1,9 @@
 import { makeObservable, action, observable, toJS, computed } from 'mobx'
-// import PubSub from 'pubsub-js'
+import PubSub from 'pubsub-js'
 
 import { PageCommon } from './PageCommon'
 import type { TDomsData } from '@/components/InfiniteVirtualScroll'
+import type { ArticleSchema } from '@/services/api/library'
 
 export type TScroll = {
   domsData?: TDomsData
@@ -11,8 +12,9 @@ export type TScroll = {
 }
 
 export type TSavedData = {
-  list: any[]
+  list: ArticleSchema[][]
   hasMore: boolean
+  Columns: number
 }
 
 export class Profile extends PageCommon {
@@ -29,14 +31,52 @@ export class Profile extends PageCommon {
     this.reset()
   }
 
-  addEvent = () => {}
+  addEvent = () => {
+    PubSub.subscribe('savedArticles', this.savedArticlesFn)
+  }
 
-  removeEvent = () => {}
+  removeEvent = () => {
+    PubSub.subscribe('savedArticles', this.savedArticlesFn)
+  }
+
+  @action
+  savedArticlesFn = (_msg: string, { id, data }: { id: string; data?: ArticleSchema }) => {
+    if (!id) {
+      return
+    }
+
+    // 把 this.saved.list 转化成一维度数组
+    const list = this.saved.list.reduce((prev, cur) => [...prev, ...cur], [])
+    if (data) {
+      list.unshift(data)
+    } else {
+      const index = list.findIndex((item) => item._id === id)
+      if (index > -1) {
+        list.splice(index, 1)
+      }
+    }
+
+    // 把 list 转化成 this.saved.list
+    const newList: any[] = []
+    list.forEach((item, index: number) => {
+      const rowIndex = Math.floor(index / this.saved.Columns)
+      if (!newList[rowIndex]) {
+        newList[rowIndex] = []
+      }
+      newList[rowIndex].push(item)
+    })
+
+    this.saved = {
+      ...this.saved,
+      list: newList,
+    }
+  }
 
   @observable
   saved: TSavedData = {
     list: [],
     hasMore: true,
+    Columns: 1,
   }
 
   @observable
@@ -72,6 +112,7 @@ export class Profile extends PageCommon {
     this.saved = {
       list: [],
       hasMore: true,
+      Columns: 1,
     }
     this.savedInfiniteScrollProps = {
       domsData: {},

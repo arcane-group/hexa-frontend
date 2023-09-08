@@ -1,19 +1,22 @@
 import { Box } from '@chakra-ui/react'
 import type { GetStaticProps, GetStaticPaths } from 'next'
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 
-import { DynamicLoading } from '@/components/Loading'
+// import { DynamicLoading } from '@/components/Loading'
 
-const Category = dynamic(() => import('@/components/News/Category'), {
-  ssr: false,
-  loading: () => <DynamicLoading />,
-})
+// const Category = dynamic(() => import('@/components/News/Category'), {
+//   ssr: false,
+//   loading: () => <DynamicLoading />,
+// })
+
+import { LaunchingSoon } from '@/components/LaunchingSoon'
 
 const Page = () => {
   return (
     <>
       <Box as='main' minH='100vh'>
-        <Category />
+        {/* <Category /> */}
+        <LaunchingSoon />
       </Box>
     </>
   )

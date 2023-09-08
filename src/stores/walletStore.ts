@@ -1,5 +1,6 @@
 import { observable, action, makeObservable, computed } from 'mobx'
 import getConfig from 'next/config'
+import PubSub from 'pubsub-js'
 
 import { getCookie, removeCookie, setCookie } from '@/utils/cookie'
 import type { UserSchema } from '@/services/api/user'
@@ -78,7 +79,7 @@ export default class WalletStore {
     if (!id && !Array.isArray(this.userExtInfo?.savedArticles)) {
       return null
     }
-    return this.userExtInfo?.savedArticles.find((item) => item._id === id)
+    return this.userExtInfo?.savedArticles.find((item) => item === id)
   }
 
   setSavedArticles = (id: string, data?: ArticleSchema) => {
@@ -90,11 +91,16 @@ export default class WalletStore {
       if (!Array.isArray(this.userExtInfo?.savedArticles)) {
         this.userExtInfo!.savedArticles = []
       }
-      this.userExtInfo!.savedArticles.push(data)
+      this.userExtInfo!.savedArticles.push(id)
     } else if (Array.isArray(this.userExtInfo?.savedArticles)) {
       this.userExtInfo!.savedArticles =
-        this.userExtInfo?.savedArticles?.filter((item) => item._id !== id) || []
+        this.userExtInfo?.savedArticles?.filter((item) => item !== id) || []
     }
+
+    PubSub.publish('savedArticles', {
+      id: id,
+      data: data,
+    })
   }
 
   @action

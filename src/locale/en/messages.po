@@ -18,19 +18,12 @@ msgid "Thank you, we have received your enquiry and will respond shortly."
 msgstr "Thank you, we have received your enquiry and will respond shortly."
 
 #: src/components/Home/Screen-3.tsx
-#: src/components/Library/Category.tsx
-#: src/components/Library/index.tsx
-#: src/components/Library/SubPage.tsx
 msgid "The Library"
 msgstr "The Library"
 
 #: src/components/Home/Screen-2.tsx
 msgid "We are a community buzzing with entrepreneurial energy, where savvy minds gather to foster a powerful ecosystem of growth and opportunity."
 msgstr "We are a community buzzing with entrepreneurial energy, where savvy minds gather to foster a powerful ecosystem of growth and opportunity."
-
-#: src/components/Members/index.tsx
-msgid "The Members Directory"
-msgstr "The Members Directory"
 
 #: src/components/ContactUs/Support.tsx
 msgid "Legal and Compliance Support"
@@ -98,6 +91,7 @@ msgid "ENS/Hexadecimal address (0x)"
 msgstr "ENS/Hexadecimal address (0x)"
 
 #: src/components/Header/index.tsx
+#: src/components/Header/index.tsx
 msgid "PODCAST"
 msgstr "PODCAST"
 
@@ -121,6 +115,10 @@ msgstr "MEMBERS"
 #: src/components/News/CollectBtn.tsx
 msgid "Failed to unstar"
 msgstr "Failed to unstar"
+
+#: src/components/Header/index.tsx
+msgid "NEWS ARTICLES"
+msgstr "NEWS ARTICLES"
 
 #: src/pages/contact-us/faq.tsx
 msgid "WHAT KIND OF MEMBERS ARE WE LOOKING FOR?"
@@ -295,6 +293,10 @@ msgstr "Username already taken"
 msgid "click here"
 msgstr "click here"
 
+#: src/components/Header/index.tsx
+msgid "BLOGS"
+msgstr "BLOGS"
+
 #: src/components/Membership/index.tsx
 msgid "From customised support and programmes to exclusive community events, our members can gain access to a wide range of perks."
 msgstr "From customised support and programmes to exclusive community events, our members can gain access to a wide range of perks."
@@ -374,6 +376,13 @@ msgstr "FOUNDER’S EXCLUSIVE"
 #: src/pages/contact-us/faq.tsx
 msgid "IS IT ONLY AVAILABLE ON ETHEREUM?"
 msgstr "IS IT ONLY AVAILABLE ON ETHEREUM?"
+
+#: src/components/Library/Category.tsx
+#: src/components/Library/index.tsx
+#: src/components/Library/SubPage.tsx
+#: src/components/Members/index.tsx
+msgid "Oops! Seems like you aren’t a Hexa Member yet. Please connect wallet to verify or visit our membership page for more info."
+msgstr "Oops! Seems like you aren’t a Hexa Member yet. Please connect wallet to verify or visit our membership page for more info."
 
 #: src/components/Membership/Screen-3.tsx
 msgid "A channel connecting our members with researchers and developers to publish pioneering reports"
@@ -651,6 +660,10 @@ msgstr "Project Founders"
 msgid "Failed to unlike"
 msgstr "Failed to unlike"
 
+#: src/components/Header/index.tsx
+msgid "DEV GUIDES"
+msgstr "DEV GUIDES"
+
 #: src/components/Membership/index.tsx
 msgid "Community Members"
 msgstr "Community Members"
@@ -741,6 +754,10 @@ msgstr "Please read and agree to the terms and conditions"
 #: src/pages/contact-us/faq.tsx
 msgid "WHAT ARE THE PERKS FOR MEMBERS?"
 msgstr "WHAT ARE THE PERKS FOR MEMBERS?"
+
+#: src/components/Header/index.tsx
+msgid "NEWS FEED"
+msgstr "NEWS FEED"
 
 #: src/components/ContactUs/Application.tsx
 msgid "Thank you for your application! We will contact you shortly for the next steps."
@@ -838,10 +855,6 @@ msgstr "Please select"
 msgid "Please install app first."
 msgstr "Please install app first."
 
-#: src/components/Layout/HasSBT.tsx
-msgid "Oops! Looks like you aren’t a Hexa Hub member yet! {tips} are only available to Hexa Hub members, for more info on Hexa Hub membership,"
-msgstr "Oops! Looks like you aren’t a Hexa Hub member yet! {tips} are only available to Hexa Hub members, for more info on Hexa Hub membership,"
-
 #: src/components/Header/Wallet.tsx
 msgid "My Account"
 msgstr "My Account"
@@ -890,6 +903,10 @@ msgstr "LABS"
 msgid "Events"
 msgstr "Events"
 
+#: src/components/LaunchingSoon/index.tsx
+msgid "Launching Soon"
+msgstr "Launching Soon"
+
 #: src/components/Membership/index.tsx
 msgid "Hexa Arcana"
 msgstr "Hexa Arcana"
@@ -905,6 +922,10 @@ msgstr "After binding the mailbox, you can modify the user name and password"
 #: src/components/Membership/Screen-2.tsx
 msgid "Publish your insights to an audience of industry leaders..."
 msgstr "Publish your insights to an audience of industry leaders..."
+
+#: src/components/Header/index.tsx
+msgid "TRENDING TWEETS"
+msgstr "TRENDING TWEETS"
 
 #: src/components/Profile/index.tsx
 msgid "Verify Email"

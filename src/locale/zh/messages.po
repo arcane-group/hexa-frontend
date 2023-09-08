@@ -18,18 +18,11 @@ msgid "Thank you, we have received your enquiry and will respond shortly."
 msgstr ""
 
 #: src/components/Home/Screen-3.tsx
-#: src/components/Library/Category.tsx
-#: src/components/Library/index.tsx
-#: src/components/Library/SubPage.tsx
 msgid "The Library"
 msgstr ""
 
 #: src/components/Home/Screen-2.tsx
 msgid "We are a community buzzing with entrepreneurial energy, where savvy minds gather to foster a powerful ecosystem of growth and opportunity."
-msgstr ""
-
-#: src/components/Members/index.tsx
-msgid "The Members Directory"
 msgstr ""
 
 #: src/components/ContactUs/Support.tsx
@@ -98,6 +91,7 @@ msgid "ENS/Hexadecimal address (0x)"
 msgstr ""
 
 #: src/components/Header/index.tsx
+#: src/components/Header/index.tsx
 msgid "PODCAST"
 msgstr ""
 
@@ -121,6 +115,10 @@ msgstr "我们的会员"
 #: src/components/News/CollectBtn.tsx
 msgid "Failed to unstar"
 msgstr "取消收藏失败"
+
+#: src/components/Header/index.tsx
+msgid "NEWS ARTICLES"
+msgstr ""
 
 #: src/pages/contact-us/faq.tsx
 msgid "WHAT KIND OF MEMBERS ARE WE LOOKING FOR?"
@@ -295,6 +293,10 @@ msgstr ""
 msgid "click here"
 msgstr "点击此处"
 
+#: src/components/Header/index.tsx
+msgid "BLOGS"
+msgstr ""
+
 #: src/components/Membership/index.tsx
 msgid "From customised support and programmes to exclusive community events, our members can gain access to a wide range of perks."
 msgstr ""
@@ -373,6 +375,13 @@ msgstr ""
 
 #: src/pages/contact-us/faq.tsx
 msgid "IS IT ONLY AVAILABLE ON ETHEREUM?"
+msgstr ""
+
+#: src/components/Library/Category.tsx
+#: src/components/Library/index.tsx
+#: src/components/Library/SubPage.tsx
+#: src/components/Members/index.tsx
+msgid "Oops! Seems like you aren’t a Hexa Member yet. Please connect wallet to verify or visit our membership page for more info."
 msgstr ""
 
 #: src/components/Membership/Screen-3.tsx
@@ -651,6 +660,10 @@ msgstr "创始人"
 msgid "Failed to unlike"
 msgstr ""
 
+#: src/components/Header/index.tsx
+msgid "DEV GUIDES"
+msgstr ""
+
 #: src/components/Membership/index.tsx
 msgid "Community Members"
 msgstr ""
@@ -740,6 +753,10 @@ msgstr ""
 
 #: src/pages/contact-us/faq.tsx
 msgid "WHAT ARE THE PERKS FOR MEMBERS?"
+msgstr ""
+
+#: src/components/Header/index.tsx
+msgid "NEWS FEED"
 msgstr ""
 
 #: src/components/ContactUs/Application.tsx
@@ -838,10 +855,6 @@ msgstr ""
 msgid "Please install app first."
 msgstr ""
 
-#: src/components/Layout/HasSBT.tsx
-msgid "Oops! Looks like you aren’t a Hexa Hub member yet! {tips} are only available to Hexa Hub members, for more info on Hexa Hub membership,"
-msgstr ""
-
 #: src/components/Header/Wallet.tsx
 msgid "My Account"
 msgstr ""
@@ -890,6 +903,10 @@ msgstr ""
 msgid "Events"
 msgstr ""
 
+#: src/components/LaunchingSoon/index.tsx
+msgid "Launching Soon"
+msgstr ""
+
 #: src/components/Membership/index.tsx
 msgid "Hexa Arcana"
 msgstr "Hexa Arcana"
@@ -904,6 +921,10 @@ msgstr ""
 
 #: src/components/Membership/Screen-2.tsx
 msgid "Publish your insights to an audience of industry leaders..."
+msgstr ""
+
+#: src/components/Header/index.tsx
+msgid "TRENDING TWEETS"
 msgstr ""
 
 #: src/components/Profile/index.tsx

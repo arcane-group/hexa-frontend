@@ -44,7 +44,7 @@ const Library = observer(() => {
       pos='relative'
       overflow={'hidden'}
     >
-      <HasSBT tips={t`The Library`}>
+      <HasSBT tips={t`Oops! Seems like you aren’t a Hexa Member yet. Please connect wallet to verify or visit our membership page for more info.`}>
         <GoSaved />
 
         <Main1 />

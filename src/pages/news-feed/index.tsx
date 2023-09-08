@@ -1,15 +1,17 @@
 import { Box } from '@chakra-ui/react'
 
-import { NoSSR } from '@/components/NoSSRWrapper'
-import { News } from '@/components/News'
+// import { NoSSR } from '@/components/NoSSRWrapper'
+// import { News } from '@/components/News'
+import { LaunchingSoon } from '@/components/LaunchingSoon'
 
 const Page = () => {
   return (
     <>
       <Box as='main' minH='100vh'>
-        <NoSSR>
+        {/* <NoSSR>
           <News />
-        </NoSSR>
+        </NoSSR> */}
+        <LaunchingSoon />
       </Box>
     </>
   )

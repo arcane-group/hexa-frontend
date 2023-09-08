@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-import type { NewsSchema } from './news'
+// import type { NewsSchema } from './news'
 import type { ArticleSchema } from './library'
 
 export interface UserSchema {
@@ -13,8 +13,8 @@ export interface UserSchema {
   walletVerified: boolean
   walletAddress: string
   whitelistStatus: boolean
-  savedArticles: ArticleSchema[]
-  savedNews: NewsSchema[]
+  savedArticles: string[]
+  savedNews: string[]
   _id: string
   __v: number
   createdAt: string
@@ -372,6 +372,29 @@ export const linkEmail = async (username: string, email: string, password: strin
         }
       }
       throw new Error('Error updating profile')
+    })
+    .catch((e) => {
+      return {
+        code: -1,
+        data: null,
+        msg: e.message,
+      }
+    })
+}
+
+// 获取用户收藏的文章
+export const getSavedArticles = async (id: string) => {
+  return await request
+    .get(`/user/savedArticles/${id}`)
+    .then((res) => {
+      if (res?.status === 200) {
+        return {
+          code: 0,
+          data: res?.data as ArticleSchema[],
+          msg: '',
+        }
+      }
+      throw new Error('Error retrieving saved articles')
     })
     .catch((e) => {
       return {

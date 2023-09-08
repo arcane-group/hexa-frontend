@@ -28,7 +28,7 @@ const Category = observer(() => {
 
   return (
     <Container py={{ base: px2vw(70), lg: '120px' }} pos='relative'>
-      <HasSBT tips={t`The Library`}>
+      <HasSBT tips={t`Oops! Seems like you aren’t a Hexa Member yet. Please connect wallet to verify or visit our membership page for more info.`}>
         <GoSaved right={{ base: px2vw(20), lg: '40px', xxl: '80px' }} />
         {idStr && <List id={idStr} />}
       </HasSBT>

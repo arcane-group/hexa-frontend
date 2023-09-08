@@ -21,7 +21,7 @@ const Members = observer(({ id }: { id: string }) => {
 
   return (
     <Container py={{ base: px2vw(20), lg: '120px' }} pos='relative'>
-      <HasSBT tips={t`The Members Directory`}>
+      <HasSBT tips={t`Oops! Seems like you aren’t a Hexa Member yet. Please connect wallet to verify or visit our membership page for more info.`}>
         <List id={id} />
       </HasSBT>
     </Container>
