@@ -109,7 +109,7 @@ export const Screen4 = ({ fullpageApi }: any) => {
           </Box>
           <LineButton
             onClick={() => {
-              window.open('https://discord.com/' + publicRuntimeConfig.discord, '_blank')
+              window.open(publicRuntimeConfig.discord, '_blank')
             }}
           >{t`ENTER OUR DISCORD`}</LineButton>
         </Box>

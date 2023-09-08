@@ -44,7 +44,9 @@ const Library = observer(() => {
       pos='relative'
       overflow={'hidden'}
     >
-      <HasSBT tips={t`Oops! Seems like you aren’t a Hexa Member yet. Please connect wallet to verify or visit our membership page for more info.`}>
+      <HasSBT
+        tips={t`Oops! Seems like you aren’t a Hexa Member yet. Please connect wallet to verify or visit our membership page for more info.`}
+      >
         <GoSaved />
 
         <Main1 />
@@ -213,8 +215,8 @@ const Main2 = () => {
         <Box flex={1} pos='relative' mt={{ base: px2vw(21), lg: '0' }}>
           <Box pos='absolute' zIndex={2} right={'0'} top={'0'}>
             <CollectBtn
-              id={'123'}
-              data={{} as any}
+              id={data?._id}
+              data={data}
               iconH={'28px'}
               btnProps={{
                 h: '28px',

@@ -23,7 +23,7 @@ module.exports = {
     clientKey: 'cY6kzBXOVj9R2UAV5z97vF4g0hxzgVlHjQaUh06w',
     appId: '20e96175-f677-480d-876f-a8b061c4d99a',
   },
-  discord: '', // discord 链接
+  discord: 'https://discord.gg/48CDF7aaA5', // discord 链接
   twitter: {
     // twitter 配置
     handle: '',
