@@ -18,12 +18,19 @@ msgid "Thank you, we have received your enquiry and will respond shortly."
 msgstr "Thank you, we have received your enquiry and will respond shortly."
 
 #: src/components/Home/Screen-3.tsx
+#: src/components/Library/Category.tsx
+#: src/components/Library/index.tsx
+#: src/components/Library/SubPage.tsx
 msgid "The Library"
 msgstr "The Library"
 
 #: src/components/Home/Screen-2.tsx
 msgid "We are a community buzzing with entrepreneurial energy, where savvy minds gather to foster a powerful ecosystem of growth and opportunity."
 msgstr "We are a community buzzing with entrepreneurial energy, where savvy minds gather to foster a powerful ecosystem of growth and opportunity."
+
+#: src/components/Members/index.tsx
+msgid "The Members Directory"
+msgstr "The Members Directory"
 
 #: src/components/ContactUs/Support.tsx
 msgid "Legal and Compliance Support"
@@ -118,6 +125,10 @@ msgstr "Failed to unstar"
 #: src/pages/contact-us/faq.tsx
 msgid "WHAT KIND OF MEMBERS ARE WE LOOKING FOR?"
 msgstr "WHAT KIND OF MEMBERS ARE WE LOOKING FOR?"
+
+#: src/pages/contact-us/consultation-services.tsx
+msgid "Consultation services"
+msgstr "Consultation services"
 
 #: src/components/ContactUs/Application.tsx
 msgid "Wechat ID"
@@ -827,6 +838,10 @@ msgstr "Please select"
 msgid "Please install app first."
 msgstr "Please install app first."
 
+#: src/components/Layout/HasSBT.tsx
+msgid "Oops! Looks like you aren’t a Hexa Hub member yet! {tips} are only available to Hexa Hub members, for more info on Hexa Hub membership,"
+msgstr "Oops! Looks like you aren’t a Hexa Hub member yet! {tips} are only available to Hexa Hub members, for more info on Hexa Hub membership,"
+
 #: src/components/Header/Wallet.tsx
 msgid "My Account"
 msgstr "My Account"
@@ -862,10 +877,6 @@ msgstr "TRANSCENDING THE ORDINARY"
 #: src/components/Header/index.tsx
 msgid "CONTACT US"
 msgstr "CONTACT US"
-
-#: src/components/Layout/HasSBT.tsx
-msgid "Oops! Looks like you aren’t a Hexa Hub member yet! Consultation services are only available to Hexa Hub members, for more info on Hexa Hub membership,"
-msgstr "Oops! Looks like you aren’t a Hexa Hub member yet! Consultation services are only available to Hexa Hub members, for more info on Hexa Hub membership,"
 
 #: src/components/Profile/EditName.tsx
 msgid "New Username"

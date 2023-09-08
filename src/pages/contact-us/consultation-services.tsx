@@ -18,7 +18,7 @@ const Page = () => {
           lg: '52px',
         }}
       >
-        <HasSBT>
+        <HasSBT tips={t`Consultation services`}>
           <Box maxW='100%' pt={{ lg: '40px' }}>
             <Text
               textStyle={'ch2'}

@@ -1,6 +1,8 @@
 import { observer } from 'mobx-react-lite'
 import { Stack } from '@chakra-ui/react'
 import { memo, useCallback, useMemo } from 'react'
+import { t } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
 
 import { useInitSetPageScroll, useInitPageScroll, usePageStore } from '@/hooks/usePageStore'
 import { Container } from '@/components/Container'
@@ -13,11 +15,13 @@ import px2vw from '@/utils/px2vw'
 import { HasSBT } from '@/components/Layout/HasSBT'
 
 const Members = observer(({ id }: { id: string }) => {
+  useLingui()
+
   useInitSetPageScroll()
 
   return (
     <Container py={{ base: px2vw(20), lg: '120px' }} pos='relative'>
-      <HasSBT>
+      <HasSBT tips={t`The Members Directory`}>
         <List id={id} />
       </HasSBT>
     </Container>

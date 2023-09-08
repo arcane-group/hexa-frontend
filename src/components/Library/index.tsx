@@ -27,6 +27,7 @@ import {
   getLibraryLatestList,
   getLibraryTopList,
   getLibraryreCommendedList,
+  type ArticleSchema,
 } from '@/services/api/library'
 
 const Swiper2: any = Swiper
@@ -43,7 +44,7 @@ const Library = observer(() => {
       pos='relative'
       overflow={'hidden'}
     >
-      <HasSBT>
+      <HasSBT tips={t`The Library`}>
         <GoSaved />
 
         <Main1 />
@@ -83,7 +84,7 @@ const Main1 = () => {
 
   const { data } = useRequest(
     async () => {
-      return await getLibraryreCommendedList().then((res: any) => {
+      return await getLibraryreCommendedList().then(res => {
         if (res?.code >= 0) {
           return res?.data || []
         }
@@ -137,7 +138,7 @@ const Main1 = () => {
           >
             {data.map(item => {
               return (
-                <SwiperSlide key={item} className='library-swiper-slide'>
+                <SwiperSlide key={item?._id} className='library-swiper-slide'>
                   <CategoryCard data={item} />
                 </SwiperSlide>
               )
@@ -156,11 +157,11 @@ const Main2 = () => {
 
   const { data } = useRequest(
     async () => {
-      return await getLibraryTopList().then((res: any) => {
+      return await getLibraryTopList().then(res => {
         if (res?.code >= 0) {
-          return res?.data || []
+          return res?.data?.[0] || null
         }
-        return []
+        return null
       })
     },
     {
@@ -170,7 +171,7 @@ const Main2 = () => {
   )
   console.log('getLibraryTopList data:', data)
 
-  if (Array.isArray(data) && data?.length > 0) {
+  if (data) {
     return (
       <MotionCenter
         mb={{ base: px2vw(80), lg: '200px' }}
@@ -207,7 +208,7 @@ const Main2 = () => {
           }}
           mr={{ lg: '53px' }}
         >
-          <Image w='100%' h='100%' src={''} alt='' />
+          <Image w='100%' h='100%' src={data?.image} alt='' objectFit={'cover'} />
         </Box>
         <Box flex={1} pos='relative' mt={{ base: px2vw(21), lg: '0' }}>
           <Box pos='absolute' zIndex={2} right={'0'} top={'0'}>
@@ -221,10 +222,10 @@ const Main2 = () => {
             />
           </Box>
           <Text textStyle={'cp'} color='#1D1D1D'>
-            Podcast
+            {data?.category}
           </Text>
           <Text textStyle={'ch2'} mt={{ base: px2vw(13), lg: '0' }} color='#1D1D1D'>
-            TITLE OF LASTEST ARTICLE
+            {data?.title}
           </Text>
           <Text
             color='#595959'
@@ -245,27 +246,18 @@ const Main2 = () => {
             }}
             my={{ base: px2vw(13), lg: '14px' }}
           >
-            Arcane welcomes the different, the trailblazers, the novel. If you have a growth mindset
-            and deep，if you have Arcane welcomes the different, the trailblazers, the novel. If you
-            have a growth mindset and deep，if you have Arcane welcomes the different, the
-            trailblazers, the novel. If you have a growth mindset and deep，if you have Arcane
-            welcomes the different, the trailblazers, the novel. If you have a growth mindset and
-            deep，if you have Arcane welcomes the different, the trailblazers, the novel. If you
-            have a growth mindset and deep，if you have Arcane welcomes the different, the
-            trailblazers, the novel. If you have a growth mindset and deep，if you have Arcane
-            welcomes the different, the trailblazers, the novel. If you have a growth mindset and
-            deep，if you have
+            {data?.description}
           </Text>
           <Text color='#595959' textStyle={'csmp'} mb={{ base: px2vw(20), lg: '100px' }}>
-            {dayjs(1692864161725).format('YYYY-MM-DD HH:mm:ss')}
+            {dayjs(data?.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
           </Text>
           <LineButton
             w='210px'
             onClick={() => {
               router.push({
-                pathname: '/library/category/[id]',
+                pathname: '/library/sub-page',
                 query: {
-                  id: '123',
+                  id: data?._id,
                 },
               })
             }}
@@ -278,7 +270,7 @@ const Main2 = () => {
   return null
 }
 
-const CategoryCard = ({ data }: { data: any }) => {
+const CategoryCard = ({ data }: { data: ArticleSchema }) => {
   const router = useRouter()
 
   return (
@@ -294,24 +286,32 @@ const CategoryCard = ({ data }: { data: any }) => {
         pos='relative'
         w='100%'
         h='100%'
-        flexDir={'column'}
         cursor={'pointer'}
         role='group'
-        bgGradient={'linear-gradient(164.72deg, #8AF7FC 1.2%, rgba(138, 247, 252, 0) 75.08%)'}
+        bgImage={data?.image}
+        bgSize={'cover'}
         border='1.5px solid #1ECADC'
         borderTopWidth={'3px'}
         borderBottomWidth={'3px'}
-        px='30px'
         boxShadow={'13px 15px 16px 0px #24BCCC57'}
         onClick={() => {
           router.push({
-            pathname: '/library/category/[id]',
+            pathname: '/library/sub-page',
             query: {
-              id: data,
+              id: data?._id,
             },
           })
         }}
       >
+        <Box
+          bgGradient={'linear-gradient(164.72deg, #8AF7FC 1.2%, rgba(138, 247, 252, 0) 75.08%)'}
+          pos='absolute'
+          left={0}
+          top={0}
+          width={'100%'}
+          height={'100%'}
+          zIndex={0}
+        />
         <Text
           pos='absolute'
           zIndex={2}
@@ -320,11 +320,11 @@ const CategoryCard = ({ data }: { data: any }) => {
           color='#1D1D1D'
           textStyle={'csmp'}
         >
-          CATEGORY
+          {data?.category}
         </Text>
         <Box pos='absolute' zIndex={2} right={'26px'} top={'18px'}>
           <CollectBtn
-            id={data?.id}
+            id={data?._id}
             data={data}
             iconH={'28px'}
             btnProps={{
@@ -332,9 +332,18 @@ const CategoryCard = ({ data }: { data: any }) => {
             }}
           />
         </Box>
-        <Flex flex={1} justifyContent={'flex-end'} flexDir={'column'}>
-          <Text textStyle={'h2'} color='#1D1D1D'>
-            MEMBER TITLE - {data}
+        <Flex
+          px='30px'
+          flex={1}
+          justifyContent={'flex-end'}
+          flexDir={'column'}
+          pos='relative'
+          zIndex={1}
+          w={0}
+          height={'100%'}
+        >
+          <Text textStyle={'h2'} color='#1D1D1D' className='ellipsis'>
+            {data?.title}
           </Text>
           <Text
             color='#595959'
@@ -355,19 +364,10 @@ const CategoryCard = ({ data }: { data: any }) => {
             }}
             my='14px'
           >
-            Arcane welcomes the different, the trailblazers, the novel. If you have a growth mindset
-            and deep，if you have Arcane welcomes the different, the trailblazers, the novel. If you
-            have a growth mindset and deep，if you have Arcane welcomes the different, the
-            trailblazers, the novel. If you have a growth mindset and deep，if you have Arcane
-            welcomes the different, the trailblazers, the novel. If you have a growth mindset and
-            deep，if you have Arcane welcomes the different, the trailblazers, the novel. If you
-            have a growth mindset and deep，if you have Arcane welcomes the different, the
-            trailblazers, the novel. If you have a growth mindset and deep，if you have Arcane
-            welcomes the different, the trailblazers, the novel. If you have a growth mindset and
-            deep，if you have
+            {data?.description}
           </Text>
           <Text color='#595959' textStyle={'smp'} mb='57px'>
-            {dayjs(1692864161725).format('YYYY-MM-DD HH:mm:ss')}
+            {dayjs(data?.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
           </Text>
         </Flex>
       </Flex>

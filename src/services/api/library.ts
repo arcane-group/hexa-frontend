@@ -11,6 +11,9 @@ export interface ArticleSchema {
   createdAt: string
   updatedAt: string
   __v: number
+  author: string
+  avatar: string
+  tags: string[]
 }
 
 // 分页获取最新图书列表

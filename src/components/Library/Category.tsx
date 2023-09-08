@@ -2,6 +2,8 @@ import { useRouter } from 'next/router'
 import { observer } from 'mobx-react-lite'
 import { Stack } from '@chakra-ui/react'
 import { memo, useCallback, useMemo } from 'react'
+import { t } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
 
 import { useInitSetPageScroll, useInitPageScroll, usePageStore } from '@/hooks/usePageStore'
 import { GoSaved } from '@/components/News/index'
@@ -15,6 +17,8 @@ import { px2vw } from '@/utils/px2vw'
 import { HasSBT } from '@/components/Layout/HasSBT'
 
 const Category = observer(() => {
+  useLingui()
+
   const router = useRouter()
   const { id } = router.query
 
@@ -24,7 +28,7 @@ const Category = observer(() => {
 
   return (
     <Container py={{ base: px2vw(70), lg: '120px' }} pos='relative'>
-      <HasSBT>
+      <HasSBT tips={t`The Library`}>
         <GoSaved right={{ base: px2vw(20), lg: '40px', xxl: '80px' }} />
         {idStr && <List id={idStr} />}
       </HasSBT>

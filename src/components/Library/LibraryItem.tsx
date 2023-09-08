@@ -91,7 +91,7 @@ export const LibraryItem = observer(({ data, index }: { data: ArticleSchema; ind
               lg: `${16 * 1.5 * 5}px`,
             }}
           >
-            {data?.text}
+            {data?.description}
           </Box>
           <Text color='#595959' textStyle={'smp'} mt={{ base: px2vw(14), lg: '38px' }}>
             {dayjs(data?.updatedAt).format('YYYY-MM-DD HH:mm:ss')}

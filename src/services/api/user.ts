@@ -131,9 +131,7 @@ export const verifyWallet = async (
   }
 ) => {
   return await request
-    .get(`/user/verifyWallet/${id}`, {
-      data,
-    })
+    .post(`/user/verifyWallet/${id}`, data)
     .then((res) => {
       if (res?.status === 200) {
         return {

@@ -1,6 +1,6 @@
 import { Box, Text, Image, AspectRatio, Flex, Stack } from '@chakra-ui/react'
-// import { t } from '@lingui/macro'
-// import { useLingui } from '@lingui/react'
+import { t } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
 import { observer } from 'mobx-react-lite'
 import { useRequest } from 'ahooks'
 import { useRouter } from 'next/router'
@@ -19,6 +19,8 @@ import { getLibraryById } from '@/services/api/library'
 import { Loading } from '@/components/Loading'
 
 const SubPage = observer(() => {
+  useLingui()
+
   const {
     query: { id },
   } = useRouter()
@@ -32,7 +34,7 @@ const SubPage = observer(() => {
       maxW='995px'
       pos='relative'
     >
-      <HasSBT>
+      <HasSBT tips={t`The Library`}>
         <GoSaved />
         <Main id={strId} />
       </HasSBT>
@@ -103,8 +105,7 @@ const Main = observer(({ id }: { id?: string }) => {
       </Box>
       <Flex w='100%' alignItems={'flex-end'} justifyContent={'space-between'} mt='25px'>
         <Stack direction={'row'} spacing={'21px'} alignItems={'center'}>
-          {/* 缺失头像字段 */}
-          <UserImg src={''} w='69px' h='69px' />
+          <UserImg src={data?.avatar} w='69px' h='69px' />
           <Stack
             direction={'column'}
             color='#595959'
@@ -112,7 +113,7 @@ const Main = observer(({ id }: { id?: string }) => {
             spacing={0}
             className='ellipsis'
           >
-            <Text className='ellipsis'>缺失名字字段</Text>
+            <Text className='ellipsis'>{data?.author}</Text>
             <Text className='ellipsis'>{formatTime(data?.updatedAt, true)}</Text>
           </Stack>
         </Stack>
@@ -122,17 +123,41 @@ const Main = observer(({ id }: { id?: string }) => {
           </Stack>
         ) : null}
       </Flex>
-      <AspectRatio w='100%' ratio={998 / 186} mt={{ base: px2vw(21), lg: '32px' }}>
-        <Image src={data?.image} alt='' w='100%' objectFit='cover' />
-      </AspectRatio>
-      <Box mt={{ base: px2vw(6), lg: '37px' }} textStyle={'p'} color='#595959'>
-        {data?.text}
-      </Box>
+      {data?.category === 'podcasts' ? (
+        <AspectRatio ratio={668 / 376} flex={1}>
+          <iframe
+            // onLoad={() => {
+            //   setLoading(false)
+            // }}
+            src={data?.text}
+            title='YouTube video player'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+            allowFullScreen
+          />
+        </AspectRatio>
+      ) : (
+        <>
+          <AspectRatio w='100%' ratio={998 / 186} mt={{ base: px2vw(21), lg: '32px' }}>
+            <Image src={data?.image} alt='' w='100%' objectFit='cover' />
+          </AspectRatio>
+          <Box mt={{ base: px2vw(6), lg: '37px' }} textStyle={'p'} color='#595959'>
+            {data?.text}
+          </Box>
+        </>
+      )}
+
       <Flex mt='50px'>
         <Stack direction='row' spacing={'24px'} flex={1} w={0}>
           {[`${data?.category}`].map(item => {
             return (
               <Link key={item} href={`/library/category/${item}`} color='#000000' textStyle={'cp'}>
+                #{item}
+              </Link>
+            )
+          })}
+          {data?.tags.map(item => {
+            return (
+              <Link key={item} href={`#`} color='#000000' textStyle={'cp'}>
                 #{item}
               </Link>
             )

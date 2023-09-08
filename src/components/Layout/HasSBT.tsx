@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 
 import { useStore } from '@/stores'
 
-export const HasSBT = observer(({ children }: any) => {
+export const HasSBT = observer(({ children, tips }: any) => {
   useLingui()
 
   const { asPath } = useRouter()
@@ -21,7 +21,7 @@ export const HasSBT = observer(({ children }: any) => {
   if (walletStore?.userExtInfo?._id) {
     return (
       <Box textStyle={'cp'} pt='200px' textAlign={'center'}>
-        {t`Oops! Looks like you aren’t a Hexa Hub member yet! Consultation services are only available to Hexa Hub members, for more info on Hexa Hub membership,`}
+        {t`Oops! Looks like you aren’t a Hexa Hub member yet! ${tips} are only available to Hexa Hub members, for more info on Hexa Hub membership,`}
         <Link
           ml='4px'
           className='hover'

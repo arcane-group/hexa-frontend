@@ -96,7 +96,7 @@ export const LibraryCard = ({
             lg: `${16 * 1.5 * 2}px`,
           }}
         >
-          {data?.text}
+          {data?.description}
         </Text>
         <Text color='#595959' textStyle={{ base: 'smp', lg: 'p' }} mt='12px'>
           {dayjs(data?.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
