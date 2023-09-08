@@ -151,7 +151,7 @@ export const Screen2 = ({ fullpageApi }: any) => {
           <Stack
             pos='relative'
             direction={'column'}
-            spacing={'5vh'}
+            spacing={'45px'}
             mt={{
               base: px2vw(20),
               lg: '5vh',

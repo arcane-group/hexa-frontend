@@ -138,10 +138,10 @@ const Main1 = () => {
             slidesPerView={isPC ? 4 : 1.1}
             spaceBetween={isPC ? undefined : 20}
           >
-            {data.map(item => {
+            {data.map((item, index) => {
               return (
                 <SwiperSlide key={item?._id} className='library-swiper-slide'>
-                  <CategoryCard data={item} />
+                  <CategoryCard data={item} index={index} />
                 </SwiperSlide>
               )
             })}
@@ -272,7 +272,7 @@ const Main2 = () => {
   return null
 }
 
-const CategoryCard = ({ data }: { data: ArticleSchema }) => {
+const CategoryCard = ({ data, index }: { data: ArticleSchema; index: number }) => {
   const router = useRouter()
 
   return (
@@ -284,17 +284,13 @@ const CategoryCard = ({ data }: { data: ArticleSchema }) => {
       }}
     >
       <Flex
+        flexDir={index % 2 === 0 ? 'column' : 'column-reverse'}
         className='hover'
         pos='relative'
         w='100%'
         h='100%'
         cursor={'pointer'}
         role='group'
-        bgImage={data?.image}
-        bgSize={'cover'}
-        border='1.5px solid #1ECADC'
-        borderTopWidth={'3px'}
-        borderBottomWidth={'3px'}
         boxShadow={'13px 15px 16px 0px #24BCCC57'}
         onClick={() => {
           router.push({
@@ -305,8 +301,20 @@ const CategoryCard = ({ data }: { data: ArticleSchema }) => {
           })
         }}
       >
+        <AspectRatio w='100%' ratio={1}>
+          <Image
+            src={data?.image}
+            alt=''
+            border='1.5px solid #1ECADC'
+            borderTopWidth={'3px'}
+            borderBottomWidth={'3px'}
+            objectFit={'cover'}
+          />
+        </AspectRatio>
         <Box
-          bgGradient={'linear-gradient(164.72deg, #8AF7FC 1.2%, rgba(138, 247, 252, 0) 75.08%)'}
+          bgGradient={`linear-gradient(${
+            index % 2 === 0 ? '357.09deg' : '164.72deg'
+          }, #8AF7FC 1.2%, rgba(138, 247, 252, 0) 75.08%)`}
           pos='absolute'
           left={0}
           top={0}
@@ -341,34 +349,36 @@ const CategoryCard = ({ data }: { data: ArticleSchema }) => {
           flexDir={'column'}
           pos='relative'
           zIndex={1}
-          w={0}
-          height={'100%'}
+          h={'0'}
+          w='100%'
+          pt={index % 2 === 0 ? '16px' : '60px'}
         >
           <Text textStyle={'h2'} color='#1D1D1D' className='ellipsis'>
             {data?.title}
           </Text>
-          <Text
-            color='#595959'
-            textStyle={{ base: 'smp', lg: 'p' }}
-            sx={{
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              display: '-webkit-box',
-              WebkitLineClamp: 5,
-              WebkitBoxOrient: 'vertical',
-            }}
-            overflow={'hidden'}
-            textOverflow='ellipsis'
-            display={'-webkit-box'}
-            h={{
-              base: px2vw(14 * 1.5 * 5),
-              lg: `${16 * 1.5 * 5}px`,
-            }}
-            my='14px'
-          >
-            {data?.description}
-          </Text>
-          <Text color='#595959' textStyle={'smp'} mb='57px'>
+          <Box flex={1} mt='4px' mb='14px'>
+            <Text
+              color='#595959'
+              textStyle={{ base: 'smp', lg: 'p' }}
+              sx={{
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: '-webkit-box',
+                WebkitLineClamp: 3,
+                WebkitBoxOrient: 'vertical',
+              }}
+              overflow={'hidden'}
+              textOverflow='ellipsis'
+              display={'-webkit-box'}
+              h={{
+                base: px2vw(14 * 1.5 * 3),
+                lg: `${16 * 1.5 * 3}px`,
+              }}
+            >
+              {data?.description}
+            </Text>
+          </Box>
+          <Text color='#595959' textStyle={'smp'} mb='17px'>
             {dayjs(data?.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
           </Text>
         </Flex>

@@ -60,7 +60,7 @@ export const LibraryItem = observer(({ data, index }: { data: ArticleSchema; ind
           }}
         >
           <AspectRatio w='100%' ratio={320 / 200}>
-            <Image src={data?.image} alt='' />
+            <Image src={data?.image} alt='' objectFit={'cover'} />
           </AspectRatio>
         </Box>
         <Box pos='relative' flex={1} w={{ lg: '0' }} h='max-content'>
