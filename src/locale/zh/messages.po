@@ -79,6 +79,8 @@ msgstr ""
 msgid "MEMBERSHIP APPLICATION"
 msgstr ""
 
+#: src/components/Library/CollectBtn.tsx
+#: src/components/Library/CollectBtn.tsx
 #: src/components/News/CollectBtn.tsx
 #: src/components/News/CollectBtn.tsx
 msgid "Star"
@@ -108,6 +110,7 @@ msgstr ""
 msgid "MEMBERS"
 msgstr "我们的会员"
 
+#: src/components/Library/CollectBtn.tsx
 #: src/components/News/CollectBtn.tsx
 msgid "Failed to unstar"
 msgstr ""
@@ -180,6 +183,10 @@ msgstr ""
 msgid "Details of the service you require"
 msgstr ""
 
+#: src/components/Members/Card.tsx
+msgid "Discord:"
+msgstr ""
+
 #: src/pages/forgot-password.tsx
 msgid "Please check your email for the reset link (maybe in spam)."
 msgstr ""
@@ -212,6 +219,7 @@ msgstr ""
 msgid "Please enter email and password"
 msgstr "请输入邮箱和密码"
 
+#: src/components/Library/CollectBtn.tsx
 #: src/components/News/CollectBtn.tsx
 msgid "Failed to star"
 msgstr ""
@@ -468,6 +476,8 @@ msgstr ""
 msgid "Tech Development"
 msgstr ""
 
+#: src/components/Library/CollectBtn.tsx
+#: src/components/Library/CollectBtn.tsx
 #: src/components/News/CollectBtn.tsx
 #: src/components/News/CollectBtn.tsx
 msgid "Unstar"

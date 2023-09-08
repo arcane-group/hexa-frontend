@@ -24,7 +24,7 @@ export const Liked = ({
 }) => {
   return (
     <Center w='34px' h='30px' {...boxProps}>
-      <LikedIcon stopColor='#1ecadc' stopOpacity='1' w='100%' h='100%' {...props} />
+      <LikedIcon stopColor='#1ecadc' stopOpacity='1' w='100%' h='100%' id='Liked' {...props} />
     </Center>
   )
 }
@@ -37,7 +37,7 @@ export const UnLike = ({
 }) => {
   return (
     <Center w='34px' h='30px' {...boxProps}>
-      <LikedIcon w='100%' h='100%' {...props} />
+      <LikedIcon w='100%' h='100%' id='UnLike' {...props} />
     </Center>
   )
 }

@@ -18,7 +18,7 @@ import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
 import { useInitSetPageScroll, useInitPageScroll } from '@/hooks/usePageStore'
 import { MotionCenter } from '@/components/Motion'
 import { usePageStore } from '@/hooks/usePageStore'
-import { CollectBtn } from '@/components/News/CollectBtn'
+import { CollectBtn } from '@/components/Library/CollectBtn'
 import type { LibraryIndex } from '@/stores/pageStore/LibraryIndex'
 import px2vw from '@/utils/px2vw'
 import { useStore } from '@/stores'
@@ -81,15 +81,20 @@ const Main1 = () => {
     commonStore: { isPC },
   } = useStore()
 
-  const { data } = useRequest(async () => {
-    return await getLibraryreCommendedList().then((res: any) => {
-      if (res?.code >= 0) {
-        return res?.data || []
-      }
-      return []
-    })
-  })
-
+  const { data } = useRequest(
+    async () => {
+      return await getLibraryreCommendedList().then((res: any) => {
+        if (res?.code >= 0) {
+          return res?.data || []
+        }
+        return []
+      })
+    },
+    {
+      cacheKey: 'getLibraryreCommendedList',
+      staleTime: -1,
+    }
+  )
   console.log('getLibraryreCommendedList data:', data)
 
   if (Array.isArray(data) && data?.length > 0) {
@@ -149,14 +154,20 @@ const Main1 = () => {
 const Main2 = () => {
   const router = useRouter()
 
-  const { data } = useRequest(async () => {
-    return await getLibraryTopList().then((res: any) => {
-      if (res?.code >= 0) {
-        return res?.data || []
-      }
-      return []
-    })
-  })
+  const { data } = useRequest(
+    async () => {
+      return await getLibraryTopList().then((res: any) => {
+        if (res?.code >= 0) {
+          return res?.data || []
+        }
+        return []
+      })
+    },
+    {
+      cacheKey: 'getLibraryTopList',
+      staleTime: -1,
+    }
+  )
   console.log('getLibraryTopList data:', data)
 
   if (Array.isArray(data) && data?.length > 0) {
@@ -202,6 +213,7 @@ const Main2 = () => {
           <Box pos='absolute' zIndex={2} right={'0'} top={'0'}>
             <CollectBtn
               id={'123'}
+              data={{} as any}
               iconH={'28px'}
               btnProps={{
                 h: '28px',
@@ -313,6 +325,7 @@ const CategoryCard = ({ data }: { data: any }) => {
         <Box pos='absolute' zIndex={2} right={'26px'} top={'18px'}>
           <CollectBtn
             id={data?.id}
+            data={data}
             iconH={'28px'}
             btnProps={{
               h: '28px',

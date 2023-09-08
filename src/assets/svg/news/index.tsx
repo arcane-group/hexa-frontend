@@ -1,10 +1,10 @@
 import { Icon, IconProps } from '@chakra-ui/react'
 
-export const LikedIcon = ({ stopColor = '#8af7fc', stopOpacity = 0, ...props }: IconProps) => {
+export const LikedIcon = ({ stopColor = '#8af7fc', stopOpacity = 0, id, ...props }: IconProps) => {
   return (
     <Icon fill='none' height='30' viewBox='0 0 34 30' width='34' {...props}>
       <linearGradient
-        id='a'
+        id={id}
         gradientUnits='userSpaceOnUse'
         x1='10.8462'
         x2='24.6977'
@@ -16,24 +16,29 @@ export const LikedIcon = ({ stopColor = '#8af7fc', stopOpacity = 0, ...props }: 
       </linearGradient>
       <path
         d='m15.4957 1-7.9316 10.5406h-6.5641v17.4594h27.0769l4.9231-17.287h-17.5043l5.4701-7.54778z'
-        fill='url(#a)'
+        fill={`url(#${id})`}
         stroke='#1ecadc'
       />
     </Icon>
   )
 }
 
-export const CollectIcon = ({ stopColor = '#8af7fc', stopOpacity = 0, ...props }: IconProps) => {
+export const CollectIcon = ({
+  stopColor = '#8af7fc',
+  stopOpacity = 0,
+  id,
+  ...props
+}: IconProps) => {
   return (
     <Icon width='175.495692' height='154.297664' viewBox='0 0 175.495692 154.297664' {...props}>
-      <linearGradient x1='50%' y1='100%' x2='50%' y2='12.8894722%' id='linearGradient-2'>
+      <linearGradient x1='50%' y1='100%' x2='50%' y2='12.8894722%' id={id}>
         <stop stopColor={stopColor} stopOpacity={stopOpacity} offset='0%'></stop>
         <stop stopColor='#1ECADC' offset='100%'></stop>
       </linearGradient>
       <g stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
         <g
           transform='translate(0.500000, 0.500000)'
-          fill='url(#linearGradient-2)'
+          fill={`url(#${id})`}
           fillRule='nonzero'
           stroke='#1ECADC'
         >

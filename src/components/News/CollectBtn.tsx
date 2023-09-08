@@ -24,7 +24,14 @@ export const Collected = ({
 }) => {
   return (
     <Center w='34px' h='30px' {...boxProps}>
-      <CollectIcon stopColor='#1ecadc' stopOpacity='1' w='100%' h='100%' {...props} />
+      <CollectIcon
+        stopColor='#1ecadc'
+        stopOpacity='1'
+        w='100%'
+        h='100%'
+        id='Collected'
+        {...props}
+      />
     </Center>
   )
 }
@@ -37,7 +44,7 @@ export const UnCollect = ({
 }) => {
   return (
     <Center w='34px' h='30px' {...boxProps}>
-      <CollectIcon w='100%' h='100%' {...props} />
+      <CollectIcon w='100%' h='100%' id='UnCollect' {...props} />
     </Center>
   )
 }

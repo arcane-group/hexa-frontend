@@ -116,9 +116,9 @@ const Main = observer(({ id }: { id?: string }) => {
             <Text className='ellipsis'>{formatTime(data?.updatedAt, true)}</Text>
           </Stack>
         </Stack>
-        {isPC ? (
+        {isPC && data ? (
           <Stack direction='row' spacing={'25px'}>
-            <CollectBtn iconH='29px' id={data?._id} />
+            <CollectBtn iconH='29px' id={data?._id} data={data} />
           </Stack>
         ) : null}
       </Flex>
@@ -138,9 +138,9 @@ const Main = observer(({ id }: { id?: string }) => {
             )
           })}
         </Stack>
-        {!isPC ? (
+        {!isPC && data ? (
           <Stack direction='row'>
-            <CollectBtn id={data?._id} />
+            <CollectBtn id={data?._id} data={data} />
           </Stack>
         ) : null}
       </Flex>

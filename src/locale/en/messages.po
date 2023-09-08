@@ -79,6 +79,8 @@ msgstr "Did we mention our merch? We frequently gift our members with mystery bo
 msgid "MEMBERSHIP APPLICATION"
 msgstr "MEMBERSHIP APPLICATION"
 
+#: src/components/Library/CollectBtn.tsx
+#: src/components/Library/CollectBtn.tsx
 #: src/components/News/CollectBtn.tsx
 #: src/components/News/CollectBtn.tsx
 msgid "Star"
@@ -108,6 +110,7 @@ msgstr "Login failed"
 msgid "MEMBERS"
 msgstr "MEMBERS"
 
+#: src/components/Library/CollectBtn.tsx
 #: src/components/News/CollectBtn.tsx
 msgid "Failed to unstar"
 msgstr "Failed to unstar"
@@ -180,6 +183,10 @@ msgstr "Service Provider"
 msgid "Details of the service you require"
 msgstr "Details of the service you require"
 
+#: src/components/Members/Card.tsx
+msgid "Discord:"
+msgstr "Discord:"
+
 #: src/pages/forgot-password.tsx
 msgid "Please check your email for the reset link (maybe in spam)."
 msgstr "Please check your email for the reset link (maybe in spam)."
@@ -212,6 +219,7 @@ msgstr "We have received your request and will contact you shortly!"
 msgid "Please enter email and password"
 msgstr "Please enter email and password"
 
+#: src/components/Library/CollectBtn.tsx
 #: src/components/News/CollectBtn.tsx
 msgid "Failed to star"
 msgstr "Failed to star"
@@ -468,6 +476,8 @@ msgstr "Referral person name, channels"
 msgid "Tech Development"
 msgstr "Tech Development"
 
+#: src/components/Library/CollectBtn.tsx
+#: src/components/Library/CollectBtn.tsx
 #: src/components/News/CollectBtn.tsx
 #: src/components/News/CollectBtn.tsx
 msgid "Unstar"

@@ -3,6 +3,7 @@ import getConfig from 'next/config'
 
 import { getCookie, removeCookie, setCookie } from '@/utils/cookie'
 import type { UserSchema } from '@/services/api/user'
+import type { ArticleSchema } from '@/services/api/library'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -71,6 +72,29 @@ export default class WalletStore {
   @action
   setLoginState = (loginState: 1 | 2 | 3) => {
     this.loginState = loginState
+  }
+
+  getSavedArticles = (id?: string) => {
+    if (!id && !Array.isArray(this.userExtInfo?.savedArticles)) {
+      return null
+    }
+    return this.userExtInfo?.savedArticles.find((item) => item._id === id)
+  }
+
+  setSavedArticles = (id: string, data?: ArticleSchema) => {
+    if (!id) {
+      return
+    }
+
+    if (data) {
+      if (!Array.isArray(this.userExtInfo?.savedArticles)) {
+        this.userExtInfo!.savedArticles = []
+      }
+      this.userExtInfo!.savedArticles.push(data)
+    } else if (Array.isArray(this.userExtInfo?.savedArticles)) {
+      this.userExtInfo!.savedArticles =
+        this.userExtInfo?.savedArticles?.filter((item) => item._id !== id) || []
+    }
   }
 
   @action

@@ -69,7 +69,7 @@ export const LibraryItem = observer(({ data, index }: { data: ArticleSchema; ind
               {data?.title}
             </Text>
             <Box>
-              <CollectBtn iconH='29px' id={data?._id} />
+              <CollectBtn iconH='29px' id={data?._id} data={data} />
             </Box>
           </Center>
           <Box

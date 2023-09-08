@@ -75,7 +75,7 @@ export const LibraryCard = ({
             {data?.title}
           </Text>
           <Box>
-            <CollectBtn id={data?._id} iconH={'28px'} />
+            <CollectBtn id={data?._id} data={data} iconH={'28px'} />
           </Box>
         </Flex>
         <Text

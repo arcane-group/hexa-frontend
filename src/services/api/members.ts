@@ -5,8 +5,13 @@ export interface MembersSchema {
   category: string
   description: string
   serviceInfo: string
-  servicesAvailable: string[]
+  serviceAvailable: string[]
   discord: string
+  avatar: string
+  _id: string
+  createdAt: string
+  updatedAt: string
+  __v: number
 }
 
 // 分页获取指定分类下列表
@@ -16,7 +21,7 @@ export const getMemberCategoryList = async (
 ) => {
   return await request
     .get(
-      '/members/category/' + type
+      type === 'all' ? '/members/all' : '/members/category/' + type
       // {
       //   params: {
       //     page,
