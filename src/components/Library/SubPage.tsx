@@ -103,7 +103,13 @@ const Main = observer(({ id }: { id?: string }) => {
           {data?.title}
         </Text>
       </Box>
-      <Flex w='100%' alignItems={'flex-end'} justifyContent={'space-between'} mt='25px'>
+      <Flex
+        w='100%'
+        alignItems={'flex-end'}
+        justifyContent={'space-between'}
+        mt='25px'
+        mb={{ base: px2vw(21), lg: '32px' }}
+      >
         <Stack direction={'row'} spacing={'21px'} alignItems={'center'}>
           <UserImg src={data?.avatar} w='69px' h='69px' />
           <Stack
@@ -137,7 +143,7 @@ const Main = observer(({ id }: { id?: string }) => {
         </AspectRatio>
       ) : (
         <>
-          <AspectRatio w='100%' ratio={998 / 186} mt={{ base: px2vw(21), lg: '32px' }}>
+          <AspectRatio w='100%' ratio={998 / 186}>
             <Image src={data?.image} alt='' w='100%' objectFit='cover' />
           </AspectRatio>
           <Box mt={{ base: px2vw(6), lg: '37px' }} textStyle={'p'} color='#595959'>

@@ -1,8 +1,8 @@
 module.exports = {
   canTestnet: false,
-  api: {
-    base: '',
-  },
+  // api: {
+  //   base: '',
+  // },
   gtag: '',
   walletConnect: '',
 }

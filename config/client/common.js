@@ -1,7 +1,9 @@
 module.exports = {
   title: 'Hexa Hub', // 网页通用标题
-  description: '', // seo 描述
-  keywords: '', // seo 关键字
+  description:
+    'Enter the Hexa ecosystem of dynamic creatives, players and trailblazers in the tech space. Hexa Hub is a curated members-only community formed to collaborate, build, and innovate.', // seo 描述
+  keywords:
+    'Hexa Hub, Hexa Arcana, Arcane Group, technology, web3, blockchain, AI, IoT, web3 gaming, DeFi, tech infrastructure, crypto, machine learning, tech community, networking, partnerships, collaboration, digital innovation, education, tech resources, forum, developers, investors, tech ventures, tech events, startups, tech career advice, tech industry trends, tech meetups, tech workshops, tech news, open source projects', // seo 关键字
   cookiePrefix: 'Hexa_Hub_',
   localStoragePrefix: 'Hexa_Hub_',
   storeVersion: 1,
