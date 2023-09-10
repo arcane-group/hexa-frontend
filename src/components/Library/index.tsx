@@ -79,7 +79,7 @@ const Library = observer(() => {
 })
 export default Library
 
-const Main1 = () => {
+const Main1 = observer(() => {
   const {
     commonStore: { isPC },
   } = useStore()
@@ -152,9 +152,9 @@ const Main1 = () => {
   }
 
   return null
-}
+})
 
-const Main2 = () => {
+const Main2 = observer(() => {
   const router = useRouter()
 
   const { data } = useRequest(
@@ -270,7 +270,7 @@ const Main2 = () => {
   }
 
   return null
-}
+})
 
 const CategoryCard = ({ data, index }: { data: ArticleSchema; index: number }) => {
   const router = useRouter()
