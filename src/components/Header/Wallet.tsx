@@ -77,7 +77,8 @@ const WalletLogin = observer(({ colorMode }: { colorMode: 'dark' | 'light' }) =>
               onClick={() => {
                 logoutFn()
                   .then(() => {
-                    window?.location?.reload()
+                    // window?.location?.reload()
+                    window.location.href = '/'
                   })
                   .catch(e => console.error(e))
               }}
