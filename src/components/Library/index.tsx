@@ -37,6 +37,10 @@ const Library = observer(() => {
 
   useInitSetPageScroll()
 
+  const {
+    commonStore: { isPC },
+  } = useStore()
+
   return (
     <Container
       py={{ base: px2vw(70), lg: '119px' }}
@@ -49,7 +53,7 @@ const Library = observer(() => {
       >
         <GoSaved />
 
-        <Main1 />
+        <Main1 key={`isPC-${isPC}`} />
 
         <Main2 />
 
